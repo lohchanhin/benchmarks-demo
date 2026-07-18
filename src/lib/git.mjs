@@ -22,11 +22,12 @@ export async function initializeFixtureGit(workspace) {
 }
 
 export async function collectGitEvidence(workspace) {
-  const [status, changed, numstat, check] = await Promise.all([
+  const [status, changed, numstat, check, tree] = await Promise.all([
     runProcess("git", ["status", "--short"], { cwd: workspace, check: true }),
     runProcess("git", ["diff", "--name-only", "HEAD"], { cwd: workspace, check: true }),
     runProcess("git", ["diff", "--numstat", "HEAD"], { cwd: workspace, check: true }),
-    runProcess("git", ["diff", "--check", "HEAD"], { cwd: workspace })
+    runProcess("git", ["diff", "--check", "HEAD"], { cwd: workspace }),
+    runProcess("git", ["rev-parse", "HEAD^{tree}"], { cwd: workspace, check: true })
   ]);
   const statusLines = lines(status.stdout);
   const diffFiles = lines(changed.stdout).map(normalize);
@@ -39,7 +40,8 @@ export async function collectGitEvidence(workspace) {
     untrackedFiles,
     numstat: parseNumstat(numstat.stdout),
     diffCheckPassed: check.exitCode === 0,
-    diffCheckOutput: `${check.stdout}${check.stderr}`.trim()
+    diffCheckOutput: `${check.stdout}${check.stderr}`.trim(),
+    headTree: tree.stdout.trim()
   };
 }
 

@@ -27,7 +27,7 @@ test("builds transparent control-minus-palace deltas", () => {
   assert.equal(report.delta.failedCallsSaved, 0);
   assert.equal(report.delta.commandOutputCharsSaved, 0);
   assert.equal(report.delta.uncachedInputTokensSaved, 1500);
-  assert.deepEqual(report.execution.order, ["control", "palace"]);
+  assert.deepEqual(report.execution.order, ["control", "full-palace"]);
 });
 
 test("withholds efficiency deltas when either arm is invalid", () => {

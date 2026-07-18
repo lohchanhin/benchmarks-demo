@@ -1,163 +1,180 @@
-# Vertex Palace A/B Benchmark
+# Vertex Palace Agent Benchmark
 
 [![CI](https://github.com/lohchanhin/benchmarks-ab-demo/actions/workflows/ci.yml/badge.svg)](https://github.com/lohchanhin/benchmarks-ab-demo/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A public, reproducible benchmark for comparing Codex repository work with and
-without [Vertex Palace](https://github.com/lohchanhin/vertex-palace).
+A public, preregistered, reproducible experiment comparing Codex repository
+work with no Palace, structural routing only, and full Vertex Palace memory.
 
-[Simplified Chinese](README.zh-CN.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
+[Simplified Chinese](README.zh-CN.md) | [Protocol](docs/research/PROTOCOL.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
 
-## Verified multi-run result
+## Falsifiable Claims
 
-The complete three-pair GPT-5.6-sol result is available at
-[docs/results/v0.1.6-three-pairs.md](docs/results/v0.1.6-three-pairs.md). All six
-arms passed with a 100/100 scope score. Palace used lower cumulative reported
-tokens in all three pairs and was faster in two, but its median uncached input
-was higher. Every pair, execution order, and the conservative median paired
-delta are reported.
+Vertex Palace is not assumed to win. The frozen pilot tests five claims:
 
-The earlier [live-05 postmortem](docs/results/live-05.md) records a real losing
-Palace run. Its repeated lifecycle commands directly motivated the one-call
-workflow in Vertex Palace 0.1.6; it remains public rather than being hidden.
+- **H1 correctness:** Full Palace is not materially less successful than Control.
+- **H2 efficiency:** among mutually successful pairs, Palace reduces repeated
+  context and exploration.
+- **H3 useful memory:** prior pitfalls reduce repeated tenant-isolation mistakes.
+- **H4 harmful memory:** stale memory does not materially increase wrong edits.
+- **H5 negative control:** on a tiny one-file bug, Palace may be pure overhead.
 
-## Why this exists
+The exact outcomes, -10 percentage-point pilot non-inferiority margin,
+exclusions, and statistics were committed before the new trials at tag
+[`protocol-v1.0.0`](https://github.com/lohchanhin/benchmarks-ab-demo/tree/protocol-v1.0.0).
 
-Claims about context routing are easy to exaggerate. This repository creates
-two disposable workspaces from the same Git tree, gives both Codex arms the
-same engineering task, and records evidence from Codex JSONL, Git diff, and a
-real test suite.
-
-The Control arm uses normal repository exploration. The Palace arm starts with
-one `palace context` call, which refreshes the index when needed, routes the
-task, and returns a compact pack containing relevant pitfalls. Both arms must
-solve the same task and pass the same tests.
-
-## What is measured
-
-- Test result and changed-file scope
-- Elapsed Codex execution time
-- Tool, failed-call, and inspection command counts
-- Codex router errors captured from stderr
-- Repository files explicitly named in Codex command invocations
-- Distinct repository path strings observed anywhere in the transcript
-- Command-output character counts as a context-volume proxy
-- Cumulative input, cached input, uncached input, and output tokens reported by Codex
-- Control-arm absence and Palace-arm presence of Palace calls
-- Optional Vertex Palace route evaluation
-
-Speed and token counts do not affect the correctness score. See
-[METHODOLOGY.md](METHODOLOGY.md) for definitions and limitations.
-
-## Included scenario
-
-`tenant-theme-regression` generates a dependency-free, 240-file multi-tenant
-JavaScript repository. The task has two independent root causes:
-
-1. Aurora contains a low-contrast tenant color.
-2. The renderer ignores an explicit tenant text-color override.
-
-Changing the shared theme or weakening the tests is forbidden. The Palace arm
-also receives a realistic prior failure: a shared-theme shortcut previously
-changed unrelated tenants.
-
-## Requirements
-
-- Node.js 20 or newer
-- Git
-- An authenticated Codex CLI
-
-Vertex Palace `0.1.6` is installed locally by `npm ci`; a global Palace install
-is not required for the harness.
-
-## Quick start
+## Reproduce The Pilot
 
 ```sh
 git clone https://github.com/lohchanhin/benchmarks-ab-demo.git
 cd benchmarks-ab-demo
 npm ci
 npm run benchmark -- doctor
-npm run benchmark -- prepare --run-id demo-01
-npm run benchmark -- run --run-dir .benchmark-runs/demo-01 --arm both --order control-first --model gpt-5.6-sol
+npm run benchmark -- study --plan results/pilot/plan.json --execute
+npm run analysis:pilot
+```
+
+The study command resumes safely, runs arms sequentially, and records every
+attempt. The frozen plan contains 4 scenarios x 5 seeds x 3 arms = 60 fresh
+ephemeral Codex sessions. Use `--limit 1` for a one-trial demonstration.
+
+## Correctness-First Evidence
+
+The preregistered four-scenario pilot is planned but not yet complete. No empty
+cell below is being presented as a positive result.
+
+| Dataset | Correctness | Efficiency result | Status |
+| --- | --- | --- | --- |
+| New four-scenario, three-arm pilot | Hidden oracle + public tests required | Pending | Plan frozen; runs pending |
+| Legacy `v0.1.6` three paired runs | 6/6 arms passed, 100/100 scope | Palace lower cumulative tokens in 3/3; faster in 2/3 | Exploratory pilot |
+| Legacy `live-05` | Both arms passed | Palace was 105.4s slower and used more reported tokens | Published negative case |
+
+The complete legacy values are in
+[`v0.1.6-three-pairs.md`](docs/results/v0.1.6-three-pairs.md). The losing Palace
+run and its diagnosis remain public in [`live-05.md`](docs/results/live-05.md).
+The older result also found **higher median uncached input for Palace by 6,101
+tokens**. That counter-result is not hidden.
+
+Vertex Palace does **not** guarantee that every task will be faster or cheaper.
+Wall time is secondary because hosted-model latency varies.
+
+## Why Three Arms
+
+- **Control:** normal Codex exploration; Palace calls and `.palace` reads are prohibited.
+- **Route-only:** one `palace context` call with a fresh index and no task memory.
+- **Full Palace:** the same route treatment plus seeded decisions, failed
+  attempts, and pitfalls.
+
+This ablation distinguishes structural routing from historical memory. All
+three workspaces use the same task, random fixture seed, tracked files, and Git
+tree. Each arm runs in a fresh `codex exec --ephemeral` process with fixed
+model, reasoning effort, timeout, and CLI version.
+
+## Preregistered Scenarios
+
+| Scenario | What it tests | Expected boundary |
+| --- | --- | --- |
+| `small-local-bug` | One-file negative-zero fix | Palace may add overhead |
+| `cross-stack-regression` | Backend policy plus frontend response contract | Route dependency coverage |
+| `tenant-memory-pitfall` | Multi-client shared-style regression | Useful pitfall memory |
+| `stale-memory-adversarial` | Plausible v1 memory conflicts with v2 architecture | Resistance to harmful memory |
+
+Each scenario has public tests plus an external oracle that is never copied
+into the agent workspace. A canonical repair must fail before the patch and
+pass both test layers after the smallest expected change.
+
+## Primary And Secondary Outcomes
+
+The primary outcome is successful completion inside 600 seconds. Success
+requires:
+
+- a valid treatment run;
+- successful Codex exit without timeout;
+- complete public tests passing;
+- hidden external oracle passing; and
+- no forbidden-file modification.
+
+Secondary evidence includes changed-file precision/recall, route Recall@K and
+Precision@K, pitfall repetition, wrong-memory adoption, tool and failed-call
+counts, router errors, command-output characters, and cumulative cached,
+uncached, input, and output tokens.
+
+Efficiency deltas are withheld unless both paired arms succeed. Transcript path
+strings are context proxies, not claims about files whose contents were read.
+
+## Statistical Analysis
+
+The analysis scripts publish every raw paired value and report:
+
+- paired success differences and exact two-sided McNemar tests;
+- arm medians and median paired differences;
+- seeded paired-bootstrap 95% confidence intervals;
+- Holm correction across scenario-level tests; and
+- a post-pilot power analysis for a separately frozen confirmatory study.
+
+Five pairs per scenario are explicitly labeled exploratory and underpowered.
+See the [hypotheses](docs/research/HYPOTHESES.md),
+[data dictionary](docs/research/DATA_DICTIONARY.md), and
+[threats to validity](docs/research/THREATS_TO_VALIDITY.md).
+
+## Single-Trial Workflow
+
+```sh
+npm run benchmark -- prepare \
+  --scenario cross-stack-regression \
+  --run-id demo-01 \
+  --seed reproducible-demo-seed
+
+npm run benchmark -- run \
+  --run-dir .benchmark-runs/demo-01 \
+  --arm all \
+  --order seeded
+
 npm run benchmark -- report --run-dir .benchmark-runs/demo-01
 ```
 
-Arms run sequentially, never concurrently. For evidence intended for public
-claims, run at least three fresh pairs, alternate `--order control-first` and
-`--order palace-first`, publish every pair, and compare medians.
-
-On Windows, when the Store alias for `codex.exe` cannot be launched from a
-child process, pass the real CLI path:
+On Windows, pass the real Codex executable when a Store alias cannot launch
+from a child process:
 
 ```powershell
-npm run benchmark -- doctor --codex-bin "$env:CODEX_CLI_PATH"
-npm run benchmark -- run --run-dir .benchmark-runs/demo-01 --arm both --codex-bin "$env:CODEX_CLI_PATH"
+npm run benchmark -- study --plan results/pilot/plan.json --execute --codex-bin "$env:CODEX_CLI_PATH"
 ```
 
-`doctor` reports the exact component that is missing before a paid model run
-starts.
-
-The Build Week model is presented as GPT-5.6. In the current Codex CLI for a
-ChatGPT account, its accepted command-line identifier is `gpt-5.6-sol`; the
-plain `gpt-5.6` identifier returns an unsupported-model error.
-
-## Manual mode
-
-`prepare` writes `INSTRUCTIONS.md` plus separate Control and Palace prompts.
-You can open each generated workspace in a fresh Codex task, use the same model
-and reasoning settings, and then run:
-
-```sh
-npm run benchmark -- verify --run-dir .benchmark-runs/demo-01 --arm both
-npm run benchmark -- report --run-dir .benchmark-runs/demo-01
-```
-
-Manual runs can prove correctness and Git scope. Copy Codex `--json` output to
-the run's `artifacts/*-transcript.jsonl` files when transcript-level efficiency
-metrics are also required.
-
-## Artifacts
+## Evidence Layout
 
 ```text
-.benchmark-runs/demo-01/
+docs/research/
+  PROTOCOL.md
+  HYPOTHESES.md
+  DATA_DICTIONARY.md
+  THREATS_TO_VALIDITY.md
+  PROTOCOL_AMENDMENTS.md
+analysis/
+  paired-analysis.mjs
+  bootstrap-ci.mjs
+  power-analysis.mjs
+results/
   manifest.json
-  INSTRUCTIONS.md
-  prompts/
-  arms/
-    control/
-    palace/
-  artifacts/
-    control-transcript.jsonl
-    palace-transcript.jsonl
-    control-evidence.json
-    palace-evidence.json
-  reports/
-    comparison.md
-    comparison.json
+  pilot/plan.json
+  pilot/
+  confirmatory/
 ```
 
-Runs are gitignored because transcripts may contain local paths and session
-metadata. Publish only reviewed reports.
+Per-run JSONL transcripts stay in `.benchmark-runs/` because they may contain
+local paths and session metadata. Reviewed evidence JSON and reports can be
+published, but attempted, failed, invalid, and timed-out trial records must
+remain in `results/manifest.json`.
 
-## Scoring
+## Requirements And Verification
 
-Each arm receives up to 100 correctness/scope points:
-
-- 60: complete test suite passes
-- 20: both expected root-cause files are changed
-- 20: no forbidden or unrelated files are changed and `git diff --check` passes
-
-The report does not manufacture a winner. An arm that violates its mode, fails
-tests, or starts from a different tree is marked invalid or receives a lower
-score.
-
-## Development
+- Node.js 20 or newer
+- Git
+- Authenticated `codex-cli 0.145.0-alpha.18` for the frozen pilot
+- `vertex-palace@0.1.6`, installed by `npm ci`
 
 ```sh
-npm test
-npm run test:fixture
 npm run check
+npm run benchmark -- study --plan results/pilot/plan.json
 ```
 
-The fixture check proves that the untouched baseline fails and the canonical
-two-file repair passes. The project is licensed under the [MIT License](LICENSE).
+The repository is licensed under the [MIT License](LICENSE).

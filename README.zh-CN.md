@@ -1,109 +1,123 @@
-# Vertex Palace A/B 基准测试
+# Vertex Palace Agent 基准实验
 
-这是一个公开、可复现的 A/B 基准，用来比较 Codex 在**未使用**与**使用
-Vertex Palace**时处理同一项仓库任务的实际差异。
+这是一个公开、预注册、可复现的 Codex Agent 工具实验，比较三种工作方式：
 
-[English](README.md) | [测试方法](METHODOLOGY.md) | [影片指南](DEMO.md)
+- **Control**：普通 Codex，不得读取或调用 Palace。
+- **Route-only**：使用 `palace context` 路由，但没有历史记忆。
+- **Full Palace**：路线、Context Pack、Pitfall Board 与历史记忆全部启用。
 
-## 已验证的三组配对
+[English](README.md) | [研究协议](docs/research/PROTOCOL.md) | [测试方法](METHODOLOGY.md) | [影片指南](DEMO.md)
 
-完整的 GPT-5.6-sol 三组配对结果位于
-[docs/results/v0.1.6-three-pairs.md](docs/results/v0.1.6-three-pairs.md)。六个 Arm
-全部通过测试并取得 100/100 修改范围分数。Palace 三轮的累计回报 Token 都较低、
-两轮较快，但非缓存输入中位数反而较高；每一轮、执行顺序与保守的配对差值中位数
-都已公开。
+## 可证伪假设
 
-旧版流程失败的真实样本仍保留在
-[live-05 复盘](docs/results/live-05.md)。它暴露的重复生命周期命令直接促成
-Vertex Palace 0.1.6 的单次 `palace context` 工作流，没有被隐藏。
+- **H1**：Full Palace 的任务正确率不明显低于 Control。
+- **H2**：双方都成功时，Palace 减少累计上下文与重复探索。
+- **H3**：历史踩坑记录降低多客户项目重复事故率。
+- **H4**：错误或过期记忆不会明显增加错误修改。
+- **H5**：小型单文件任务中，Palace 可能只有额外成本。
 
-## 为什么要做
+这里没有预设 Palace 必须获胜。较慢、Token 更多、没有差异、被错误记忆
+误导，全部都是必须保留的有效结果。新实验的指标、排除规则和统计方法已先在
+`protocol-v1.0.0` tag 冻结。
 
-“减少 Token”或“更快找到代码”很容易变成无法验证的宣传。本项目从同一个
-Git tree 生成两个一次性工作区，给两个 Codex 会话相同的工程任务，并保存：
-
-- Codex JSONL 运行记录
-- Git 修改范围
-- 完整测试结果
-- 时间、失败调用、Codex router 错误、命令输出量与 Codex 回报的 Token 数据
-- Control 组没有调用 Palace、Palace 组确实调用 Palace 的有效性检查
-
-Control 组使用普通仓库探索；Palace 组先执行一次 `palace context`，由它按需更新
-索引、规划路线并返回包含相关踩坑记录的精简 Context Pack。两组都必须通过完全
-相同的测试。
-
-## 内建场景
-
-`tenant-theme-regression` 会生成一个不需要安装依赖的 240 文件多租户 JavaScript
-项目。任务有两个独立根因：
-
-1. Aurora 租户颜色对比度不足。
-2. 渲染器没有采用租户明确设置的文字颜色。
-
-修改共享主题或削弱测试都会被判定为越界。Palace 组还会看到之前的事故记录：
-曾经有人为了修 Aurora 修改共享主题，结果同时改变了其他客户。
-
-## 快速开始
+## 一条流程复现实验
 
 ```sh
 git clone https://github.com/lohchanhin/benchmarks-ab-demo.git
 cd benchmarks-ab-demo
 npm ci
 npm run benchmark -- doctor
-npm run benchmark -- prepare --run-id demo-01
-npm run benchmark -- run --run-dir .benchmark-runs/demo-01 --arm both --order control-first --model gpt-5.6-sol
+npm run benchmark -- study --plan results/pilot/plan.json --execute
+npm run analysis:pilot
+```
+
+冻结计划包含 4 个场景 x 5 个随机 seed x 3 个 Arm，共 60 个全新的
+ephemeral Codex Session。`study` 支持断点续跑，并会在每次尝试后登记成功、
+失败、超时或无效证据。正式 Pilot 固定使用 `codex-cli 0.145.0-alpha.18`、
+`gpt-5.6-sol`、xhigh reasoning 与 `vertex-palace@0.1.6`；只想展示一组时可追加
+`--limit 1`。
+
+## 正确性优先
+
+新的四场景实验尚未跑完，不能把空白结果包装成结论。
+
+| 数据集 | 正确性 | 效率结果 | 状态 |
+| --- | --- | --- | --- |
+| 四场景三臂实验 | 必须同时通过公开测试和隐藏 Oracle | 等待实验 | 计划已冻结 |
+| 旧版 v0.1.6 三组配对 | 6/6 Arm 通过，范围分数 100/100 | Palace 三轮累计 Token 较低，两轮较快 | 先导实验 |
+| 旧版 live-05 | 双方通过 | Palace 慢 105.4 秒且 Token 更多 | 公开负面案例 |
+
+旧三轮的 Palace 非缓存输入中位数还高出 6,101 Token。完整数据在
+[三组配对报告](docs/results/v0.1.6-three-pairs.md)，失败案例在
+[live-05 复盘](docs/results/live-05.md)。
+
+**Vertex Palace 不保证每项任务都会更快或更省 Token。** 在线服务延迟变化很大，
+墙钟时间只作为次要指标。
+
+## 四个预注册场景
+
+| 场景 | 验证内容 |
+| --- | --- |
+| `small-local-bug` | 单文件负面对照，测量 Palace 固定成本 |
+| `cross-stack-regression` | 前后端契约与间接依赖完整度 |
+| `tenant-memory-pitfall` | 多客户共享样式事故与有用记忆 |
+| `stale-memory-adversarial` | v1 旧记忆与 v2 当前架构冲突时的抗误导能力 |
+
+每个 Agent workspace 只能看到任务和公开测试。外部隐藏 Oracle、预期修改文件、
+禁止修改文件、路由 ground truth 与评分逻辑都留在 benchmark 仓库，不会复制给
+Agent。
+
+## 成功条件
+
+固定 600 秒内同时满足以下条件才算成功：
+
+- Arm 使用方式有效；
+- Codex 正常结束且没有超时；
+- 完整公开测试通过；
+- 外部隐藏 Oracle 通过；
+- 没有修改禁止文件。
+
+其次才比较 changed-file precision/recall、Route Recall@K/Precision@K、重复踩坑、
+错误记忆采纳率、工具调用、失败调用、router errors、命令输出量，以及缓存、
+非缓存、输入与输出 Token。
+
+只有配对双方都成功时才比较效率，避免奖励“答错但很快”。Transcript 出现的路径
+只是上下文代理指标，不能称为实际读取过的文件。
+
+## 统计方法
+
+- 二元成功率：配对差值、精确 McNemar 检验、bootstrap 95% 信赖区间。
+- 连续指标：全部原始值、各组中位数、配对差值中位数、bootstrap 95% CI。
+- 多场景比较：Holm 校正。
+- 五组配对只标记为 exploratory pilot。
+- Pilot 后执行 power analysis，再冻结新的 confirmatory protocol。
+
+## 单次 Trial
+
+```sh
+npm run benchmark -- prepare \
+  --scenario cross-stack-regression \
+  --run-id demo-01 \
+  --seed reproducible-demo-seed
+
+npm run benchmark -- run \
+  --run-dir .benchmark-runs/demo-01 \
+  --arm all \
+  --order seeded
+
 npm run benchmark -- report --run-dir .benchmark-runs/demo-01
 ```
-
-两组永远串行执行，不会同时运行。用于公开结论时，至少准备三组全新配对，交替使用
-`--order control-first` 与 `--order palace-first`，公开所有结果并比较中位数。
-
-比赛页面称模型为 GPT-5.6；当前 ChatGPT 账号使用 Codex CLI 时，对应的命令行
-标识是 `gpt-5.6-sol`。直接传入 `gpt-5.6` 会得到 unsupported-model 错误。
-
-Windows 如果无法从子进程启动 Microsoft Store 的 `codex.exe` 别名，可以传入
-真实路径：
-
-```powershell
-npm run benchmark -- run --run-dir .benchmark-runs/demo-01 --arm both --codex-bin "$env:CODEX_CLI_PATH"
-```
-
-## 公平性规则
-
-- 两组使用同一个 Git tree、任务、模型与推理设置。
-- 两组必须从全新会话开始。
-- Control 组不得调用 `palace_*`、`palace` CLI 或读取 `.palace`。
-- Palace 组至少要有一次可验证的 Palace 调用。
-- 两组运行相同测试，不允许为了让 Control 失败而限制普通搜索工具。
-- 正确性与修改范围决定分数；速度和 Token 只报告，不计入分数。
-
-## 分数
-
-- 60 分：完整测试通过
-- 20 分：两个真正根因文件都被修改
-- 20 分：没有修改共享主题、测试或其他无关文件，并通过 `git diff --check`
-
-报告不会强行宣布赢家。模式不合规、测试失败或起始 Git tree 不一致的结果，会被
-标示为无效或得到较低分数。
-
-## 输出
-
-每次运行会生成：
-
-- `manifest.json`：起始 Git tree、任务和环境资料
-- `artifacts/*-transcript.jsonl`：Codex 原始事件
-- `artifacts/*-evidence.json`：测试、Git 与会话量化证据
-- `reports/comparison.md`：适合审阅或影片展示的表格
-- `reports/comparison.json`：可供其他程序复核的数据
-
-`.benchmark-runs/` 默认不会提交，因为会话记录可能包含本机路径与 Session
-metadata。公开前只发布已经检查过的报告。
 
 ## 开发验证
 
 ```sh
 npm run check
+npm run benchmark -- study --plan results/pilot/plan.json
 ```
 
-这个命令会同时验证基准工具，以及“原始 fixture 必须失败、标准双文件修复必须
-通过”。详细定义与限制请阅读 [METHODOLOGY.md](METHODOLOGY.md)。
+`npm run check` 会验证 harness，并对四个 fixture 证明：原始版本必须同时被公开
+测试和隐藏 Oracle 判定失败，标准最小修复则必须全部通过。
+
+原始 JSONL 默认保存在 `.benchmark-runs/`，因为可能包含本机路径与 Session
+metadata。公开前发布审核过的 evidence 与报告，但 `results/manifest.json` 不能删除
+不利、失败、无效或超时的尝试。

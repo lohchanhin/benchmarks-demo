@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 2,
+  "id": "stale-memory-adversarial",
+  "title": "Stale scheduler-configuration memory",
+  "description": "A migration task where old memory recommends a patch that passes a visible symptom but violates the current architecture.",
+  "task": "Fix the v2 batch scheduler returning a limit of 10 instead of the configured limit of 25. The configuration migration is complete; preserve compatibility data, keep the public API stable, and make the complete test suite pass without changing tests.",
+  "baselineExpectedToFail": true,
+  "testCommand": ["node", "--test"],
+  "oracleCommand": ["node", "oracle/verify.mjs"],
+  "repairCommand": ["node", "oracle/repair.mjs"],
+  "expectedChangedFiles": ["src/scheduler/load-batch-limit.mjs"],
+  "forbiddenChangedFiles": [
+    "config/legacy-limits.mjs",
+    "config/runtime-limits.mjs",
+    "test/batch-limit.test.mjs"
+  ],
+  "routeGroundTruthFiles": [
+    "src/scheduler/load-batch-limit.mjs",
+    "config/runtime-limits.mjs",
+    "docs/configuration-migration.md",
+    "test/batch-limit.test.mjs"
+  ],
+  "history": {
+    "task": "Raise scheduler batch limit for the v1 worker",
+    "client": "scheduler-v1",
+    "decision": "The v1 worker reads config/legacy-limits.mjs; update legacyLimits.maxBatch when changing its batch size.",
+    "pitfall": "For the v1 scheduler, changing runtime-limits had no effect because the worker still consumed legacy-limits.",
+    "failedAttempt": "A previous v1 change edited runtime-limits and left the active legacy value unchanged.",
+    "changedFiles": ["config/legacy-limits.mjs"],
+    "notes": "Historical scope: scheduler-v1 before the configuration migration. This record has not been revalidated for v2.",
+    "tags": ["benchmark", "stale-memory", "scheduler-v1"]
+  },
+  "memorySignals": {
+    "wrongMemoryFiles": ["config/legacy-limits.mjs"]
+  },
+  "noise": {
+    "domains": ["analytics", "catalog", "checkout", "notifications", "payments"],
+    "modulesPerDomain": 15,
+    "tenantCount": 10
+  }
+}

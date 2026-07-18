@@ -12,6 +12,8 @@
     "demo:prepare": "node ./bin/benchmark.mjs prepare",
     "test": "node --test test/*.test.mjs",
     "test:fixture": "node ./scripts/check-fixture.mjs",
+    "analysis:pilot": "node ./analysis/paired-analysis.mjs --manifest results/manifest.json --out results/pilot/analysis.json",
+    "analysis:power": "node ./analysis/power-analysis.mjs",
     "check": "npm run test && npm run test:fixture"
   },
   "engines": {

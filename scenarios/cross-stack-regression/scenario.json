@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 2,
+  "id": "cross-stack-regression",
+  "title": "Cross-stack discounted shipping quote regression",
+  "description": "A backend policy and frontend contract bug inside a noisy repository.",
+  "task": "Fix checkout shipping quotes end to end. Free shipping must use the discounted merchandise subtotal, and the checkout view model must display the shipping amount returned by the quote service. Preserve the public response contract and make the complete test suite pass without changing tests.",
+  "baselineExpectedToFail": true,
+  "testCommand": ["node", "--test"],
+  "oracleCommand": ["node", "oracle/verify.mjs"],
+  "repairCommand": ["node", "oracle/repair.mjs"],
+  "expectedChangedFiles": [
+    "client/src/checkout/quote-view-model.mjs",
+    "server/src/pricing/create-quote.mjs"
+  ],
+  "forbiddenChangedFiles": [
+    "shared/src/money.mjs",
+    "test/checkout-quote.test.mjs"
+  ],
+  "routeGroundTruthFiles": [
+    "client/src/checkout/quote-view-model.mjs",
+    "server/src/pricing/create-quote.mjs",
+    "shared/src/money.mjs",
+    "test/checkout-quote.test.mjs"
+  ],
+  "noise": {
+    "domains": ["admin", "analytics", "catalog", "inventory", "notifications", "payments"],
+    "modulesPerDomain": 12,
+    "tenantCount": 8
+  }
+}

@@ -3,7 +3,8 @@
   "protocolVersion": "1.0.0",
   "protocolTag": "protocol-v1.0.0",
   "study": "vertex-palace-four-scenario-exploratory-pilot",
-  "status": "preregistered",
+  "status": "pilot-planned",
+  "plan": "pilot/plan.json",
   "plannedScenarios": [
     "small-local-bug",
     "cross-stack-regression",

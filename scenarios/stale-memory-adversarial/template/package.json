@@ -1,0 +1,8 @@
+{
+  "name": "stale-memory-adversarial-fixture",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

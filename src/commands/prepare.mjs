@@ -1,4 +1,5 @@
-import { mkdir, readFile } from "node:fs/promises";
+import { randomBytes } from "node:crypto";
+import { mkdir } from "node:fs/promises";
 import path from "node:path";
 import { booleanFlag, stringFlag } from "../lib/args.mjs";
 import { pathExists, writeJson, writeText } from "../lib/files.mjs";
@@ -7,13 +8,14 @@ import { seedPalace } from "../lib/palace.mjs";
 import { buildPrompts } from "../lib/prompts.mjs";
 import { runProcess } from "../lib/process.mjs";
 import { defaultRunId, repositoryRoot, safeRunId, toPosix } from "../lib/root.mjs";
-import { defaultScenarioId, loadScenario, materializeScenario } from "../lib/scenario.mjs";
+import { defaultScenarioId, loadScenario, materializeScenario, runScenarioOracle } from "../lib/scenario.mjs";
 import { resolvePalaceInvocation } from "../lib/tooling.mjs";
 
 export async function prepareCommand(flags) {
   const scenarioId = stringFlag(flags, "scenario", defaultScenarioId);
   const scenario = await loadScenario(scenarioId);
   const runId = safeRunId(stringFlag(flags, "run-id", defaultRunId(scenario.id)));
+  const seed = stringFlag(flags, "seed", randomBytes(8).toString("hex"));
   const runsRoot = path.resolve(stringFlag(flags, "runs-root", path.join(repositoryRoot, ".benchmark-runs")));
   const runDirectory = path.join(runsRoot, runId);
   const skipPalaceSeed = booleanFlag(flags, "skip-palace-seed");
@@ -25,22 +27,24 @@ export async function prepareCommand(flags) {
 
   const arms = {
     control: path.join(runDirectory, "arms", "control"),
-    palace: path.join(runDirectory, "arms", "palace")
+    "route-only": path.join(runDirectory, "arms", "route-only"),
+    "full-palace": path.join(runDirectory, "arms", "full-palace")
   };
   await mkdir(path.join(runDirectory, "prompts"), { recursive: true });
 
-  const [controlFiles, palaceFiles] = await Promise.all([
-    materializeScenario(scenario, arms.control),
-    materializeScenario(scenario, arms.palace)
-  ]);
-  if (JSON.stringify(controlFiles) !== JSON.stringify(palaceFiles)) {
-    throw new Error("Control and Palace fixtures do not contain the same files");
+  const fileSets = await Promise.all(
+    Object.values(arms).map((workspace) => materializeScenario(scenario, workspace, { seed }))
+  );
+  if (fileSets.some((files) => JSON.stringify(files) !== JSON.stringify(fileSets[0]))) {
+    throw new Error("Benchmark arms do not contain the same files");
   }
 
-  const controlGit = await initializeFixtureGit(arms.control);
-  const palaceGit = await initializeFixtureGit(arms.palace);
-  if (controlGit.tree !== palaceGit.tree) {
-    throw new Error("Control and Palace fixtures do not have the same Git tree");
+  const gitStates = Object.fromEntries(
+    await Promise.all(Object.entries(arms).map(async ([arm, workspace]) => [arm, await initializeFixtureGit(workspace)]))
+  );
+  const trees = new Set(Object.values(gitStates).map((state) => state.tree));
+  if (trees.size !== 1) {
+    throw new Error("Benchmark arms do not have the same Git tree");
   }
 
   const baseline = await runProcess(scenario.testCommand[0], scenario.testCommand.slice(1), {
@@ -50,53 +54,68 @@ export async function prepareCommand(flags) {
   if (scenario.baselineExpectedToFail && baseline.exitCode === 0) {
     throw new Error("Scenario baseline unexpectedly passes; the benchmark task is no longer reproducible");
   }
+  const oracleBaseline = await runScenarioOracle(scenario, arms.control);
+  if (scenario.baselineExpectedToFail && oracleBaseline && oracleBaseline.exitCode === 0) {
+    throw new Error("Scenario hidden oracle unexpectedly passes on the baseline");
+  }
 
   const palaceSeed = skipPalaceSeed
     ? { skipped: true }
-    : { ...(await seedPalace(arms.palace, scenario, palaceInvocation)), cli: palaceInvocation.display };
+    : {
+        cli: palaceInvocation.display,
+        routeOnly: await seedPalace(arms["route-only"], scenario, palaceInvocation, { withMemory: false }),
+        fullPalace: await seedPalace(arms["full-palace"], scenario, palaceInvocation, { withMemory: true })
+      };
   const prompts = buildPrompts(scenario);
   await Promise.all([
     writeText(path.join(runDirectory, "prompts", "task.txt"), prompts.task),
     writeText(path.join(runDirectory, "prompts", "control.txt"), prompts.control),
-    writeText(path.join(runDirectory, "prompts", "palace.txt"), prompts.palace)
+    writeText(path.join(runDirectory, "prompts", "route-only.txt"), prompts.routeOnly),
+    writeText(path.join(runDirectory, "prompts", "full-palace.txt"), prompts.fullPalace)
   ]);
 
   const manifest = {
-    schemaVersion: 1,
+    schemaVersion: 2,
+    protocolVersion: "1.0.0",
     id: runId,
     createdAt: new Date().toISOString(),
+    seed,
     scenario: scenario.id,
     scenarioTitle: scenario.title,
     task: scenario.task,
-    repositoryTree: controlGit.tree,
+    repositoryTree: gitStates.control.tree,
     baseline: {
       expectedToFail: Boolean(scenario.baselineExpectedToFail),
       testExitCode: baseline.exitCode,
-      testDurationMs: baseline.durationMs
+      testDurationMs: baseline.durationMs,
+      oracleExitCode: oracleBaseline?.exitCode ?? null,
+      oracleDurationMs: oracleBaseline?.durationMs ?? null
     },
     palaceSeed,
     paths: {
       run: ".",
       controlWorkspace: "arms/control",
-      palaceWorkspace: "arms/palace",
+      routeOnlyWorkspace: "arms/route-only",
+      fullPalaceWorkspace: "arms/full-palace",
       controlPrompt: "prompts/control.txt",
-      palacePrompt: "prompts/palace.txt"
+      routeOnlyPrompt: "prompts/route-only.txt",
+      fullPalacePrompt: "prompts/full-palace.txt"
     },
-    arms: {
-      control: { commit: controlGit.commit, tree: controlGit.tree },
-      palace: { commit: palaceGit.commit, tree: palaceGit.tree }
-    },
-    generatedFileCount: controlFiles.length
+    arms: Object.fromEntries(
+      Object.entries(gitStates).map(([arm, state]) => [arm, { commit: state.commit, tree: state.tree }])
+    ),
+    generatedFileCount: fileSets[0].length
   };
   await writeJson(path.join(runDirectory, "manifest.json"), manifest);
   await writeText(path.join(runDirectory, "INSTRUCTIONS.md"), renderInstructions(manifest, runDirectory));
 
   console.log(`Prepared ${runId}`);
   console.log(`Run directory: ${runDirectory}`);
-  console.log(`Fixture files: ${controlFiles.length}`);
-  console.log(`Git tree: ${controlGit.tree}`);
+  console.log(`Fixture files: ${fileSets[0].length}`);
+  console.log(`Fixture seed: ${seed}`);
+  console.log(`Git tree: ${gitStates.control.tree}`);
   console.log(`Palace memory seeded: ${skipPalaceSeed ? "no" : "yes"}`);
-  console.log(`Next: npm run benchmark -- run --run-dir "${runDirectory}" --arm both --order control-first`);
+  console.log(`Next: npm run benchmark -- run --run-dir "${runDirectory}" --arm all --order seeded`);
   return { runDirectory, manifest };
 }
 
@@ -112,20 +131,22 @@ function renderInstructions(manifest, runDirectory) {
     "## Automated run",
     "",
     "```sh",
-    `npm run benchmark -- run --run-dir "${toPosix(runDirectory)}" --arm both --order control-first`,
+    `npm run benchmark -- run --run-dir "${toPosix(runDirectory)}" --arm all --order seeded`,
     "```",
     "",
     "## Manual run",
     "",
     `- Control workspace: \`${relative(manifest.paths.controlWorkspace)}\``,
     `- Control prompt: \`${relative(manifest.paths.controlPrompt)}\``,
-    `- Palace workspace: \`${relative(manifest.paths.palaceWorkspace)}\``,
-    `- Palace prompt: \`${relative(manifest.paths.palacePrompt)}\``,
+    `- Route-only workspace: \`${relative(manifest.paths.routeOnlyWorkspace)}\``,
+    `- Route-only prompt: \`${relative(manifest.paths.routeOnlyPrompt)}\``,
+    `- Full Palace workspace: \`${relative(manifest.paths.fullPalaceWorkspace)}\``,
+    `- Full Palace prompt: \`${relative(manifest.paths.fullPalacePrompt)}\``,
     "",
-    "Use fresh Codex sessions with the same model and reasoning settings. After both sessions finish:",
+    "Use fresh Codex sessions with the same model and reasoning settings. After all sessions finish:",
     "",
     "```sh",
-    `npm run benchmark -- verify --run-dir "${toPosix(runDirectory)}" --arm both`,
+    `npm run benchmark -- verify --run-dir "${toPosix(runDirectory)}" --arm all`,
     `npm run benchmark -- report --run-dir "${toPosix(runDirectory)}"`,
     "```",
     ""

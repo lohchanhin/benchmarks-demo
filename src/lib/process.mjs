@@ -32,10 +32,18 @@ export async function runProcess(command, args = [], options = {}) {
   if (options.input !== undefined) child.stdin.end(options.input);
   else child.stdin.end();
 
+  let timedOut = false;
+  const timeout = Number.isFinite(options.timeoutMs) && options.timeoutMs > 0
+    ? setTimeout(() => {
+        timedOut = true;
+        terminateProcessTree(child);
+      }, options.timeoutMs)
+    : null;
   const exitCode = await new Promise((resolve, reject) => {
     child.once("error", reject);
     child.once("close", (code) => resolve(code ?? 1));
   });
+  if (timeout) clearTimeout(timeout);
 
   const result = {
     command,
@@ -45,6 +53,7 @@ export async function runProcess(command, args = [], options = {}) {
     endedAt: new Date().toISOString(),
     durationMs: Math.round(performance.now() - started),
     exitCode,
+    timedOut,
     stdout,
     stderr
   };
@@ -63,6 +72,19 @@ export async function runProcess(command, args = [], options = {}) {
     throw new Error(`${command} failed: ${detail}`);
   }
   return result;
+}
+
+function terminateProcessTree(child) {
+  if (!child.pid) return;
+  if (process.platform === "win32") {
+    const killer = spawn("taskkill.exe", ["/pid", String(child.pid), "/t", "/f"], {
+      windowsHide: true,
+      stdio: "ignore"
+    });
+    killer.unref();
+    return;
+  }
+  child.kill("SIGTERM");
 }
 
 function windowsInvocation(command, args, useShim) {

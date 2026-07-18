@@ -29,16 +29,24 @@ export async function loadRun(runDirectory) {
     manifest,
     scenario,
     workspace(arm) {
-      return path.resolve(runDirectory, manifest.paths[`${arm}Workspace`]);
+      return path.resolve(runDirectory, manifest.paths[pathKey(arm, "Workspace")]);
     },
     prompt(arm) {
-      return path.resolve(runDirectory, manifest.paths[`${arm}Prompt`]);
+      return path.resolve(runDirectory, manifest.paths[pathKey(arm, "Prompt")]);
     }
   };
 }
 
 export function armsFor(value) {
-  if (value === "both") return ["control", "palace"];
-  if (value === "control" || value === "palace") return [value];
-  throw new Error("--arm must be control, palace, or both");
+  if (value === "all") return ["control", "route-only", "full-palace"];
+  if (value === "both") return ["control", "full-palace"];
+  if (value === "palace") return ["full-palace"];
+  if (["control", "route-only", "full-palace"].includes(value)) return [value];
+  throw new Error("--arm must be control, route-only, full-palace, all, palace, or both");
+}
+
+function pathKey(arm, suffix) {
+  if (arm === "route-only") return `routeOnly${suffix}`;
+  if (arm === "full-palace") return `fullPalace${suffix}`;
+  return `${arm}${suffix}`;
 }

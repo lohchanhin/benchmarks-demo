@@ -1,119 +1,70 @@
 # Benchmark Methodology
 
-## Research question
+The authoritative preregistration is
+[`docs/research/PROTOCOL.md`](docs/research/PROTOCOL.md), frozen at
+`protocol-v1.0.0` before the new pilot implementation and data collection.
+This page is the shorter operational explanation.
 
-For the same repository task and starting tree, does Vertex Palace change the
-amount of repository exploration and context used by Codex while preserving
-correctness and implementation scope?
+## Independent Variable
 
-## Independent variable
+The benchmark uses three arms:
 
-- Control: Vertex Palace use is explicitly prohibited.
-- Treatment: one `palace context` call is required before ordinary exploration.
-  It performs stale-index refresh, task routing, compact packing, and relevant
-  pitfall retrieval behind one measured interface.
+1. Control prohibits Vertex Palace.
+2. Route-only begins with exactly one `palace context` call and has no history.
+3. Full Palace uses the same context call with scenario-specific history.
 
-Tool installation by itself is not the treatment. The JSONL transcript must
-show zero Palace calls in Control and at least one Palace call in Treatment.
+Installation alone is not treatment exposure. JSONL must show zero Palace
+calls in Control and exactly one successful Palace call in each treatment arm.
+Post-task evaluation, memory writes, and indexing are outside timed execution.
 
-## Constants
+## Pairing And Randomization
 
-The harness records or enforces:
+Every trial records one random fixture seed. The seed changes irrelevant noise
+bytes while all three arms retain the same file set and Git tree. It also
+determines one of six three-arm orders. The committed five-seed plan uses five
+different orders per scenario. Arms are sequential and use fresh ephemeral
+Codex sessions.
 
-- Identical Git tree
-- Identical engineering task
-- Identical generated file set
-- Identical test command
-- Same Codex model selected by the runner
-- Fresh, ephemeral Codex executions
-- No network requirement inside the fixture
+Fixed conditions are GPT-5.6-sol, xhigh reasoning, the recorded Codex CLI,
+Vertex Palace 0.1.6, a 600-second arm timeout, and a 15-second cooldown.
 
-Reasoning effort and service tier should also be held constant by the person
-running the benchmark. These settings are not inferred from output text.
+## Correctness Oracle
 
-## Scenario design
+Agents see the task and public tests. They do not receive the external oracle,
+expected changed-file list, forbidden-file list, route ground truth, or scorer.
+The external oracle runs from the benchmark repository after the timed arm.
 
-The fixture contains 240 deterministic files. Relevant behavior crosses tenant
-configuration, client lookup, shared defaults, rendering, and tests. Noise is
-spread across eight unrelated domains and 36 unrelated tenants.
-
-The untouched fixture has two failing requirements. A complete repair must:
-
-1. Set an accessible Aurora-specific color.
-2. Make the renderer honor explicit tenant text-color overrides.
-3. Preserve shared behavior for Borealis and Cedar.
-4. Leave the specification tests intact.
-
-The Palace arm is seeded with a previous failed attempt and a tenant-isolation
-pitfall. This models accumulated project knowledge rather than giving away the
-literal final patch.
+Agent failure, timeout, incorrect modification, and harmful memory adoption are
+outcomes. Only wrong fixed settings, wrong fixture tree, treatment violation,
+or harness-corrupt evidence make an arm invalid. Every attempt remains in the
+study manifest.
 
 ## Measurements
 
-### Ground-truth measurements
+Ground-truth measurements include public tests, hidden oracle, Git tree, diff,
+changed-file precision/recall, forbidden files, route Recall@K/Precision@K, and
+scenario-specific memory signals.
 
-- Test exit status and duration
-- Git changed files and line counts
-- Forbidden and unrelated changed files
-- `git diff --check`
-- Shared starting tree hash
+Transcript-derived measurements include tool calls, failed calls, router
+errors, inspection commands, command-output characters, path strings, and
+Codex-reported cumulative token counters. These are telemetry and context
+proxies, not billing values or an operating-system file-access audit.
 
-### Transcript-derived measurements
+## Analysis
 
-- Codex execution duration
-- Command and tool-call counts
-- Failed recorded calls and Codex router errors from stderr
-- Inspection-command count
-- Repository paths explicitly named in command invocations
-- Distinct repository path strings observed anywhere in JSONL events
-- Command-output characters captured in completed tool events
-- Palace-call count
-- Codex-reported cumulative input, cached input, uncached input, and output usage
+Correctness is primary. Exact paired success tests and bootstrap confidence
+intervals include failed and timed-out agent runs. Efficiency metrics are
+reported only for mutually successful pairs. Raw values, medians, paired
+median differences, bootstrap 95% intervals, and Holm-adjusted scenario tests
+are generated by the scripts under `analysis/`.
 
-Command-named files and observed path strings are not an operating-system
-access audit. An inventory command such as `rg --files` can print every path
-without reading every file's contents, while a directory or stream operation
-can read content without naming each file in the transcript. These fields are
-repeatable transcript-derived proxies and must not be labeled "files read."
+The 4 x 5 x 3 pilot is exploratory. A confirmatory sample size is chosen only
+after pilot variance and discordance are measured, then frozen in a new
+protocol version before confirmatory collection.
 
-Codex-reported tokens are not an API invoice. The parser takes the largest
-usage values reported in a run to avoid double-counting nested events. Input
-usage is cumulative across turns, so a workflow that sends repeated context
-can have high input usage even when its final pack is small. Cached and
-uncached input are therefore reported separately.
+## Limits
 
-### Palace evaluation
-
-When the Palace arm writes a route-evaluation artifact, the comparison report
-includes repository-token estimates, context-pack estimates, changed-file
-coverage, and confidence calibration. These are Palace estimates and are kept
-separate from Codex-reported usage.
-
-## Score
-
-The 100-point score evaluates engineering outcome, not speed:
-
-- 60 points for a passing complete test suite
-- Up to 20 points for covering the two expected root-cause files
-- Up to 20 points for a clean, scoped diff
-
-Changing a forbidden file removes the scope points. Extra changed files and
-whitespace errors also reduce scope points.
-
-## Recommended experiment
-
-Each pair runs sequentially; the harness never launches both arms concurrently.
-Run at least three paired trials with fresh workspaces. Alternate which arm
-runs first to reduce warm-cache, queue, and service-load effects. Report each
-trial and the median; do not publish only the best Palace run or worst Control
-run. The default five-second cooldown is recorded in `artifacts/run-plan.json`.
-
-## Claims this benchmark cannot support
-
-- That every non-Palace agent scans an entire repository
-- Exact billing savings for all repositories
-- Universal routing accuracy across languages and architectures
-- Replacement of tests, Git review, deployment checks, or engineering judgment
-
-The benchmark supports narrow claims about recorded runs on its fixed scenario.
-Additional scenarios should be added before making broader claims.
+The pilot cannot establish universal speed, exact billing savings, behavior on
+all languages or repositories, or replacement of tests and engineering review.
+The small negative control is expected to show Palace overhead, and all such
+results are retained.

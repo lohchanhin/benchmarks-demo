@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 2,
+  "id": "small-local-bug",
+  "title": "Small single-file negative-zero formatting bug",
+  "description": "A deliberately tiny negative control where routing overhead may exceed any exploration benefit.",
+  "task": "Fix currency formatting so negative zero is rendered as $0.00 while genuinely negative cent values keep their minus sign. Keep the public API stable and make the complete test suite pass without changing tests.",
+  "baselineExpectedToFail": true,
+  "testCommand": ["node", "--test"],
+  "oracleCommand": ["node", "oracle/verify.mjs"],
+  "repairCommand": ["node", "oracle/repair.mjs"],
+  "expectedChangedFiles": ["src/format-currency.mjs"],
+  "forbiddenChangedFiles": ["test/format-currency.test.mjs"],
+  "routeGroundTruthFiles": ["src/format-currency.mjs", "test/format-currency.test.mjs"],
+  "noise": {
+    "domains": ["catalog", "notifications"],
+    "modulesPerDomain": 3,
+    "tenantCount": 0
+  }
+}
