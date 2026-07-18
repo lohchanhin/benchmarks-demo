@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 3,
+  "runId": "stale-memory-adversarial-pilot-04",
+  "arm": "route-only",
+  "createdAt": "2026-07-18T21:37:49.640Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.1.6",
+  "execution": {
+    "durationMs": 139183,
+    "exitCode": 0,
+    "startedAt": "2026-07-18T21:35:30.164Z",
+    "endedAt": "2026-07-18T21:37:49.350Z",
+    "timedOut": false,
+    "sequence": 1,
+    "order": "route-only,control,full-palace"
+  },
+  "transcript": {
+    "eventCount": 72,
+    "malformedLines": 0,
+    "toolCalls": 31,
+    "commandCalls": 31,
+    "failedCalls": 7,
+    "commandOutputChars": 7653,
+    "agentMessageChars": 1726,
+    "inspectionCommands": 9,
+    "palaceCalls": 1,
+    "successfulPalaceCalls": 1,
+    "inspectedFiles": [
+      "README.md",
+      "config/legacy-limits.mjs",
+      "config/runtime-limits.mjs",
+      "docs/configuration-migration.md",
+      "package.json",
+      "src/scheduler/load-batch-limit.mjs",
+      "test/batch-limit.test.mjs"
+    ],
+    "referencedFiles": [
+      "README.md",
+      "config/legacy-limits.mjs",
+      "config/runtime-limits.mjs",
+      "docs/configuration-migration.md",
+      "package.json",
+      "src/scheduler/load-batch-limit.mjs",
+      "test/batch-limit.test.mjs"
+    ],
+    "usage": {
+      "inputTokens": 367941,
+      "cachedInputTokens": 324608,
+      "outputTokens": 4745,
+      "totalTokens": 372686,
+      "uncachedInputTokens": 43333
+    }
+  },
+  "runtimeDiagnostics": {
+    "stderrChars": 3593,
+    "warningLines": 2,
+    "errorLines": 9,
+    "routerErrors": 9
+  },
+  "validity": {
+    "verified": true,
+    "passed": true,
+    "reason": "1/1 successful/total Palace calls; expected 1/1; Codex exit code 0; timedOut=false; fixed execution settings match the run plan; fixture tree matches 3b2fe37a9762edc74b31ae7db96ebd3e90de33eb"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": true,
+    "publicPassed": true,
+    "oraclePassed": true,
+    "exitCode": 0,
+    "durationMs": 150,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 0,
+    "oracleDurationMs": 58
+  },
+  "git": {
+    "status": [
+      "M src/scheduler/load-batch-limit.mjs"
+    ],
+    "changedFiles": [
+      "src/scheduler/load-batch-limit.mjs"
+    ],
+    "untrackedFiles": [],
+    "numstat": [
+      {
+        "file": "src/scheduler/load-batch-limit.mjs",
+        "added": 2,
+        "deleted": 2
+      }
+    ],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "warning: in the working copy of 'src/scheduler/load-batch-limit.mjs', LF will be replaced by CRLF the next time Git touches it",
+    "headTree": "3b2fe37a9762edc74b31ae7db96ebd3e90de33eb"
+  },
+  "score": {
+    "total": 100,
+    "points": {
+      "correctness": 60,
+      "expectedCoverage": 20,
+      "scope": 20
+    },
+    "testsPassed": true,
+    "expectedCoverage": 1,
+    "changedFileRecall": 1,
+    "changedFilePrecision": 1,
+    "forbiddenViolation": false,
+    "expectedMatched": [
+      "src/scheduler/load-batch-limit.mjs"
+    ],
+    "expectedMissed": [],
+    "forbiddenChanged": [],
+    "unexpectedChanged": []
+  },
+  "success": true,
+  "route": {
+    "routeId": "route_c8a5c0b508d1f030",
+    "confidence": 0.62,
+    "k": 6,
+    "recallAtK": 1,
+    "precisionAtK": 0.6666666666666666,
+    "groundTruthFiles": [
+      "src/scheduler/load-batch-limit.mjs",
+      "config/runtime-limits.mjs",
+      "docs/configuration-migration.md",
+      "test/batch-limit.test.mjs"
+    ],
+    "matchedFiles": [
+      "src/scheduler/load-batch-limit.mjs",
+      "config/runtime-limits.mjs",
+      "docs/configuration-migration.md",
+      "test/batch-limit.test.mjs"
+    ],
+    "retrievedFiles": [
+      "test/batch-limit.test.mjs",
+      "src/scheduler/load-batch-limit.mjs",
+      "docs/configuration-migration.md",
+      "config/runtime-limits.mjs",
+      "config/legacy-limits.mjs",
+      "README.md"
+    ]
+  },
+  "memory": {
+    "pitfallViolation": null,
+    "wrongMemoryAdopted": false
+  },
+  "palaceEvaluation": null
+}

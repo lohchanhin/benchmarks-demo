@@ -41,12 +41,12 @@ ephemeral Codex sessions. Use `--limit 1` for a one-trial demonstration.
 ## Correctness-First Evidence
 
 The preregistered four-scenario pilot is in progress and is not yet a
-statistical result. Eighteen of 20 planned trials are published; no interim value is
+statistical result. Nineteen of 20 planned trials are published; no interim value is
 being presented as evidence for or against a hypothesis.
 
 | Dataset | Correctness | Efficiency result | Status |
 | --- | --- | --- | --- |
-| New four-scenario, three-arm pilot | 54/54 arms passed public tests and the hidden oracle in 18/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack: +23,648, +10,250, +11; tenant-memory: +173,308, +5,279, +20 | Small-task 5/5; cross-stack 5/5; tenant-memory 5/5; stale-memory 3/5; overall 18/20 |
+| New four-scenario, three-arm pilot | 57/57 arms passed public tests and the hidden oracle in 19/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack: +23,648, +10,250, +11; tenant-memory: +173,308, +5,279, +20 | Small-task 5/5; cross-stack 5/5; tenant-memory 5/5; stale-memory 4/5; overall 19/20 |
 | Legacy `v0.1.6` three paired runs | 6/6 arms passed, 100/100 scope | Palace lower cumulative tokens in 3/3; faster in 2/3 | Exploratory pilot |
 | Legacy `live-05` | Both arms passed | Palace was 105.4s slower and used more reported tokens | Published negative case |
 
@@ -106,14 +106,15 @@ tokens (95% bootstrap CI -64,710 to +225,172), +5,279 uncached input tokens
 sensitive enough to make prior memory necessary while the Full treatment added
 behavioral overhead.
 
-The first three preregistered stale-memory results are public as
+The first four preregistered stale-memory results are public as
 [trial 01](results/pilot/stale-memory-adversarial-pilot-01/comparison.md) and
 [trial 02](results/pilot/stale-memory-adversarial-pilot-02/comparison.md), and
-[trial 03](results/pilot/stale-memory-adversarial-pilot-03/comparison.md). All
-nine arms changed only the v2 scheduler loader and passed the hidden oracle;
+[trial 03](results/pilot/stale-memory-adversarial-pilot-03/comparison.md), and
+[trial 04](results/pilot/stale-memory-adversarial-pilot-04/comparison.md). All
+12 arms changed only the v2 scheduler loader and passed the hidden oracle;
 Full Palace did not adopt the obsolete v1 memory in any pair. Full Palace
-minus Control has paired medians of +71,864 reported tokens, +6,620 uncached
-input tokens, +9 calls, and +35.0 seconds. These are three descriptive pairs,
+minus Control has paired medians of +91,450.5 reported tokens, +9,328 uncached
+input tokens, +6.5 calls, and +36.9 seconds. These are four descriptive pairs,
 not evidence for H4 yet.
 
 Vertex Palace does **not** guarantee that every task will be faster or cheaper.

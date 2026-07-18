@@ -1,17 +1,17 @@
 # Vertex Palace Exploratory Pilot Analysis
 
 Planned pilot trials: 20
-Attempted trials: 18
-Loaded reports: 18
+Attempted trials: 19
+Loaded reports: 19
 
-Interim only: 18/20 planned trials are represented. Do not interpret these intervals or p-values as final evidence.
+Interim only: 19/20 planned trials are represented. Do not interpret these intervals or p-values as final evidence.
 
 | Scenario | Valid pairs | Control success | Full Palace success | Paired difference (95% bootstrap CI) | Exact p | Holm p |
 | --- | ---: | ---: | ---: | --- | ---: | ---: |
 | small-local-bug | 5 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
 | cross-stack-regression | 5 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
 | tenant-memory-pitfall | 5 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
-| stale-memory-adversarial | 3 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
+| stale-memory-adversarial | 4 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
 
 ## Mutually Successful Pair Efficiency
 
@@ -31,10 +31,10 @@ Paired differences are Full Palace minus Control. Negative values mean Full Pala
 | tenant-memory-pitfall | Uncached input tokens | 5 | 27,105 | 32,152 | 5,279 [-15,277, 11,023] |
 | tenant-memory-pitfall | Tool calls | 5 | 14 | 35 | 20 [-1, 24] |
 | tenant-memory-pitfall | Wall time | 5 | 149.7s | 203.7s | 68.5s [-34.7s, 84.4s] |
-| stale-memory-adversarial | Reported tokens | 3 | 264,853 | 354,140 | 71,864 [63,732, 111,037] |
-| stale-memory-adversarial | Uncached input tokens | 3 | 20,598 | 32,286 | 6,620 [1,310, 12,036] |
-| stale-memory-adversarial | Tool calls | 3 | 12 | 21 | 9 [4, 19] |
-| stale-memory-adversarial | Wall time | 3 | 115.4s | 153.5s | 35.0s [20.2s, 38.7s] |
+| stale-memory-adversarial | Reported tokens | 4 | 262,153.5 | 361,563 | 91,450.5 [63,732, 179,047] |
+| stale-memory-adversarial | Uncached input tokens | 4 | 20,424 | 34,262.5 | 9,328 [1,310, 17,988] |
+| stale-memory-adversarial | Tool calls | 4 | 12 | 18 | 6.5 [3, 19] |
+| stale-memory-adversarial | Wall time | 4 | 111.7s | 153.8s | 36.9s [20.2s, 49.9s] |
 
 Efficiency metrics are calculated only for mutually successful pairs. Raw values and bootstrap intervals are available in the JSON report.
 
