@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "protocolVersion": "1.0.0",
+  "id": "small-local-bug-pilot-02",
+  "createdAt": "2026-07-18T18:22:43.527Z",
+  "seed": "5a1bd5973521b9ad9ed09ef04623d93e",
+  "scenario": "small-local-bug",
+  "scenarioTitle": "Small single-file negative-zero formatting bug",
+  "task": "Fix currency formatting so negative zero is rendered as $0.00 while genuinely negative cent values keep their minus sign. Keep the public API stable and make the complete test suite pass without changing tests.",
+  "repositoryTree": "c9c10efa1d7beb60d0c2c620f7dd6d314ff0eb7f",
+  "baseline": {
+    "expectedToFail": true,
+    "testExitCode": 1,
+    "testDurationMs": 163,
+    "oracleExitCode": 1,
+    "oracleDurationMs": 67
+  },
+  "palaceSeed": {
+    "cli": "vertex-palace@0.1.6",
+    "routeOnly": {
+      "routeId": null,
+      "memorySeeded": false
+    },
+    "fullPalace": {
+      "routeId": null,
+      "memorySeeded": false
+    }
+  },
+  "paths": {
+    "run": ".",
+    "controlWorkspace": "arms/control",
+    "routeOnlyWorkspace": "arms/route-only",
+    "fullPalaceWorkspace": "arms/full-palace",
+    "controlPrompt": "prompts/control.txt",
+    "routeOnlyPrompt": "prompts/route-only.txt",
+    "fullPalacePrompt": "prompts/full-palace.txt"
+  },
+  "arms": {
+    "control": {
+      "commit": "1317c0ddebd8212c26d02d549c589485090f1c52",
+      "tree": "c9c10efa1d7beb60d0c2c620f7dd6d314ff0eb7f"
+    },
+    "route-only": {
+      "commit": "1317c0ddebd8212c26d02d549c589485090f1c52",
+      "tree": "c9c10efa1d7beb60d0c2c620f7dd6d314ff0eb7f"
+    },
+    "full-palace": {
+      "commit": "1317c0ddebd8212c26d02d549c589485090f1c52",
+      "tree": "c9c10efa1d7beb60d0c2c620f7dd6d314ff0eb7f"
+    }
+  },
+  "generatedFileCount": 11,
+  "publishedFrom": ".benchmark-runs/<reviewed-local-run>",
+  "publication": {
+    "rawTranscriptsIncluded": false,
+    "sessionIdentifiersIncluded": false,
+    "localPathsIncluded": false
+  }
+}

@@ -1,14 +1,14 @@
 # Vertex Palace Exploratory Pilot Analysis
 
 Planned pilot trials: 20
-Attempted trials: 1
-Loaded reports: 1
+Attempted trials: 2
+Loaded reports: 2
 
-Interim only: 1/20 planned trials are represented. Do not interpret these intervals or p-values as final evidence.
+Interim only: 2/20 planned trials are represented. Do not interpret these intervals or p-values as final evidence.
 
 | Scenario | Valid pairs | Control success | Full Palace success | Paired difference (95% bootstrap CI) | Exact p | Holm p |
 | --- | ---: | ---: | ---: | --- | ---: | ---: |
-| small-local-bug | 1 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
+| small-local-bug | 2 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
 
 Efficiency metrics are calculated only for mutually successful pairs. Raw values and bootstrap intervals are available in the JSON report.
 

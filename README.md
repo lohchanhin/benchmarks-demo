@@ -41,12 +41,12 @@ ephemeral Codex sessions. Use `--limit 1` for a one-trial demonstration.
 ## Correctness-First Evidence
 
 The preregistered four-scenario pilot is in progress and is not yet a
-statistical result. One of 20 planned trials is published; no interim value is
+statistical result. Two of 20 planned trials are published; no interim value is
 being presented as evidence for or against a hypothesis.
 
 | Dataset | Correctness | Efficiency result | Status |
 | --- | --- | --- | --- |
-| New four-scenario, three-arm pilot | 3/3 arms passed public tests and the hidden oracle in 1/20 trials | Full vs Control: -2,445 reported tokens, +6 tool calls; n=1 | Interim 1/20; no inference |
+| New four-scenario, three-arm pilot | 6/6 arms passed public tests and the hidden oracle in 2/20 trials | Full vs Control median paired: +13,489 reported tokens, -12,171 uncached input, +6.5 tool calls | Interim 2/20; no inference |
 | Legacy `v0.1.6` three paired runs | 6/6 arms passed, 100/100 scope | Palace lower cumulative tokens in 3/3; faster in 2/3 | Exploratory pilot |
 | Legacy `live-05` | Both arms passed | Palace was 105.4s slower and used more reported tokens | Published negative case |
 
@@ -56,11 +56,13 @@ run and its diagnosis remain public in [`live-05.md`](docs/results/live-05.md).
 The older result also found **higher median uncached input for Palace by 6,101
 tokens**. That counter-result is not hidden.
 
-The first preregistered negative-control trial is available as
-[reviewed arm evidence](results/pilot/small-local-bug-pilot-01/comparison.md)
-and in the [interim analysis](results/pilot/analysis.md). Full Palace finished
-16.8 seconds sooner in that one sequential trial but made six more tool calls;
-neither observation is a conclusion at `n=1`.
+The first two preregistered negative-control trials are available as reviewed
+[trial 01](results/pilot/small-local-bug-pilot-01/comparison.md) and
+[trial 02](results/pilot/small-local-bug-pilot-02/comparison.md) evidence, with
+an [interim analysis](results/pilot/analysis.md). Full Palace was faster in
+both sequential trials, but its median paired result used 13,489 more reported
+tokens and 6.5 more tool calls while using 12,171 fewer uncached input tokens.
+These conflicting observations are descriptive only at `n=2`.
 
 Vertex Palace does **not** guarantee that every task will be faster or cheaper.
 Wall time is secondary because hosted-model latency varies.

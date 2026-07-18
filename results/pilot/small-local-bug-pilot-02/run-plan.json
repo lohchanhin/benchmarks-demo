@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 2,
+  "mode": "sequential",
+  "order": "control,route-only,full-palace",
+  "arms": [
+    "control",
+    "route-only",
+    "full-palace"
+  ],
+  "cooldownMs": 15000,
+  "timeoutMs": 600000,
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.1.6",
+  "seed": "5a1bd5973521b9ad9ed09ef04623d93e",
+  "createdAt": "2026-07-18T18:22:43.587Z"
+}
