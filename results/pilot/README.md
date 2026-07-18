@@ -4,13 +4,13 @@ Every attempted pilot trial is listed in `../manifest.json`. Reviewed evidence
 and aggregate reports may be committed here; unfavorable, invalid, failed, and
 timed-out attempts must not be removed from the manifest.
 
-Current progress: 5 of 20 planned trials are attempted and published. The
-`small-local-bug` negative-control block is complete at 5/5. See the
-[interim analysis](analysis.md) and the
-[reviewed evidence bundles](small-local-bug-pilot-01/comparison.md), including
-[trial 02](small-local-bug-pilot-02/comparison.md) and
-[trial 03](small-local-bug-pilot-03/comparison.md) and
-[trial 04](small-local-bug-pilot-04/comparison.md) and
-[trial 05](small-local-bug-pilot-05/comparison.md).
-The interim values are descriptive only and must not be treated as final
-confidence intervals, significance tests, or non-inferiority evidence.
+The exploratory pilot is complete: 20 of 20 planned trials and all 60 arm runs
+are published across the four preregistered scenarios. See the
+[complete paired and three-arm analysis](analysis.md),
+[power-sensitivity analysis](power-analysis.md), and the machine-readable
+[results manifest](../manifest.json).
+
+Run `npm run audit:results` from the repository root to verify every public
+bundle checksum and scan for raw transcripts, local paths, and session ids.
+The completed values remain exploratory and underpowered; they must not be
+presented as confirmatory non-inferiority or universal performance evidence.

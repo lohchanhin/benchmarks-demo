@@ -14,8 +14,9 @@
     "test:fixture": "node ./scripts/check-fixture.mjs",
     "analysis:pilot": "node ./analysis/paired-analysis.mjs --manifest results/manifest.json --out results/pilot/analysis.json",
     "analysis:power": "node ./analysis/power-analysis.mjs",
+    "audit:results": "node ./scripts/audit-results.mjs",
     "publish:run": "node ./scripts/publish-run.mjs",
-    "check": "npm run test && npm run test:fixture"
+    "check": "npm run test && npm run test:fixture && npm run audit:results"
   },
   "engines": {
     "node": ">=20"

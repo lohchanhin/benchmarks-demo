@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-18T21:57:28.568Z",
+  "pilotStatus": {
+    "plannedTrials": 20,
+    "loadedTrials": 20,
+    "allPrimaryPairsConcordant": true
+  },
+  "scenarios": {
+    "small-local-bug": {
+      "pilotValidPairs": 5,
+      "observedSuccessDifference": 0,
+      "observedDiscordantRate": 0,
+      "estimatedPairsFromObservedPilot": null,
+      "note": "All pilot pairs were concordant successes, so the pilot cannot provide a data-driven finite sample-size estimate."
+    },
+    "cross-stack-regression": {
+      "pilotValidPairs": 5,
+      "observedSuccessDifference": 0,
+      "observedDiscordantRate": 0,
+      "estimatedPairsFromObservedPilot": null,
+      "note": "All pilot pairs were concordant successes, so the pilot cannot provide a data-driven finite sample-size estimate."
+    },
+    "tenant-memory-pitfall": {
+      "pilotValidPairs": 5,
+      "observedSuccessDifference": 0,
+      "observedDiscordantRate": 0,
+      "estimatedPairsFromObservedPilot": null,
+      "note": "All pilot pairs were concordant successes, so the pilot cannot provide a data-driven finite sample-size estimate."
+    },
+    "stale-memory-adversarial": {
+      "pilotValidPairs": 5,
+      "observedSuccessDifference": 0,
+      "observedDiscordantRate": 0,
+      "estimatedPairsFromObservedPilot": null,
+      "note": "All pilot pairs were concordant successes, so the pilot cannot provide a data-driven finite sample-size estimate."
+    }
+  },
+  "nonInferiority": {
+    "alpha": 0.05,
+    "power": 0.8,
+    "sidedness": "one-sided",
+    "nullBoundary": -0.1,
+    "alternativeDifference": 0,
+    "method": "normal approximation for a paired binary difference without continuity or attrition correction",
+    "sensitivity": [
+      {
+        "assumedDiscordantRate": 0.1,
+        "pairsPerScenario": 62,
+        "fourScenarioTrials": 248,
+        "threeArmRuns": 744
+      },
+      {
+        "assumedDiscordantRate": 0.2,
+        "pairsPerScenario": 124,
+        "fourScenarioTrials": 496,
+        "threeArmRuns": 1488
+      },
+      {
+        "assumedDiscordantRate": 0.3,
+        "pairsPerScenario": 186,
+        "fourScenarioTrials": 744,
+        "threeArmRuns": 2232
+      }
+    ],
+    "planningAnchor": {
+      "assumedDiscordantRate": 0.2,
+      "pairsPerScenario": 124,
+      "rationale": "A 20% discordant-pair rate is a transparent sensitivity assumption, not an estimate supported by this all-concordant pilot."
+    }
+  },
+  "continuousEfficiency": {
+    "alpha": 0.05,
+    "power": 0.8,
+    "sidedness": "two-sided",
+    "method": "normal approximation for a paired standardized mean difference",
+    "sensitivity": [
+      {
+        "standardizedPairedEffect": 0.3,
+        "approximatePairs": 88
+      },
+      {
+        "standardizedPairedEffect": 0.5,
+        "approximatePairs": 32
+      },
+      {
+        "standardizedPairedEffect": 0.8,
+        "approximatePairs": 13
+      }
+    ],
+    "note": "The pilot efficiency direction was not uniformly favorable, so confirmatory H2 must use a prespecified scientifically meaningful effect rather than the observed Palace-favoring effect."
+  },
+  "limitations": [
+    "Five pairs per scenario cannot establish the preregistered -10 percentage-point non-inferiority claim.",
+    "The binary sensitivity table varies unobserved discordance because this pilot had no discordant outcomes.",
+    "These approximations omit continuity, small-sample, multiplicity, clustering, and attrition adjustments.",
+    "A confirmatory protocol must freeze assumptions, exclusions, and analysis before collecting new outcomes."
+  ]
+}

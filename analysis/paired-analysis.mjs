@@ -141,6 +141,17 @@ export function analyzeGroup(entries, options = {}) {
     };
   }
 
+  const comparisons = {
+    routeOnlyMinusControl: analyzeArmComparison(pairs, "control", "routeOnly", {
+      ...options,
+      bootstrapSeed: `${options.bootstrapSeed}:route-only-minus-control`
+    }),
+    fullPalaceMinusRouteOnly: analyzeArmComparison(pairs, "routeOnly", "fullPalace", {
+      ...options,
+      bootstrapSeed: `${options.bootstrapSeed}:full-palace-minus-route-only`
+    })
+  };
+
   return {
     attemptedPairs: pairs.length,
     validPairs: validPairs.length,
@@ -159,7 +170,68 @@ export function analyzeGroup(entries, options = {}) {
       mcnemarExactPValue: exactMcNemar(discordance.controlOnly, discordance.palaceOnly)
     },
     metrics,
+    comparisons,
     mechanisms: mechanismSummary(validPairs)
+  };
+}
+
+export function analyzeArmComparison(pairs, baselineArm, treatmentArm, options = {}) {
+  const validPairs = pairs.filter((pair) => (
+    pair[baselineArm]?.valid === true && pair[treatmentArm]?.valid === true
+  ));
+  const baselineSuccess = validPairs.map((pair) => Number(pair[baselineArm].success === true));
+  const treatmentSuccess = validPairs.map((pair) => Number(pair[treatmentArm].success === true));
+  const discordance = discordantPairs(baselineSuccess, treatmentSuccess);
+  const metrics = {};
+
+  for (const metric of continuousMetrics) {
+    const successful = validPairs.filter((pair) => (
+      pair[baselineArm].success === true
+      && pair[treatmentArm].success === true
+      && Number.isFinite(pair[baselineArm][metric])
+      && Number.isFinite(pair[treatmentArm][metric])
+    ));
+    const baselineValues = successful.map((pair) => pair[baselineArm][metric]);
+    const treatmentValues = successful.map((pair) => pair[treatmentArm][metric]);
+    metrics[metric] = {
+      pairCount: successful.length,
+      baselineRaw: baselineValues,
+      treatmentRaw: treatmentValues,
+      baselineMedian: median(baselineValues),
+      treatmentMedian: median(treatmentValues),
+      treatmentMinusBaseline: pairedBootstrapMedianDifference(
+        treatmentValues,
+        baselineValues,
+        { ...bootstrapOptions(options), seed: `${options.bootstrapSeed}:${metric}` }
+      )
+    };
+  }
+
+  return {
+    baselineArm,
+    treatmentArm,
+    validPairs: validPairs.length,
+    invalidPairIds: pairs
+      .filter((pair) => !validPairs.includes(pair))
+      .map((pair) => pair.trialId),
+    success: {
+      baselineRaw: baselineSuccess,
+      treatmentRaw: treatmentSuccess,
+      baselineRate: rate(baselineSuccess),
+      treatmentRate: rate(treatmentSuccess),
+      treatmentMinusBaseline: pairedBootstrapMeanDifference(
+        treatmentSuccess,
+        baselineSuccess,
+        bootstrapOptions(options)
+      ),
+      discordant: {
+        baselineOnly: discordance.controlOnly,
+        treatmentOnly: discordance.palaceOnly,
+        total: discordance.total
+      },
+      mcnemarExactPValue: exactMcNemar(discordance.controlOnly, discordance.palaceOnly)
+    },
+    metrics
   };
 }
 
@@ -268,13 +340,14 @@ export function renderAnalysisMarkdown(analysis) {
       ? ["", `Interim only: ${analysis.loadedTrials}/${analysis.plannedTrials} planned trials are represented. Do not interpret these intervals or p-values as final evidence.`]
       : []),
     "",
-    "| Scenario | Valid pairs | Control success | Full Palace success | Paired difference (95% bootstrap CI) | Exact p | Holm p |",
-    "| --- | ---: | ---: | ---: | --- | ---: | ---: |"
+    "| Scenario | Valid pairs | Control success | Route-only success | Full Palace success | Full minus Control (95% bootstrap CI) | Exact p | Holm p |",
+    "| --- | ---: | ---: | ---: | ---: | --- | ---: | ---: |"
   ];
   for (const [scenario, result] of Object.entries(analysis.scenarios)) {
     const difference = result.success.fullPalaceMinusControl;
+    const routeOnlyRate = result.comparisons?.routeOnlyMinusControl?.success?.treatmentRate;
     lines.push(
-      `| ${scenario} | ${result.validPairs} | ${percent(result.success.controlRate)} | ${percent(result.success.fullPalaceRate)} | `
+      `| ${scenario} | ${result.validPairs} | ${percent(result.success.controlRate)} | ${percent(routeOnlyRate)} | ${percent(result.success.fullPalaceRate)} | `
       + `${percent(difference.estimate)} [${percent(difference.confidenceInterval[0])}, ${percent(difference.confidenceInterval[1])}] | `
       + `${fixed(result.success.mcnemarExactPValue)} | ${fixed(result.success.holmAdjustedPValue)} |`
     );
@@ -298,6 +371,33 @@ export function renderAnalysisMarkdown(analysis) {
         + `${metricValue(metric, summary.fullPalaceMedian)} | ${metricValue(metric, difference.estimate)} `
         + `[${metricValue(metric, difference.confidenceInterval[0])}, ${metricValue(metric, difference.confidenceInterval[1])}] |`
       );
+    }
+  }
+  lines.push(
+    "",
+    "## Three-Arm Ablation",
+    "",
+    "Each contrast is treatment minus baseline. Negative efficiency values favor the treatment. These secondary mechanism contrasts are exploratory and are not multiplicity-adjusted.",
+    "",
+    "| Scenario | Contrast | Metric | Pairs | Baseline median | Treatment median | Paired median difference (95% bootstrap CI) |",
+    "| --- | --- | --- | ---: | ---: | ---: | --- |"
+  );
+  for (const [scenario, result] of Object.entries(analysis.scenarios)) {
+    const comparisons = [
+      ["Route-only - Control", result.comparisons?.routeOnlyMinusControl],
+      ["Full Palace - Route-only", result.comparisons?.fullPalaceMinusRouteOnly]
+    ];
+    for (const [contrast, comparison] of comparisons) {
+      for (const [metric, label] of markdownMetrics) {
+        const summary = comparison?.metrics?.[metric];
+        if (!summary?.pairCount) continue;
+        const difference = summary.treatmentMinusBaseline;
+        lines.push(
+          `| ${scenario} | ${contrast} | ${label} | ${summary.pairCount} | ${metricValue(metric, summary.baselineMedian)} | `
+          + `${metricValue(metric, summary.treatmentMedian)} | ${metricValue(metric, difference.estimate)} `
+          + `[${metricValue(metric, difference.confidenceInterval[0])}, ${metricValue(metric, difference.confidenceInterval[1])}] |`
+        );
+      }
     }
   }
   lines.push(

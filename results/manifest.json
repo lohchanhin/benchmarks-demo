@@ -3,7 +3,7 @@
   "protocolVersion": "1.0.0",
   "protocolTag": "protocol-v1.0.0",
   "study": "vertex-palace-four-scenario-exploratory-pilot",
-  "status": "pilot-in-progress",
+  "status": "pilot-complete",
   "plan": "pilot/plan.json",
   "plannedScenarios": [
     "small-local-bug",
@@ -340,6 +340,23 @@
       "evidenceDirectory": "pilot/stale-memory-adversarial-pilot-04",
       "rawTranscriptsPublished": false,
       "publishedAt": "2026-07-18T21:43:06.765Z"
+    },
+    {
+      "trialId": "stale-memory-adversarial-pilot-05",
+      "scenario": "stale-memory-adversarial",
+      "seed": "4dc3ef700f6cadd198750697763acf2d",
+      "order": [
+        "full-palace",
+        "route-only",
+        "control"
+      ],
+      "status": "completed",
+      "attemptedAt": "2026-07-18T21:54:20.022Z",
+      "report": "pilot/stale-memory-adversarial-pilot-05/comparison.json",
+      "error": null,
+      "evidenceDirectory": "pilot/stale-memory-adversarial-pilot-05",
+      "rawTranscriptsPublished": false,
+      "publishedAt": "2026-07-18T21:54:51.039Z"
     }
   ]
 }

@@ -40,6 +40,12 @@ test("keeps failures in success analysis and efficiency to mutual successes", ()
   assert.equal(scenario.metrics.durationMs.pairCount, 1);
   assert.deepEqual(scenario.metrics.durationMs.controlRaw, [100]);
   assert.deepEqual(scenario.metrics.durationMs.fullPalaceRaw, [70]);
+  assert.equal(scenario.comparisons.routeOnlyMinusControl.validPairs, 3);
+  assert.deepEqual(scenario.comparisons.routeOnlyMinusControl.success.treatmentRaw, [1, 1, 1]);
+  assert.deepEqual(scenario.comparisons.routeOnlyMinusControl.metrics.durationMs.baselineRaw, [100, 90]);
+  assert.deepEqual(scenario.comparisons.routeOnlyMinusControl.metrics.durationMs.treatmentRaw, [85, 85]);
+  assert.deepEqual(scenario.comparisons.fullPalaceMinusRouteOnly.metrics.durationMs.baselineRaw, [85, 85]);
+  assert.deepEqual(scenario.comparisons.fullPalaceMinusRouteOnly.metrics.durationMs.treatmentRaw, [70, 80]);
 });
 
 test("labels partial pilot output as interim against the preregistered trial count", () => {
@@ -59,6 +65,8 @@ test("labels partial pilot output as interim against the preregistered trial cou
   const markdown = renderAnalysisMarkdown(result);
   assert.match(markdown, /Interim only: 1\/20 planned trials/);
   assert.match(markdown, /Mutually Successful Pair Efficiency/);
+  assert.match(markdown, /Three-Arm Ablation/);
+  assert.match(markdown, /Route-only - Control/);
   assert.match(markdown, /\| demo \| Reported tokens \| 1 \| 1,100 \| 1,100 \| 0 \[0, 0\] \|/);
 });
 

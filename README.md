@@ -40,15 +40,33 @@ ephemeral Codex sessions. Use `--limit 1` for a one-trial demonstration.
 
 ## Correctness-First Evidence
 
-The preregistered four-scenario pilot is in progress and is not yet a
-statistical result. Nineteen of 20 planned trials are published; no interim value is
-being presented as evidence for or against a hypothesis.
+The preregistered four-scenario pilot is complete. All 20 planned trials and 60
+fresh arm runs are published. It remains an exploratory, underpowered pilot,
+not a confirmatory product-performance claim.
 
 | Dataset | Correctness | Efficiency result | Status |
 | --- | --- | --- | --- |
-| New four-scenario, three-arm pilot | 57/57 arms passed public tests and the hidden oracle in 19/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack: +23,648, +10,250, +11; tenant-memory: +173,308, +5,279, +20 | Small-task 5/5; cross-stack 5/5; tenant-memory 5/5; stale-memory 4/5; overall 19/20 |
+| New four-scenario, three-arm pilot | 60/60 arms passed public tests and the hidden oracle in 20/20 trials | Overall Full vs Control paired median: +67,223.5 reported tokens, +6,127.5 uncached input, +8.5 calls, +29.8s | Complete exploratory pilot; no efficiency win observed |
 | Legacy `v0.1.6` three paired runs | 6/6 arms passed, 100/100 scope | Palace lower cumulative tokens in 3/3; faster in 2/3 | Exploratory pilot |
 | Legacy `live-05` | Both arms passed | Palace was 105.4s slower and used more reported tokens | Published negative case |
+
+The [complete paired analysis](results/pilot/analysis.md) and
+[power-sensitivity analysis](results/pilot/power-analysis.md) support these
+bounded interpretations:
+
+- **H1:** all three arms succeeded in every trial, so no correctness loss was
+  observed. Five pairs per scenario cannot establish the preregistered
+  non-inferiority claim.
+- **H2:** not supported in this pilot. Overall Full Palace minus Control was
+  +67,223.5 reported tokens (95% bootstrap CI +25,362.5 to +112,437.5),
+  +6,127.5 uncached input (CI +2,390 to +10,636.5), +8.5 calls (CI +6 to
+  +16), and +29.8 seconds (CI +16.4 to +49.2).
+- **H3:** not supported because Control and Route-only also avoided every
+  seeded tenant pitfall; the fixture did not make memory necessary.
+- **H4:** descriptively supported as a safety mechanism: Full Palace rejected
+  stale v1 advice in 5/5 trials, but the sample is too small for a broad claim.
+- **H5:** the small-task negative control showed fixed Palace call overhead,
+  as anticipated.
 
 The complete legacy values are in
 [`v0.1.6-three-pairs.md`](docs/results/v0.1.6-three-pairs.md). The losing Palace
@@ -62,7 +80,7 @@ The five preregistered negative-control trials are available as reviewed
 [trial 03](results/pilot/small-local-bug-pilot-03/comparison.md), and
 [trial 04](results/pilot/small-local-bug-pilot-04/comparison.md), and
 [trial 05](results/pilot/small-local-bug-pilot-05/comparison.md) evidence, with
-an [interim analysis](results/pilot/analysis.md). The median paired Full Palace
+the [complete analysis](results/pilot/analysis.md). The median paired Full Palace
 result used 29,423 more reported tokens (95% bootstrap CI -2,445 to 113,838)
 and six more tool calls (CI 3 to 7), while uncached input differed by -130
 (CI -24,212 to 11,814). Wall time ranged from 25.5 seconds faster to 62.0
@@ -88,7 +106,7 @@ in trial 01 but were
 87 versus 86 in trial 02, demonstrating why that inventory-sensitive proxy is
 not treated as a file-read audit. This completed five-pair scenario remains an
 exploratory pilot, not a general performance conclusion. Route-only raw metrics
-remain in every comparison for the final ablation summary.
+and both secondary contrasts are included in the final ablation analysis.
 
 All five preregistered tenant-memory results are public as
 [trial 01](results/pilot/tenant-memory-pitfall-pilot-01/comparison.md) and
@@ -106,16 +124,18 @@ tokens (95% bootstrap CI -64,710 to +225,172), +5,279 uncached input tokens
 sensitive enough to make prior memory necessary while the Full treatment added
 behavioral overhead.
 
-The first four preregistered stale-memory results are public as
+All five preregistered stale-memory results are public as
 [trial 01](results/pilot/stale-memory-adversarial-pilot-01/comparison.md) and
 [trial 02](results/pilot/stale-memory-adversarial-pilot-02/comparison.md), and
 [trial 03](results/pilot/stale-memory-adversarial-pilot-03/comparison.md), and
-[trial 04](results/pilot/stale-memory-adversarial-pilot-04/comparison.md). All
-12 arms changed only the v2 scheduler loader and passed the hidden oracle;
+[trial 04](results/pilot/stale-memory-adversarial-pilot-04/comparison.md), and
+[trial 05](results/pilot/stale-memory-adversarial-pilot-05/comparison.md). All
+15 arms changed only the v2 scheduler loader and passed the hidden oracle;
 Full Palace did not adopt the obsolete v1 memory in any pair. Full Palace
-minus Control has paired medians of +91,450.5 reported tokens, +9,328 uncached
-input tokens, +6.5 calls, and +36.9 seconds. These are four descriptive pairs,
-not evidence for H4 yet.
+minus Control has paired medians of +71,864 reported tokens (95% bootstrap CI
++5,069 to +179,047), +6,620 uncached input (CI +1,310 to +17,988), +9 calls
+(CI +3 to +19), and +35.0 seconds (CI +20.2 to +49.9). This is descriptive
+safety evidence for H4 accompanied by a clear efficiency cost.
 
 Vertex Palace does **not** guarantee that every task will be faster or cheaper.
 Wall time is secondary because hosted-model latency varies.
@@ -131,6 +151,14 @@ This ablation distinguishes structural routing from historical memory. All
 three workspaces use the same task, random fixture seed, tracked files, and Git
 tree. Each arm runs in a fresh `codex exec --ephemeral` process with fixed
 model, reasoning effort, timeout, and CLI version.
+
+Across all 20 pairs, Route-only minus Control had paired medians of +26,059.5
+reported tokens (CI -2,050.5 to +54,179.5), +2,798 uncached input (CI -1,871
+to +13,319), +11 calls (CI +5 to +14), and +16.5 seconds (CI -2.5 to +30.5).
+Full Palace minus Route-only added +36,610.5 reported tokens (CI -13,234.5 to
++66,251.5), +2,950 uncached input (CI -6,169.5 to +11,489), +0.5 calls (CI -3
+to +5.5), and +16.6 seconds (CI -5.2 to +28.9). The full per-scenario raw
+values and intervals are in the [three-arm ablation](results/pilot/analysis.md#three-arm-ablation).
 
 ## Preregistered Scenarios
 
@@ -172,9 +200,15 @@ The analysis scripts publish every raw paired value and report:
 - arm medians and median paired differences;
 - seeded paired-bootstrap 95% confidence intervals;
 - Holm correction across scenario-level tests; and
-- a post-pilot power analysis for a separately frozen confirmatory study.
+- a post-pilot [power-sensitivity analysis](results/pilot/power-analysis.md) for
+  a separately frozen confirmatory study.
 
 Five pairs per scenario are explicitly labeled exploratory and underpowered.
+With no discordant primary outcomes, the pilot cannot supply a data-driven
+finite sample-size estimate. A transparent 20% discordance sensitivity anchor
+requires approximately 124 pairs per scenario before attrition or multiplicity
+adjustments. Post-outcome analysis extensions are disclosed in the
+[protocol amendments](docs/research/PROTOCOL_AMENDMENTS.md).
 See the [hypotheses](docs/research/HYPOTHESES.md),
 [data dictionary](docs/research/DATA_DICTIONARY.md), and
 [threats to validity](docs/research/THREATS_TO_VALIDITY.md).
