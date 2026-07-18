@@ -41,12 +41,12 @@ ephemeral Codex sessions. Use `--limit 1` for a one-trial demonstration.
 ## Correctness-First Evidence
 
 The preregistered four-scenario pilot is in progress and is not yet a
-statistical result. Seven of 20 planned trials are published; no interim value is
+statistical result. Eight of 20 planned trials are published; no interim value is
 being presented as evidence for or against a hypothesis.
 
 | Dataset | Correctness | Efficiency result | Status |
 | --- | --- | --- | --- |
-| New four-scenario, three-arm pilot | 21/21 arms passed public tests and the hidden oracle in 7/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack after two pairs: +9,412, +19,160.5, +9.5 | Small-task 5/5; cross-stack 2/5; overall 7/20 |
+| New four-scenario, three-arm pilot | 24/24 arms passed public tests and the hidden oracle in 8/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack after three pairs: -4,824, +16,808, +8 | Small-task 5/5; cross-stack 3/5; overall 8/20 |
 | Legacy `v0.1.6` three paired runs | 6/6 arms passed, 100/100 scope | Palace lower cumulative tokens in 3/3; faster in 2/3 | Exploratory pilot |
 | Legacy `live-05` | Both arms passed | Palace was 105.4s slower and used more reported tokens | Published negative case |
 
@@ -69,17 +69,19 @@ and six more tool calls (CI 3 to 7), while uncached input differed by -130
 seconds slower. This completed negative-control block descriptively supports
 fixed call overhead on tiny tasks, not a universal performance conclusion.
 
-The first two preregistered cross-stack results are public as
+The first three preregistered cross-stack results are public as
 [trial 01](results/pilot/cross-stack-regression-pilot-01/comparison.md) and
-[trial 02](results/pilot/cross-stack-regression-pilot-02/comparison.md). All six
-arms found the two required changes and passed the hidden oracle; both Palace
-routes retrieved all four route ground-truth files (Recall@K 100%, Precision@K
-80%). Across two pairs, Full Palace minus Control has a paired median of +9,412
-reported tokens (raw range -4,824 to +23,648), +19,160.5 uncached input tokens
-(+16,808 to +21,513), +9.5 tool calls (+8 to +11), and +18.6 seconds (+12.5 to
-+24.6). Transcript-observed path strings fell from 87 to 6 in trial 01 but were
+[trial 02](results/pilot/cross-stack-regression-pilot-02/comparison.md), and
+[trial 03](results/pilot/cross-stack-regression-pilot-03/comparison.md). All nine
+arms found the two required changes and passed the hidden oracle; all Palace
+routes retrieved the four route ground-truth files (Recall@K 100%, Precision@K
+80%). Across three pairs, Full Palace minus Control has a paired median of
+-4,824 reported tokens (95% bootstrap CI -43,041 to +23,648), +16,808 uncached
+input tokens (CI -5,575 to +21,513), +8 tool calls (CI +7 to +11), and +12.5
+seconds (CI -7.5 to +24.6). Transcript-observed path strings fell from 87 to 6
+in trial 01 but were
 87 versus 86 in trial 02, demonstrating why that inventory-sensitive proxy is
-not treated as a file-read audit. Two pairs remain descriptive, not inferential.
+not treated as a file-read audit. Three pairs remain descriptive, not inferential.
 
 Vertex Palace does **not** guarantee that every task will be faster or cheaper.
 Wall time is secondary because hosted-model latency varies.

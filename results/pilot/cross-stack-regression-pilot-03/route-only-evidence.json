@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 3,
+  "runId": "cross-stack-regression-pilot-03",
+  "arm": "route-only",
+  "createdAt": "2026-07-18T19:39:01.210Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.1.6",
+  "execution": {
+    "durationMs": 132172,
+    "exitCode": 0,
+    "startedAt": "2026-07-18T19:36:48.733Z",
+    "endedAt": "2026-07-18T19:39:00.904Z",
+    "timedOut": false,
+    "sequence": 2,
+    "order": "control,route-only,full-palace"
+  },
+  "transcript": {
+    "eventCount": 64,
+    "malformedLines": 0,
+    "toolCalls": 27,
+    "commandCalls": 27,
+    "failedCalls": 3,
+    "commandOutputChars": 15075,
+    "agentMessageChars": 1806,
+    "inspectionCommands": 8,
+    "palaceCalls": 1,
+    "successfulPalaceCalls": 1,
+    "inspectedFiles": [
+      "README.md",
+      "client/src/checkout/quote-view-model.mjs",
+      "package.json",
+      "server/src/pricing/create-quote.mjs",
+      "shared/src/money.mjs",
+      "test/checkout-quote.test.mjs"
+    ],
+    "referencedFiles": [
+      "README.md",
+      "client/src/checkout/quote-view-model.mjs",
+      "clients/tenant-001/theme.mjs",
+      "clients/tenant-002/theme.mjs",
+      "clients/tenant-003/theme.mjs",
+      "clients/tenant-004/theme.mjs",
+      "clients/tenant-005/theme.mjs",
+      "clients/tenant-006/theme.mjs",
+      "clients/tenant-007/theme.mjs",
+      "clients/tenant-008/theme.mjs",
+      "package.json",
+      "packages/admin/src/module-001.mjs",
+      "packages/admin/src/module-002.mjs",
+      "packages/admin/src/module-003.mjs",
+      "packages/admin/src/module-004.mjs",
+      "packages/admin/src/module-005.mjs",
+      "packages/admin/src/module-006.mjs",
+      "packages/admin/src/module-007.mjs",
+      "packages/admin/src/module-008.mjs",
+      "packages/admin/src/module-009.mjs",
+      "packages/admin/src/module-010.mjs",
+      "packages/admin/src/module-011.mjs",
+      "packages/admin/src/module-012.mjs",
+      "packages/analytics/src/module-001.mjs",
+      "packages/analytics/src/module-002.mjs",
+      "packages/analytics/src/module-003.mjs",
+      "packages/analytics/src/module-004.mjs",
+      "packages/analytics/src/module-005.mjs",
+      "packages/analytics/src/module-006.mjs",
+      "packages/analytics/src/module-007.mjs",
+      "packages/analytics/src/module-008.mjs",
+      "packages/analytics/src/module-009.mjs",
+      "packages/analytics/src/module-010.mjs",
+      "packages/analytics/src/module-011.mjs",
+      "packages/analytics/src/module-012.mjs",
+      "packages/catalog/src/module-001.mjs",
+      "packages/catalog/src/module-002.mjs",
+      "packages/catalog/src/module-003.mjs",
+      "packages/catalog/src/module-004.mjs",
+      "packages/catalog/src/module-005.mjs",
+      "packages/catalog/src/module-006.mjs",
+      "packages/catalog/src/module-007.mjs",
+      "packages/catalog/src/module-008.mjs",
+      "packages/catalog/src/module-009.mjs",
+      "packages/catalog/src/module-010.mjs",
+      "packages/catalog/src/module-011.mjs",
+      "packages/catalog/src/module-012.mjs",
+      "packages/inventory/src/module-001.mjs",
+      "packages/inventory/src/module-002.mjs",
+      "packages/inventory/src/module-003.mjs",
+      "packages/inventory/src/module-004.mjs",
+      "packages/inventory/src/module-005.mjs",
+      "packages/inventory/src/module-006.mjs",
+      "packages/inventory/src/module-007.mjs",
+      "packages/inventory/src/module-008.mjs",
+      "packages/inventory/src/module-009.mjs",
+      "packages/inventory/src/module-010.mjs",
+      "packages/inventory/src/module-011.mjs",
+      "packages/inventory/src/module-012.mjs",
+      "packages/notifications/src/module-001.mjs",
+      "packages/notifications/src/module-002.mjs",
+      "packages/notifications/src/module-003.mjs",
+      "packages/notifications/src/module-004.mjs",
+      "packages/notifications/src/module-005.mjs",
+      "packages/notifications/src/module-006.mjs",
+      "packages/notifications/src/module-007.mjs",
+      "packages/notifications/src/module-008.mjs",
+      "packages/notifications/src/module-009.mjs",
+      "packages/notifications/src/module-010.mjs",
+      "packages/notifications/src/module-011.mjs",
+      "packages/notifications/src/module-012.mjs",
+      "packages/payments/src/module-001.mjs",
+      "packages/payments/src/module-002.mjs",
+      "packages/payments/src/module-003.mjs",
+      "packages/payments/src/module-004.mjs",
+      "packages/payments/src/module-005.mjs",
+      "packages/payments/src/module-006.mjs",
+      "packages/payments/src/module-007.mjs",
+      "packages/payments/src/module-008.mjs",
+      "packages/payments/src/module-009.mjs",
+      "packages/payments/src/module-010.mjs",
+      "packages/payments/src/module-011.mjs",
+      "packages/payments/src/module-012.mjs",
+      "server/src/pricing/create-quote.mjs",
+      "shared/src/money.mjs",
+      "test/checkout-quote.test.mjs"
+    ],
+    "usage": {
+      "inputTokens": 334906,
+      "cachedInputTokens": 312832,
+      "outputTokens": 4495,
+      "totalTokens": 339401,
+      "uncachedInputTokens": 22074
+    }
+  },
+  "runtimeDiagnostics": {
+    "stderrChars": 2793,
+    "warningLines": 2,
+    "errorLines": 5,
+    "routerErrors": 5
+  },
+  "validity": {
+    "verified": true,
+    "passed": true,
+    "reason": "1/1 successful/total Palace calls; expected 1/1; Codex exit code 0; timedOut=false; fixed execution settings match the run plan; fixture tree matches b0929ecf80c522d105c1614fcb3ffbe9a8cbb9be"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": true,
+    "publicPassed": true,
+    "oraclePassed": true,
+    "exitCode": 0,
+    "durationMs": 157,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 0,
+    "oracleDurationMs": 60
+  },
+  "git": {
+    "status": [
+      "M client/src/checkout/quote-view-model.mjs",
+      "M server/src/pricing/create-quote.mjs"
+    ],
+    "changedFiles": [
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs"
+    ],
+    "untrackedFiles": [],
+    "numstat": [
+      {
+        "file": "client/src/checkout/quote-view-model.mjs",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "file": "server/src/pricing/create-quote.mjs",
+        "added": 1,
+        "deleted": 1
+      }
+    ],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "warning: in the working copy of 'client/src/checkout/quote-view-model.mjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/src/pricing/create-quote.mjs', LF will be replaced by CRLF the next time Git touches it",
+    "headTree": "b0929ecf80c522d105c1614fcb3ffbe9a8cbb9be"
+  },
+  "score": {
+    "total": 100,
+    "points": {
+      "correctness": 60,
+      "expectedCoverage": 20,
+      "scope": 20
+    },
+    "testsPassed": true,
+    "expectedCoverage": 1,
+    "changedFileRecall": 1,
+    "changedFilePrecision": 1,
+    "forbiddenViolation": false,
+    "expectedMatched": [
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs"
+    ],
+    "expectedMissed": [],
+    "forbiddenChanged": [],
+    "unexpectedChanged": []
+  },
+  "success": true,
+  "route": {
+    "routeId": "route_c4fe5e5cf57e6fc1",
+    "confidence": 0.59,
+    "k": 5,
+    "recallAtK": 1,
+    "precisionAtK": 0.8,
+    "groundTruthFiles": [
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs",
+      "shared/src/money.mjs",
+      "test/checkout-quote.test.mjs"
+    ],
+    "matchedFiles": [
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs",
+      "shared/src/money.mjs",
+      "test/checkout-quote.test.mjs"
+    ],
+    "retrievedFiles": [
+      "test/checkout-quote.test.mjs",
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs",
+      "README.md",
+      "shared/src/money.mjs"
+    ]
+  },
+  "memory": {
+    "pitfallViolation": null,
+    "wrongMemoryAdopted": null
+  },
+  "palaceEvaluation": null
+}
