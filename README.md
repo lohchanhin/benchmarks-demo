@@ -41,12 +41,12 @@ ephemeral Codex sessions. Use `--limit 1` for a one-trial demonstration.
 ## Correctness-First Evidence
 
 The preregistered four-scenario pilot is in progress and is not yet a
-statistical result. Ten of 20 planned trials are published; no interim value is
+statistical result. Eleven of 20 planned trials are published; no interim value is
 being presented as evidence for or against a hypothesis.
 
 | Dataset | Correctness | Efficiency result | Status |
 | --- | --- | --- | --- |
-| New four-scenario, three-arm pilot | 30/30 arms passed public tests and the hidden oracle in 10/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack: +23,648, +10,250, +11 | Small-task 5/5; cross-stack 5/5; overall 10/20 |
+| New four-scenario, three-arm pilot | 33/33 arms passed public tests and the hidden oracle in 11/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack: +23,648, +10,250, +11 | Small-task 5/5; cross-stack 5/5; tenant-memory 1/5; overall 11/20 |
 | Legacy `v0.1.6` three paired runs | 6/6 arms passed, 100/100 scope | Palace lower cumulative tokens in 3/3; faster in 2/3 | Exploratory pilot |
 | Legacy `live-05` | Both arms passed | Palace was 105.4s slower and used more reported tokens | Published negative case |
 
@@ -89,6 +89,14 @@ in trial 01 but were
 not treated as a file-read audit. This completed five-pair scenario remains an
 exploratory pilot, not a general performance conclusion. Route-only raw metrics
 remain in every comparison for the final ablation summary.
+
+The first preregistered tenant-memory result is public as
+[trial 01](results/pilot/tenant-memory-pitfall-pilot-01/comparison.md). All
+three arms passed the hidden oracle with 100% changed-file precision and recall
+and no forbidden-file violation, so this single pair does not yet show a memory
+correctness benefit. Full Palace minus Control used 64,710 fewer reported
+tokens and finished 34.7 seconds sooner, but used 9,583 more uncached input
+tokens. These are one-pair descriptive values, not evidence for H3.
 
 Vertex Palace does **not** guarantee that every task will be faster or cheaper.
 Wall time is secondary because hosted-model latency varies.

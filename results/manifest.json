@@ -187,6 +187,23 @@
       "evidenceDirectory": "pilot/cross-stack-regression-pilot-05",
       "rawTranscriptsPublished": false,
       "publishedAt": "2026-07-18T19:56:57.353Z"
+    },
+    {
+      "trialId": "tenant-memory-pitfall-pilot-01",
+      "scenario": "tenant-memory-pitfall",
+      "seed": "67b71824b4968e129c9beca90e44b96a",
+      "order": [
+        "control",
+        "route-only",
+        "full-palace"
+      ],
+      "status": "completed",
+      "attemptedAt": "2026-07-18T20:12:41.893Z",
+      "report": "pilot/tenant-memory-pitfall-pilot-01/comparison.json",
+      "error": null,
+      "evidenceDirectory": "pilot/tenant-memory-pitfall-pilot-01",
+      "rawTranscriptsPublished": false,
+      "publishedAt": "2026-07-18T20:13:17.275Z"
     }
   ]
 }

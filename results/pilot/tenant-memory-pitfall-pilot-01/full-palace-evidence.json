@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 3,
+  "runId": "tenant-memory-pitfall-pilot-01",
+  "arm": "full-palace",
+  "createdAt": "2026-07-18T20:12:41.874Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.1.6",
+  "execution": {
+    "durationMs": 139191,
+    "exitCode": 0,
+    "startedAt": "2026-07-18T20:10:22.367Z",
+    "endedAt": "2026-07-18T20:12:41.558Z",
+    "timedOut": false,
+    "sequence": 3,
+    "order": "control,route-only,full-palace"
+  },
+  "transcript": {
+    "eventCount": 43,
+    "malformedLines": 0,
+    "toolCalls": 16,
+    "commandCalls": 16,
+    "failedCalls": 4,
+    "commandOutputChars": 16949,
+    "agentMessageChars": 2383,
+    "inspectionCommands": 4,
+    "palaceCalls": 1,
+    "successfulPalaceCalls": 1,
+    "inspectedFiles": [
+      "clients/aurora/theme.mjs",
+      "clients/borealis/theme.mjs",
+      "clients/cedar/theme.mjs",
+      "clients/tenant-001/theme.mjs",
+      "clients/tenant-002/theme.mjs",
+      "clients/tenant-003/theme.mjs",
+      "package.json",
+      "src/clients/client-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-theme.mjs",
+      "test/article-page.test.mjs"
+    ],
+    "referencedFiles": [
+      "clients/aurora/theme.mjs",
+      "clients/borealis/theme.mjs",
+      "clients/cedar/theme.mjs",
+      "clients/tenant-001/theme.mjs",
+      "clients/tenant-002/theme.mjs",
+      "clients/tenant-003/theme.mjs",
+      "package.json",
+      "src/clients/client-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-theme.mjs",
+      "test/article-page.test.mjs"
+    ],
+    "usage": {
+      "inputTokens": 347472,
+      "cachedInputTokens": 310784,
+      "outputTokens": 5330,
+      "totalTokens": 352802,
+      "uncachedInputTokens": 36688
+    }
+  },
+  "runtimeDiagnostics": {
+    "stderrChars": 3247,
+    "warningLines": 2,
+    "errorLines": 6,
+    "routerErrors": 6
+  },
+  "validity": {
+    "verified": true,
+    "passed": true,
+    "reason": "1/1 successful/total Palace calls; expected 1/1; Codex exit code 0; timedOut=false; fixed execution settings match the run plan; fixture tree matches 8ed51632e3eab082e3dee0b880189b03403eedbd"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": true,
+    "publicPassed": true,
+    "oraclePassed": true,
+    "exitCode": 0,
+    "durationMs": 184,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 0,
+    "oracleDurationMs": 61
+  },
+  "git": {
+    "status": [
+      "M clients/aurora/theme.mjs",
+      "M src/rendering/article-page.mjs"
+    ],
+    "changedFiles": [
+      "clients/aurora/theme.mjs",
+      "src/rendering/article-page.mjs"
+    ],
+    "untrackedFiles": [],
+    "numstat": [
+      {
+        "file": "clients/aurora/theme.mjs",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "file": "src/rendering/article-page.mjs",
+        "added": 1,
+        "deleted": 1
+      }
+    ],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "warning: in the working copy of 'clients/aurora/theme.mjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'src/rendering/article-page.mjs', LF will be replaced by CRLF the next time Git touches it",
+    "headTree": "8ed51632e3eab082e3dee0b880189b03403eedbd"
+  },
+  "score": {
+    "total": 100,
+    "points": {
+      "correctness": 60,
+      "expectedCoverage": 20,
+      "scope": 20
+    },
+    "testsPassed": true,
+    "expectedCoverage": 1,
+    "changedFileRecall": 1,
+    "changedFilePrecision": 1,
+    "forbiddenViolation": false,
+    "expectedMatched": [
+      "clients/aurora/theme.mjs",
+      "src/rendering/article-page.mjs"
+    ],
+    "expectedMissed": [],
+    "forbiddenChanged": [],
+    "unexpectedChanged": []
+  },
+  "success": true,
+  "route": {
+    "routeId": "route_186a3e7c87605650",
+    "confidence": 0.57,
+    "k": 8,
+    "recallAtK": 1,
+    "precisionAtK": 0.5,
+    "groundTruthFiles": [
+      "clients/aurora/theme.mjs",
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-theme.mjs",
+      "test/article-page.test.mjs"
+    ],
+    "matchedFiles": [
+      "clients/aurora/theme.mjs",
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-theme.mjs",
+      "test/article-page.test.mjs"
+    ],
+    "retrievedFiles": [
+      "test/article-page.test.mjs",
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-theme.mjs",
+      "clients/aurora/theme.mjs",
+      "clients/tenant-001/theme.mjs",
+      "clients/tenant-002/theme.mjs",
+      "clients/tenant-003/theme.mjs",
+      "src/clients/client-registry.mjs"
+    ]
+  },
+  "memory": {
+    "pitfallViolation": false,
+    "wrongMemoryAdopted": null
+  },
+  "palaceEvaluation": null
+}
