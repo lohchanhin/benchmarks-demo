@@ -41,12 +41,12 @@ ephemeral Codex sessions. Use `--limit 1` for a one-trial demonstration.
 ## Correctness-First Evidence
 
 The preregistered four-scenario pilot is in progress and is not yet a
-statistical result. Fourteen of 20 planned trials are published; no interim value is
+statistical result. Fifteen of 20 planned trials are published; no interim value is
 being presented as evidence for or against a hypothesis.
 
 | Dataset | Correctness | Efficiency result | Status |
 | --- | --- | --- | --- |
-| New four-scenario, three-arm pilot | 42/42 arms passed public tests and the hidden oracle in 14/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack: +23,648, +10,250, +11 | Small-task 5/5; cross-stack 5/5; tenant-memory 4/5; overall 14/20 |
+| New four-scenario, three-arm pilot | 45/45 arms passed public tests and the hidden oracle in 15/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack: +23,648, +10,250, +11; tenant-memory: +173,308, +5,279, +20 | Small-task 5/5; cross-stack 5/5; tenant-memory 5/5; overall 15/20 |
 | Legacy `v0.1.6` three paired runs | 6/6 arms passed, 100/100 scope | Palace lower cumulative tokens in 3/3; faster in 2/3 | Exploratory pilot |
 | Legacy `live-05` | Both arms passed | Palace was 105.4s slower and used more reported tokens | Published negative case |
 
@@ -90,18 +90,21 @@ not treated as a file-read audit. This completed five-pair scenario remains an
 exploratory pilot, not a general performance conclusion. Route-only raw metrics
 remain in every comparison for the final ablation summary.
 
-The first four preregistered tenant-memory results are public as
+All five preregistered tenant-memory results are public as
 [trial 01](results/pilot/tenant-memory-pitfall-pilot-01/comparison.md) and
 [trial 02](results/pilot/tenant-memory-pitfall-pilot-02/comparison.md), and
 [trial 03](results/pilot/tenant-memory-pitfall-pilot-03/comparison.md), and
-[trial 04](results/pilot/tenant-memory-pitfall-pilot-04/comparison.md). All 12
+[trial 04](results/pilot/tenant-memory-pitfall-pilot-04/comparison.md), and
+[trial 05](results/pilot/tenant-memory-pitfall-pilot-05/comparison.md). All 15
 arms passed the hidden oracle with 100% changed-file precision and recall and
-no forbidden-file violation, so these pairs do not yet show a memory
-correctness benefit. Trial 01 favored Full Palace on reported tokens and wall
-time; trials 02 through 04 reversed both results. Across four pairs, Full Palace
-minus Control has paired medians of +162,717.5 reported tokens, +4,374.5
-uncached input tokens, +19 calls, and +69.9 seconds. These remain underpowered
-descriptive values, not evidence for H3.
+no forbidden-file violation. Control never repeated the seeded pitfall, so this
+completed block did not observe a memory correctness benefit and does not
+support H3. Full Palace minus Control has paired medians of +173,308 reported
+tokens (95% bootstrap CI -64,710 to +225,172), +5,279 uncached input tokens
+(CI -15,277 to +11,023), +20 calls (CI -1 to +24), and +68.5 seconds
+(CI -34.7 to +84.4). This exploratory result suggests the fixture was not
+sensitive enough to make prior memory necessary while the Full treatment added
+behavioral overhead.
 
 Vertex Palace does **not** guarantee that every task will be faster or cheaper.
 Wall time is secondary because hosted-model latency varies.
