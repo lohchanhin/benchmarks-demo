@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "tenant-theme-regression",
+  "title": "Tenant-scoped article theme regression",
+  "description": "A cross-layer regression in a noisy multi-tenant JavaScript repository.",
+  "task": "Fix the Aurora article hero contrast regression while preserving the appearance of every other tenant. The renderer must honor an explicit tenant text-color override, the Aurora hero must meet WCAG AA contrast, and the complete test suite must pass. Do not weaken or rewrite the tests.",
+  "baselineExpectedToFail": true,
+  "testCommand": ["node", "--test"],
+  "expectedChangedFiles": [
+    "clients/aurora/theme.mjs",
+    "src/rendering/article-page.mjs"
+  ],
+  "forbiddenChangedFiles": [
+    "src/themes/shared-theme.mjs",
+    "test/article-page.test.mjs"
+  ],
+  "history": {
+    "task": "Correct Aurora article hero colors without changing shared tenant behavior",
+    "client": "aurora",
+    "decision": "Keep the shared article theme stable and express Aurora colors in clients/aurora/theme.mjs. The renderer must honor explicit tenant overrides.",
+    "pitfall": "A previous Aurora contrast fix edited src/themes/shared-theme.mjs and silently changed Borealis and Cedar. Never solve a tenant-only theme issue by changing the shared theme.",
+    "failedAttempt": "Changing only the Aurora config had no effect because the renderer ignored the tenant text-color override."
+  },
+  "noise": {
+    "domains": ["admin", "analytics", "catalog", "checkout", "inventory", "notifications", "payments", "search"],
+    "modulesPerDomain": 24,
+    "tenantCount": 36
+  }
+}

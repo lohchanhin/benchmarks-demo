@@ -1,0 +1,24 @@
+{
+  "name": "benchmarks-ab-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A reproducible A/B benchmark for Codex repository work with and without Vertex Palace.",
+  "type": "module",
+  "bin": {
+    "vertex-palace-benchmark": "./bin/benchmark.mjs"
+  },
+  "scripts": {
+    "benchmark": "node ./bin/benchmark.mjs",
+    "demo:prepare": "node ./bin/benchmark.mjs prepare",
+    "test": "node --test test/*.test.mjs",
+    "test:fixture": "node ./scripts/check-fixture.mjs",
+    "check": "npm run test && npm run test:fixture"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "vertex-palace": "0.1.4"
+  },
+  "license": "MIT"
+}
