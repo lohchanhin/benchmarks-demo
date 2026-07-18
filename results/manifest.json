@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "1.0.0",
+  "protocolTag": "protocol-v1.0.0",
+  "study": "vertex-palace-four-scenario-exploratory-pilot",
+  "status": "preregistered",
+  "plannedScenarios": [
+    "small-local-bug",
+    "cross-stack-regression",
+    "tenant-memory-pitfall",
+    "stale-memory-adversarial"
+  ],
+  "plannedSeedsPerScenario": 5,
+  "arms": ["control", "route-only", "full-palace"],
+  "trials": []
+}
