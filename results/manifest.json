@@ -272,6 +272,23 @@
       "evidenceDirectory": "pilot/tenant-memory-pitfall-pilot-05",
       "rawTranscriptsPublished": false,
       "publishedAt": "2026-07-18T21:01:34.354Z"
+    },
+    {
+      "trialId": "stale-memory-adversarial-pilot-01",
+      "scenario": "stale-memory-adversarial",
+      "seed": "e4368ca4dbaeabb823dec3d344f92fdc",
+      "order": [
+        "control",
+        "full-palace",
+        "route-only"
+      ],
+      "status": "completed",
+      "attemptedAt": "2026-07-18T21:12:00.946Z",
+      "report": "pilot/stale-memory-adversarial-pilot-01/comparison.json",
+      "error": null,
+      "evidenceDirectory": "pilot/stale-memory-adversarial-pilot-01",
+      "rawTranscriptsPublished": false,
+      "publishedAt": "2026-07-18T21:12:23.366Z"
     }
   ]
 }

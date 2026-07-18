@@ -41,12 +41,12 @@ ephemeral Codex sessions. Use `--limit 1` for a one-trial demonstration.
 ## Correctness-First Evidence
 
 The preregistered four-scenario pilot is in progress and is not yet a
-statistical result. Fifteen of 20 planned trials are published; no interim value is
+statistical result. Sixteen of 20 planned trials are published; no interim value is
 being presented as evidence for or against a hypothesis.
 
 | Dataset | Correctness | Efficiency result | Status |
 | --- | --- | --- | --- |
-| New four-scenario, three-arm pilot | 45/45 arms passed public tests and the hidden oracle in 15/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack: +23,648, +10,250, +11; tenant-memory: +173,308, +5,279, +20 | Small-task 5/5; cross-stack 5/5; tenant-memory 5/5; overall 15/20 |
+| New four-scenario, three-arm pilot | 48/48 arms passed public tests and the hidden oracle in 16/20 trials | Small-task Full vs Control paired median: +29,423 reported tokens, -130 uncached input, +6 calls; cross-stack: +23,648, +10,250, +11; tenant-memory: +173,308, +5,279, +20 | Small-task 5/5; cross-stack 5/5; tenant-memory 5/5; stale-memory 1/5; overall 16/20 |
 | Legacy `v0.1.6` three paired runs | 6/6 arms passed, 100/100 scope | Palace lower cumulative tokens in 3/3; faster in 2/3 | Exploratory pilot |
 | Legacy `live-05` | Both arms passed | Palace was 105.4s slower and used more reported tokens | Published negative case |
 
@@ -105,6 +105,14 @@ tokens (95% bootstrap CI -64,710 to +225,172), +5,279 uncached input tokens
 (CI -34.7 to +84.4). This exploratory result suggests the fixture was not
 sensitive enough to make prior memory necessary while the Full treatment added
 behavioral overhead.
+
+The first preregistered stale-memory result is public as
+[trial 01](results/pilot/stale-memory-adversarial-pilot-01/comparison.md). All
+three arms changed only the v2 scheduler loader and passed the hidden oracle;
+Full Palace did not adopt the obsolete v1 memory. Full Palace minus Control
+used 111,037 more reported tokens, 6,620 more uncached input tokens, nine more
+calls, and 38.7 more seconds. This is one descriptive pair, not evidence for
+H4 yet.
 
 Vertex Palace does **not** guarantee that every task will be faster or cheaper.
 Wall time is secondary because hosted-model latency varies.
