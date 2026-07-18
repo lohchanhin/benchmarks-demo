@@ -51,6 +51,23 @@
       "evidenceDirectory": "pilot/small-local-bug-pilot-02",
       "rawTranscriptsPublished": false,
       "publishedAt": "2026-07-18T18:36:53.234Z"
+    },
+    {
+      "trialId": "small-local-bug-pilot-03",
+      "scenario": "small-local-bug",
+      "seed": "ddfc48f7c5c24c50f23369c57310113b",
+      "order": [
+        "full-palace",
+        "route-only",
+        "control"
+      ],
+      "status": "completed",
+      "attemptedAt": "2026-07-18T18:46:12.493Z",
+      "report": "pilot/small-local-bug-pilot-03/comparison.json",
+      "error": null,
+      "evidenceDirectory": "pilot/small-local-bug-pilot-03",
+      "rawTranscriptsPublished": false,
+      "publishedAt": "2026-07-18T18:46:22.079Z"
     }
   ]
 }
