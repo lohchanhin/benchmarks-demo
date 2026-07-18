@@ -221,6 +221,23 @@
       "evidenceDirectory": "pilot/tenant-memory-pitfall-pilot-02",
       "rawTranscriptsPublished": false,
       "publishedAt": "2026-07-18T20:25:34.543Z"
+    },
+    {
+      "trialId": "tenant-memory-pitfall-pilot-03",
+      "scenario": "tenant-memory-pitfall",
+      "seed": "b708840baa9a9245330a6b64b22aacaa",
+      "order": [
+        "route-only",
+        "full-palace",
+        "control"
+      ],
+      "status": "completed",
+      "attemptedAt": "2026-07-18T20:37:36.078Z",
+      "report": "pilot/tenant-memory-pitfall-pilot-03/comparison.json",
+      "error": null,
+      "evidenceDirectory": "pilot/tenant-memory-pitfall-pilot-03",
+      "rawTranscriptsPublished": false,
+      "publishedAt": "2026-07-18T20:37:54.044Z"
     }
   ]
 }

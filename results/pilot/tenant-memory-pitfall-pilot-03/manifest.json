@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "protocolVersion": "1.0.0",
+  "id": "tenant-memory-pitfall-pilot-03",
+  "createdAt": "2026-07-18T20:28:12.537Z",
+  "seed": "b708840baa9a9245330a6b64b22aacaa",
+  "scenario": "tenant-memory-pitfall",
+  "scenarioTitle": "Tenant-scoped article theme regression with prior pitfall",
+  "task": "Fix the Aurora article hero contrast regression while preserving the appearance of every other tenant. The renderer must honor an explicit tenant text-color override, the Aurora hero must meet WCAG AA contrast, and the complete test suite must pass. Do not weaken or rewrite the tests.",
+  "repositoryTree": "966f07829c3d89ff0ad4e7db19ea0724dc36ad86",
+  "baseline": {
+    "expectedToFail": true,
+    "testExitCode": 1,
+    "testDurationMs": 198,
+    "oracleExitCode": 1,
+    "oracleDurationMs": 65
+  },
+  "palaceSeed": {
+    "cli": "vertex-palace@0.1.6",
+    "routeOnly": {
+      "routeId": null,
+      "memorySeeded": false
+    },
+    "fullPalace": {
+      "routeId": "route_0ec783550a85ade4",
+      "memorySeeded": true
+    }
+  },
+  "paths": {
+    "run": ".",
+    "controlWorkspace": "arms/control",
+    "routeOnlyWorkspace": "arms/route-only",
+    "fullPalaceWorkspace": "arms/full-palace",
+    "controlPrompt": "prompts/control.txt",
+    "routeOnlyPrompt": "prompts/route-only.txt",
+    "fullPalacePrompt": "prompts/full-palace.txt"
+  },
+  "arms": {
+    "control": {
+      "commit": "b7a82fab146d561f459584c56879da3edcc5a348",
+      "tree": "966f07829c3d89ff0ad4e7db19ea0724dc36ad86"
+    },
+    "route-only": {
+      "commit": "b7a82fab146d561f459584c56879da3edcc5a348",
+      "tree": "966f07829c3d89ff0ad4e7db19ea0724dc36ad86"
+    },
+    "full-palace": {
+      "commit": "b7a82fab146d561f459584c56879da3edcc5a348",
+      "tree": "966f07829c3d89ff0ad4e7db19ea0724dc36ad86"
+    }
+  },
+  "generatedFileCount": 240,
+  "publishedFrom": ".benchmark-runs/<reviewed-local-run>",
+  "publication": {
+    "rawTranscriptsIncluded": false,
+    "sessionIdentifiersIncluded": false,
+    "localPathsIncluded": false
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 3,
+  "runId": "tenant-memory-pitfall-pilot-03",
+  "arm": "route-only",
+  "createdAt": "2026-07-18T20:30:22.161Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.1.6",
+  "execution": {
+    "durationMs": 129208,
+    "exitCode": 0,
+    "startedAt": "2026-07-18T20:28:12.608Z",
+    "endedAt": "2026-07-18T20:30:21.826Z",
+    "timedOut": false,
+    "sequence": 1,
+    "order": "route-only,full-palace,control"
+  },
+  "transcript": {
+    "eventCount": 64,
+    "malformedLines": 0,
+    "toolCalls": 29,
+    "commandCalls": 29,
+    "failedCalls": 5,
+    "commandOutputChars": 13767,
+    "agentMessageChars": 1906,
+    "inspectionCommands": 10,
+    "palaceCalls": 1,
+    "successfulPalaceCalls": 1,
+    "inspectedFiles": [
+      "clients/aurora/theme.mjs",
+      "clients/tenant-001/theme.mjs",
+      "clients/tenant-002/theme.mjs",
+      "clients/tenant-003/theme.mjs",
+      "package.json",
+      "src/clients/client-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-theme.mjs",
+      "test/article-page.test.mjs"
+    ],
+    "referencedFiles": [
+      "clients/aurora/theme.mjs",
+      "clients/borealis/theme.mjs",
+      "clients/cedar/theme.mjs",
+      "clients/tenant-001/theme.mjs",
+      "clients/tenant-002/theme.mjs",
+      "clients/tenant-003/theme.mjs",
+      "package.json",
+      "src/clients/client-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-theme.mjs",
+      "test/article-page.test.mjs"
+    ],
+    "usage": {
+      "inputTokens": 282402,
+      "cachedInputTokens": 262400,
+      "outputTokens": 4555,
+      "totalTokens": 286957,
+      "uncachedInputTokens": 20002
+    }
+  },
+  "runtimeDiagnostics": {
+    "stderrChars": 3227,
+    "warningLines": 2,
+    "errorLines": 7,
+    "routerErrors": 7
+  },
+  "validity": {
+    "verified": true,
+    "passed": true,
+    "reason": "1/1 successful/total Palace calls; expected 1/1; Codex exit code 0; timedOut=false; fixed execution settings match the run plan; fixture tree matches 966f07829c3d89ff0ad4e7db19ea0724dc36ad86"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": true,
+    "publicPassed": true,
+    "oraclePassed": true,
+    "exitCode": 0,
+    "durationMs": 192,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 0,
+    "oracleDurationMs": 60
+  },
+  "git": {
+    "status": [
+      "M clients/aurora/theme.mjs",
+      "M src/rendering/article-page.mjs"
+    ],
+    "changedFiles": [
+      "clients/aurora/theme.mjs",
+      "src/rendering/article-page.mjs"
+    ],
+    "untrackedFiles": [],
+    "numstat": [
+      {
+        "file": "clients/aurora/theme.mjs",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "file": "src/rendering/article-page.mjs",
+        "added": 1,
+        "deleted": 1
+      }
+    ],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "",
+    "headTree": "966f07829c3d89ff0ad4e7db19ea0724dc36ad86"
+  },
+  "score": {
+    "total": 100,
+    "points": {
+      "correctness": 60,
+      "expectedCoverage": 20,
+      "scope": 20
+    },
+    "testsPassed": true,
+    "expectedCoverage": 1,
+    "changedFileRecall": 1,
+    "changedFilePrecision": 1,
+    "forbiddenViolation": false,
+    "expectedMatched": [
+      "clients/aurora/theme.mjs",
+      "src/rendering/article-page.mjs"
+    ],
+    "expectedMissed": [],
+    "forbiddenChanged": [],
+    "unexpectedChanged": []
+  },
+  "success": true,
+  "route": {
+    "routeId": "route_b3fadf89753c86ff",
+    "confidence": 0.57,
+    "k": 8,
+    "recallAtK": 1,
+    "precisionAtK": 0.5,
+    "groundTruthFiles": [
+      "clients/aurora/theme.mjs",
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-theme.mjs",
+      "test/article-page.test.mjs"
+    ],
+    "matchedFiles": [
+      "clients/aurora/theme.mjs",
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-theme.mjs",
+      "test/article-page.test.mjs"
+    ],
+    "retrievedFiles": [
+      "test/article-page.test.mjs",
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-theme.mjs",
+      "clients/aurora/theme.mjs",
+      "clients/tenant-001/theme.mjs",
+      "clients/tenant-002/theme.mjs",
+      "clients/tenant-003/theme.mjs",
+      "src/clients/client-registry.mjs"
+    ]
+  },
+  "memory": {
+    "pitfallViolation": false,
+    "wrongMemoryAdopted": null
+  },
+  "palaceEvaluation": null
+}
