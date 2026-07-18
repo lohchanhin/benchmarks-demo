@@ -114,7 +114,8 @@ export async function prepareCommand(flags) {
   console.log(`Fixture files: ${fileSets[0].length}`);
   console.log(`Fixture seed: ${seed}`);
   console.log(`Git tree: ${gitStates.control.tree}`);
-  console.log(`Palace memory seeded: ${skipPalaceSeed ? "no" : "yes"}`);
+  console.log(`Palace preparation skipped: ${skipPalaceSeed ? "yes" : "no"}`);
+  console.log(`Full Palace history seeded: ${palaceSeed.fullPalace?.memorySeeded === true ? "yes" : "no"}`);
   console.log(`Next: npm run benchmark -- run --run-dir "${runDirectory}" --arm all --order seeded`);
   return { runDirectory, manifest };
 }

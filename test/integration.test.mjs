@@ -70,15 +70,17 @@ test("prepares identical arms, verifies repairs, and writes comparison reports",
   assert.match(markdown, /\+4\.0s/);
 });
 
-test("Palace preparation stays outside tracked fixture changes", async (context) => {
+test("Palace preparation records history truthfully and stays outside tracked fixture changes", async (context) => {
   const root = await mkdtemp(path.join(os.tmpdir(), "benchmark-palace-scope-"));
   context.after(() => rm(root, { recursive: true, force: true }));
-  const { runDirectory } = await prepareCommand(new Map([
+  const { runDirectory, manifest } = await prepareCommand(new Map([
     ["scenario", "small-local-bug"],
     ["run-id", "palace-scope"],
     ["seed", "palace-scope-seed"],
     ["runs-root", root]
   ]));
+  assert.equal(manifest.palaceSeed.routeOnly.memorySeeded, false);
+  assert.equal(manifest.palaceSeed.fullPalace.memorySeeded, false);
   const run = await loadRun(runDirectory);
   for (const arm of ["control", "route-only", "full-palace"]) {
     const git = await collectGitEvidence(run.workspace(arm));
