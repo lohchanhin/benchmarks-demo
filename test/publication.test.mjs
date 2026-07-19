@@ -4,7 +4,11 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { auditPublishedResults } from "../scripts/audit-results.mjs";
-import { publishRun, sanitizeForPublication } from "../scripts/publish-run.mjs";
+import {
+  publishRun,
+  resultDirectoryForProtocol,
+  sanitizeForPublication
+} from "../scripts/publish-run.mjs";
 import { writeJson } from "../src/lib/files.mjs";
 
 test("publication sanitizer removes session identifiers and local paths", () => {
@@ -20,6 +24,13 @@ test("publication sanitizer removes session identifiers and local paths", () => 
   assert.equal("threadId" in sanitized.nested, false);
   assert.equal(sanitized.nested.cli, "vertex-palace (local package)");
   assert.equal(sanitized.nested.message, "opened <local-path>");
+});
+
+test("maps every frozen adaptive protocol to an explicit publication directory", () => {
+  assert.equal(resultDirectoryForProtocol("2.0.0"), "adaptive-pilot");
+  assert.equal(resultDirectoryForProtocol("2.1.0"), "adaptive-pilot-v2.1");
+  assert.equal(resultDirectoryForProtocol("2.2.0"), "adaptive-pilot-v2.2");
+  assert.throws(() => resultDirectoryForProtocol("2.3.0"), /No publication directory/);
 });
 
 test("publishes a complete sanitized evidence bundle and updates the public manifest", async () => {

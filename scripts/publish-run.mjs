@@ -123,9 +123,16 @@ async function updateResultsManifest(trialId, outputRoot, manifestPath, comparis
   await writeJson(manifestPath, manifest);
 }
 
-function resultDirectoryForProtocol(protocolVersion) {
-  if (protocolVersion === "2.0.0") return "adaptive-pilot";
-  if (protocolVersion === "2.1.0") return "adaptive-pilot-v2.1";
+export function resultDirectoryForProtocol(protocolVersion) {
+  const adaptiveDirectories = {
+    "2.0.0": "adaptive-pilot",
+    "2.1.0": "adaptive-pilot-v2.1",
+    "2.2.0": "adaptive-pilot-v2.2"
+  };
+  if (protocolVersion in adaptiveDirectories) return adaptiveDirectories[protocolVersion];
+  if (String(protocolVersion).startsWith("2.")) {
+    throw new Error(`No publication directory is registered for protocol ${protocolVersion}`);
+  }
   return "pilot";
 }
 

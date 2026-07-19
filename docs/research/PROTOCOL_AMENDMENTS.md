@@ -107,6 +107,30 @@ manifest is frozen at `protocol-v2.2.0` before any v2.2 agent execution.
 - Commit and tag: the diagnostic checkpoint was published before protocol
   v2.2; the final applicability commit is tagged `protocol-v2.2.0`.
 
+## A-004: Post-Outcome v2.2 Publication Directory Registration
+
+- Date: 2026-07-19
+- Author: project maintainer with Codex
+- Timing disclosure: all four outcomes from
+  `small-local-bug-adaptive-v2-2-pilot-01` had already been generated and
+  inspected, but no v2.2 evidence had been published.
+- Reason: the publication helper explicitly mapped protocols v2.0 and v2.1,
+  then silently fell back to the legacy `results/pilot` directory for an
+  unknown version. Protocol v2.2 therefore would have been published under the
+  wrong study root.
+- Old behavior: `resultDirectoryForProtocol("2.2.0")` returned `pilot`.
+- New behavior: v2.2 maps to `adaptive-pilot-v2.2`; any unregistered `2.x`
+  version throws instead of silently falling back.
+- Affected data: publication location only. No prompt, fixture, seed, order,
+  arm execution, duration, Token count, test, oracle, validity, or comparison
+  value is changed or recomputed.
+- Outcome handling: the local raw run remains unchanged. Publication waits
+  until this amendment, implementation, and regression test are pushed.
+- Applicability: reporting only, beginning with the first v2.2 result. It does
+  not authorize a rerun and does not alter the frozen treatment protocol.
+- Commit: the publication-only correction is committed and pushed before the
+  first v2.2 evidence bundle is generated.
+
 ## Amendment Template
 
 Each future entry must contain:
