@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 3,
+  "protocolVersion": "2.2.0",
+  "id": "stale-memory-adversarial-adaptive-v2-2-pilot-02",
+  "createdAt": "2026-07-19T06:43:18.820Z",
+  "seed": "fb6313d6b1a8350e0894afa536930bf6",
+  "scenario": "stale-memory-adversarial",
+  "scenarioTitle": "Stale scheduler-configuration memory",
+  "task": "Fix the v2 batch scheduler returning a limit of 10 instead of the configured limit of 25. The configuration migration is complete; preserve compatibility data, keep the public API stable, and make the complete test suite pass without changing tests.",
+  "cacheState": "cold",
+  "repositoryTree": "6132ce8f5ee8c967d5a0b1ab91e8e51d4695b9a5",
+  "baseline": {
+    "expectedToFail": true,
+    "testExitCode": 1,
+    "testDurationMs": 189,
+    "oracleExitCode": 1,
+    "oracleDurationMs": 112
+  },
+  "palaceSeed": {
+    "cli": "vertex-palace (local package)",
+    "routeOnly": {
+      "routeId": null,
+      "memorySeeded": false
+    },
+    "fullPalace": {
+      "routeId": "route_3f0cc2080055f617",
+      "memorySeeded": true
+    },
+    "adaptivePalace": {
+      "routeId": "route_f105ed50d0e77776",
+      "memorySeeded": true
+    }
+  },
+  "paths": {
+    "run": ".",
+    "controlWorkspace": "arms/control",
+    "routeOnlyWorkspace": "arms/route-only",
+    "fullPalaceWorkspace": "arms/full-palace",
+    "controlPrompt": "prompts/control.txt",
+    "routeOnlyPrompt": "prompts/route-only.txt",
+    "fullPalacePrompt": "prompts/full-palace.txt",
+    "adaptivePalaceWorkspace": "arms/adaptive-palace",
+    "adaptivePalacePrompt": "prompts/adaptive-palace.txt"
+  },
+  "arms": {
+    "control": {
+      "commit": "eb353fd2e184a0fe425241f3f05e088e137fe29e",
+      "tree": "6132ce8f5ee8c967d5a0b1ab91e8e51d4695b9a5"
+    },
+    "route-only": {
+      "commit": "eb353fd2e184a0fe425241f3f05e088e137fe29e",
+      "tree": "6132ce8f5ee8c967d5a0b1ab91e8e51d4695b9a5"
+    },
+    "full-palace": {
+      "commit": "eb353fd2e184a0fe425241f3f05e088e137fe29e",
+      "tree": "6132ce8f5ee8c967d5a0b1ab91e8e51d4695b9a5"
+    },
+    "adaptive-palace": {
+      "commit": "eb353fd2e184a0fe425241f3f05e088e137fe29e",
+      "tree": "6132ce8f5ee8c967d5a0b1ab91e8e51d4695b9a5"
+    }
+  },
+  "generatedFileCount": 93,
+  "publishedFrom": ".benchmark-runs/<reviewed-local-run>",
+  "publication": {
+    "rawTranscriptsIncluded": false,
+    "sessionIdentifiersIncluded": false,
+    "localPathsIncluded": false
+  }
+}

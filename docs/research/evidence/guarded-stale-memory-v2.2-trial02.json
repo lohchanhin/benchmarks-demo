@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "observationId": "guarded-stale-memory-v2.2-trial02",
+  "protocolVersion": "2.2.0",
+  "vertexPalaceVersion": "0.2.1",
+  "trialId": "stale-memory-adversarial-adaptive-v2-2-pilot-02",
+  "fixture": {
+    "cacheState": "cold",
+    "fullPalaceHistorySeeded": true,
+    "adaptivePalaceHistorySeeded": true
+  },
+  "fullPalace": {
+    "contextBytes": 3127,
+    "contextOutputSha256": "3460a17b12cdaca90fdf3963516d970da568a5fbb45dac606bf6fddbfa062c00",
+    "v1PitfallPresent": true,
+    "v1FailedAttemptPresent": true,
+    "currentCodeGuardrailPresent": false,
+    "legacyWarningGuardrailPresent": false,
+    "wrongMemoryAdopted": false
+  },
+  "adaptivePalace": {
+    "mode": "guarded-memory-palace",
+    "contextBytes": 2894,
+    "contextEstimatedTokens": 724,
+    "contextOutputSha256": "125401ff06cb9b5f581feb640f8cab17b8312f6f1f39e7409a3984094d6bb250",
+    "memoryItemCount": 2,
+    "memoryEstimatedTokens": 166,
+    "guardrailCount": 2,
+    "v1PitfallPresent": true,
+    "v1FailedAttemptPresent": true,
+    "currentCodeGuardrailPresent": true,
+    "legacyWarningGuardrailPresent": true,
+    "wrongMemoryAdopted": false
+  },
+  "outcome": {
+    "validArms": 4,
+    "successfulArms": 4,
+    "wrongMemoryAdoptions": 0,
+    "allPublicTestsPassed": true,
+    "allHiddenOraclesPassed": true
+  },
+  "classification": "expected guarded-memory treatment behavior reproduced; correctness tied in this trial",
+  "publicEvidence": [
+    "results/adaptive-pilot-v2.2/stale-memory-adversarial-adaptive-v2-2-pilot-02/adaptive-palace-evidence.json",
+    "results/adaptive-pilot-v2.2/stale-memory-adversarial-adaptive-v2-2-pilot-02/full-palace-evidence.json",
+    "results/adaptive-pilot-v2.2/stale-memory-adversarial-adaptive-v2-2-pilot-02/comparison.json"
+  ]
+}
