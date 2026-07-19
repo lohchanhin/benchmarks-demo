@@ -185,6 +185,31 @@
         "adaptive-palace": true
       },
       "publishedAt": "2026-07-19T05:33:47.811Z"
+    },
+    {
+      "trialId": "cross-stack-regression-adaptive-v2-2-pilot-04",
+      "scenario": "cross-stack-regression",
+      "seed": "e26530975176e6d24aa4c62d7503d742",
+      "order": [
+        "control",
+        "route-only",
+        "adaptive-palace",
+        "full-palace"
+      ],
+      "status": "completed",
+      "attemptedAt": "2026-07-19T05:41:27.217Z",
+      "report": "cross-stack-regression-adaptive-v2-2-pilot-04/comparison.json",
+      "error": null,
+      "evidenceDirectory": "cross-stack-regression-adaptive-v2-2-pilot-04",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-19T05:41:59.407Z"
     }
   ]
 }

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 3,
+  "protocolVersion": "2.2.0",
+  "id": "cross-stack-regression-adaptive-v2-2-pilot-04",
+  "createdAt": "2026-07-19T05:35:41.379Z",
+  "seed": "e26530975176e6d24aa4c62d7503d742",
+  "scenario": "cross-stack-regression",
+  "scenarioTitle": "Cross-stack discounted shipping quote regression",
+  "task": "Fix checkout shipping quotes end to end. Free shipping must use the discounted merchandise subtotal, and the checkout view model must display the shipping amount returned by the quote service. Preserve the public response contract and make the complete test suite pass without changing tests.",
+  "cacheState": "cold",
+  "repositoryTree": "cee0f66fa29aa8bad8dcde2e3c22b899306132b0",
+  "baseline": {
+    "expectedToFail": true,
+    "testExitCode": 1,
+    "testDurationMs": 187,
+    "oracleExitCode": 1,
+    "oracleDurationMs": 65
+  },
+  "palaceSeed": {
+    "cli": "vertex-palace (local package)",
+    "routeOnly": {
+      "routeId": null,
+      "memorySeeded": false
+    },
+    "fullPalace": {
+      "routeId": null,
+      "memorySeeded": false
+    },
+    "adaptivePalace": {
+      "routeId": null,
+      "memorySeeded": false
+    }
+  },
+  "paths": {
+    "run": ".",
+    "controlWorkspace": "arms/control",
+    "routeOnlyWorkspace": "arms/route-only",
+    "fullPalaceWorkspace": "arms/full-palace",
+    "controlPrompt": "prompts/control.txt",
+    "routeOnlyPrompt": "prompts/route-only.txt",
+    "fullPalacePrompt": "prompts/full-palace.txt",
+    "adaptivePalaceWorkspace": "arms/adaptive-palace",
+    "adaptivePalacePrompt": "prompts/adaptive-palace.txt"
+  },
+  "arms": {
+    "control": {
+      "commit": "c24ec4a945aa0a990f6c36b5cc3dbed3f8c70d84",
+      "tree": "cee0f66fa29aa8bad8dcde2e3c22b899306132b0"
+    },
+    "route-only": {
+      "commit": "c24ec4a945aa0a990f6c36b5cc3dbed3f8c70d84",
+      "tree": "cee0f66fa29aa8bad8dcde2e3c22b899306132b0"
+    },
+    "full-palace": {
+      "commit": "c24ec4a945aa0a990f6c36b5cc3dbed3f8c70d84",
+      "tree": "cee0f66fa29aa8bad8dcde2e3c22b899306132b0"
+    },
+    "adaptive-palace": {
+      "commit": "c24ec4a945aa0a990f6c36b5cc3dbed3f8c70d84",
+      "tree": "cee0f66fa29aa8bad8dcde2e3c22b899306132b0"
+    }
+  },
+  "generatedFileCount": 87,
+  "publishedFrom": ".benchmark-runs/<reviewed-local-run>",
+  "publication": {
+    "rawTranscriptsIncluded": false,
+    "sessionIdentifiersIncluded": false,
+    "localPathsIncluded": false
+  }
+}

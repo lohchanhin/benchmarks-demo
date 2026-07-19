@@ -79,13 +79,14 @@ seconds. This first completed block and its
 [scenario report](docs/research/SMALL_LOCAL_V2_2_BLOCK.md) are
 descriptive only and do not establish a general efficiency advantage.
 
-The first three cross-stack trials then brought the study to 7/16. All twelve
-arms found both required client/server changes and passed every validity gate.
-Adaptive selected `full-palace` in all three. Its paired medians versus Full
-are -929 Palace bytes, -7,710 uncached input tokens, +2 tool calls, and -11.443
-seconds, but +26,831 reported tokens. The third trial reversed the earlier
-timing direction, so the [published interim evidence](results/adaptive-pilot-v2.2/README.md)
-remains descriptive rather than an effect estimate.
+The complete four-trial cross-stack block then brought the study to 8/16. All
+16 arms found both required client/server changes and passed every validity
+gate. Adaptive selected `full-palace` in all four. Its paired medians versus
+Full are -929 Palace bytes, -2,083 uncached input tokens, -2 tool calls, and
+-16.483 seconds, but +25,709.5 reported tokens. Every interval except the
+Palace payload reduction includes zero. The
+[completed block report](docs/research/CROSS_STACK_V2_2_BLOCK.md) also shows
+that Adaptive remained slower and more call-heavy than Control.
 
 Validate the frozen plan without running an agent:
 
