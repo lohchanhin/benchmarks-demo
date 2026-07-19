@@ -91,6 +91,15 @@ test("prepares identical arms, verifies repairs, and writes comparison reports",
   const taskMismatch = await verifyArm(run, "route-only");
   assert.equal(taskMismatch.taskFidelityPassed, false);
   assert.equal(taskMismatch.validity.passed, false);
+
+  await writeFile(
+    path.join(artifacts, "adaptive-palace-stderr.log"),
+    "ERROR codex_core::tools::router: failed to prepare fs sandbox: split writable root sets\n",
+    "utf8"
+  );
+  const sandboxMismatch = await verifyArm(run, "adaptive-palace");
+  assert.equal(sandboxMismatch.runtimeDiagnostics.sandboxPreparationErrors, 1);
+  assert.equal(sandboxMismatch.validity.passed, false);
 });
 
 test("Palace preparation records history truthfully and stays outside tracked fixture changes", async (context) => {

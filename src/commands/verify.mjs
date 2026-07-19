@@ -42,6 +42,7 @@ export async function verifyArm(run, arm) {
     ? path.resolve(run.runDirectory, execution.stderrPath)
     : path.join(artifacts, `${arm}-stderr.log`);
   const stderrSource = (await pathExists(stderrPath)) ? await readFile(stderrPath, "utf8") : "";
+  const runtimeDiagnostics = parseCodexStderr(stderrSource);
   const workspaceFiles = await listFiles(workspace);
   const transcript = parseCodexTranscript(transcriptSource, workspaceFiles);
   const git = await collectGitEvidence(workspace);
@@ -88,10 +89,12 @@ export async function verifyArm(run, arm) {
       && execution.lastMessageTransport === runPlan.lastMessageTransport
     ))
   );
+  const harnessConformancePassed = run.manifest.protocolVersion !== "2.2.0"
+    || runtimeDiagnostics.sandboxPreparationErrors === 0;
   const validity = transcriptSource
     ? {
         verified: true,
-        passed: modePassed && settingsPassed && treePassed,
+        passed: modePassed && settingsPassed && treePassed && harnessConformancePassed,
         reason: [
           arm === "control"
             ? `${transcript.palaceCalls} Palace calls detected; expected 0`
@@ -101,6 +104,8 @@ export async function verifyArm(run, arm) {
               + `taskFidelity=${taskFidelityPassed}`,
           execution ? `Codex exit code ${execution.exitCode}; timedOut=${Boolean(execution.timedOut)}` : "Codex exit code unavailable",
           `fixed execution settings ${settingsPassed ? "match" : "do not match"} the run plan`,
+          `sandbox preparation errors=${runtimeDiagnostics.sandboxPreparationErrors}; `
+            + `expected ${run.manifest.protocolVersion === "2.2.0" ? 0 : "not frozen"}`,
           `fixture tree ${treePassed ? "matches" : "does not match"} ${run.manifest.repositoryTree}`
         ].join("; ")
       }
@@ -132,7 +137,7 @@ export async function verifyArm(run, arm) {
       : null,
     transcript,
     taskFidelityPassed: arm === "control" ? null : taskFidelityPassed,
-    runtimeDiagnostics: parseCodexStderr(stderrSource),
+    runtimeDiagnostics,
     validity,
     tests: {
       command: run.scenario.testCommand.join(" "),

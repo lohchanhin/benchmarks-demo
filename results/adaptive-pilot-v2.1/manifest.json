@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "protocolVersion": "2.1.0",
-  "status": "pilot-in-progress",
+  "status": "pilot-retired-after-infrastructure-conformance-defect",
   "plannedTrials": 16,
   "plannedScenarios": [
     "small-local-bug",
@@ -28,6 +28,8 @@
       "evidenceDirectory": "small-local-bug-adaptive-v2-1-pilot-01",
       "rawTranscriptsPublished": false,
       "comparisonEligible": true,
+      "efficiencyAnalysisEligible": false,
+      "infrastructureNoise": "All four arms encountered Windows sandbox-preparation failures before unequal fallback recovery.",
       "armValidity": {
         "control": true,
         "route-only": true,

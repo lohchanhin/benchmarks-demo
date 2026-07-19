@@ -7,7 +7,7 @@
 - **Full Palace**：路线、Context Pack、Pitfall Board 与历史记忆全部启用。
 - **Adaptive Palace（v2）**：与 Full 使用相同记忆，但只调用一次 `palace context --auto`，由工具选择最小安全模式。
 
-[English](README.md) | [v1 研究协议](docs/research/PROTOCOL.md) | [Adaptive v2.1 协议](docs/research/PROTOCOL_V2_1.md) | [协议修订](docs/research/PROTOCOL_AMENDMENTS.md) | [测试方法](METHODOLOGY.md) | [影片指南](DEMO.md)
+[English](README.md) | [v1 研究协议](docs/research/PROTOCOL.md) | [Adaptive v2.2 协议](docs/research/PROTOCOL_V2_2.md) | [协议修订](docs/research/PROTOCOL_AMENDMENTS.md) | [测试方法](METHODOLOGY.md) | [影片指南](DEMO.md)
 
 ## 可证伪假设
 
@@ -21,7 +21,7 @@
 误导，全部都是必须保留的有效结果。新实验的指标、排除规则和统计方法已先在
 `protocol-v1.0.0` tag 冻结。
 
-## Adaptive v2.1 后继研究
+## Adaptive v2.2 后继研究
 
 v1 的 Full Palace 没有观察到端到端效率优势，所以 v2 不是改写旧结论，而是测试新的 Adaptive treatment。第一个冻结的 v2.0 trial 在结果已被查看后，才发现 PowerShell 把 Palace 三个 Arm 的 `$0.00` 改成了 `.00`。这次尝试完整保留为[公开但不可比较的结果](results/adaptive-pilot/small-local-bug-adaptive-pilot-01/comparison.md)：Control 单独有效，三个 Palace Arm 都没有通过任务文字一致性检查，`comparable` 为 `false`，所有效率差值为 `null`。
 
@@ -31,11 +31,13 @@ v1 的 Full Palace 没有观察到端到端效率优势，所以 v2 不是改写
 
 v2.1 主比较是 Adaptive 相对 Full Palace 的正确性；只有双方都有效且正确完成，才比较 Palace payload、Codex Token、工具调用和时间。第一组 v2.1 四个 Arm 均有效且正确；Adaptive 相对 Full 的 payload 少 868 bytes、调用少 9 次、reported tokens 少 135,969，但慢 4.1 秒且 uncached input 多 2,392。这只是单组 interim 结果，不是普遍效率结论。完整[结果与基础设施噪声说明](results/adaptive-pilot-v2.1/README.md)已公开；因为发现 Windows split writable roots 导致四臂都发生 `apply_patch` 失败，剩余 v2.1 计划停止执行，不会悄悄续跑。
 
+新的 [v2.2 协议](docs/research/PROTOCOL_V2_2.md)与[冻结计划](results/adaptive-pilot-v2.2/plan.json)使用全新的 trial id 与 seed，并额外冻结 `win32`、`workspace-write/windows-elevated`，以及“先写在 Arm 工作区、Codex 结束后再搬到 artifacts”的 last-message 传递方式。任何 sandbox preparation 错误都会让对应 Arm 基础设施无效。冻结前另做了一次不计入研究结果的完整闸门测试：仓库内固定的 Palace、原生 `apply_patch`、公开测试与隐藏 Oracle 全部通过，router error 为 0。脱敏的[诊断过程与失败假设](docs/research/HARNESS_DIAGNOSTICS.md)已公开；冻结时 v2.2 仍是 0 个正式结果。
+
 ```sh
 npm ci
-npm run benchmark -- study --plan results/adaptive-pilot-v2.1/plan.json
+npm run benchmark -- study --plan results/adaptive-pilot-v2.2/plan.json
 # 确认版本与环境后才执行：
-npm run benchmark -- study --plan results/adaptive-pilot-v2.1/plan.json --execute
+npm run benchmark -- study --plan results/adaptive-pilot-v2.2/plan.json --execute
 npm run analysis:adaptive
 ```
 
@@ -201,7 +203,7 @@ npm run benchmark -- report --run-dir .benchmark-runs/demo-01
 
 ```sh
 npm run check
-npm run benchmark -- study --plan results/adaptive-pilot-v2.1/plan.json
+npm run benchmark -- study --plan results/adaptive-pilot-v2.2/plan.json
 ```
 
 `npm run check` 会验证 harness，并对四个 fixture 证明：原始版本必须同时被公开

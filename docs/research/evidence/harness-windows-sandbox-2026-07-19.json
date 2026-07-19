@@ -71,14 +71,43 @@
       "onlyRequestedSourceChanged": true,
       "unrelatedGlobalPalaceInvocationFailed": true,
       "note": "The smoke inherited global Palace guidance and resolved a user-global shim. Formal arms must verify the repository-local pinned Palace invocation before protocol freeze."
+    },
+    {
+      "id": "D5",
+      "windowsSandbox": "elevated",
+      "lastMessageTransport": "workspace-local-then-artifacts-v1",
+      "pipeline": "exact adaptive benchmark arm",
+      "palacePackage": "repository-local vertex-palace@0.2.1",
+      "cacheState": "warm",
+      "durationMs": 54543,
+      "exitCode": 0,
+      "splitWritableRootError": false,
+      "nativeApplyPatchFailure": false,
+      "routerErrors": 0,
+      "sandboxPreparationErrors": 0,
+      "palaceCalls": 1,
+      "successfulPalaceCalls": 1,
+      "palaceContextBytes": 1218,
+      "palaceContextEstimatedTokens": 305,
+      "adaptiveMode": "route-lite",
+      "taskFidelityPassed": true,
+      "publicTestsPassed": true,
+      "hiddenOraclePassed": true,
+      "score": 100,
+      "changedFiles": [
+        "src/format-currency.mjs"
+      ],
+      "temporaryLastMessageRemainedInWorkspace": false,
+      "researchOutcome": false
     }
   ],
   "conclusion": {
     "externalLastMessageWasSoleCause": false,
     "unelevatedFailurePersistedAfterEnvironmentIsolation": true,
     "elevatedSandboxEnabledNativePatch": true,
-    "readyToFreezeSuccessorProtocol": false,
-    "remainingGate": "Run an exact repository-local Vertex Palace context and native-patch smoke under the proposed fixed execution profile."
+    "repositoryLocalPipelinePassed": true,
+    "readyToFreezeSuccessorProtocol": true,
+    "remainingGate": null
   },
   "privacy": {
     "rawLogsPublished": false,

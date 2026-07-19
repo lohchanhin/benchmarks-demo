@@ -25,6 +25,8 @@ test("builds transparent control-minus-palace deltas", () => {
   assert.equal(report.delta.referencedFilesSaved, 2);
   assert.equal(report.delta.reportedTokensSaved, 1500);
   assert.equal(report.delta.failedCallsSaved, 0);
+  assert.equal(report.delta.applyPatchVerificationErrorsSaved, 0);
+  assert.equal(report.delta.sandboxPreparationErrorsSaved, 0);
   assert.equal(report.delta.commandOutputCharsSaved, 0);
   assert.equal(report.delta.uncachedInputTokensSaved, 1500);
   assert.deepEqual(report.execution.order, ["control", "full-palace"]);
@@ -104,7 +106,11 @@ function armEvidence({ arm, durationMs, toolCalls, palaceCalls, tokens }) {
         totalTokens: tokens
       }
     },
-    runtimeDiagnostics: { routerErrors: 0 },
+    runtimeDiagnostics: {
+      routerErrors: 0,
+      applyPatchVerificationErrors: 0,
+      sandboxPreparationErrors: 0
+    },
     git: { changedFiles: ["a.mjs"] },
     palaceEvaluation: null
   };

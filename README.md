@@ -7,7 +7,7 @@ A public, preregistered, reproducible experiment comparing Codex repository
 work with no Palace, structural routing only, always-on Full Palace, and
 Adaptive Palace.
 
-[Simplified Chinese](README.zh-CN.md) | [v1 protocol](docs/research/PROTOCOL.md) | [Adaptive v2.1 protocol](docs/research/PROTOCOL_V2_1.md) | [Amendments](docs/research/PROTOCOL_AMENDMENTS.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
+[Simplified Chinese](README.zh-CN.md) | [v1 protocol](docs/research/PROTOCOL.md) | [Adaptive v2.2 protocol](docs/research/PROTOCOL_V2_2.md) | [Amendments](docs/research/PROTOCOL_AMENDMENTS.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
 
 ## Falsifiable Claims
 
@@ -24,7 +24,7 @@ The exact outcomes, -10 percentage-point pilot non-inferiority margin,
 exclusions, and statistics were committed before the new trials at tag
 [`protocol-v1.0.0`](https://github.com/lohchanhin/benchmarks-ab-demo/tree/protocol-v1.0.0).
 
-## Adaptive v2.1 Successor Study
+## Adaptive v2.2 Successor Study
 
 The published v1 pilot found no end-to-end efficiency win for always-on Full
 Palace. That negative result motivated a new treatment rather than a rewritten
@@ -59,20 +59,33 @@ not a general efficiency claim. The [full disclosure](results/adaptive-pilot-v2.
 also records a Windows split-writable-root error that added unequal recovery
 noise, so the remaining v2.1 plan is retired rather than silently continued.
 
+The [v2.2 protocol](docs/research/PROTOCOL_V2_2.md) and
+[fresh frozen plan](results/adaptive-pilot-v2.2/plan.json) repeat the 4 x 4 x 4
+design with new ids and seeds. They additionally freeze `win32`,
+`workspace-write/windows-elevated`, and a workspace-local last-message file
+that the parent harness relocates only after Codex exits. Any sandbox-
+preparation diagnostic invalidates the affected arm. Before freezing, an
+explicitly non-study pipeline smoke passed repository-local Palace context,
+native `apply_patch`, public tests, and the hidden oracle with zero router
+errors. The [sanitized diagnostic record](docs/research/HARNESS_DIAGNOSTICS.md)
+is public; no v2.2 treatment outcome existed at freeze.
+
 Validate the frozen plan without running an agent:
 
 ```sh
 npm ci
-npm run benchmark -- study --plan results/adaptive-pilot-v2.1/plan.json
+npm run benchmark -- study --plan results/adaptive-pilot-v2.2/plan.json
 ```
 
-The historical execution command is shown for reproducibility, not for
-continuing the retired v2.1 plan:
+After checking out tag `protocol-v2.2.0`, execute or resume the frozen study:
 
 ```sh
-npm run benchmark -- study --plan results/adaptive-pilot-v2.1/plan.json --execute
+npm run benchmark -- study --plan results/adaptive-pilot-v2.2/plan.json --execute
 npm run analysis:adaptive
 ```
+
+The retired v2.1 analysis remains reproducible with
+`npm run analysis:adaptive:v2.1`; its remaining planned trials must not be run.
 
 ## Reproduce The Published v1 Pilot
 
@@ -316,6 +329,8 @@ results/
   adaptive-pilot/manifest.json
   adaptive-pilot-v2.1/plan.json
   adaptive-pilot-v2.1/manifest.json
+  adaptive-pilot-v2.2/plan.json
+  adaptive-pilot-v2.2/manifest.json
   confirmatory/
 ```
 
@@ -329,11 +344,11 @@ remain in `results/manifest.json`.
 - Node.js 20 or newer
 - Git
 - Authenticated `codex-cli 0.145.0-alpha.18` for the frozen pilot
-- `vertex-palace@0.2.1`, installed by `npm ci` for protocol v2.1
+- `vertex-palace@0.2.1`, installed by `npm ci` for protocols v2.1 and v2.2
 
 ```sh
 npm run check
-npm run benchmark -- study --plan results/adaptive-pilot-v2.1/plan.json
+npm run benchmark -- study --plan results/adaptive-pilot-v2.2/plan.json
 ```
 
 The repository is licensed under the [MIT License](LICENSE).

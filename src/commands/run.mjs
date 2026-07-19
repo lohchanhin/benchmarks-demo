@@ -38,6 +38,7 @@ export async function runCommand(flags) {
   const palaceVersion = await installedPalaceVersion();
   assertExpectedVersion("Codex CLI", codexVersion, stringFlag(flags, "expected-codex-version", undefined));
   assertExpectedVersion("Vertex Palace", palaceVersion, stringFlag(flags, "expected-palace-version", undefined));
+  const executionEnvironment = benchmarkExecutionEnvironment();
   const runPlanPath = path.join(artifacts, "run-plan.json");
   const proposedPlan = {
     schemaVersion: 3,
@@ -50,9 +51,7 @@ export async function runCommand(flags) {
     reasoningEffort,
     codexVersion,
     palaceVersion,
-    platform: process.platform,
-    sandboxProfile: sandboxProfile(),
-    lastMessageTransport: LAST_MESSAGE_TRANSPORT,
+    ...executionEnvironment,
     cacheState: run.manifest.cacheState ?? "unrecorded",
     seed: run.manifest.seed,
     createdAt: new Date().toISOString()
@@ -101,9 +100,7 @@ export async function runCommand(flags) {
       reasoningEffort,
       codexVersion,
       palaceVersion: arm === "control" ? null : palaceVersion,
-      platform: process.platform,
-      sandboxProfile: sandboxProfile(),
-      lastMessageTransport: LAST_MESSAGE_TRANSPORT,
+      ...executionEnvironment,
       startedAt: result.startedAt,
       endedAt: result.endedAt,
       durationMs: result.durationMs,
@@ -190,10 +187,14 @@ async function relocateLastMessage(source, target) {
   }
 }
 
-function sandboxProfile() {
-  return process.platform === "win32"
-    ? `workspace-write/windows-${WINDOWS_SANDBOX_MODE}`
-    : "workspace-write";
+export function benchmarkExecutionEnvironment() {
+  return {
+    platform: process.platform,
+    sandboxProfile: process.platform === "win32"
+      ? `workspace-write/windows-${WINDOWS_SANDBOX_MODE}`
+      : "workspace-write",
+    lastMessageTransport: LAST_MESSAGE_TRANSPORT
+  };
 }
 
 function seededOrder(arms, seed) {

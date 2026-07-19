@@ -1,7 +1,12 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { adaptiveWilliamsOrders, buildAdaptivePilotPlan, validateStudyPlan } from "../src/commands/study.mjs";
+import {
+  adaptiveWilliamsOrders,
+  buildAdaptivePilotPlan,
+  studyCommand,
+  validateStudyPlan
+} from "../src/commands/study.mjs";
 import { repositoryRoot } from "../src/lib/root.mjs";
 
 test("committed pilot plan has five paired seeds and distinct orders per scenario", async () => {
@@ -27,8 +32,11 @@ test("adaptive pilot balances four arms, positions, and Palace index state", () 
   const plan = buildAdaptivePilotPlan({ codexVersion: "codex-cli test" });
   plan.frozen = true;
   assert.equal(validateStudyPlan(plan), true);
-  assert.equal(plan.protocolVersion, "2.1.0");
+  assert.equal(plan.protocolVersion, "2.2.0");
   assert.equal(plan.execution.palaceVersion, "0.2.1");
+  assert.equal(plan.execution.platform, "win32");
+  assert.equal(plan.execution.sandboxProfile, "workspace-write/windows-elevated");
+  assert.equal(plan.execution.lastMessageTransport, "workspace-local-then-artifacts-v1");
   assert.equal(plan.trials.length, 16);
 
   for (const scenario of [
@@ -76,5 +84,36 @@ test("committed successor plan uses fresh v2.1 ids and seeds", async () => {
     true
   );
   const oldSeeds = new Set(v2.trials.map((trial) => trial.seed));
+  assert.equal(successor.trials.some((trial) => oldSeeds.has(trial.seed)), false);
+});
+
+test("refuses to execute a retired adaptive protocol", async () => {
+  await assert.rejects(
+    studyCommand(new Map([
+      ["plan", `${repositoryRoot}/results/adaptive-pilot-v2.1/plan.json`],
+      ["execute", true]
+    ])),
+    /Protocol 2\.1\.0 is retired/
+  );
+});
+
+test("committed v2.2 plan freezes the corrected harness with fresh ids and seeds", async () => {
+  const [v2, v21, successor] = await Promise.all([
+    readFile(`${repositoryRoot}/results/adaptive-pilot/plan.json`, "utf8").then(JSON.parse),
+    readFile(`${repositoryRoot}/results/adaptive-pilot-v2.1/plan.json`, "utf8").then(JSON.parse),
+    readFile(`${repositoryRoot}/results/adaptive-pilot-v2.2/plan.json`, "utf8").then(JSON.parse)
+  ]);
+
+  assert.equal(validateStudyPlan(successor), true);
+  assert.equal(successor.protocolVersion, "2.2.0");
+  assert.equal(successor.execution.platform, "win32");
+  assert.equal(successor.execution.sandboxProfile, "workspace-write/windows-elevated");
+  assert.equal(successor.execution.lastMessageTransport, "workspace-local-then-artifacts-v1");
+  assert.equal(successor.trials.length, 16);
+  assert.equal(
+    successor.trials.every((trial) => trial.trialId.includes("-adaptive-v2-2-pilot-")),
+    true
+  );
+  const oldSeeds = new Set([...v2.trials, ...v21.trials].map((trial) => trial.seed));
   assert.equal(successor.trials.some((trial) => oldSeeds.has(trial.seed)), false);
 });

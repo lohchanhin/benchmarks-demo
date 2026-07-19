@@ -6,7 +6,7 @@ import { pathExists, readJson, writeJson } from "../lib/files.mjs";
 import { repositoryRoot } from "../lib/root.mjs";
 import { pilotScenarioIds } from "../lib/scenario.mjs";
 import { prepareCommand } from "./prepare.mjs";
-import { orderedArms, runCommand } from "./run.mjs";
+import { benchmarkExecutionEnvironment, orderedArms, runCommand } from "./run.mjs";
 
 export const adaptiveWilliamsOrders = Object.freeze([
   ["control", "route-only", "adaptive-palace", "full-palace"],
@@ -21,14 +21,28 @@ const adaptiveProtocols = Object.freeze({
     palaceVersion: "0.2.0",
     resultDirectory: "adaptive-pilot",
     studyId: "vertex-palace-adaptive-four-scenario-pilot-v2",
-    trialLabel: "adaptive-pilot"
+    trialLabel: "adaptive-pilot",
+    retired: true
   },
   "2.1.0": {
     tag: "protocol-v2.1.0",
     palaceVersion: "0.2.1",
     resultDirectory: "adaptive-pilot-v2.1",
     studyId: "vertex-palace-adaptive-four-scenario-pilot-v2-1",
-    trialLabel: "adaptive-v2-1-pilot"
+    trialLabel: "adaptive-v2-1-pilot",
+    retired: true
+  },
+  "2.2.0": {
+    tag: "protocol-v2.2.0",
+    palaceVersion: "0.2.1",
+    resultDirectory: "adaptive-pilot-v2.2",
+    studyId: "vertex-palace-adaptive-four-scenario-pilot-v2-2",
+    trialLabel: "adaptive-v2-2-pilot",
+    executionEnvironment: {
+      platform: "win32",
+      sandboxProfile: "workspace-write/windows-elevated",
+      lastMessageTransport: "workspace-local-then-artifacts-v1"
+    }
   }
 });
 
@@ -48,6 +62,11 @@ export async function studyCommand(flags) {
   }
 
   const adaptiveProtocol = adaptiveProtocols[plan.protocolVersion];
+  if (adaptiveProtocol?.retired) {
+    throw new Error(
+      `Protocol ${plan.protocolVersion} is retired and cannot execute new trials; use the frozen successor plan`
+    );
+  }
   const defaultManifest = adaptiveProtocol
     ? path.join(repositoryRoot, "results", adaptiveProtocol.resultDirectory, "manifest.json")
     : path.join(repositoryRoot, "results", "manifest.json");
@@ -61,6 +80,7 @@ export async function studyCommand(flags) {
     cooldownMs: fixedFlag(flags, "cooldown-ms", String(plan.execution.cooldownMs)),
     timeoutMs: fixedFlag(flags, "timeout-ms", String(plan.execution.timeoutMs))
   };
+  assertCurrentExecutionEnvironment(plan);
   let attempted = 0;
 
   for (const trial of plan.trials) {
@@ -171,7 +191,7 @@ export function buildPilotPlan(options = {}) {
 }
 
 export function buildAdaptivePilotPlan(options = {}) {
-  const protocolVersion = options.protocolVersion ?? "2.1.0";
+  const protocolVersion = options.protocolVersion ?? "2.2.0";
   const protocol = adaptiveProtocols[protocolVersion];
   if (!protocol) throw new Error(`Unsupported adaptive protocol: ${protocolVersion}`);
   const trials = [];
@@ -189,7 +209,7 @@ export function buildAdaptivePilotPlan(options = {}) {
     }
   }
   return {
-    schemaVersion: 2,
+    schemaVersion: protocol.executionEnvironment ? 3 : 2,
     protocolVersion,
     protocolTag: protocol.tag,
     id: protocol.studyId,
@@ -201,7 +221,8 @@ export function buildAdaptivePilotPlan(options = {}) {
       codexVersion: options.codexVersion ?? "codex-cli 0.145.0-alpha.18",
       timeoutMs: 600000,
       cooldownMs: 15000,
-      palaceVersion: protocol.palaceVersion
+      palaceVersion: protocol.palaceVersion,
+      ...(protocol.executionEnvironment ?? {})
     },
     trials
   };
@@ -272,6 +293,13 @@ function validateAdaptiveStudyPlan(plan, protocol) {
       || plan.execution?.cooldownMs !== 15000
       || plan.execution?.palaceVersion !== protocol.palaceVersion) {
     throw new Error(`Study execution settings do not match protocol ${plan.protocolVersion}`);
+  }
+  if (protocol.executionEnvironment) {
+    for (const [key, expected] of Object.entries(protocol.executionEnvironment)) {
+      if (plan.execution?.[key] !== expected) {
+        throw new Error(`Study ${key} does not match protocol ${plan.protocolVersion}`);
+      }
+    }
   }
 
   const ids = new Set();
@@ -360,4 +388,16 @@ function fixedFlag(flags, name, expected) {
     throw new Error(`--${name} is frozen at ${expected} by the committed study plan`);
   }
   return value;
+}
+
+function assertCurrentExecutionEnvironment(plan) {
+  if (!plan.execution?.platform) return;
+  const actual = benchmarkExecutionEnvironment();
+  for (const key of ["platform", "sandboxProfile", "lastMessageTransport"]) {
+    if (actual[key] !== plan.execution[key]) {
+      throw new Error(
+        `Current ${key} ${actual[key]} does not match frozen study value ${plan.execution[key]}`
+      );
+    }
+  }
 }

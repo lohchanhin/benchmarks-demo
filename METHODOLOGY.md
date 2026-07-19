@@ -3,9 +3,10 @@
 The published v1 preregistration is
 [`docs/research/PROTOCOL.md`](docs/research/PROTOCOL.md), frozen at
 `protocol-v1.0.0`. The current Adaptive successor is defined in
-[`docs/research/PROTOCOL_V2_1.md`](docs/research/PROTOCOL_V2_1.md), frozen at
-`protocol-v2.1.0`. Its post-outcome correction is disclosed in the amendment
-log. This page summarizes both without changing v1 or the invalid v2.0 attempt.
+[`docs/research/PROTOCOL_V2_2.md`](docs/research/PROTOCOL_V2_2.md), frozen at
+`protocol-v2.2.0`. Its post-outcome corrections are disclosed in the amendment
+log. This page summarizes both without changing v1, the invalid v2.0 attempt,
+or the infrastructure-noisy v2.1 trial.
 
 ## Independent Variable
 
@@ -71,7 +72,7 @@ all languages or repositories, or replacement of tests and engineering review.
 The small negative control is expected to show Palace overhead, and all such
 results are retained.
 
-## Adaptive v2.1 Extension
+## Adaptive v2.2 Extension
 
 Protocol v2 adds a fourth `adaptive-palace` arm. Full and Adaptive receive the
 same independently seeded history; their only treatment difference is legacy
@@ -83,6 +84,14 @@ Protocol v2.1 additionally exact-compares the `## Task` rendered by Palace with
 the frozen manifest task for every Palace arm. A shell-transport mismatch makes
 the arm invalid even if its code and tests pass. The successor uses Vertex
 Palace 0.2.1, new trial ids, and new seeds; it does not overwrite v2.0 evidence.
+
+Protocol v2.2 retains task fidelity and adds frozen infrastructure conformance:
+`win32`, `workspace-write/windows-elevated`, and a workspace-local temporary
+last-message file relocated by the parent harness after Codex exits. The plan,
+execution record, and evidence must agree on all three values. A sandbox-
+preparation or split-writable-root diagnostic makes an affected v2.2 arm
+invalid while preserving its raw outcome. This prevents unequal recovery from
+being interpreted as a context-routing efficiency effect.
 
 Each scenario uses four Williams sequences so every arm appears once in every
 execution position. Two trials begin with a warm local Palace index and two

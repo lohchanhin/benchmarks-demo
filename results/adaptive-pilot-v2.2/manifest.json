@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 3,
+  "protocolVersion": "2.2.0",
+  "status": "pilot-preregistered",
+  "plannedTrials": 16,
+  "plannedScenarios": [
+    "small-local-bug",
+    "cross-stack-regression",
+    "tenant-memory-pitfall",
+    "stale-memory-adversarial"
+  ],
+  "plannedSeedsPerScenario": 4,
+  "trials": []
+}

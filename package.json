@@ -13,14 +13,16 @@
     "test": "node --test test/*.test.mjs",
     "test:fixture": "node ./scripts/check-fixture.mjs",
     "analysis:pilot": "node ./analysis/paired-analysis.mjs --manifest results/manifest.json --out results/pilot/analysis.json",
-    "analysis:adaptive": "node ./analysis/paired-analysis.mjs --manifest results/adaptive-pilot-v2.1/manifest.json --out results/adaptive-pilot-v2.1/analysis.json",
+    "analysis:adaptive": "node ./analysis/paired-analysis.mjs --manifest results/adaptive-pilot-v2.2/manifest.json --out results/adaptive-pilot-v2.2/analysis.json",
     "analysis:adaptive:v2": "node ./analysis/paired-analysis.mjs --manifest results/adaptive-pilot/manifest.json --out results/adaptive-pilot/analysis.json",
+    "analysis:adaptive:v2.1": "node ./analysis/paired-analysis.mjs --manifest results/adaptive-pilot-v2.1/manifest.json --out results/adaptive-pilot-v2.1/analysis.json",
     "analysis:power": "node ./analysis/power-analysis.mjs",
     "audit:results": "node ./scripts/audit-results.mjs",
     "audit:adaptive:v2": "node ./scripts/audit-results.mjs results/adaptive-pilot/manifest.json --allow-incomplete",
     "audit:adaptive:v2.1": "node ./scripts/audit-results.mjs results/adaptive-pilot-v2.1/manifest.json --allow-incomplete",
+    "audit:adaptive:v2.2": "node ./scripts/audit-results.mjs results/adaptive-pilot-v2.2/manifest.json --allow-incomplete",
     "publish:run": "node ./scripts/publish-run.mjs",
-    "check": "npm run test && npm run test:fixture && npm run audit:results && npm run audit:adaptive:v2 && npm run audit:adaptive:v2.1"
+    "check": "npm run test && npm run test:fixture && npm run audit:results && npm run audit:adaptive:v2 && npm run audit:adaptive:v2.1 && npm run audit:adaptive:v2.2"
   },
   "engines": {
     "node": ">=20"

@@ -3,7 +3,7 @@
 ## Prepare before recording
 
 1. Run `npm ci` and `npm run benchmark -- doctor`.
-2. Validate the v2.1 frozen study plan and choose only a completed, valid trial for display.
+2. Validate the v2.2 frozen study plan and choose only a completed, valid trial for display.
 3. Execute all four v2 arms with the same model and settings.
 4. Review transcripts for secrets and local customer data.
 5. Open `reports/comparison.md` and the reviewed four-arm evidence.
@@ -30,10 +30,10 @@ Show normal Codex inspection, the legacy one-call treatment for Route-only and
 Full Palace, and the Adaptive command:
 
 ```text
-palace context "fix the Aurora article hero contrast regression" \
+palace context 'fix the Aurora article hero contrast regression' \
   --budget 6000 --route-limit 8 --max-drawers 4
 
-palace context "fix the Aurora article hero contrast regression" --auto \
+palace context 'fix the Aurora article hero contrast regression' --auto \
   --budget 6000 --route-limit 8 --max-drawers 4
 ```
 
@@ -52,6 +52,7 @@ Show the generated comparison and aggregate bootstrap report. Distinguish:
 - Codex-reported tokens
 - Cached and uncached input tokens
 - Failed calls and Codex router errors
+- Native patch-verification and sandbox-preparation errors
 - Distinct path strings observed in the transcript
 - Command-output characters
 - Palace context estimates
@@ -66,7 +67,7 @@ their median rather than a selected single run.
 Show the public repository, MIT license, frozen protocol tag, and one command:
 
 ```text
-study --plan results/adaptive-pilot-v2.1/plan.json --execute
+study --plan results/adaptive-pilot-v2.2/plan.json --execute
 ```
 
 End with the Vertex Palace repository and npm installation path.

@@ -66,6 +66,11 @@ Protocol v2.1.0 supersedes v2.0.0 for future execution because A-002 changes
 task transport and validity checks after one v2.0.0 outcome was seen. It must
 use fresh trial ids and seeds and be frozen under a new tag before execution.
 
+Protocol v2.2.0 supersedes the unexecuted remainder of v2.1.0 because A-003
+changes the Windows sandbox and adds infrastructure-conformance validity after
+one v2.1.0 outcome was seen. It uses fresh ids and seeds, and its empty results
+manifest is frozen at `protocol-v2.2.0` before any v2.2 agent execution.
+
 ## A-003: Post-Outcome Windows Sandbox Conformance Correction
 
 - Date: 2026-07-19
@@ -80,25 +85,27 @@ use fresh trial ids and seeds and be frozen under a new tag before execution.
   the second writable root. Three non-study smokes kept that file inside the
   workspace and removed inherited Codex environment variables; the same error
   persisted, so this hypothesis was rejected as the sole cause.
-- Proposed correction: use `workspace-write/windows-elevated`, write the
+- Correction: use `workspace-write/windows-elevated`, write the
   temporary last message inside the arm workspace, and move it to ignored
   artifacts only after Codex exits. Record platform, sandbox profile, and
   last-message transport in each run plan, execution record, and evidence
   validity check.
 - Development evidence: D1-D3 failed under `unelevated`; D4 passed native
-  `apply_patch` under `elevated`. These disposable checks are explicitly not
-  treatment outcomes. See [`HARNESS_DIAGNOSTICS.md`](./HARNESS_DIAGNOSTICS.md).
+  `apply_patch` under `elevated`; D5 passed the exact repository-local Adaptive
+  pipeline, public tests, and hidden oracle with zero router errors. These
+  disposable checks are explicitly not treatment outcomes. See
+  [`HARNESS_DIAGNOSTICS.md`](./HARNESS_DIAGNOSTICS.md).
 - Affected run: the v2.1 trial remains immutable and valid for task fidelity,
   correctness, and scope observations, but its efficiency metrics are marked
   infrastructure-noisy and must not be treated as clean routing effects.
 - Outcome handling: no raw duration, token, tool-call, correctness, or scope
   value is edited or removed. The remaining v2.1 plan is retired rather than
   silently continued.
-- Applicability: the correction will apply only to a fresh protocol v2.2 with
-  new trial ids and seeds after a repository-local Palace smoke passes and a
-  new tag is pushed before agent execution.
-- Commit and tag: the diagnostic checkpoint is published before protocol
-  v2.2; the final applicability commit will be tagged `protocol-v2.2.0`.
+- Applicability: the correction applies only to fresh protocol v2.2 ids and
+  seeds. The repository-local Palace smoke passed, and no v2.2 agent may run
+  before the new tag is pushed.
+- Commit and tag: the diagnostic checkpoint was published before protocol
+  v2.2; the final applicability commit is tagged `protocol-v2.2.0`.
 
 ## Amendment Template
 

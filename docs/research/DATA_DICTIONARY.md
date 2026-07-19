@@ -19,6 +19,9 @@ counts, and all paths are repository-relative POSIX strings.
 | `reasoningEffort` | string | Requested reasoning effort |
 | `codexVersion` | string | Codex CLI version |
 | `palaceVersion` | string/null | Vertex Palace version for treatment arms |
+| `execution.platform` | string/null | Host platform frozen by successor protocol |
+| `execution.sandboxProfile` | string/null | Codex workspace/sandbox profile used by the arm |
+| `execution.lastMessageTransport` | string/null | Temporary final-message placement and relocation method |
 
 ## Validity And Correctness
 
@@ -42,7 +45,9 @@ counts, and all paths are repository-relative POSIX strings.
 | `execution.durationMs` | number/null | Timed Codex process duration |
 | `transcript.toolCalls` | number/null | Deduplicated recorded tool/command calls |
 | `transcript.failedCalls` | number/null | Recorded failed calls |
-| `runtime.routerErrors` | number/null | Codex router errors parsed from stderr |
+| `runtimeDiagnostics.routerErrors` | number/null | Codex router errors parsed from stderr |
+| `runtimeDiagnostics.applyPatchVerificationErrors` | number/null | Native patch verification failures parsed from stderr |
+| `runtimeDiagnostics.sandboxPreparationErrors` | number/null | Sandbox preparation or split-root failures; frozen at zero for valid v2.2 arms |
 | `transcript.inspectionCommands` | number/null | Commands classified as repository inspection |
 | `transcript.commandOutputChars` | number/null | Completed command-output character count |
 | `transcript.palaceContextOutputChars` | number/null | Character count from the treatment context command stdout |

@@ -12,6 +12,8 @@ const continuousMetrics = Object.freeze([
   "toolCalls",
   "failedCalls",
   "routerErrors",
+  "applyPatchVerificationErrors",
+  "sandboxPreparationErrors",
   "inspectionCommands",
   "commandOutputChars",
   "palaceContextOutputChars",
