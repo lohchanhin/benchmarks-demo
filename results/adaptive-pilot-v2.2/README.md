@@ -1,6 +1,6 @@
 # Adaptive Pilot v2.2
 
-Status: in progress, 1 of 16 planned trials published. No agent outcome
+Status: in progress, 2 of 16 planned trials published. No agent outcome
 existed at protocol freeze.
 
 Protocol v2.2 repeats the four-arm Adaptive study with fresh trial ids and
@@ -17,7 +17,7 @@ sandbox failures before using fallbacks. See the
 No v2.2 agent may run before the commit containing this empty manifest is
 available at tag `protocol-v2.2.0`.
 
-## Interim Result
+## Interim Results
 
 The first frozen trial, `small-local-bug-adaptive-v2-2-pilot-01`, ran all four
 arms sequentially in the preregistered order. Every arm was valid, changed
@@ -30,6 +30,16 @@ Palace output bytes, 217 fewer estimated Palace tokens, 17,055 fewer cumulative
 reported tokens, and 13,145 fewer uncached input tokens. It also made two more
 tool calls and took 0.336 seconds longer.
 
-These are one-pair descriptive values, not a population estimate or a general
-efficiency claim. See the [trial report](small-local-bug-adaptive-v2-2-pilot-01/comparison.md)
-and [interim analysis](analysis.md).
+The second cold-index trial also had four valid, successful, correctly scoped
+arms and zero sandbox-preparation errors. Adaptive again selected `route-lite`.
+
+| Trial | Adaptive vs Full reported tokens | Uncached input | Tool calls | Wall time |
+| --- | ---: | ---: | ---: | ---: |
+| [01](small-local-bug-adaptive-v2-2-pilot-01/comparison.md) | -17,055 | -13,145 | +2 | +0.336s |
+| [02](small-local-bug-adaptive-v2-2-pilot-02/comparison.md) | -38,931 | +2,850 | -6 | -14.638s |
+
+Across these two pairs, the paired-median Adaptive-minus-Full differences are
+-27,993 reported tokens, -5,147.5 uncached input tokens, -2 tool calls, and
+-7.2 seconds. With only 2/16 trials these are interim descriptive values, not
+a population estimate or a general efficiency claim. See the
+[interim analysis](analysis.md).
