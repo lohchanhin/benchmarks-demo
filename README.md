@@ -149,6 +149,11 @@ commitment remains `null`, so the plan still cannot be frozen accidentally.
 The [release-provenance gate](docs/research/CONTROL_FIRST_V3_RELEASE_PROVENANCE.md)
 pins the exact candidate tarball and records the first expired npm browser
 authorization without pretending the package was published.
+Run `npm run gate:control-first:v3` for a machine-readable 19-check pre-freeze
+audit, or `npm run check:release-ready` to run the complete benchmark checks
+first. Both intentionally fail until public registry metadata, `package.json`,
+`package-lock.json`, and the installed package all identify the same 0.3.0
+tarball while the public v3 manifest remains empty.
 The current product gate also records exact Zod and Requests routes at recall
 1.000 / strict precision 1.000 and a clean-install 50-memory ceiling test; these
 remain engineering evidence until the independent Agent arms are frozen and run.

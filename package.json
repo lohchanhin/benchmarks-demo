@@ -24,6 +24,8 @@
     "audit:adaptive:v2.1": "node ./scripts/audit-results.mjs results/adaptive-pilot-v2.1/manifest.json --allow-incomplete",
     "audit:adaptive:v2.2": "node ./scripts/audit-results.mjs results/adaptive-pilot-v2.2/manifest.json --allow-incomplete",
     "audit:control-first:v3": "node ./scripts/audit-results.mjs results/control-first-v3/manifest.json --allow-incomplete",
+    "gate:control-first:v3": "node ./scripts/verify-control-first-v3-release.mjs",
+    "check:release-ready": "npm run check && npm run gate:control-first:v3",
     "publish:run": "node ./scripts/publish-run.mjs",
     "check": "npm run test && npm run test:fixture && npm run audit:results && npm run audit:adaptive:v2 && npm run audit:adaptive:v2.1 && npm run audit:adaptive:v2.2 && npm run audit:control-first:v3 && npm run verify:analysis:adaptive"
   },

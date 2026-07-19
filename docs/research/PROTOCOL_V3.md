@@ -192,6 +192,11 @@ Before changing `frozen` to `true` or creating `protocol-v3.0.0`:
 Publishing the npm package uses an interactive browser/device verification only
 after these engineering and research gates succeed.
 
+`npm run gate:control-first:v3` performs the 19 machine-readable package and
+empty-study checks without invoking Codex. `npm run check:release-ready` runs
+the complete local suite before that network-backed gate. The command must fail
+until npm publication and the exact dependency update are both complete.
+
 ## Evidence And Privacy
 
 Attempted, failed, invalid, and timed-out trials remain outcomes. Reviewed JSON,

@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "generatedAt": "2026-07-19T21:29:00.000Z",
+  "updatedAt": "2026-07-19T21:36:00.000Z",
   "claimBoundary": "Release provenance and benchmark gate evidence only; no formal Agent outcome or efficiency claim.",
   "product": {
     "package": "vertex-palace@0.3.0",
@@ -36,7 +37,8 @@
     "attemptedArms": 0,
     "installedDependencyDuringThisStage": "vertex-palace@0.2.1",
     "checks": {
-      "testsPassed": 63,
+      "testsPassedBeforeExecutableGate": 63,
+      "releaseGateUnitTestsAdded": 2,
       "fixtureContractsPassed": 5,
       "historicalAuditsPassed": true,
       "adaptiveAnalysisReproduced": true,
@@ -54,7 +56,27 @@
     ],
     "exactFixtureTest": "passed",
     "tamperedIntegrityTest": "rejected",
-    "currentRepositoryDependencyMatches": false
+    "currentRepositoryDependencyMatches": false,
+    "firstRealRun": {
+      "passed": false,
+      "checks": 19,
+      "passedChecks": 11,
+      "failedChecks": 8,
+      "failedIds": [
+        "registry-version",
+        "registry-shasum",
+        "registry-integrity",
+        "package-json-version",
+        "lock-root-version",
+        "lock-package-version",
+        "lock-tarball",
+        "lock-integrity"
+      ],
+      "installedVersionObserved": "0.3.0",
+      "agentInvoked": false,
+      "registry": "https://registry.npmjs.org",
+      "blindingKeyScrubbedFromRegistryProcess": true
+    }
   },
   "palaceEvaluation": {
     "id": "evaluation_bdebd1a652e298a3",
@@ -69,6 +91,31 @@
       "README.zh-CN.md",
       "src/commands/study.mjs"
     ],
+    "agentSavingsClaimed": false
+  },
+  "executableGateEvaluations": {
+    "default": {
+      "id": "evaluation_e80cf495cb522b6f",
+      "routeConfidence": 0.35,
+      "changedFiles": 11,
+      "matchedFiles": 3,
+      "coverage": 0.27,
+      "focus": 0.3,
+      "calibration": "well-calibrated",
+      "assessment": "needs-review"
+    },
+    "expandedRouteLimit40": {
+      "id": "evaluation_9b8e19660e8d6dcd",
+      "routeConfidence": 0.35,
+      "changedFiles": 11,
+      "matchedFiles": 4,
+      "coverage": 0.36,
+      "focus": 0.17,
+      "calibration": "well-calibrated",
+      "assessment": "needs-review"
+    },
+    "sharedMiss": "src/lib/release-gate.mjs",
+    "finding": "A larger route mostly added unrelated fixtures and historical memory evidence; it did not recover source-to-test-to-script-to-document sibling provenance.",
     "agentSavingsClaimed": false
   }
 }

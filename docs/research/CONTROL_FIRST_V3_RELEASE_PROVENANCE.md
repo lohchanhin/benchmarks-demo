@@ -44,9 +44,22 @@ Before a formal Agent arm can start, the study runner checks:
 5. the installed package reports the exact version.
 
 A unit test proves that the gate accepts the exact fixture and rejects a changed
-integrity. The complete benchmark check passed with 63/63 tests, all five
+integrity. Before the executable gate was added, the complete benchmark check
+passed with 63/63 tests, all five
 fixture contracts, every retained evidence audit, the v2.2 analysis
 reproduction, and the v3 public manifest still at 0/16.
+
+The follow-up executable gate adds `npm run gate:control-first:v3` and the
+combined `npm run check:release-ready`. Its first real run passed 11/19 checks
+and failed eight for the expected reasons: public 0.3.0 metadata was absent,
+and `package.json` plus both lockfile version entries, tarball URL, and integrity
+still described 0.2.1. The installed directory reported 0.3.0, demonstrating
+why checking only `node_modules` would have produced a false sense of readiness.
+The gate invokes no Codex process and exposes no registry error body or auth URL.
+It explicitly queries `https://registry.npmjs.org` and removes the blinded
+scenario key from the npm subprocess environment.
+The complete suite then passed 65/65 tests with the same fixture, evidence, and
+empty-manifest guarantees.
 
 ## Route Self-Evaluation
 
@@ -55,6 +68,15 @@ Vertex Palace routed 5/7 changed files (coverage 0.71, focus 0.71, confidence
 assessment remains `needs-review`. The reported 99.6% repository-to-pack token
 reduction measures selected context only and is not evidence of lower Agent
 tokens or wall time.
+
+The executable-gate follow-up exposed a sharper release-routing weakness. The
+default route found 3/11 changed files (coverage 0.27, focus 0.30); a route limit
+of 40 found only 4/11 (coverage 0.36) while focus fell to 0.17. Both used
+confidence 0.35 and were well calibrated, but both missed the new core
+`src/lib/release-gate.mjs` plus most bilingual evidence surfaces. Increasing the
+route limit mostly added unrelated fixtures and old memory evidence. This is
+direct evidence for future source-to-test-to-script-to-document sibling routing,
+not a reason to claim the smaller pack was sufficient.
 
 ## Next Gate
 
