@@ -119,7 +119,7 @@ powered as a confirmatory non-inferiority or superiority study.
 - Codex: `codex-cli 0.145.0-alpha.18`
 - Vertex Palace candidate: `0.3.0`
 - Vertex Palace source commit:
-  `75be54a3e4570fb50f1a9f0304d017cb56e9a36b`
+  `c835860d0d63f4c3ddd83b01c5cbb182b216bc9e`
 - Platform: `win32`
 - Sandbox: `workspace-write/windows-elevated`
 - Timeout: 600 seconds per arm
@@ -137,10 +137,12 @@ Before changing `frozen` to `true` or creating `protocol-v3.0.0`:
 2. A clean package install reports 0.3.0 and passes the release-candidate gate.
 3. The memory-dependent baseline/oracle/canonical-repair gate passes.
 4. Adaptive receives the seeded ownership memory in a non-study smoke run.
-5. The benchmark depends on the published immutable `vertex-palace@0.3.0`.
-6. The complete benchmark test and evidence audit pass.
-7. The committed public result manifest still contains zero attempted trials.
-8. The reviewed plan is frozen and tagged before any formal arm runs.
+5. Pinned TypeScript and Python repositories pass deterministic target-
+   retrieval validation with recall and strict precision reported separately.
+6. The benchmark depends on the published immutable `vertex-palace@0.3.0`.
+7. The complete benchmark test and evidence audit pass.
+8. The committed public result manifest still contains zero attempted trials.
+9. The reviewed plan is frozen and tagged before any formal arm runs.
 
 Publishing the npm package uses an interactive browser/device verification only
 after these engineering and research gates succeed.
