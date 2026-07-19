@@ -83,6 +83,9 @@ export async function verifyArm(run, arm) {
       execution.model === runPlan.model
       && execution.reasoningEffort === runPlan.reasoningEffort
       && execution.codexVersion === runPlan.codexVersion
+      && execution.platform === runPlan.platform
+      && execution.sandboxProfile === runPlan.sandboxProfile
+      && execution.lastMessageTransport === runPlan.lastMessageTransport
     ))
   );
   const validity = transcriptSource
@@ -121,7 +124,10 @@ export async function verifyArm(run, arm) {
           timedOut: Boolean(execution.timedOut),
           sequence: execution.sequence,
           order: execution.order,
-          cacheState: run.manifest.cacheState ?? "unrecorded"
+          cacheState: run.manifest.cacheState ?? "unrecorded",
+          platform: execution.platform ?? null,
+          sandboxProfile: execution.sandboxProfile ?? null,
+          lastMessageTransport: execution.lastMessageTransport ?? null
         }
       : null,
     transcript,

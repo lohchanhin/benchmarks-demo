@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "development-smoke",
+  "date": "2026-07-19",
+  "researchOutcome": false,
+  "purpose": "Diagnose Windows Codex apply_patch split-writable-root failures before freezing a successor protocol.",
+  "fixedConditions": {
+    "repository": "disposable one-file Git repository",
+    "task": "Change the only line from before to after with native apply_patch and modify no other source file.",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "model": "gpt-5.6-sol",
+    "reasoningEffort": "xhigh",
+    "sandboxMode": "workspace-write",
+    "lastMessageLocation": "inside arm workspace"
+  },
+  "checks": [
+    {
+      "id": "D1",
+      "windowsSandbox": "unelevated",
+      "unsetEnvironment": [],
+      "durationMs": 69498,
+      "exitCode": 0,
+      "splitWritableRootError": true,
+      "nativeApplyPatchFailure": true,
+      "requestedSourceChangePresent": true,
+      "note": "Agent eventually used a direct helper fallback; this does not count as native apply_patch success."
+    },
+    {
+      "id": "D2",
+      "windowsSandbox": "unelevated",
+      "unsetEnvironment": [
+        "CODEX_PERMISSION_PROFILE"
+      ],
+      "durationMs": 83730,
+      "exitCode": 0,
+      "splitWritableRootError": true,
+      "nativeApplyPatchFailure": true,
+      "requestedSourceChangePresent": true
+    },
+    {
+      "id": "D3",
+      "windowsSandbox": "unelevated",
+      "unsetEnvironment": [
+        "CODEX_PERMISSION_PROFILE",
+        "CODEX_THREAD_ID",
+        "CODEX_INTERNAL_ORIGINATOR_OVERRIDE",
+        "CODEX_SHELL",
+        "CODEX_CI"
+      ],
+      "durationMs": 74246,
+      "exitCode": 0,
+      "splitWritableRootError": true,
+      "nativeApplyPatchFailure": true,
+      "requestedSourceChangePresent": true
+    },
+    {
+      "id": "D4",
+      "windowsSandbox": "elevated",
+      "unsetEnvironment": [
+        "CODEX_PERMISSION_PROFILE",
+        "CODEX_THREAD_ID",
+        "CODEX_INTERNAL_ORIGINATOR_OVERRIDE",
+        "CODEX_SHELL",
+        "CODEX_CI"
+      ],
+      "durationMs": 140402,
+      "exitCode": 0,
+      "splitWritableRootError": false,
+      "nativeApplyPatchFailure": false,
+      "requestedSourceChangePresent": true,
+      "onlyRequestedSourceChanged": true,
+      "unrelatedGlobalPalaceInvocationFailed": true,
+      "note": "The smoke inherited global Palace guidance and resolved a user-global shim. Formal arms must verify the repository-local pinned Palace invocation before protocol freeze."
+    }
+  ],
+  "conclusion": {
+    "externalLastMessageWasSoleCause": false,
+    "unelevatedFailurePersistedAfterEnvironmentIsolation": true,
+    "elevatedSandboxEnabledNativePatch": true,
+    "readyToFreezeSuccessorProtocol": false,
+    "remainingGate": "Run an exact repository-local Vertex Palace context and native-patch smoke under the proposed fixed execution profile."
+  },
+  "privacy": {
+    "rawLogsPublished": false,
+    "reason": "Raw logs contain session identifiers and absolute local paths.",
+    "sanitizedRecordPublished": true
+  }
+}

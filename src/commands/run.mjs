@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { mkdir, readFile } from "node:fs/promises";
+import { mkdir, readFile, rename } from "node:fs/promises";
 import { delimiter } from "node:path";
 import path from "node:path";
 import { booleanFlag, enumFlag, stringFlag } from "../lib/args.mjs";
@@ -10,6 +10,9 @@ import { repositoryRoot } from "../lib/root.mjs";
 import { resolveCodexBin } from "../lib/tooling.mjs";
 import { verifyArm } from "./verify.mjs";
 import { writeComparisonReport } from "./report.mjs";
+
+export const LAST_MESSAGE_TRANSPORT = "workspace-local-then-artifacts-v1";
+export const WINDOWS_SANDBOX_MODE = "elevated";
 
 export async function runCommand(flags) {
   const runDirectory = await resolveRunDirectory(flags);
@@ -37,7 +40,7 @@ export async function runCommand(flags) {
   assertExpectedVersion("Vertex Palace", palaceVersion, stringFlag(flags, "expected-palace-version", undefined));
   const runPlanPath = path.join(artifacts, "run-plan.json");
   const proposedPlan = {
-    schemaVersion: 2,
+    schemaVersion: 3,
     mode: "sequential",
     order,
     arms: runArms,
@@ -47,6 +50,9 @@ export async function runCommand(flags) {
     reasoningEffort,
     codexVersion,
     palaceVersion,
+    platform: process.platform,
+    sandboxProfile: sandboxProfile(),
+    lastMessageTransport: LAST_MESSAGE_TRANSPORT,
     cacheState: run.manifest.cacheState ?? "unrecorded",
     seed: run.manifest.seed,
     createdAt: new Date().toISOString()
@@ -75,7 +81,8 @@ export async function runCommand(flags) {
     const transcriptPath = path.join(artifacts, `${arm}-transcript.jsonl`);
     const stderrPath = path.join(artifacts, `${arm}-stderr.log`);
     const lastMessagePath = path.join(artifacts, `${arm}-last-message.md`);
-    const args = codexArguments({ workspace, model, reasoningEffort, lastMessagePath });
+    const workspaceLastMessagePath = path.join(workspace, ".benchmark-last-message.md");
+    const args = codexArguments({ workspace, model, reasoningEffort, lastMessagePath: workspaceLastMessagePath });
 
     console.log(`Running ${arm} arm with ${model}...`);
     const result = await runProcess(codexBin, args, {
@@ -86,13 +93,17 @@ export async function runCommand(flags) {
       stderrPath,
       timeoutMs
     });
+    await relocateLastMessage(workspaceLastMessagePath, lastMessagePath);
     const execution = {
-      schemaVersion: 2,
+      schemaVersion: 3,
       arm,
       model,
       reasoningEffort,
       codexVersion,
       palaceVersion: arm === "control" ? null : palaceVersion,
+      platform: process.platform,
+      sandboxProfile: sandboxProfile(),
+      lastMessageTransport: LAST_MESSAGE_TRANSPORT,
       startedAt: result.startedAt,
       endedAt: result.endedAt,
       durationMs: result.durationMs,
@@ -149,9 +160,9 @@ function palaceEnvironment() {
   return { PATH: `${localBins}${delimiter}${inherited}` };
 }
 
-function codexArguments({ workspace, model, reasoningEffort, lastMessagePath }) {
+export function codexArguments({ workspace, model, reasoningEffort, lastMessagePath }) {
   const args = ["-a", "never", "-s", "workspace-write", "-C", workspace];
-  if (process.platform === "win32") args.push("-c", 'windows.sandbox="unelevated"');
+  if (process.platform === "win32") args.push("-c", `windows.sandbox="${WINDOWS_SANDBOX_MODE}"`);
   args.push("-c", `model_reasoning_effort="${reasoningEffort}"`);
   args.push(
     "exec",
@@ -168,6 +179,21 @@ function codexArguments({ workspace, model, reasoningEffort, lastMessagePath }) 
     "-"
   );
   return args;
+}
+
+async function relocateLastMessage(source, target) {
+  try {
+    await mkdir(path.dirname(target), { recursive: true });
+    await rename(source, target);
+  } catch (error) {
+    if (!error || error.code !== "ENOENT") throw error;
+  }
+}
+
+function sandboxProfile() {
+  return process.platform === "win32"
+    ? `workspace-write/windows-${WINDOWS_SANDBOX_MODE}`
+    : "workspace-write";
 }
 
 function seededOrder(arms, seed) {
@@ -206,6 +232,9 @@ function assertSameRunPlan(existing, proposed) {
     "reasoningEffort",
     "codexVersion",
     "palaceVersion",
+    "platform",
+    "sandboxProfile",
+    "lastMessageTransport",
     "cacheState",
     "seed"
   ]) {
