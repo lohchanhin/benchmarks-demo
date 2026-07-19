@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
   "protocolVersion": "2.2.0",
-  "generatedAt": "2026-07-19T06:29:26.892Z",
+  "generatedAt": "2026-07-19T06:40:49.383Z",
   "exploratory": true,
   "plannedTrials": 16,
-  "attemptedTrials": 12,
-  "loadedTrials": 12,
+  "attemptedTrials": 13,
+  "loadedTrials": 13,
   "missingTrials": [],
   "scenarios": {
     "small-local-bug": {
@@ -9358,11 +9358,2481 @@
           "adaptivePalaceRate": null
         }
       }
+    },
+    "stale-memory-adversarial": {
+      "attemptedPairs": 1,
+      "validPairs": 1,
+      "invalidPairIds": [],
+      "success": {
+        "controlRaw": [
+          1
+        ],
+        "fullPalaceRaw": [
+          1
+        ],
+        "controlRate": 1,
+        "fullPalaceRate": 1,
+        "fullPalaceMinusControl": {
+          "estimate": 0,
+          "confidenceInterval": [
+            0,
+            0
+          ],
+          "iterations": 10000,
+          "confidence": 0.95,
+          "seed": "pilot-v1:stale-memory-adversarial"
+        },
+        "nonInferiorityMargin": -0.1,
+        "pilotIntervalAboveMargin": true,
+        "discordant": {
+          "controlOnly": 0,
+          "palaceOnly": 0,
+          "total": 0
+        },
+        "mcnemarExactPValue": 1
+      },
+      "metrics": {
+        "durationMs": {
+          "pairCount": 1,
+          "controlRaw": [
+            64761
+          ],
+          "fullPalaceRaw": [
+            91029
+          ],
+          "controlMedian": 64761,
+          "fullPalaceMedian": 91029,
+          "fullPalaceMinusControl": {
+            "estimate": 26268,
+            "confidenceInterval": [
+              26268,
+              26268
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:durationMs"
+          }
+        },
+        "toolCalls": {
+          "pairCount": 1,
+          "controlRaw": [
+            5
+          ],
+          "fullPalaceRaw": [
+            10
+          ],
+          "controlMedian": 5,
+          "fullPalaceMedian": 10,
+          "fullPalaceMinusControl": {
+            "estimate": 5,
+            "confidenceInterval": [
+              5,
+              5
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:toolCalls"
+          }
+        },
+        "failedCalls": {
+          "pairCount": 1,
+          "controlRaw": [
+            1
+          ],
+          "fullPalaceRaw": [
+            0
+          ],
+          "controlMedian": 1,
+          "fullPalaceMedian": 0,
+          "fullPalaceMinusControl": {
+            "estimate": -1,
+            "confidenceInterval": [
+              -1,
+              -1
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:failedCalls"
+          }
+        },
+        "routerErrors": {
+          "pairCount": 1,
+          "controlRaw": [
+            1
+          ],
+          "fullPalaceRaw": [
+            0
+          ],
+          "controlMedian": 1,
+          "fullPalaceMedian": 0,
+          "fullPalaceMinusControl": {
+            "estimate": -1,
+            "confidenceInterval": [
+              -1,
+              -1
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:routerErrors"
+          }
+        },
+        "applyPatchVerificationErrors": {
+          "pairCount": 1,
+          "controlRaw": [
+            0
+          ],
+          "fullPalaceRaw": [
+            0
+          ],
+          "controlMedian": 0,
+          "fullPalaceMedian": 0,
+          "fullPalaceMinusControl": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:applyPatchVerificationErrors"
+          }
+        },
+        "sandboxPreparationErrors": {
+          "pairCount": 1,
+          "controlRaw": [
+            0
+          ],
+          "fullPalaceRaw": [
+            0
+          ],
+          "controlMedian": 0,
+          "fullPalaceMedian": 0,
+          "fullPalaceMinusControl": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:sandboxPreparationErrors"
+          }
+        },
+        "inspectionCommands": {
+          "pairCount": 1,
+          "controlRaw": [
+            4
+          ],
+          "fullPalaceRaw": [
+            2
+          ],
+          "controlMedian": 4,
+          "fullPalaceMedian": 2,
+          "fullPalaceMinusControl": {
+            "estimate": -2,
+            "confidenceInterval": [
+              -2,
+              -2
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:inspectionCommands"
+          }
+        },
+        "commandOutputChars": {
+          "pairCount": 1,
+          "controlRaw": [
+            10790
+          ],
+          "fullPalaceRaw": [
+            10092
+          ],
+          "controlMedian": 10790,
+          "fullPalaceMedian": 10092,
+          "fullPalaceMinusControl": {
+            "estimate": -698,
+            "confidenceInterval": [
+              -698,
+              -698
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:commandOutputChars"
+          }
+        },
+        "palaceContextOutputChars": {
+          "pairCount": 0,
+          "controlRaw": [],
+          "fullPalaceRaw": [],
+          "controlMedian": null,
+          "fullPalaceMedian": null,
+          "fullPalaceMinusControl": {
+            "estimate": null,
+            "confidenceInterval": [
+              null,
+              null
+            ],
+            "iterations": 0
+          }
+        },
+        "palaceContextOutputBytes": {
+          "pairCount": 0,
+          "controlRaw": [],
+          "fullPalaceRaw": [],
+          "controlMedian": null,
+          "fullPalaceMedian": null,
+          "fullPalaceMinusControl": {
+            "estimate": null,
+            "confidenceInterval": [
+              null,
+              null
+            ],
+            "iterations": 0
+          }
+        },
+        "palaceContextEstimatedTokens": {
+          "pairCount": 0,
+          "controlRaw": [],
+          "fullPalaceRaw": [],
+          "controlMedian": null,
+          "fullPalaceMedian": null,
+          "fullPalaceMinusControl": {
+            "estimate": null,
+            "confidenceInterval": [
+              null,
+              null
+            ],
+            "iterations": 0
+          }
+        },
+        "inputTokens": {
+          "pairCount": 1,
+          "controlRaw": [
+            131631
+          ],
+          "fullPalaceRaw": [
+            148491
+          ],
+          "controlMedian": 131631,
+          "fullPalaceMedian": 148491,
+          "fullPalaceMinusControl": {
+            "estimate": 16860,
+            "confidenceInterval": [
+              16860,
+              16860
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:inputTokens"
+          }
+        },
+        "cachedInputTokens": {
+          "pairCount": 1,
+          "controlRaw": [
+            111616
+          ],
+          "fullPalaceRaw": [
+            134912
+          ],
+          "controlMedian": 111616,
+          "fullPalaceMedian": 134912,
+          "fullPalaceMinusControl": {
+            "estimate": 23296,
+            "confidenceInterval": [
+              23296,
+              23296
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:cachedInputTokens"
+          }
+        },
+        "uncachedInputTokens": {
+          "pairCount": 1,
+          "controlRaw": [
+            20015
+          ],
+          "fullPalaceRaw": [
+            13579
+          ],
+          "controlMedian": 20015,
+          "fullPalaceMedian": 13579,
+          "fullPalaceMinusControl": {
+            "estimate": -6436,
+            "confidenceInterval": [
+              -6436,
+              -6436
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:uncachedInputTokens"
+          }
+        },
+        "outputTokens": {
+          "pairCount": 1,
+          "controlRaw": [
+            1911
+          ],
+          "fullPalaceRaw": [
+            1969
+          ],
+          "controlMedian": 1911,
+          "fullPalaceMedian": 1969,
+          "fullPalaceMinusControl": {
+            "estimate": 58,
+            "confidenceInterval": [
+              58,
+              58
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:outputTokens"
+          }
+        },
+        "reportedTokens": {
+          "pairCount": 1,
+          "controlRaw": [
+            133542
+          ],
+          "fullPalaceRaw": [
+            150460
+          ],
+          "controlMedian": 133542,
+          "fullPalaceMedian": 150460,
+          "fullPalaceMinusControl": {
+            "estimate": 16918,
+            "confidenceInterval": [
+              16918,
+              16918
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:reportedTokens"
+          }
+        },
+        "changedFilePrecision": {
+          "pairCount": 1,
+          "controlRaw": [
+            1
+          ],
+          "fullPalaceRaw": [
+            1
+          ],
+          "controlMedian": 1,
+          "fullPalaceMedian": 1,
+          "fullPalaceMinusControl": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:changedFilePrecision"
+          }
+        },
+        "changedFileRecall": {
+          "pairCount": 1,
+          "controlRaw": [
+            1
+          ],
+          "fullPalaceRaw": [
+            1
+          ],
+          "controlMedian": 1,
+          "fullPalaceMedian": 1,
+          "fullPalaceMinusControl": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:changedFileRecall"
+          }
+        }
+      },
+      "comparisons": {
+        "routeOnlyMinusControl": {
+          "baselineArm": "control",
+          "treatmentArm": "routeOnly",
+          "validPairs": 1,
+          "invalidPairIds": [],
+          "success": {
+            "baselineRaw": [
+              1
+            ],
+            "treatmentRaw": [
+              1
+            ],
+            "baselineRate": 1,
+            "treatmentRate": 1,
+            "treatmentMinusBaseline": {
+              "estimate": 0,
+              "confidenceInterval": [
+                0,
+                0
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control"
+            },
+            "discordant": {
+              "baselineOnly": 0,
+              "treatmentOnly": 0,
+              "total": 0
+            },
+            "mcnemarExactPValue": 1
+          },
+          "metrics": {
+            "durationMs": {
+              "pairCount": 1,
+              "baselineRaw": [
+                64761
+              ],
+              "treatmentRaw": [
+                58442
+              ],
+              "baselineMedian": 64761,
+              "treatmentMedian": 58442,
+              "treatmentMinusBaseline": {
+                "estimate": -6319,
+                "confidenceInterval": [
+                  -6319,
+                  -6319
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:durationMs"
+              }
+            },
+            "toolCalls": {
+              "pairCount": 1,
+              "baselineRaw": [
+                5
+              ],
+              "treatmentRaw": [
+                6
+              ],
+              "baselineMedian": 5,
+              "treatmentMedian": 6,
+              "treatmentMinusBaseline": {
+                "estimate": 1,
+                "confidenceInterval": [
+                  1,
+                  1
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:toolCalls"
+              }
+            },
+            "failedCalls": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": -1,
+                "confidenceInterval": [
+                  -1,
+                  -1
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:failedCalls"
+              }
+            },
+            "routerErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": -1,
+                "confidenceInterval": [
+                  -1,
+                  -1
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:routerErrors"
+              }
+            },
+            "applyPatchVerificationErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:applyPatchVerificationErrors"
+              }
+            },
+            "sandboxPreparationErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:sandboxPreparationErrors"
+              }
+            },
+            "inspectionCommands": {
+              "pairCount": 1,
+              "baselineRaw": [
+                4
+              ],
+              "treatmentRaw": [
+                3
+              ],
+              "baselineMedian": 4,
+              "treatmentMedian": 3,
+              "treatmentMinusBaseline": {
+                "estimate": -1,
+                "confidenceInterval": [
+                  -1,
+                  -1
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:inspectionCommands"
+              }
+            },
+            "commandOutputChars": {
+              "pairCount": 1,
+              "baselineRaw": [
+                10790
+              ],
+              "treatmentRaw": [
+                4706
+              ],
+              "baselineMedian": 10790,
+              "treatmentMedian": 4706,
+              "treatmentMinusBaseline": {
+                "estimate": -6084,
+                "confidenceInterval": [
+                  -6084,
+                  -6084
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:commandOutputChars"
+              }
+            },
+            "palaceContextOutputChars": {
+              "pairCount": 0,
+              "baselineRaw": [],
+              "treatmentRaw": [],
+              "baselineMedian": null,
+              "treatmentMedian": null,
+              "treatmentMinusBaseline": {
+                "estimate": null,
+                "confidenceInterval": [
+                  null,
+                  null
+                ],
+                "iterations": 0
+              }
+            },
+            "palaceContextOutputBytes": {
+              "pairCount": 0,
+              "baselineRaw": [],
+              "treatmentRaw": [],
+              "baselineMedian": null,
+              "treatmentMedian": null,
+              "treatmentMinusBaseline": {
+                "estimate": null,
+                "confidenceInterval": [
+                  null,
+                  null
+                ],
+                "iterations": 0
+              }
+            },
+            "palaceContextEstimatedTokens": {
+              "pairCount": 0,
+              "baselineRaw": [],
+              "treatmentRaw": [],
+              "baselineMedian": null,
+              "treatmentMedian": null,
+              "treatmentMinusBaseline": {
+                "estimate": null,
+                "confidenceInterval": [
+                  null,
+                  null
+                ],
+                "iterations": 0
+              }
+            },
+            "inputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                131631
+              ],
+              "treatmentRaw": [
+                119689
+              ],
+              "baselineMedian": 131631,
+              "treatmentMedian": 119689,
+              "treatmentMinusBaseline": {
+                "estimate": -11942,
+                "confidenceInterval": [
+                  -11942,
+                  -11942
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:inputTokens"
+              }
+            },
+            "cachedInputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                111616
+              ],
+              "treatmentRaw": [
+                109568
+              ],
+              "baselineMedian": 111616,
+              "treatmentMedian": 109568,
+              "treatmentMinusBaseline": {
+                "estimate": -2048,
+                "confidenceInterval": [
+                  -2048,
+                  -2048
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:cachedInputTokens"
+              }
+            },
+            "uncachedInputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                20015
+              ],
+              "treatmentRaw": [
+                10121
+              ],
+              "baselineMedian": 20015,
+              "treatmentMedian": 10121,
+              "treatmentMinusBaseline": {
+                "estimate": -9894,
+                "confidenceInterval": [
+                  -9894,
+                  -9894
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:uncachedInputTokens"
+              }
+            },
+            "outputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1911
+              ],
+              "treatmentRaw": [
+                1303
+              ],
+              "baselineMedian": 1911,
+              "treatmentMedian": 1303,
+              "treatmentMinusBaseline": {
+                "estimate": -608,
+                "confidenceInterval": [
+                  -608,
+                  -608
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:outputTokens"
+              }
+            },
+            "reportedTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                133542
+              ],
+              "treatmentRaw": [
+                120992
+              ],
+              "baselineMedian": 133542,
+              "treatmentMedian": 120992,
+              "treatmentMinusBaseline": {
+                "estimate": -12550,
+                "confidenceInterval": [
+                  -12550,
+                  -12550
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:reportedTokens"
+              }
+            },
+            "changedFilePrecision": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                1
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 1,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:changedFilePrecision"
+              }
+            },
+            "changedFileRecall": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                1
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 1,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:route-only-minus-control:changedFileRecall"
+              }
+            }
+          }
+        },
+        "fullPalaceMinusRouteOnly": {
+          "baselineArm": "routeOnly",
+          "treatmentArm": "fullPalace",
+          "validPairs": 1,
+          "invalidPairIds": [],
+          "success": {
+            "baselineRaw": [
+              1
+            ],
+            "treatmentRaw": [
+              1
+            ],
+            "baselineRate": 1,
+            "treatmentRate": 1,
+            "treatmentMinusBaseline": {
+              "estimate": 0,
+              "confidenceInterval": [
+                0,
+                0
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only"
+            },
+            "discordant": {
+              "baselineOnly": 0,
+              "treatmentOnly": 0,
+              "total": 0
+            },
+            "mcnemarExactPValue": 1
+          },
+          "metrics": {
+            "durationMs": {
+              "pairCount": 1,
+              "baselineRaw": [
+                58442
+              ],
+              "treatmentRaw": [
+                91029
+              ],
+              "baselineMedian": 58442,
+              "treatmentMedian": 91029,
+              "treatmentMinusBaseline": {
+                "estimate": 32587,
+                "confidenceInterval": [
+                  32587,
+                  32587
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:durationMs"
+              }
+            },
+            "toolCalls": {
+              "pairCount": 1,
+              "baselineRaw": [
+                6
+              ],
+              "treatmentRaw": [
+                10
+              ],
+              "baselineMedian": 6,
+              "treatmentMedian": 10,
+              "treatmentMinusBaseline": {
+                "estimate": 4,
+                "confidenceInterval": [
+                  4,
+                  4
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:toolCalls"
+              }
+            },
+            "failedCalls": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:failedCalls"
+              }
+            },
+            "routerErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:routerErrors"
+              }
+            },
+            "applyPatchVerificationErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:applyPatchVerificationErrors"
+              }
+            },
+            "sandboxPreparationErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:sandboxPreparationErrors"
+              }
+            },
+            "inspectionCommands": {
+              "pairCount": 1,
+              "baselineRaw": [
+                3
+              ],
+              "treatmentRaw": [
+                2
+              ],
+              "baselineMedian": 3,
+              "treatmentMedian": 2,
+              "treatmentMinusBaseline": {
+                "estimate": -1,
+                "confidenceInterval": [
+                  -1,
+                  -1
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:inspectionCommands"
+              }
+            },
+            "commandOutputChars": {
+              "pairCount": 1,
+              "baselineRaw": [
+                4706
+              ],
+              "treatmentRaw": [
+                10092
+              ],
+              "baselineMedian": 4706,
+              "treatmentMedian": 10092,
+              "treatmentMinusBaseline": {
+                "estimate": 5386,
+                "confidenceInterval": [
+                  5386,
+                  5386
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:commandOutputChars"
+              }
+            },
+            "palaceContextOutputChars": {
+              "pairCount": 1,
+              "baselineRaw": [
+                2327
+              ],
+              "treatmentRaw": [
+                3127
+              ],
+              "baselineMedian": 2327,
+              "treatmentMedian": 3127,
+              "treatmentMinusBaseline": {
+                "estimate": 800,
+                "confidenceInterval": [
+                  800,
+                  800
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:palaceContextOutputChars"
+              }
+            },
+            "palaceContextOutputBytes": {
+              "pairCount": 1,
+              "baselineRaw": [
+                2327
+              ],
+              "treatmentRaw": [
+                3127
+              ],
+              "baselineMedian": 2327,
+              "treatmentMedian": 3127,
+              "treatmentMinusBaseline": {
+                "estimate": 800,
+                "confidenceInterval": [
+                  800,
+                  800
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:palaceContextOutputBytes"
+              }
+            },
+            "palaceContextEstimatedTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                582
+              ],
+              "treatmentRaw": [
+                782
+              ],
+              "baselineMedian": 582,
+              "treatmentMedian": 782,
+              "treatmentMinusBaseline": {
+                "estimate": 200,
+                "confidenceInterval": [
+                  200,
+                  200
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:palaceContextEstimatedTokens"
+              }
+            },
+            "inputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                119689
+              ],
+              "treatmentRaw": [
+                148491
+              ],
+              "baselineMedian": 119689,
+              "treatmentMedian": 148491,
+              "treatmentMinusBaseline": {
+                "estimate": 28802,
+                "confidenceInterval": [
+                  28802,
+                  28802
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:inputTokens"
+              }
+            },
+            "cachedInputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                109568
+              ],
+              "treatmentRaw": [
+                134912
+              ],
+              "baselineMedian": 109568,
+              "treatmentMedian": 134912,
+              "treatmentMinusBaseline": {
+                "estimate": 25344,
+                "confidenceInterval": [
+                  25344,
+                  25344
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:cachedInputTokens"
+              }
+            },
+            "uncachedInputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                10121
+              ],
+              "treatmentRaw": [
+                13579
+              ],
+              "baselineMedian": 10121,
+              "treatmentMedian": 13579,
+              "treatmentMinusBaseline": {
+                "estimate": 3458,
+                "confidenceInterval": [
+                  3458,
+                  3458
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:uncachedInputTokens"
+              }
+            },
+            "outputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1303
+              ],
+              "treatmentRaw": [
+                1969
+              ],
+              "baselineMedian": 1303,
+              "treatmentMedian": 1969,
+              "treatmentMinusBaseline": {
+                "estimate": 666,
+                "confidenceInterval": [
+                  666,
+                  666
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:outputTokens"
+              }
+            },
+            "reportedTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                120992
+              ],
+              "treatmentRaw": [
+                150460
+              ],
+              "baselineMedian": 120992,
+              "treatmentMedian": 150460,
+              "treatmentMinusBaseline": {
+                "estimate": 29468,
+                "confidenceInterval": [
+                  29468,
+                  29468
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:reportedTokens"
+              }
+            },
+            "changedFilePrecision": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                1
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 1,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:changedFilePrecision"
+              }
+            },
+            "changedFileRecall": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                1
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 1,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:full-palace-minus-route-only:changedFileRecall"
+              }
+            }
+          }
+        },
+        "adaptiveMinusControl": {
+          "baselineArm": "control",
+          "treatmentArm": "adaptivePalace",
+          "validPairs": 1,
+          "invalidPairIds": [],
+          "success": {
+            "baselineRaw": [
+              1
+            ],
+            "treatmentRaw": [
+              1
+            ],
+            "baselineRate": 1,
+            "treatmentRate": 1,
+            "treatmentMinusBaseline": {
+              "estimate": 0,
+              "confidenceInterval": [
+                0,
+                0
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control"
+            },
+            "discordant": {
+              "baselineOnly": 0,
+              "treatmentOnly": 0,
+              "total": 0
+            },
+            "mcnemarExactPValue": 1
+          },
+          "metrics": {
+            "durationMs": {
+              "pairCount": 1,
+              "baselineRaw": [
+                64761
+              ],
+              "treatmentRaw": [
+                120623
+              ],
+              "baselineMedian": 64761,
+              "treatmentMedian": 120623,
+              "treatmentMinusBaseline": {
+                "estimate": 55862,
+                "confidenceInterval": [
+                  55862,
+                  55862
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:durationMs"
+              }
+            },
+            "toolCalls": {
+              "pairCount": 1,
+              "baselineRaw": [
+                5
+              ],
+              "treatmentRaw": [
+                17
+              ],
+              "baselineMedian": 5,
+              "treatmentMedian": 17,
+              "treatmentMinusBaseline": {
+                "estimate": 12,
+                "confidenceInterval": [
+                  12,
+                  12
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:toolCalls"
+              }
+            },
+            "failedCalls": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                2
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 2,
+              "treatmentMinusBaseline": {
+                "estimate": 1,
+                "confidenceInterval": [
+                  1,
+                  1
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:failedCalls"
+              }
+            },
+            "routerErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                2
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 2,
+              "treatmentMinusBaseline": {
+                "estimate": 1,
+                "confidenceInterval": [
+                  1,
+                  1
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:routerErrors"
+              }
+            },
+            "applyPatchVerificationErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:applyPatchVerificationErrors"
+              }
+            },
+            "sandboxPreparationErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:sandboxPreparationErrors"
+              }
+            },
+            "inspectionCommands": {
+              "pairCount": 1,
+              "baselineRaw": [
+                4
+              ],
+              "treatmentRaw": [
+                7
+              ],
+              "baselineMedian": 4,
+              "treatmentMedian": 7,
+              "treatmentMinusBaseline": {
+                "estimate": 3,
+                "confidenceInterval": [
+                  3,
+                  3
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:inspectionCommands"
+              }
+            },
+            "commandOutputChars": {
+              "pairCount": 1,
+              "baselineRaw": [
+                10790
+              ],
+              "treatmentRaw": [
+                5200
+              ],
+              "baselineMedian": 10790,
+              "treatmentMedian": 5200,
+              "treatmentMinusBaseline": {
+                "estimate": -5590,
+                "confidenceInterval": [
+                  -5590,
+                  -5590
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:commandOutputChars"
+              }
+            },
+            "palaceContextOutputChars": {
+              "pairCount": 0,
+              "baselineRaw": [],
+              "treatmentRaw": [],
+              "baselineMedian": null,
+              "treatmentMedian": null,
+              "treatmentMinusBaseline": {
+                "estimate": null,
+                "confidenceInterval": [
+                  null,
+                  null
+                ],
+                "iterations": 0
+              }
+            },
+            "palaceContextOutputBytes": {
+              "pairCount": 0,
+              "baselineRaw": [],
+              "treatmentRaw": [],
+              "baselineMedian": null,
+              "treatmentMedian": null,
+              "treatmentMinusBaseline": {
+                "estimate": null,
+                "confidenceInterval": [
+                  null,
+                  null
+                ],
+                "iterations": 0
+              }
+            },
+            "palaceContextEstimatedTokens": {
+              "pairCount": 0,
+              "baselineRaw": [],
+              "treatmentRaw": [],
+              "baselineMedian": null,
+              "treatmentMedian": null,
+              "treatmentMinusBaseline": {
+                "estimate": null,
+                "confidenceInterval": [
+                  null,
+                  null
+                ],
+                "iterations": 0
+              }
+            },
+            "inputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                131631
+              ],
+              "treatmentRaw": [
+                174105
+              ],
+              "baselineMedian": 131631,
+              "treatmentMedian": 174105,
+              "treatmentMinusBaseline": {
+                "estimate": 42474,
+                "confidenceInterval": [
+                  42474,
+                  42474
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:inputTokens"
+              }
+            },
+            "cachedInputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                111616
+              ],
+              "treatmentRaw": [
+                154880
+              ],
+              "baselineMedian": 111616,
+              "treatmentMedian": 154880,
+              "treatmentMinusBaseline": {
+                "estimate": 43264,
+                "confidenceInterval": [
+                  43264,
+                  43264
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:cachedInputTokens"
+              }
+            },
+            "uncachedInputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                20015
+              ],
+              "treatmentRaw": [
+                19225
+              ],
+              "baselineMedian": 20015,
+              "treatmentMedian": 19225,
+              "treatmentMinusBaseline": {
+                "estimate": -790,
+                "confidenceInterval": [
+                  -790,
+                  -790
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:uncachedInputTokens"
+              }
+            },
+            "outputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1911
+              ],
+              "treatmentRaw": [
+                2467
+              ],
+              "baselineMedian": 1911,
+              "treatmentMedian": 2467,
+              "treatmentMinusBaseline": {
+                "estimate": 556,
+                "confidenceInterval": [
+                  556,
+                  556
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:outputTokens"
+              }
+            },
+            "reportedTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                133542
+              ],
+              "treatmentRaw": [
+                176572
+              ],
+              "baselineMedian": 133542,
+              "treatmentMedian": 176572,
+              "treatmentMinusBaseline": {
+                "estimate": 43030,
+                "confidenceInterval": [
+                  43030,
+                  43030
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:reportedTokens"
+              }
+            },
+            "changedFilePrecision": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                1
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 1,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:changedFilePrecision"
+              }
+            },
+            "changedFileRecall": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                1
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 1,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-control:changedFileRecall"
+              }
+            }
+          }
+        },
+        "adaptiveMinusFullPalace": {
+          "baselineArm": "fullPalace",
+          "treatmentArm": "adaptivePalace",
+          "validPairs": 1,
+          "invalidPairIds": [],
+          "success": {
+            "baselineRaw": [
+              1
+            ],
+            "treatmentRaw": [
+              1
+            ],
+            "baselineRate": 1,
+            "treatmentRate": 1,
+            "treatmentMinusBaseline": {
+              "estimate": 0,
+              "confidenceInterval": [
+                0,
+                0
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace"
+            },
+            "discordant": {
+              "baselineOnly": 0,
+              "treatmentOnly": 0,
+              "total": 0
+            },
+            "mcnemarExactPValue": 1,
+            "holmAdjustedPValue": 1
+          },
+          "metrics": {
+            "durationMs": {
+              "pairCount": 1,
+              "baselineRaw": [
+                91029
+              ],
+              "treatmentRaw": [
+                120623
+              ],
+              "baselineMedian": 91029,
+              "treatmentMedian": 120623,
+              "treatmentMinusBaseline": {
+                "estimate": 29594,
+                "confidenceInterval": [
+                  29594,
+                  29594
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:durationMs"
+              }
+            },
+            "toolCalls": {
+              "pairCount": 1,
+              "baselineRaw": [
+                10
+              ],
+              "treatmentRaw": [
+                17
+              ],
+              "baselineMedian": 10,
+              "treatmentMedian": 17,
+              "treatmentMinusBaseline": {
+                "estimate": 7,
+                "confidenceInterval": [
+                  7,
+                  7
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:toolCalls"
+              }
+            },
+            "failedCalls": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                2
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 2,
+              "treatmentMinusBaseline": {
+                "estimate": 2,
+                "confidenceInterval": [
+                  2,
+                  2
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:failedCalls"
+              }
+            },
+            "routerErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                2
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 2,
+              "treatmentMinusBaseline": {
+                "estimate": 2,
+                "confidenceInterval": [
+                  2,
+                  2
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:routerErrors"
+              }
+            },
+            "applyPatchVerificationErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:applyPatchVerificationErrors"
+              }
+            },
+            "sandboxPreparationErrors": {
+              "pairCount": 1,
+              "baselineRaw": [
+                0
+              ],
+              "treatmentRaw": [
+                0
+              ],
+              "baselineMedian": 0,
+              "treatmentMedian": 0,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:sandboxPreparationErrors"
+              }
+            },
+            "inspectionCommands": {
+              "pairCount": 1,
+              "baselineRaw": [
+                2
+              ],
+              "treatmentRaw": [
+                7
+              ],
+              "baselineMedian": 2,
+              "treatmentMedian": 7,
+              "treatmentMinusBaseline": {
+                "estimate": 5,
+                "confidenceInterval": [
+                  5,
+                  5
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:inspectionCommands"
+              }
+            },
+            "commandOutputChars": {
+              "pairCount": 1,
+              "baselineRaw": [
+                10092
+              ],
+              "treatmentRaw": [
+                5200
+              ],
+              "baselineMedian": 10092,
+              "treatmentMedian": 5200,
+              "treatmentMinusBaseline": {
+                "estimate": -4892,
+                "confidenceInterval": [
+                  -4892,
+                  -4892
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:commandOutputChars"
+              }
+            },
+            "palaceContextOutputChars": {
+              "pairCount": 1,
+              "baselineRaw": [
+                3127
+              ],
+              "treatmentRaw": [
+                2894
+              ],
+              "baselineMedian": 3127,
+              "treatmentMedian": 2894,
+              "treatmentMinusBaseline": {
+                "estimate": -233,
+                "confidenceInterval": [
+                  -233,
+                  -233
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:palaceContextOutputChars"
+              }
+            },
+            "palaceContextOutputBytes": {
+              "pairCount": 1,
+              "baselineRaw": [
+                3127
+              ],
+              "treatmentRaw": [
+                2894
+              ],
+              "baselineMedian": 3127,
+              "treatmentMedian": 2894,
+              "treatmentMinusBaseline": {
+                "estimate": -233,
+                "confidenceInterval": [
+                  -233,
+                  -233
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:palaceContextOutputBytes"
+              }
+            },
+            "palaceContextEstimatedTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                782
+              ],
+              "treatmentRaw": [
+                724
+              ],
+              "baselineMedian": 782,
+              "treatmentMedian": 724,
+              "treatmentMinusBaseline": {
+                "estimate": -58,
+                "confidenceInterval": [
+                  -58,
+                  -58
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:palaceContextEstimatedTokens"
+              }
+            },
+            "inputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                148491
+              ],
+              "treatmentRaw": [
+                174105
+              ],
+              "baselineMedian": 148491,
+              "treatmentMedian": 174105,
+              "treatmentMinusBaseline": {
+                "estimate": 25614,
+                "confidenceInterval": [
+                  25614,
+                  25614
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:inputTokens"
+              }
+            },
+            "cachedInputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                134912
+              ],
+              "treatmentRaw": [
+                154880
+              ],
+              "baselineMedian": 134912,
+              "treatmentMedian": 154880,
+              "treatmentMinusBaseline": {
+                "estimate": 19968,
+                "confidenceInterval": [
+                  19968,
+                  19968
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:cachedInputTokens"
+              }
+            },
+            "uncachedInputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                13579
+              ],
+              "treatmentRaw": [
+                19225
+              ],
+              "baselineMedian": 13579,
+              "treatmentMedian": 19225,
+              "treatmentMinusBaseline": {
+                "estimate": 5646,
+                "confidenceInterval": [
+                  5646,
+                  5646
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:uncachedInputTokens"
+              }
+            },
+            "outputTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1969
+              ],
+              "treatmentRaw": [
+                2467
+              ],
+              "baselineMedian": 1969,
+              "treatmentMedian": 2467,
+              "treatmentMinusBaseline": {
+                "estimate": 498,
+                "confidenceInterval": [
+                  498,
+                  498
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:outputTokens"
+              }
+            },
+            "reportedTokens": {
+              "pairCount": 1,
+              "baselineRaw": [
+                150460
+              ],
+              "treatmentRaw": [
+                176572
+              ],
+              "baselineMedian": 150460,
+              "treatmentMedian": 176572,
+              "treatmentMinusBaseline": {
+                "estimate": 26112,
+                "confidenceInterval": [
+                  26112,
+                  26112
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:reportedTokens"
+              }
+            },
+            "changedFilePrecision": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                1
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 1,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:changedFilePrecision"
+              }
+            },
+            "changedFileRecall": {
+              "pairCount": 1,
+              "baselineRaw": [
+                1
+              ],
+              "treatmentRaw": [
+                1
+              ],
+              "baselineMedian": 1,
+              "treatmentMedian": 1,
+              "treatmentMinusBaseline": {
+                "estimate": 0,
+                "confidenceInterval": [
+                  0,
+                  0
+                ],
+                "iterations": 10000,
+                "confidence": 0.95,
+                "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:changedFileRecall"
+              }
+            }
+          }
+        }
+      },
+      "primaryComparison": {
+        "baselineArm": "fullPalace",
+        "treatmentArm": "adaptivePalace",
+        "validPairs": 1,
+        "invalidPairIds": [],
+        "success": {
+          "baselineRaw": [
+            1
+          ],
+          "treatmentRaw": [
+            1
+          ],
+          "baselineRate": 1,
+          "treatmentRate": 1,
+          "treatmentMinusBaseline": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "confidence": 0.95,
+            "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace"
+          },
+          "discordant": {
+            "baselineOnly": 0,
+            "treatmentOnly": 0,
+            "total": 0
+          },
+          "mcnemarExactPValue": 1,
+          "holmAdjustedPValue": 1
+        },
+        "metrics": {
+          "durationMs": {
+            "pairCount": 1,
+            "baselineRaw": [
+              91029
+            ],
+            "treatmentRaw": [
+              120623
+            ],
+            "baselineMedian": 91029,
+            "treatmentMedian": 120623,
+            "treatmentMinusBaseline": {
+              "estimate": 29594,
+              "confidenceInterval": [
+                29594,
+                29594
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:durationMs"
+            }
+          },
+          "toolCalls": {
+            "pairCount": 1,
+            "baselineRaw": [
+              10
+            ],
+            "treatmentRaw": [
+              17
+            ],
+            "baselineMedian": 10,
+            "treatmentMedian": 17,
+            "treatmentMinusBaseline": {
+              "estimate": 7,
+              "confidenceInterval": [
+                7,
+                7
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:toolCalls"
+            }
+          },
+          "failedCalls": {
+            "pairCount": 1,
+            "baselineRaw": [
+              0
+            ],
+            "treatmentRaw": [
+              2
+            ],
+            "baselineMedian": 0,
+            "treatmentMedian": 2,
+            "treatmentMinusBaseline": {
+              "estimate": 2,
+              "confidenceInterval": [
+                2,
+                2
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:failedCalls"
+            }
+          },
+          "routerErrors": {
+            "pairCount": 1,
+            "baselineRaw": [
+              0
+            ],
+            "treatmentRaw": [
+              2
+            ],
+            "baselineMedian": 0,
+            "treatmentMedian": 2,
+            "treatmentMinusBaseline": {
+              "estimate": 2,
+              "confidenceInterval": [
+                2,
+                2
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:routerErrors"
+            }
+          },
+          "applyPatchVerificationErrors": {
+            "pairCount": 1,
+            "baselineRaw": [
+              0
+            ],
+            "treatmentRaw": [
+              0
+            ],
+            "baselineMedian": 0,
+            "treatmentMedian": 0,
+            "treatmentMinusBaseline": {
+              "estimate": 0,
+              "confidenceInterval": [
+                0,
+                0
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:applyPatchVerificationErrors"
+            }
+          },
+          "sandboxPreparationErrors": {
+            "pairCount": 1,
+            "baselineRaw": [
+              0
+            ],
+            "treatmentRaw": [
+              0
+            ],
+            "baselineMedian": 0,
+            "treatmentMedian": 0,
+            "treatmentMinusBaseline": {
+              "estimate": 0,
+              "confidenceInterval": [
+                0,
+                0
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:sandboxPreparationErrors"
+            }
+          },
+          "inspectionCommands": {
+            "pairCount": 1,
+            "baselineRaw": [
+              2
+            ],
+            "treatmentRaw": [
+              7
+            ],
+            "baselineMedian": 2,
+            "treatmentMedian": 7,
+            "treatmentMinusBaseline": {
+              "estimate": 5,
+              "confidenceInterval": [
+                5,
+                5
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:inspectionCommands"
+            }
+          },
+          "commandOutputChars": {
+            "pairCount": 1,
+            "baselineRaw": [
+              10092
+            ],
+            "treatmentRaw": [
+              5200
+            ],
+            "baselineMedian": 10092,
+            "treatmentMedian": 5200,
+            "treatmentMinusBaseline": {
+              "estimate": -4892,
+              "confidenceInterval": [
+                -4892,
+                -4892
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:commandOutputChars"
+            }
+          },
+          "palaceContextOutputChars": {
+            "pairCount": 1,
+            "baselineRaw": [
+              3127
+            ],
+            "treatmentRaw": [
+              2894
+            ],
+            "baselineMedian": 3127,
+            "treatmentMedian": 2894,
+            "treatmentMinusBaseline": {
+              "estimate": -233,
+              "confidenceInterval": [
+                -233,
+                -233
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:palaceContextOutputChars"
+            }
+          },
+          "palaceContextOutputBytes": {
+            "pairCount": 1,
+            "baselineRaw": [
+              3127
+            ],
+            "treatmentRaw": [
+              2894
+            ],
+            "baselineMedian": 3127,
+            "treatmentMedian": 2894,
+            "treatmentMinusBaseline": {
+              "estimate": -233,
+              "confidenceInterval": [
+                -233,
+                -233
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:palaceContextOutputBytes"
+            }
+          },
+          "palaceContextEstimatedTokens": {
+            "pairCount": 1,
+            "baselineRaw": [
+              782
+            ],
+            "treatmentRaw": [
+              724
+            ],
+            "baselineMedian": 782,
+            "treatmentMedian": 724,
+            "treatmentMinusBaseline": {
+              "estimate": -58,
+              "confidenceInterval": [
+                -58,
+                -58
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:palaceContextEstimatedTokens"
+            }
+          },
+          "inputTokens": {
+            "pairCount": 1,
+            "baselineRaw": [
+              148491
+            ],
+            "treatmentRaw": [
+              174105
+            ],
+            "baselineMedian": 148491,
+            "treatmentMedian": 174105,
+            "treatmentMinusBaseline": {
+              "estimate": 25614,
+              "confidenceInterval": [
+                25614,
+                25614
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:inputTokens"
+            }
+          },
+          "cachedInputTokens": {
+            "pairCount": 1,
+            "baselineRaw": [
+              134912
+            ],
+            "treatmentRaw": [
+              154880
+            ],
+            "baselineMedian": 134912,
+            "treatmentMedian": 154880,
+            "treatmentMinusBaseline": {
+              "estimate": 19968,
+              "confidenceInterval": [
+                19968,
+                19968
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:cachedInputTokens"
+            }
+          },
+          "uncachedInputTokens": {
+            "pairCount": 1,
+            "baselineRaw": [
+              13579
+            ],
+            "treatmentRaw": [
+              19225
+            ],
+            "baselineMedian": 13579,
+            "treatmentMedian": 19225,
+            "treatmentMinusBaseline": {
+              "estimate": 5646,
+              "confidenceInterval": [
+                5646,
+                5646
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:uncachedInputTokens"
+            }
+          },
+          "outputTokens": {
+            "pairCount": 1,
+            "baselineRaw": [
+              1969
+            ],
+            "treatmentRaw": [
+              2467
+            ],
+            "baselineMedian": 1969,
+            "treatmentMedian": 2467,
+            "treatmentMinusBaseline": {
+              "estimate": 498,
+              "confidenceInterval": [
+                498,
+                498
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:outputTokens"
+            }
+          },
+          "reportedTokens": {
+            "pairCount": 1,
+            "baselineRaw": [
+              150460
+            ],
+            "treatmentRaw": [
+              176572
+            ],
+            "baselineMedian": 150460,
+            "treatmentMedian": 176572,
+            "treatmentMinusBaseline": {
+              "estimate": 26112,
+              "confidenceInterval": [
+                26112,
+                26112
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:reportedTokens"
+            }
+          },
+          "changedFilePrecision": {
+            "pairCount": 1,
+            "baselineRaw": [
+              1
+            ],
+            "treatmentRaw": [
+              1
+            ],
+            "baselineMedian": 1,
+            "treatmentMedian": 1,
+            "treatmentMinusBaseline": {
+              "estimate": 0,
+              "confidenceInterval": [
+                0,
+                0
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:changedFilePrecision"
+            }
+          },
+          "changedFileRecall": {
+            "pairCount": 1,
+            "baselineRaw": [
+              1
+            ],
+            "treatmentRaw": [
+              1
+            ],
+            "baselineMedian": 1,
+            "treatmentMedian": 1,
+            "treatmentMinusBaseline": {
+              "estimate": 0,
+              "confidenceInterval": [
+                0,
+                0
+              ],
+              "iterations": 10000,
+              "confidence": 0.95,
+              "seed": "pilot-v1:stale-memory-adversarial:adaptive-minus-full-palace:changedFileRecall"
+            }
+          }
+        }
+      },
+      "mechanisms": {
+        "routeOnlyPairs": 1,
+        "routeRecallAtK": {
+          "routeOnly": [
+            1
+          ],
+          "fullPalace": [
+            1
+          ],
+          "adaptivePalace": [
+            1
+          ]
+        },
+        "routePrecisionAtK": {
+          "routeOnly": [
+            0.6666666666666666
+          ],
+          "fullPalace": [
+            0.6666666666666666
+          ],
+          "adaptivePalace": [
+            0.6666666666666666
+          ]
+        },
+        "pitfallViolationRate": {
+          "routeOnlyRaw": [],
+          "fullPalaceRaw": [],
+          "adaptivePalaceRaw": [],
+          "routeOnlyRate": null,
+          "fullPalaceRate": null,
+          "adaptivePalaceRate": null
+        },
+        "wrongMemoryAdoptionRate": {
+          "routeOnlyRaw": [
+            false
+          ],
+          "fullPalaceRaw": [
+            false
+          ],
+          "adaptivePalaceRaw": [
+            false
+          ],
+          "routeOnlyRate": 0,
+          "fullPalaceRate": 0,
+          "adaptivePalaceRate": 0
+        }
+      }
     }
   },
   "overall": {
-    "attemptedPairs": 12,
-    "validPairs": 12,
+    "attemptedPairs": 13,
+    "validPairs": 13,
     "invalidPairIds": [],
     "success": {
       "controlRaw": [
@@ -9377,9 +11847,11 @@
         1,
         1,
         1,
+        1,
         1
       ],
       "fullPalaceRaw": [
+        1,
         1,
         1,
         1,
@@ -9416,7 +11888,7 @@
     },
     "metrics": {
       "durationMs": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           43377,
           39752,
@@ -9429,7 +11901,8 @@
           75427,
           61478,
           151905,
-          67743
+          67743,
+          64761
         ],
         "fullPalaceRaw": [
           52165,
@@ -9443,15 +11916,16 @@
           96667,
           149183,
           79689,
-          84232
+          84232,
+          91029
         ],
-        "controlMedian": 59345,
-        "fullPalaceMedian": 80712,
+        "controlMedian": 61478,
+        "fullPalaceMedian": 81735,
         "fullPalaceMinusControl": {
-          "estimate": 18150,
+          "estimate": 19811,
           "confidenceInterval": [
-            12235.5,
-            39813.5
+            15683,
+            27062
           ],
           "iterations": 10000,
           "confidence": 0.95,
@@ -9459,7 +11933,7 @@
         }
       },
       "toolCalls": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           4,
           4,
@@ -9472,6 +11946,7 @@
           5,
           5,
           8,
+          5,
           5
         ],
         "fullPalaceRaw": [
@@ -9486,15 +11961,16 @@
           12,
           28,
           7,
-          22
+          22,
+          10
         ],
         "controlMedian": 5,
-        "fullPalaceMedian": 12.5,
+        "fullPalaceMedian": 12,
         "fullPalaceMinusControl": {
-          "estimate": 8,
+          "estimate": 7,
           "confidenceInterval": [
-            1,
-            12.5
+            2,
+            12
           ],
           "iterations": 10000,
           "confidence": 0.95,
@@ -9502,7 +11978,7 @@
         }
       },
       "failedCalls": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           1,
           0,
@@ -9515,6 +11991,7 @@
           1,
           0,
           2,
+          1,
           1
         ],
         "fullPalaceRaw": [
@@ -9529,14 +12006,15 @@
           1,
           1,
           0,
-          1
+          1,
+          0
         ],
-        "controlMedian": 0.5,
+        "controlMedian": 1,
         "fullPalaceMedian": 1,
         "fullPalaceMinusControl": {
           "estimate": 0,
           "confidenceInterval": [
-            -0.5,
+            -1,
             1
           ],
           "iterations": 10000,
@@ -9545,7 +12023,7 @@
         }
       },
       "routerErrors": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           1,
           0,
@@ -9558,6 +12036,7 @@
           1,
           0,
           2,
+          1,
           1
         ],
         "fullPalaceRaw": [
@@ -9572,14 +12051,15 @@
           1,
           1,
           0,
-          1
+          1,
+          0
         ],
-        "controlMedian": 0.5,
+        "controlMedian": 1,
         "fullPalaceMedian": 1,
         "fullPalaceMinusControl": {
           "estimate": 0,
           "confidenceInterval": [
-            -0.5,
+            -1,
             1
           ],
           "iterations": 10000,
@@ -9588,8 +12068,9 @@
         }
       },
       "applyPatchVerificationErrors": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
+          0,
           0,
           0,
           0,
@@ -9604,6 +12085,7 @@
           0
         ],
         "fullPalaceRaw": [
+          0,
           0,
           0,
           0,
@@ -9631,8 +12113,9 @@
         }
       },
       "sandboxPreparationErrors": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
+          0,
           0,
           0,
           0,
@@ -9647,6 +12130,7 @@
           0
         ],
         "fullPalaceRaw": [
+          0,
           0,
           0,
           0,
@@ -9674,7 +12158,7 @@
         }
       },
       "inspectionCommands": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           2,
           2,
@@ -9687,7 +12171,8 @@
           3,
           2,
           4,
-          3
+          3,
+          4
         ],
         "fullPalaceRaw": [
           1,
@@ -9701,14 +12186,15 @@
           3,
           14,
           3,
-          14
+          14,
+          2
         ],
         "controlMedian": 3,
         "fullPalaceMedian": 4,
         "fullPalaceMinusControl": {
           "estimate": 2,
           "confidenceInterval": [
-            -0.5,
+            -1,
             4
           ],
           "iterations": 10000,
@@ -9717,7 +12203,7 @@
         }
       },
       "commandOutputChars": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           3876,
           2931,
@@ -9730,7 +12216,8 @@
           20709,
           19554,
           20407,
-          33066
+          33066,
+          10790
         ],
         "fullPalaceRaw": [
           4186,
@@ -9744,15 +12231,16 @@
           22315,
           25827,
           12612,
-          25183
+          25183,
+          10092
         ],
-        "controlMedian": 11146.5,
-        "fullPalaceMedian": 12340,
+        "controlMedian": 10863,
+        "fullPalaceMedian": 12068,
         "fullPalaceMinusControl": {
-          "estimate": 757.5,
+          "estimate": 310,
           "confidenceInterval": [
-            -2506.5,
-            2739
+            -2380,
+            2400
           ],
           "iterations": 10000,
           "confidence": 0.95,
@@ -9805,7 +12293,7 @@
         }
       },
       "inputTokens": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           86565,
           86134,
@@ -9818,7 +12306,8 @@
           126570,
           127641,
           246702,
-          139080
+          139080,
+          131631
         ],
         "fullPalaceRaw": [
           119937,
@@ -9832,15 +12321,16 @@
           175428,
           348551,
           152553,
-          175069
+          175069,
+          148491
         ],
-        "controlMedian": 116209.5,
-        "fullPalaceMedian": 132918.5,
+        "controlMedian": 122454,
+        "fullPalaceMedian": 140602,
         "fullPalaceMinusControl": {
-          "estimate": 34680.5,
+          "estimate": 33372,
           "confidenceInterval": [
-            953,
-            51663
+            2980,
+            48858
           ],
           "iterations": 10000,
           "confidence": 0.95,
@@ -9848,7 +12338,7 @@
         }
       },
       "cachedInputTokens": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           53248,
           60160,
@@ -9861,7 +12351,8 @@
           101888,
           112896,
           217088,
-          121088
+          121088,
+          111616
         ],
         "fullPalaceRaw": [
           96512,
@@ -9875,15 +12366,16 @@
           153344,
           294144,
           126720,
-          135168
+          135168,
+          134912
         ],
-        "controlMedian": 93696,
-        "fullPalaceMedian": 120192,
+        "controlMedian": 101888,
+        "fullPalaceMedian": 126720,
         "fullPalaceMinusControl": {
-          "estimate": 24704,
+          "estimate": 23296,
           "confidenceInterval": [
-            5120,
-            60032
+            9216,
+            51456
           ],
           "iterations": 10000,
           "confidence": 0.95,
@@ -9891,7 +12383,7 @@
         }
       },
       "uncachedInputTokens": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           33317,
           25974,
@@ -9904,7 +12396,8 @@
           24682,
           14745,
           29614,
-          17992
+          17992,
+          20015
         ],
         "fullPalaceRaw": [
           23425,
@@ -9918,15 +12411,16 @@
           22084,
           54407,
           25833,
-          39901
+          39901,
+          13579
         ],
-        "controlMedian": 16500.5,
-        "fullPalaceMedian": 21253.5,
+        "controlMedian": 17992,
+        "fullPalaceMedian": 20423,
         "fullPalaceMinusControl": {
-          "estimate": 965,
+          "estimate": -2098,
           "confidenceInterval": [
-            -6416.5,
-            12510.5
+            -6436,
+            6076
           ],
           "iterations": 10000,
           "confidence": 0.95,
@@ -9934,7 +12428,7 @@
         }
       },
       "outputTokens": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           996,
           1026,
@@ -9947,7 +12441,8 @@
           2052,
           1929,
           3080,
-          1958
+          1958,
+          1911
         ],
         "fullPalaceRaw": [
           1323,
@@ -9961,15 +12456,16 @@
           2801,
           4400,
           2159,
-          2605
+          2605,
+          1969
         ],
-        "controlMedian": 1658.5,
-        "fullPalaceMedian": 2144,
+        "controlMedian": 1797,
+        "fullPalaceMedian": 2129,
         "fullPalaceMinusControl": {
-          "estimate": 698,
+          "estimate": 647,
           "confidenceInterval": [
-            117.5,
-            1067
+            58,
+            972
           ],
           "iterations": 10000,
           "confidence": 0.95,
@@ -9977,7 +12473,7 @@
         }
       },
       "reportedTokens": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
           87561,
           87160,
@@ -9990,7 +12486,8 @@
           128622,
           129570,
           249782,
-          141038
+          141038,
+          133542
         ],
         "fullPalaceRaw": [
           121260,
@@ -10004,15 +12501,16 @@
           178229,
           352951,
           154712,
-          177674
+          177674,
+          150460
         ],
-        "controlMedian": 118020.5,
-        "fullPalaceMedian": 134899.5,
+        "controlMedian": 124784,
+        "fullPalaceMedian": 142435,
         "fullPalaceMinusControl": {
-          "estimate": 35167.5,
+          "estimate": 33699,
           "confidenceInterval": [
-            1141,
-            52441
+            4142,
+            49607
           ],
           "iterations": 10000,
           "confidence": 0.95,
@@ -10020,8 +12518,9 @@
         }
       },
       "changedFilePrecision": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
+          1,
           1,
           1,
           1,
@@ -10036,6 +12535,7 @@
           1
         ],
         "fullPalaceRaw": [
+          1,
           1,
           1,
           1,
@@ -10063,8 +12563,9 @@
         }
       },
       "changedFileRecall": {
-        "pairCount": 12,
+        "pairCount": 13,
         "controlRaw": [
+          1,
           1,
           1,
           1,
@@ -10079,6 +12580,7 @@
           1
         ],
         "fullPalaceRaw": [
+          1,
           1,
           1,
           1,
@@ -10110,7 +12612,7 @@
       "routeOnlyMinusControl": {
         "baselineArm": "control",
         "treatmentArm": "routeOnly",
-        "validPairs": 12,
+        "validPairs": 13,
         "invalidPairIds": [],
         "success": {
           "baselineRaw": [
@@ -10125,9 +12627,11 @@
             1,
             1,
             1,
+            1,
             1
           ],
           "treatmentRaw": [
+            1,
             1,
             1,
             1,
@@ -10162,7 +12666,7 @@
         },
         "metrics": {
           "durationMs": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               43377,
               39752,
@@ -10175,7 +12679,8 @@
               75427,
               61478,
               151905,
-              67743
+              67743,
+              64761
             ],
             "treatmentRaw": [
               52083,
@@ -10189,15 +12694,16 @@
               96950,
               130553,
               225037,
-              92238
+              92238,
+              58442
             ],
-            "baselineMedian": 59345,
-            "treatmentMedian": 72149.5,
+            "baselineMedian": 61478,
+            "treatmentMedian": 67745,
             "treatmentMinusBaseline": {
-              "estimate": 16332,
+              "estimate": 14267,
               "confidenceInterval": [
-                2800.5,
-                33472.5
+                -3105,
+                24495
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -10205,7 +12711,7 @@
             }
           },
           "toolCalls": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               4,
               4,
@@ -10218,6 +12724,7 @@
               5,
               5,
               8,
+              5,
               5
             ],
             "treatmentRaw": [
@@ -10232,14 +12739,15 @@
               24,
               23,
               9,
-              14
+              14,
+              6
             ],
             "baselineMedian": 5,
-            "treatmentMedian": 12.5,
+            "treatmentMedian": 11,
             "treatmentMinusBaseline": {
               "estimate": 7,
               "confidenceInterval": [
-                1.5,
+                1,
                 10
               ],
               "iterations": 10000,
@@ -10248,7 +12756,7 @@
             }
           },
           "failedCalls": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               1,
               0,
@@ -10261,6 +12769,7 @@
               1,
               0,
               2,
+              1,
               1
             ],
             "treatmentRaw": [
@@ -10275,9 +12784,10 @@
               1,
               1,
               1,
-              2
+              2,
+              0
             ],
-            "baselineMedian": 0.5,
+            "baselineMedian": 1,
             "treatmentMedian": 1,
             "treatmentMinusBaseline": {
               "estimate": 0,
@@ -10291,7 +12801,7 @@
             }
           },
           "routerErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               1,
               0,
@@ -10304,6 +12814,7 @@
               1,
               0,
               2,
+              1,
               1
             ],
             "treatmentRaw": [
@@ -10318,9 +12829,10 @@
               1,
               1,
               1,
-              2
+              2,
+              0
             ],
-            "baselineMedian": 0.5,
+            "baselineMedian": 1,
             "treatmentMedian": 1,
             "treatmentMinusBaseline": {
               "estimate": 0,
@@ -10334,8 +12846,9 @@
             }
           },
           "applyPatchVerificationErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              0,
               0,
               0,
               0,
@@ -10350,6 +12863,7 @@
               0
             ],
             "treatmentRaw": [
+              0,
               0,
               0,
               0,
@@ -10377,8 +12891,9 @@
             }
           },
           "sandboxPreparationErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              0,
               0,
               0,
               0,
@@ -10393,6 +12908,7 @@
               0
             ],
             "treatmentRaw": [
+              0,
               0,
               0,
               0,
@@ -10420,7 +12936,7 @@
             }
           },
           "inspectionCommands": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               2,
               2,
@@ -10433,7 +12949,8 @@
               3,
               2,
               4,
-              3
+              3,
+              4
             ],
             "treatmentRaw": [
               4,
@@ -10447,15 +12964,16 @@
               14,
               11,
               3,
-              4
+              4,
+              3
             ],
             "baselineMedian": 3,
             "treatmentMedian": 4,
             "treatmentMinusBaseline": {
-              "estimate": 1.5,
+              "estimate": 1,
               "confidenceInterval": [
-                -0.5,
-                3.5
+                -1,
+                3
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -10463,7 +12981,7 @@
             }
           },
           "commandOutputChars": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               3876,
               2931,
@@ -10476,7 +12994,8 @@
               20709,
               19554,
               20407,
-              33066
+              33066,
+              10790
             ],
             "treatmentRaw": [
               4173,
@@ -10490,15 +13009,16 @@
               13532,
               14324,
               22536,
-              11933
+              11933,
+              4706
             ],
-            "baselineMedian": 11146.5,
-            "treatmentMedian": 11934,
+            "baselineMedian": 10863,
+            "treatmentMedian": 11933,
             "treatmentMinusBaseline": {
-              "estimate": -427.5,
+              "estimate": -1152,
               "confidenceInterval": [
-                -4369,
-                2370.5
+                -5230,
+                2129
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -10551,7 +13071,7 @@
             }
           },
           "inputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               86565,
               86134,
@@ -10564,7 +13084,8 @@
               126570,
               127641,
               246702,
-              139080
+              139080,
+              131631
             ],
             "treatmentRaw": [
               119385,
@@ -10578,15 +13099,16 @@
               157602,
               179673,
               209179,
-              171259
+              171259,
+              119689
             ],
-            "baselineMedian": 116209.5,
-            "treatmentMedian": 146553,
+            "baselineMedian": 122454,
+            "treatmentMedian": 141427,
             "treatmentMinusBaseline": {
-              "estimate": 32499.5,
+              "estimate": 32179,
               "confidenceInterval": [
-                6757,
-                48994
+                3170,
+                45956
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -10594,7 +13116,7 @@
             }
           },
           "cachedInputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               53248,
               60160,
@@ -10607,7 +13129,8 @@
               101888,
               112896,
               217088,
-              121088
+              121088,
+              111616
             ],
             "treatmentRaw": [
               93440,
@@ -10621,15 +13144,16 @@
               142080,
               162304,
               190720,
-              152064
+              152064,
+              109568
             ],
-            "baselineMedian": 93696,
-            "treatmentMedian": 127360,
+            "baselineMedian": 101888,
+            "treatmentMedian": 124928,
             "treatmentMinusBaseline": {
-              "estimate": 35584,
+              "estimate": 30976,
               "confidenceInterval": [
-                4608,
-                42880
+                -2048,
+                41472
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -10637,7 +13161,7 @@
             }
           },
           "uncachedInputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               33317,
               25974,
@@ -10650,7 +13174,8 @@
               24682,
               14745,
               29614,
-              17992
+              17992,
+              20015
             ],
             "treatmentRaw": [
               25945,
@@ -10664,15 +13189,16 @@
               15522,
               17369,
               18459,
-              19195
+              19195,
+              10121
             ],
-            "baselineMedian": 16500.5,
-            "treatmentMedian": 17914,
+            "baselineMedian": 17992,
+            "treatmentMedian": 17369,
             "treatmentMinusBaseline": {
-              "estimate": 1435.5,
+              "estimate": 1203,
               "confidenceInterval": [
-                -8266,
-                5285.5
+                -9160,
+                2624
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -10680,7 +13206,7 @@
             }
           },
           "outputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               996,
               1026,
@@ -10693,7 +13219,8 @@
               2052,
               1929,
               3080,
-              1958
+              1958,
+              1911
             ],
             "treatmentRaw": [
               1334,
@@ -10707,15 +13234,16 @@
               2861,
               3353,
               2469,
-              2605
+              2605,
+              1303
             ],
-            "baselineMedian": 1658.5,
-            "treatmentMedian": 1963,
+            "baselineMedian": 1797,
+            "treatmentMedian": 1917,
             "treatmentMinusBaseline": {
-              "estimate": 362,
+              "estimate": 338,
               "confidenceInterval": [
                 120,
-                728
+                647
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -10723,7 +13251,7 @@
             }
           },
           "reportedTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               87561,
               87160,
@@ -10736,7 +13264,8 @@
               128622,
               129570,
               249782,
-              141038
+              141038,
+              133542
             ],
             "treatmentRaw": [
               120719,
@@ -10750,15 +13279,16 @@
               160463,
               183026,
               211648,
-              173864
+              173864,
+              120992
             ],
-            "baselineMedian": 118020.5,
-            "treatmentMedian": 148510.5,
+            "baselineMedian": 124784,
+            "treatmentMedian": 143333,
             "treatmentMinusBaseline": {
-              "estimate": 32992,
+              "estimate": 32826,
               "confidenceInterval": [
-                6902.5,
-                49899
+                3341,
+                46342
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -10766,8 +13296,9 @@
             }
           },
           "changedFilePrecision": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              1,
               1,
               1,
               1,
@@ -10782,6 +13313,7 @@
               1
             ],
             "treatmentRaw": [
+              1,
               1,
               1,
               1,
@@ -10809,8 +13341,9 @@
             }
           },
           "changedFileRecall": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              1,
               1,
               1,
               1,
@@ -10825,6 +13358,7 @@
               1
             ],
             "treatmentRaw": [
+              1,
               1,
               1,
               1,
@@ -10856,7 +13390,7 @@
       "fullPalaceMinusRouteOnly": {
         "baselineArm": "routeOnly",
         "treatmentArm": "fullPalace",
-        "validPairs": 12,
+        "validPairs": 13,
         "invalidPairIds": [],
         "success": {
           "baselineRaw": [
@@ -10871,9 +13405,11 @@
             1,
             1,
             1,
+            1,
             1
           ],
           "treatmentRaw": [
+            1,
             1,
             1,
             1,
@@ -10908,7 +13444,7 @@
         },
         "metrics": {
           "durationMs": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               52083,
               82202,
@@ -10921,7 +13457,8 @@
               96950,
               130553,
               225037,
-              92238
+              92238,
+              58442
             ],
             "treatmentRaw": [
               52165,
@@ -10935,15 +13472,16 @@
               96667,
               149183,
               79689,
-              84232
+              84232,
+              91029
             ],
-            "baselineMedian": 72149.5,
-            "treatmentMedian": 80712,
+            "baselineMedian": 67745,
+            "treatmentMedian": 81735,
             "treatmentMinusBaseline": {
-              "estimate": 11094,
+              "estimate": 17007,
               "confidenceInterval": [
-                -4144.5,
-                21289.5
+                -283,
+                23050
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -10951,7 +13489,7 @@
             }
           },
           "toolCalls": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               11,
               14,
@@ -10964,7 +13502,8 @@
               24,
               23,
               9,
-              14
+              14,
+              6
             ],
             "treatmentRaw": [
               6,
@@ -10978,15 +13517,16 @@
               12,
               28,
               7,
-              22
+              22,
+              10
             ],
-            "baselineMedian": 12.5,
-            "treatmentMedian": 12.5,
+            "baselineMedian": 11,
+            "treatmentMedian": 12,
             "treatmentMinusBaseline": {
-              "estimate": 3.5,
+              "estimate": 4,
               "confidenceInterval": [
-                -3.5,
-                6
+                -2,
+                5
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -10994,7 +13534,7 @@
             }
           },
           "failedCalls": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               0,
               1,
@@ -11007,7 +13547,8 @@
               1,
               1,
               1,
-              2
+              2,
+              0
             ],
             "treatmentRaw": [
               0,
@@ -11021,7 +13562,8 @@
               1,
               1,
               0,
-              1
+              1,
+              0
             ],
             "baselineMedian": 1,
             "treatmentMedian": 1,
@@ -11029,7 +13571,7 @@
               "estimate": 0,
               "confidenceInterval": [
                 0,
-                0.5
+                0
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11037,7 +13579,7 @@
             }
           },
           "routerErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               0,
               1,
@@ -11050,7 +13592,8 @@
               1,
               1,
               1,
-              2
+              2,
+              0
             ],
             "treatmentRaw": [
               0,
@@ -11064,7 +13607,8 @@
               1,
               1,
               0,
-              1
+              1,
+              0
             ],
             "baselineMedian": 1,
             "treatmentMedian": 1,
@@ -11072,7 +13616,7 @@
               "estimate": 0,
               "confidenceInterval": [
                 0,
-                0.5
+                0
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11080,8 +13624,9 @@
             }
           },
           "applyPatchVerificationErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              0,
               0,
               0,
               0,
@@ -11096,6 +13641,7 @@
               0
             ],
             "treatmentRaw": [
+              0,
               0,
               0,
               0,
@@ -11123,8 +13669,9 @@
             }
           },
           "sandboxPreparationErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              0,
               0,
               0,
               0,
@@ -11139,6 +13686,7 @@
               0
             ],
             "treatmentRaw": [
+              0,
               0,
               0,
               0,
@@ -11166,7 +13714,7 @@
             }
           },
           "inspectionCommands": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               4,
               4,
@@ -11179,7 +13727,8 @@
               14,
               11,
               3,
-              4
+              4,
+              3
             ],
             "treatmentRaw": [
               1,
@@ -11193,14 +13742,15 @@
               3,
               14,
               3,
-              14
+              14,
+              2
             ],
             "baselineMedian": 4,
             "treatmentMedian": 4,
             "treatmentMinusBaseline": {
-              "estimate": 0.5,
+              "estimate": 0,
               "confidenceInterval": [
-                -1.5,
+                -1,
                 3
               ],
               "iterations": 10000,
@@ -11209,7 +13759,7 @@
             }
           },
           "commandOutputChars": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               4173,
               5718,
@@ -11222,7 +13772,8 @@
               13532,
               14324,
               22536,
-              11933
+              11933,
+              4706
             ],
             "treatmentRaw": [
               4186,
@@ -11236,15 +13787,16 @@
               22315,
               25827,
               12612,
-              25183
+              25183,
+              10092
             ],
-            "baselineMedian": 11934,
-            "treatmentMedian": 12340,
+            "baselineMedian": 11933,
+            "treatmentMedian": 12068,
             "treatmentMinusBaseline": {
-              "estimate": 480,
+              "estimate": 494,
               "confidenceInterval": [
-                -187,
-                6748
+                13,
+                5386
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11252,7 +13804,7 @@
             }
           },
           "palaceContextOutputChars": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               2086,
               2086,
@@ -11265,7 +13817,8 @@
               4545,
               4545,
               4545,
-              4545
+              4545,
+              2327
             ],
             "treatmentRaw": [
               2086,
@@ -11279,7 +13832,8 @@
               5465,
               5465,
               5465,
-              5465
+              5465,
+              3127
             ],
             "baselineMedian": 3108,
             "treatmentMedian": 3108,
@@ -11295,7 +13849,7 @@
             }
           },
           "palaceContextOutputBytes": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               2086,
               2086,
@@ -11308,7 +13862,8 @@
               4545,
               4545,
               4545,
-              4545
+              4545,
+              2327
             ],
             "treatmentRaw": [
               2086,
@@ -11322,7 +13877,8 @@
               5465,
               5465,
               5465,
-              5465
+              5465,
+              3127
             ],
             "baselineMedian": 3108,
             "treatmentMedian": 3108,
@@ -11338,7 +13894,7 @@
             }
           },
           "palaceContextEstimatedTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               522,
               522,
@@ -11351,7 +13907,8 @@
               1137,
               1137,
               1137,
-              1137
+              1137,
+              582
             ],
             "treatmentRaw": [
               522,
@@ -11365,7 +13922,8 @@
               1367,
               1367,
               1367,
-              1367
+              1367,
+              782
             ],
             "baselineMedian": 777,
             "treatmentMedian": 777,
@@ -11381,7 +13939,7 @@
             }
           },
           "inputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               119385,
               138463,
@@ -11394,7 +13952,8 @@
               157602,
               179673,
               209179,
-              171259
+              171259,
+              119689
             ],
             "treatmentRaw": [
               119937,
@@ -11408,15 +13967,16 @@
               175428,
               348551,
               152553,
-              175069
+              175069,
+              148491
             ],
-            "baselineMedian": 146553,
-            "treatmentMedian": 132918.5,
+            "baselineMedian": 141427,
+            "treatmentMedian": 140602,
             "treatmentMinusBaseline": {
-              "estimate": 2974.5,
+              "estimate": 3810,
               "confidenceInterval": [
-                -19387,
-                25048.5
+                -190,
+                28802
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11424,7 +13984,7 @@
             }
           },
           "cachedInputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               93440,
               110592,
@@ -11437,7 +13997,8 @@
               142080,
               162304,
               190720,
-              152064
+              152064,
+              109568
             ],
             "treatmentRaw": [
               96512,
@@ -11451,15 +14012,16 @@
               153344,
               294144,
               126720,
-              135168
+              135168,
+              134912
             ],
-            "baselineMedian": 127360,
-            "treatmentMedian": 120192,
+            "baselineMedian": 124928,
+            "treatmentMedian": 126720,
             "treatmentMinusBaseline": {
-              "estimate": 5632,
+              "estimate": 8192,
               "confidenceInterval": [
-                -24576,
-                24704
+                -16896,
+                25344
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11467,7 +14029,7 @@
             }
           },
           "uncachedInputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               25945,
               27871,
@@ -11480,7 +14042,8 @@
               15522,
               17369,
               18459,
-              19195
+              19195,
+              10121
             ],
             "treatmentRaw": [
               23425,
@@ -11494,15 +14057,16 @@
               22084,
               54407,
               25833,
-              39901
+              39901,
+              13579
             ],
-            "baselineMedian": 17914,
-            "treatmentMedian": 21253.5,
+            "baselineMedian": 17369,
+            "treatmentMedian": 20423,
             "treatmentMinusBaseline": {
-              "estimate": 2723.5,
+              "estimate": 3458,
               "confidenceInterval": [
-                -3219.5,
-                6968
+                -2520,
+                6562
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11510,7 +14074,7 @@
             }
           },
           "outputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               1334,
               2344,
@@ -11523,7 +14087,8 @@
               2861,
               3353,
               2469,
-              2605
+              2605,
+              1303
             ],
             "treatmentRaw": [
               1323,
@@ -11537,15 +14102,16 @@
               2801,
               4400,
               2159,
-              2605
+              2605,
+              1969
             ],
-            "baselineMedian": 1963,
-            "treatmentMedian": 2144,
+            "baselineMedian": 1917,
+            "treatmentMedian": 2129,
             "treatmentMinusBaseline": {
-              "estimate": 57,
+              "estimate": 114,
               "confidenceInterval": [
-                -185,
-                921.5
+                -60,
+                852
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11553,7 +14119,7 @@
             }
           },
           "reportedTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               120719,
               140807,
@@ -11566,7 +14132,8 @@
               160463,
               183026,
               211648,
-              173864
+              173864,
+              120992
             ],
             "treatmentRaw": [
               121260,
@@ -11580,15 +14147,16 @@
               178229,
               352951,
               154712,
-              177674
+              177674,
+              150460
             ],
-            "baselineMedian": 148510.5,
-            "treatmentMedian": 134899.5,
+            "baselineMedian": 143333,
+            "treatmentMedian": 142435,
             "treatmentMinusBaseline": {
-              "estimate": 2719,
+              "estimate": 3810,
               "confidenceInterval": [
-                -19330.5,
-                25104.5
+                541,
+                29468
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11596,8 +14164,9 @@
             }
           },
           "changedFilePrecision": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              1,
               1,
               1,
               1,
@@ -11612,6 +14181,7 @@
               1
             ],
             "treatmentRaw": [
+              1,
               1,
               1,
               1,
@@ -11639,8 +14209,9 @@
             }
           },
           "changedFileRecall": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              1,
               1,
               1,
               1,
@@ -11655,6 +14226,7 @@
               1
             ],
             "treatmentRaw": [
+              1,
               1,
               1,
               1,
@@ -11686,7 +14258,7 @@
       "adaptiveMinusControl": {
         "baselineArm": "control",
         "treatmentArm": "adaptivePalace",
-        "validPairs": 12,
+        "validPairs": 13,
         "invalidPairIds": [],
         "success": {
           "baselineRaw": [
@@ -11701,9 +14273,11 @@
             1,
             1,
             1,
+            1,
             1
           ],
           "treatmentRaw": [
+            1,
             1,
             1,
             1,
@@ -11738,7 +14312,7 @@
         },
         "metrics": {
           "durationMs": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               43377,
               39752,
@@ -11751,7 +14325,8 @@
               75427,
               61478,
               151905,
-              67743
+              67743,
+              64761
             ],
             "treatmentRaw": [
               52501,
@@ -11765,15 +14340,16 @@
               90675,
               97925,
               84995,
-              85216
+              85216,
+              120623
             ],
-            "baselineMedian": 59345,
-            "treatmentMedian": 75341.5,
+            "baselineMedian": 61478,
+            "treatmentMedian": 80391,
             "treatmentMinusBaseline": {
-              "estimate": 10918.5,
+              "estimate": 12424,
               "confidenceInterval": [
-                3569.5,
-                24258
+                4240,
+                31043
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11781,7 +14357,7 @@
             }
           },
           "toolCalls": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               4,
               4,
@@ -11794,6 +14370,7 @@
               5,
               5,
               8,
+              5,
               5
             ],
             "treatmentRaw": [
@@ -11808,14 +14385,15 @@
               8,
               13,
               6,
-              11
+              11,
+              17
             ],
             "baselineMedian": 5,
-            "treatmentMedian": 8.5,
+            "treatmentMedian": 9,
             "treatmentMinusBaseline": {
-              "estimate": 4.5,
+              "estimate": 5,
               "confidenceInterval": [
-                2,
+                3,
                 6
               ],
               "iterations": 10000,
@@ -11824,7 +14402,7 @@
             }
           },
           "failedCalls": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               1,
               0,
@@ -11837,6 +14415,7 @@
               1,
               0,
               2,
+              1,
               1
             ],
             "treatmentRaw": [
@@ -11851,15 +14430,16 @@
               1,
               1,
               0,
-              1
+              1,
+              2
             ],
-            "baselineMedian": 0.5,
+            "baselineMedian": 1,
             "treatmentMedian": 0,
             "treatmentMinusBaseline": {
               "estimate": 0,
               "confidenceInterval": [
                 -1,
-                0.5
+                1
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11867,7 +14447,7 @@
             }
           },
           "routerErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               1,
               0,
@@ -11880,6 +14460,7 @@
               1,
               0,
               2,
+              1,
               1
             ],
             "treatmentRaw": [
@@ -11894,15 +14475,16 @@
               1,
               1,
               0,
-              1
+              1,
+              2
             ],
-            "baselineMedian": 0.5,
+            "baselineMedian": 1,
             "treatmentMedian": 0,
             "treatmentMinusBaseline": {
               "estimate": 0,
               "confidenceInterval": [
                 -1,
-                0.5
+                1
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -11910,8 +14492,9 @@
             }
           },
           "applyPatchVerificationErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              0,
               0,
               0,
               0,
@@ -11926,6 +14509,7 @@
               0
             ],
             "treatmentRaw": [
+              0,
               0,
               0,
               0,
@@ -11953,8 +14537,9 @@
             }
           },
           "sandboxPreparationErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              0,
               0,
               0,
               0,
@@ -11969,6 +14554,7 @@
               0
             ],
             "treatmentRaw": [
+              0,
               0,
               0,
               0,
@@ -11996,7 +14582,7 @@
             }
           },
           "inspectionCommands": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               2,
               2,
@@ -12009,7 +14595,8 @@
               3,
               2,
               4,
-              3
+              3,
+              4
             ],
             "treatmentRaw": [
               3,
@@ -12023,7 +14610,8 @@
               3,
               4,
               2,
-              5
+              5,
+              7
             ],
             "baselineMedian": 3,
             "treatmentMedian": 3,
@@ -12039,7 +14627,7 @@
             }
           },
           "commandOutputChars": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               3876,
               2931,
@@ -12052,7 +14640,8 @@
               20709,
               19554,
               20407,
-              33066
+              33066,
+              10790
             ],
             "treatmentRaw": [
               2980,
@@ -12066,15 +14655,16 @@
               8821,
               9304,
               7225,
-              8821
+              8821,
+              5200
             ],
-            "baselineMedian": 11146.5,
-            "treatmentMedian": 6951.5,
+            "baselineMedian": 10863,
+            "treatmentMedian": 6678,
             "treatmentMinusBaseline": {
-              "estimate": -4725.5,
+              "estimate": -5300,
               "confidenceInterval": [
-                -11069,
-                -1215
+                -10250,
+                -1534
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -12127,7 +14717,7 @@
             }
           },
           "inputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               86565,
               86134,
@@ -12140,7 +14730,8 @@
               126570,
               127641,
               246702,
-              139080
+              139080,
+              131631
             ],
             "treatmentRaw": [
               102696,
@@ -12154,15 +14745,16 @@
               159864,
               164640,
               125096,
-              177439
+              177439,
+              174105
             ],
-            "baselineMedian": 116209.5,
-            "treatmentMedian": 145124.5,
+            "baselineMedian": 122454,
+            "treatmentMedian": 149629,
             "treatmentMinusBaseline": {
-              "estimate": 30234.5,
+              "estimate": 33294,
               "confidenceInterval": [
-                15988.5,
-                38639.5
+                16131,
+                38920
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -12170,7 +14762,7 @@
             }
           },
           "cachedInputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               53248,
               60160,
@@ -12183,7 +14775,8 @@
               101888,
               112896,
               217088,
-              121088
+              121088,
+              111616
             ],
             "treatmentRaw": [
               92416,
@@ -12197,15 +14790,16 @@
               146944,
               151040,
               114688,
-              157952
+              157952,
+              154880
             ],
-            "baselineMedian": 93696,
-            "treatmentMedian": 129152,
+            "baselineMedian": 101888,
+            "treatmentMedian": 133632,
             "treatmentMinusBaseline": {
-              "estimate": 37504,
+              "estimate": 38144,
               "confidenceInterval": [
-                18560,
-                43136
+                23040,
+                43264
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -12213,7 +14807,7 @@
             }
           },
           "uncachedInputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               33317,
               25974,
@@ -12226,7 +14820,8 @@
               24682,
               14745,
               29614,
-              17992
+              17992,
+              20015
             ],
             "treatmentRaw": [
               10280,
@@ -12240,15 +14835,16 @@
               12920,
               13600,
               10408,
-              19487
+              19487,
+              19225
             ],
-            "baselineMedian": 16500.5,
-            "treatmentMedian": 14142,
+            "baselineMedian": 17992,
+            "treatmentMedian": 14684,
             "treatmentMinusBaseline": {
-              "estimate": -1720.5,
+              "estimate": -1145,
               "confidenceInterval": [
-                -11526,
-                3543.5
+                -11290,
+                2952
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -12256,7 +14852,7 @@
             }
           },
           "outputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               996,
               1026,
@@ -12269,7 +14865,8 @@
               2052,
               1929,
               3080,
-              1958
+              1958,
+              1911
             ],
             "treatmentRaw": [
               1509,
@@ -12283,15 +14880,16 @@
               2375,
               3014,
               2244,
-              2127
+              2127,
+              2467
             ],
-            "baselineMedian": 1658.5,
-            "treatmentMedian": 2142,
+            "baselineMedian": 1797,
+            "treatmentMedian": 2157,
             "treatmentMinusBaseline": {
-              "estimate": 420.5,
+              "estimate": 481,
               "confidenceInterval": [
-                234,
-                618
+                299,
+                556
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -12299,7 +14897,7 @@
             }
           },
           "reportedTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               87561,
               87160,
@@ -12312,7 +14910,8 @@
               128622,
               129570,
               249782,
-              141038
+              141038,
+              133542
             ],
             "treatmentRaw": [
               104205,
@@ -12326,15 +14925,16 @@
               162239,
               167654,
               127340,
-              179566
+              179566,
+              176572
             ],
-            "baselineMedian": 118020.5,
-            "treatmentMedian": 147119,
+            "baselineMedian": 124784,
+            "treatmentMedian": 151461,
             "treatmentMinusBaseline": {
-              "estimate": 30147,
+              "estimate": 33617,
               "confidenceInterval": [
-                16494,
-                38873.5
+                16644,
+                39219
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -12342,8 +14942,9 @@
             }
           },
           "changedFilePrecision": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              1,
               1,
               1,
               1,
@@ -12358,6 +14959,7 @@
               1
             ],
             "treatmentRaw": [
+              1,
               1,
               1,
               1,
@@ -12385,8 +14987,9 @@
             }
           },
           "changedFileRecall": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              1,
               1,
               1,
               1,
@@ -12401,6 +15004,7 @@
               1
             ],
             "treatmentRaw": [
+              1,
               1,
               1,
               1,
@@ -12432,7 +15036,7 @@
       "adaptiveMinusFullPalace": {
         "baselineArm": "fullPalace",
         "treatmentArm": "adaptivePalace",
-        "validPairs": 12,
+        "validPairs": 13,
         "invalidPairIds": [],
         "success": {
           "baselineRaw": [
@@ -12447,9 +15051,11 @@
             1,
             1,
             1,
+            1,
             1
           ],
           "treatmentRaw": [
+            1,
             1,
             1,
             1,
@@ -12484,7 +15090,7 @@
         },
         "metrics": {
           "durationMs": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               52165,
               66814,
@@ -12497,7 +15103,8 @@
               96667,
               149183,
               79689,
-              84232
+              84232,
+              91029
             ],
             "treatmentRaw": [
               52501,
@@ -12511,15 +15118,16 @@
               90675,
               97925,
               84995,
-              85216
+              85216,
+              120623
             ],
-            "baselineMedian": 80712,
-            "treatmentMedian": 75341.5,
+            "baselineMedian": 81735,
+            "treatmentMedian": 80391,
             "treatmentMinusBaseline": {
-              "estimate": -8717.5,
+              "estimate": -5992,
               "confidenceInterval": [
-                -18080,
-                660
+                -14638,
+                984
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -12527,7 +15135,7 @@
             }
           },
           "toolCalls": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               6,
               13,
@@ -12540,7 +15148,8 @@
               12,
               28,
               7,
-              22
+              22,
+              10
             ],
             "treatmentRaw": [
               8,
@@ -12554,15 +15163,16 @@
               8,
               13,
               6,
-              11
+              11,
+              17
             ],
-            "baselineMedian": 12.5,
-            "treatmentMedian": 8.5,
+            "baselineMedian": 12,
+            "treatmentMedian": 9,
             "treatmentMinusBaseline": {
-              "estimate": -5,
+              "estimate": -4,
               "confidenceInterval": [
-                -7,
-                0.5
+                -6,
+                2
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -12570,7 +15180,7 @@
             }
           },
           "failedCalls": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               0,
               1,
@@ -12583,7 +15193,8 @@
               1,
               1,
               0,
-              1
+              1,
+              0
             ],
             "treatmentRaw": [
               0,
@@ -12597,7 +15208,8 @@
               1,
               1,
               0,
-              1
+              1,
+              2
             ],
             "baselineMedian": 1,
             "treatmentMedian": 0,
@@ -12613,7 +15225,7 @@
             }
           },
           "routerErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               0,
               1,
@@ -12626,7 +15238,8 @@
               1,
               1,
               0,
-              1
+              1,
+              0
             ],
             "treatmentRaw": [
               0,
@@ -12640,7 +15253,8 @@
               1,
               1,
               0,
-              1
+              1,
+              2
             ],
             "baselineMedian": 1,
             "treatmentMedian": 0,
@@ -12656,8 +15270,9 @@
             }
           },
           "applyPatchVerificationErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              0,
               0,
               0,
               0,
@@ -12672,6 +15287,7 @@
               0
             ],
             "treatmentRaw": [
+              0,
               0,
               0,
               0,
@@ -12699,8 +15315,9 @@
             }
           },
           "sandboxPreparationErrors": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              0,
               0,
               0,
               0,
@@ -12715,6 +15332,7 @@
               0
             ],
             "treatmentRaw": [
+              0,
               0,
               0,
               0,
@@ -12742,7 +15360,7 @@
             }
           },
           "inspectionCommands": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               1,
               4,
@@ -12755,7 +15373,8 @@
               3,
               14,
               3,
-              14
+              14,
+              2
             ],
             "treatmentRaw": [
               3,
@@ -12769,7 +15388,8 @@
               3,
               4,
               2,
-              5
+              5,
+              7
             ],
             "baselineMedian": 4,
             "treatmentMedian": 3,
@@ -12785,7 +15405,7 @@
             }
           },
           "commandOutputChars": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               4186,
               5331,
@@ -12798,7 +15418,8 @@
               22315,
               25827,
               12612,
-              25183
+              25183,
+              10092
             ],
             "treatmentRaw": [
               2980,
@@ -12812,15 +15433,16 @@
               8821,
               9304,
               7225,
-              8821
+              8821,
+              5200
             ],
-            "baselineMedian": 12340,
-            "treatmentMedian": 6951.5,
+            "baselineMedian": 12068,
+            "treatmentMedian": 6678,
             "treatmentMinusBaseline": {
-              "estimate": -4408,
+              "estimate": -4892,
               "confidenceInterval": [
-                -11694,
-                -2134.5
+                -9894,
+                -2751
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -12828,7 +15450,7 @@
             }
           },
           "palaceContextOutputChars": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               2086,
               2086,
@@ -12841,7 +15463,8 @@
               5465,
               5465,
               5465,
-              5465
+              5465,
+              3127
             ],
             "treatmentRaw": [
               1218,
@@ -12855,7 +15478,8 @@
               2450,
               2450,
               2450,
-              2450
+              2450,
+              2894
             ],
             "baselineMedian": 3108,
             "treatmentMedian": 2179,
@@ -12871,7 +15495,7 @@
             }
           },
           "palaceContextOutputBytes": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               2086,
               2086,
@@ -12884,7 +15508,8 @@
               5465,
               5465,
               5465,
-              5465
+              5465,
+              3127
             ],
             "treatmentRaw": [
               1218,
@@ -12898,7 +15523,8 @@
               2450,
               2450,
               2450,
-              2450
+              2450,
+              2894
             ],
             "baselineMedian": 3108,
             "treatmentMedian": 2179,
@@ -12914,7 +15540,7 @@
             }
           },
           "palaceContextEstimatedTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               522,
               522,
@@ -12927,7 +15553,8 @@
               1367,
               1367,
               1367,
-              1367
+              1367,
+              782
             ],
             "treatmentRaw": [
               305,
@@ -12941,7 +15568,8 @@
               613,
               613,
               613,
-              613
+              613,
+              724
             ],
             "baselineMedian": 777,
             "treatmentMedian": 545,
@@ -12957,7 +15585,7 @@
             }
           },
           "inputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               119937,
               140602,
@@ -12970,7 +15598,8 @@
               175428,
               348551,
               152553,
-              175069
+              175069,
+              148491
             ],
             "treatmentRaw": [
               102696,
@@ -12984,15 +15613,16 @@
               159864,
               164640,
               125096,
-              177439
+              177439,
+              174105
             ],
-            "baselineMedian": 132918.5,
-            "treatmentMedian": 145124.5,
+            "baselineMedian": 140602,
+            "treatmentMedian": 149629,
             "treatmentMinusBaseline": {
-              "estimate": -16402.5,
+              "estimate": -15564,
               "confidenceInterval": [
-                -33039.5,
-                25497.5
+                -27457,
+                25614
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -13000,7 +15630,7 @@
             }
           },
           "cachedInputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               96512,
               128768,
@@ -13013,7 +15643,8 @@
               153344,
               294144,
               126720,
-              135168
+              135168,
+              134912
             ],
             "treatmentRaw": [
               92416,
@@ -13027,15 +15658,16 @@
               146944,
               151040,
               114688,
-              157952
+              157952,
+              154880
             ],
-            "baselineMedian": 120192,
-            "treatmentMedian": 129152,
+            "baselineMedian": 126720,
+            "treatmentMedian": 133632,
             "treatmentMinusBaseline": {
-              "estimate": -5248,
+              "estimate": -4096,
               "confidenceInterval": [
-                -31360,
-                27392
+                -21248,
+                22784
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -13043,7 +15675,7 @@
             }
           },
           "uncachedInputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               23425,
               11834,
@@ -13056,7 +15688,8 @@
               22084,
               54407,
               25833,
-              39901
+              39901,
+              13579
             ],
             "treatmentRaw": [
               10280,
@@ -13070,15 +15703,16 @@
               12920,
               13600,
               10408,
-              19487
+              19487,
+              19225
             ],
-            "baselineMedian": 21253.5,
-            "treatmentMedian": 14142,
+            "baselineMedian": 20423,
+            "treatmentMedian": 14684,
             "treatmentMinusBaseline": {
-              "estimate": -8437,
+              "estimate": -7710,
               "confidenceInterval": [
-                -14968,
-                3197
+                -14511,
+                3544
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -13086,7 +15720,7 @@
             }
           },
           "outputTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               1323,
               1833,
@@ -13099,7 +15733,8 @@
               2801,
               4400,
               2159,
-              2605
+              2605,
+              1969
             ],
             "treatmentRaw": [
               1509,
@@ -13113,15 +15748,16 @@
               2375,
               3014,
               2244,
-              2127
+              2127,
+              2467
             ],
-            "baselineMedian": 2144,
-            "treatmentMedian": 2142,
+            "baselineMedian": 2129,
+            "treatmentMedian": 2157,
             "treatmentMinusBaseline": {
-              "estimate": -186,
+              "estimate": -63,
               "confidenceInterval": [
-                -484.5,
-                156
+                -478,
+                186
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -13129,7 +15765,7 @@
             }
           },
           "reportedTokens": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
               121260,
               142435,
@@ -13142,7 +15778,8 @@
               178229,
               352951,
               154712,
-              177674
+              177674,
+              150460
             ],
             "treatmentRaw": [
               104205,
@@ -13156,15 +15793,16 @@
               162239,
               167654,
               127340,
-              179566
+              179566,
+              176572
             ],
-            "baselineMedian": 134899.5,
-            "treatmentMedian": 147119,
+            "baselineMedian": 142435,
+            "treatmentMedian": 151461,
             "treatmentMinusBaseline": {
-              "estimate": -16522.5,
+              "estimate": -15990,
               "confidenceInterval": [
-                -33151.5,
-                25709.5
+                -27372,
+                26112
               ],
               "iterations": 10000,
               "confidence": 0.95,
@@ -13172,8 +15810,9 @@
             }
           },
           "changedFilePrecision": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              1,
               1,
               1,
               1,
@@ -13188,6 +15827,7 @@
               1
             ],
             "treatmentRaw": [
+              1,
               1,
               1,
               1,
@@ -13215,8 +15855,9 @@
             }
           },
           "changedFileRecall": {
-            "pairCount": 12,
+            "pairCount": 13,
             "baselineRaw": [
+              1,
               1,
               1,
               1,
@@ -13231,6 +15872,7 @@
               1
             ],
             "treatmentRaw": [
+              1,
               1,
               1,
               1,
@@ -13263,7 +15905,7 @@
     "primaryComparison": {
       "baselineArm": "fullPalace",
       "treatmentArm": "adaptivePalace",
-      "validPairs": 12,
+      "validPairs": 13,
       "invalidPairIds": [],
       "success": {
         "baselineRaw": [
@@ -13278,9 +15920,11 @@
           1,
           1,
           1,
+          1,
           1
         ],
         "treatmentRaw": [
+          1,
           1,
           1,
           1,
@@ -13315,7 +15959,7 @@
       },
       "metrics": {
         "durationMs": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             52165,
             66814,
@@ -13328,7 +15972,8 @@
             96667,
             149183,
             79689,
-            84232
+            84232,
+            91029
           ],
           "treatmentRaw": [
             52501,
@@ -13342,15 +15987,16 @@
             90675,
             97925,
             84995,
-            85216
+            85216,
+            120623
           ],
-          "baselineMedian": 80712,
-          "treatmentMedian": 75341.5,
+          "baselineMedian": 81735,
+          "treatmentMedian": 80391,
           "treatmentMinusBaseline": {
-            "estimate": -8717.5,
+            "estimate": -5992,
             "confidenceInterval": [
-              -18080,
-              660
+              -14638,
+              984
             ],
             "iterations": 10000,
             "confidence": 0.95,
@@ -13358,7 +16004,7 @@
           }
         },
         "toolCalls": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             6,
             13,
@@ -13371,7 +16017,8 @@
             12,
             28,
             7,
-            22
+            22,
+            10
           ],
           "treatmentRaw": [
             8,
@@ -13385,15 +16032,16 @@
             8,
             13,
             6,
-            11
+            11,
+            17
           ],
-          "baselineMedian": 12.5,
-          "treatmentMedian": 8.5,
+          "baselineMedian": 12,
+          "treatmentMedian": 9,
           "treatmentMinusBaseline": {
-            "estimate": -5,
+            "estimate": -4,
             "confidenceInterval": [
-              -7,
-              0.5
+              -6,
+              2
             ],
             "iterations": 10000,
             "confidence": 0.95,
@@ -13401,7 +16049,7 @@
           }
         },
         "failedCalls": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             0,
             1,
@@ -13414,7 +16062,8 @@
             1,
             1,
             0,
-            1
+            1,
+            0
           ],
           "treatmentRaw": [
             0,
@@ -13428,7 +16077,8 @@
             1,
             1,
             0,
-            1
+            1,
+            2
           ],
           "baselineMedian": 1,
           "treatmentMedian": 0,
@@ -13444,7 +16094,7 @@
           }
         },
         "routerErrors": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             0,
             1,
@@ -13457,7 +16107,8 @@
             1,
             1,
             0,
-            1
+            1,
+            0
           ],
           "treatmentRaw": [
             0,
@@ -13471,7 +16122,8 @@
             1,
             1,
             0,
-            1
+            1,
+            2
           ],
           "baselineMedian": 1,
           "treatmentMedian": 0,
@@ -13487,8 +16139,9 @@
           }
         },
         "applyPatchVerificationErrors": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
+            0,
             0,
             0,
             0,
@@ -13503,6 +16156,7 @@
             0
           ],
           "treatmentRaw": [
+            0,
             0,
             0,
             0,
@@ -13530,8 +16184,9 @@
           }
         },
         "sandboxPreparationErrors": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
+            0,
             0,
             0,
             0,
@@ -13546,6 +16201,7 @@
             0
           ],
           "treatmentRaw": [
+            0,
             0,
             0,
             0,
@@ -13573,7 +16229,7 @@
           }
         },
         "inspectionCommands": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             1,
             4,
@@ -13586,7 +16242,8 @@
             3,
             14,
             3,
-            14
+            14,
+            2
           ],
           "treatmentRaw": [
             3,
@@ -13600,7 +16257,8 @@
             3,
             4,
             2,
-            5
+            5,
+            7
           ],
           "baselineMedian": 4,
           "treatmentMedian": 3,
@@ -13616,7 +16274,7 @@
           }
         },
         "commandOutputChars": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             4186,
             5331,
@@ -13629,7 +16287,8 @@
             22315,
             25827,
             12612,
-            25183
+            25183,
+            10092
           ],
           "treatmentRaw": [
             2980,
@@ -13643,15 +16302,16 @@
             8821,
             9304,
             7225,
-            8821
+            8821,
+            5200
           ],
-          "baselineMedian": 12340,
-          "treatmentMedian": 6951.5,
+          "baselineMedian": 12068,
+          "treatmentMedian": 6678,
           "treatmentMinusBaseline": {
-            "estimate": -4408,
+            "estimate": -4892,
             "confidenceInterval": [
-              -11694,
-              -2134.5
+              -9894,
+              -2751
             ],
             "iterations": 10000,
             "confidence": 0.95,
@@ -13659,7 +16319,7 @@
           }
         },
         "palaceContextOutputChars": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             2086,
             2086,
@@ -13672,7 +16332,8 @@
             5465,
             5465,
             5465,
-            5465
+            5465,
+            3127
           ],
           "treatmentRaw": [
             1218,
@@ -13686,7 +16347,8 @@
             2450,
             2450,
             2450,
-            2450
+            2450,
+            2894
           ],
           "baselineMedian": 3108,
           "treatmentMedian": 2179,
@@ -13702,7 +16364,7 @@
           }
         },
         "palaceContextOutputBytes": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             2086,
             2086,
@@ -13715,7 +16377,8 @@
             5465,
             5465,
             5465,
-            5465
+            5465,
+            3127
           ],
           "treatmentRaw": [
             1218,
@@ -13729,7 +16392,8 @@
             2450,
             2450,
             2450,
-            2450
+            2450,
+            2894
           ],
           "baselineMedian": 3108,
           "treatmentMedian": 2179,
@@ -13745,7 +16409,7 @@
           }
         },
         "palaceContextEstimatedTokens": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             522,
             522,
@@ -13758,7 +16422,8 @@
             1367,
             1367,
             1367,
-            1367
+            1367,
+            782
           ],
           "treatmentRaw": [
             305,
@@ -13772,7 +16437,8 @@
             613,
             613,
             613,
-            613
+            613,
+            724
           ],
           "baselineMedian": 777,
           "treatmentMedian": 545,
@@ -13788,7 +16454,7 @@
           }
         },
         "inputTokens": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             119937,
             140602,
@@ -13801,7 +16467,8 @@
             175428,
             348551,
             152553,
-            175069
+            175069,
+            148491
           ],
           "treatmentRaw": [
             102696,
@@ -13815,15 +16482,16 @@
             159864,
             164640,
             125096,
-            177439
+            177439,
+            174105
           ],
-          "baselineMedian": 132918.5,
-          "treatmentMedian": 145124.5,
+          "baselineMedian": 140602,
+          "treatmentMedian": 149629,
           "treatmentMinusBaseline": {
-            "estimate": -16402.5,
+            "estimate": -15564,
             "confidenceInterval": [
-              -33039.5,
-              25497.5
+              -27457,
+              25614
             ],
             "iterations": 10000,
             "confidence": 0.95,
@@ -13831,7 +16499,7 @@
           }
         },
         "cachedInputTokens": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             96512,
             128768,
@@ -13844,7 +16512,8 @@
             153344,
             294144,
             126720,
-            135168
+            135168,
+            134912
           ],
           "treatmentRaw": [
             92416,
@@ -13858,15 +16527,16 @@
             146944,
             151040,
             114688,
-            157952
+            157952,
+            154880
           ],
-          "baselineMedian": 120192,
-          "treatmentMedian": 129152,
+          "baselineMedian": 126720,
+          "treatmentMedian": 133632,
           "treatmentMinusBaseline": {
-            "estimate": -5248,
+            "estimate": -4096,
             "confidenceInterval": [
-              -31360,
-              27392
+              -21248,
+              22784
             ],
             "iterations": 10000,
             "confidence": 0.95,
@@ -13874,7 +16544,7 @@
           }
         },
         "uncachedInputTokens": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             23425,
             11834,
@@ -13887,7 +16557,8 @@
             22084,
             54407,
             25833,
-            39901
+            39901,
+            13579
           ],
           "treatmentRaw": [
             10280,
@@ -13901,15 +16572,16 @@
             12920,
             13600,
             10408,
-            19487
+            19487,
+            19225
           ],
-          "baselineMedian": 21253.5,
-          "treatmentMedian": 14142,
+          "baselineMedian": 20423,
+          "treatmentMedian": 14684,
           "treatmentMinusBaseline": {
-            "estimate": -8437,
+            "estimate": -7710,
             "confidenceInterval": [
-              -14968,
-              3197
+              -14511,
+              3544
             ],
             "iterations": 10000,
             "confidence": 0.95,
@@ -13917,7 +16589,7 @@
           }
         },
         "outputTokens": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             1323,
             1833,
@@ -13930,7 +16602,8 @@
             2801,
             4400,
             2159,
-            2605
+            2605,
+            1969
           ],
           "treatmentRaw": [
             1509,
@@ -13944,15 +16617,16 @@
             2375,
             3014,
             2244,
-            2127
+            2127,
+            2467
           ],
-          "baselineMedian": 2144,
-          "treatmentMedian": 2142,
+          "baselineMedian": 2129,
+          "treatmentMedian": 2157,
           "treatmentMinusBaseline": {
-            "estimate": -186,
+            "estimate": -63,
             "confidenceInterval": [
-              -484.5,
-              156
+              -478,
+              186
             ],
             "iterations": 10000,
             "confidence": 0.95,
@@ -13960,7 +16634,7 @@
           }
         },
         "reportedTokens": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
             121260,
             142435,
@@ -13973,7 +16647,8 @@
             178229,
             352951,
             154712,
-            177674
+            177674,
+            150460
           ],
           "treatmentRaw": [
             104205,
@@ -13987,15 +16662,16 @@
             162239,
             167654,
             127340,
-            179566
+            179566,
+            176572
           ],
-          "baselineMedian": 134899.5,
-          "treatmentMedian": 147119,
+          "baselineMedian": 142435,
+          "treatmentMedian": 151461,
           "treatmentMinusBaseline": {
-            "estimate": -16522.5,
+            "estimate": -15990,
             "confidenceInterval": [
-              -33151.5,
-              25709.5
+              -27372,
+              26112
             ],
             "iterations": 10000,
             "confidence": 0.95,
@@ -14003,8 +16679,9 @@
           }
         },
         "changedFilePrecision": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
+            1,
             1,
             1,
             1,
@@ -14019,6 +16696,7 @@
             1
           ],
           "treatmentRaw": [
+            1,
             1,
             1,
             1,
@@ -14046,8 +16724,9 @@
           }
         },
         "changedFileRecall": {
-          "pairCount": 12,
+          "pairCount": 13,
           "baselineRaw": [
+            1,
             1,
             1,
             1,
@@ -14062,6 +16741,7 @@
             1
           ],
           "treatmentRaw": [
+            1,
             1,
             1,
             1,
@@ -14091,9 +16771,10 @@
       }
     },
     "mechanisms": {
-      "routeOnlyPairs": 12,
+      "routeOnlyPairs": 13,
       "routeRecallAtK": {
         "routeOnly": [
+          1,
           1,
           1,
           1,
@@ -14119,9 +16800,11 @@
           1,
           1,
           1,
+          1,
           1
         ],
         "adaptivePalace": [
+          1,
           1,
           1,
           1,
@@ -14149,7 +16832,8 @@
           0.5,
           0.5,
           0.5,
-          0.5
+          0.5,
+          0.6666666666666666
         ],
         "fullPalace": [
           0.5,
@@ -14163,7 +16847,8 @@
           0.5,
           0.5,
           0.5,
-          0.5
+          0.5,
+          0.6666666666666666
         ],
         "adaptivePalace": [
           0.5,
@@ -14177,7 +16862,8 @@
           0.5,
           0.5,
           0.5,
-          0.5
+          0.5,
+          0.6666666666666666
         ]
       },
       "pitfallViolationRate": {
@@ -14204,12 +16890,18 @@
         "adaptivePalaceRate": 0
       },
       "wrongMemoryAdoptionRate": {
-        "routeOnlyRaw": [],
-        "fullPalaceRaw": [],
-        "adaptivePalaceRaw": [],
-        "routeOnlyRate": null,
-        "fullPalaceRate": null,
-        "adaptivePalaceRate": null
+        "routeOnlyRaw": [
+          false
+        ],
+        "fullPalaceRaw": [
+          false
+        ],
+        "adaptivePalaceRaw": [
+          false
+        ],
+        "routeOnlyRate": 0,
+        "fullPalaceRate": 0,
+        "adaptivePalaceRate": 0
       }
     }
   },
@@ -14219,9 +16911,11 @@
     "rawPValues": [
       1,
       1,
+      1,
       1
     ],
     "adjustedPValues": [
+      1,
       1,
       1,
       1
@@ -14229,7 +16923,7 @@
   },
   "caveats": [
     "This is an exploratory pilot and is not powered to establish non-inferiority.",
-    "This is an interim analysis with 12 of 16 planned trials loaded; intervals and p-values are not final.",
+    "This is an interim analysis with 13 of 16 planned trials loaded; intervals and p-values are not final.",
     "Efficiency metrics include only pairs where both compared arms achieved protocol-defined success.",
     "Invalid infrastructure or treatment runs are retained but excluded from paired estimates; agent failures and timeouts remain outcomes."
   ]

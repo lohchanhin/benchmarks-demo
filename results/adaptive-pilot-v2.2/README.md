@@ -1,7 +1,8 @@
 # Adaptive Pilot v2.2
 
-Status: in progress, 12 of 16 planned trials published. The preregistered
-small-local, cross-stack, and useful-memory blocks are complete. No agent outcome
+Status: in progress, 13 of 16 planned trials published. The preregistered
+small-local, cross-stack, and useful-memory blocks are complete; stale-memory
+is 1/4. No agent outcome
 existed at protocol freeze.
 
 Protocol v2.2 repeats the four-arm Adaptive study with fresh trial ids and
@@ -92,6 +93,24 @@ seconds. Adaptive-minus-Control medians are +51,917 reported tokens, +1,069
 uncached input tokens, +5.5 tool calls, and +20.228 seconds. See the
 [block report](../../docs/research/CROSS_STACK_V2_2_BLOCK.md) and updated
 [interim analysis](analysis.md).
+
+## Stale-Memory Block (1/4)
+
+The first warm-index adversarial trial had four valid, successful, correctly
+scoped arms. Every arm changed only `src/scheduler/load-batch-limit.mjs`, left
+both forbidden config files untouched, and passed public tests plus the hidden
+oracle. No arm adopted the stale v1 memory.
+
+Adaptive selected `guarded-memory-palace` and included two memory items plus
+two guardrails. Both Full and Adaptive received the stale v1 records, but only
+Adaptive explicitly stated that current code and tests outrank memory and that
+legacy evidence is a warning rather than an instruction.
+
+Relative to Full, Adaptive used 233 fewer Palace bytes but took 29.594 seconds
+longer, made seven more tool calls, and used 26,112 more reported and 5,646 more
+uncached input tokens. This is one pair. See
+[trial 01](stale-memory-adversarial-adaptive-v2-2-pilot-01/comparison.md) and
+the [sanitized mechanism record](../../docs/research/evidence/guarded-stale-memory-v2.2-trial01.json).
 
 ## Useful-Memory Block (4/4)
 

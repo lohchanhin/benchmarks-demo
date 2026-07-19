@@ -97,6 +97,14 @@ both notices every time. The [block report](docs/research/USEFUL_MEMORY_V2_2_BLO
 and [treatment finding](docs/research/ADAPTIVE_MEMORY_OMISSION.md) retain this as
 valid v0.2.1 behavior; v2.2 was not changed mid-study.
 
+The first stale-memory adversarial trial brought the study to 13/16. Adaptive
+selected `guarded-memory-palace`, delivered both stale v1 records, and added two
+explicit guardrails that made current code and tests authoritative. All four
+arms rejected the stale edit and passed, so correctness was again tied. In this
+single pair Adaptive was slower and used more calls and tokens than Full. The
+[sanitized mechanism evidence](docs/research/evidence/guarded-stale-memory-v2.2-trial01.json)
+is public.
+
 Validate the frozen plan without running an agent:
 
 ```sh
