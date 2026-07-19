@@ -1,7 +1,7 @@
 # Adaptive Pilot v2.2
 
-Status: in progress, 4 of 16 planned trials published. The preregistered
-small-local block is complete. No agent outcome
+Status: in progress, 5 of 16 planned trials published. The preregistered
+small-local block is complete and the cross-stack block is 1/4 complete. No agent outcome
 existed at protocol freeze.
 
 Protocol v2.2 repeats the four-arm Adaptive study with fresh trial ids and
@@ -54,7 +54,25 @@ tokens.
 
 Across the four-pair block, the paired-median Adaptive-minus-Full differences
 are -19,935 reported tokens, +887 uncached input tokens, -4.5 tool calls, and
--7.448 seconds. The scenario is complete, but the overall study is only 4/16;
-these remain exploratory descriptive values, not a population estimate or a
-general efficiency claim. See the [block report](../../docs/research/SMALL_LOCAL_V2_2_BLOCK.md)
-and [interim analysis](analysis.md).
+-7.448 seconds. The scenario is complete, but these remain exploratory
+descriptive values, not a population estimate or a general efficiency claim.
+See the [block report](../../docs/research/SMALL_LOCAL_V2_2_BLOCK.md).
+
+## Cross-Stack Block (1/4)
+
+The first warm-index cross-stack trial completed with all four arms valid,
+successful, and scoped 100/100. Every arm changed exactly the required client
+and server files, passed public tests and the hidden oracle, and recorded zero
+patch-verification and sandbox-preparation errors. Route recall at 5 was 1.0
+and precision at 5 was 0.8 for all three Palace arms.
+
+Adaptive selected `full-palace`, with five route steps, two guardrails, and no
+memory items. Relative to Full Palace, Adaptive used 929 fewer Palace bytes and
+7,710 fewer uncached input tokens and was 55.058 seconds faster. It used 24,588
+more reported tokens and two more tool calls. Relative to Control, Adaptive
+used 39,219 more reported tokens, 2,296 fewer uncached input tokens, one more
+tool call, and 9.413 seconds more wall time.
+
+This is one pair and therefore only a recorded outcome, not a cross-stack
+effect estimate. See [trial 01](cross-stack-regression-adaptive-v2-2-pilot-01/comparison.md)
+and the updated [interim analysis](analysis.md).

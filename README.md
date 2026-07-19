@@ -75,9 +75,17 @@ with all 16 arms valid, correctly scoped, and passing both public tests and the
 hidden oracle; all recorded zero sandbox-preparation errors. Adaptive selected
 `route-lite` in all four. The Adaptive-minus-Full paired medians are -19,935
 reported tokens, +887 uncached input tokens, -4.5 tool calls, and -7.448
-seconds. These [4/16 interim results](results/adaptive-pilot-v2.2/README.md)
-and the [completed block report](docs/research/SMALL_LOCAL_V2_2_BLOCK.md) are
+seconds. This first completed block and its
+[scenario report](docs/research/SMALL_LOCAL_V2_2_BLOCK.md) are
 descriptive only and do not establish a general efficiency advantage.
+
+The first cross-stack trial then brought the study to 5/16. All four arms found
+both required client/server changes and passed every validity gate. Adaptive
+selected `full-palace`; versus Full it used 929 fewer Palace bytes and 7,710
+fewer uncached input tokens and was 55.058 seconds faster, but used 24,588 more
+reported tokens and two more tool calls. The
+[published interim evidence](results/adaptive-pilot-v2.2/README.md) remains a
+single cross-stack pair, not an effect estimate.
 
 Validate the frozen plan without running an agent:
 
