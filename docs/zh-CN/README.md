@@ -51,6 +51,12 @@ Control-first v3 正是这样的独立新协议，但目前仍处于设计审核
 并通过包含 50 条记忆候选的干净安装 context ceiling 测试。这些数据只证明固定的
 路由与输出契约，不是 Adaptive 相对普通 Codex 的 Agent A/B 结果。
 
+当前运行时源码固定到 `5cae580a67c3b8d3b6885abb900a69cd285ecbc0`，双语研究证据
+固定到 `087d5c65a740c91f6ab849088c27c609d1f6e201`。固定八文件证据维护 oracle
+由 3/8 coverage、0.30 focus 提升到 8/8、1.00 focus；但另外两项产品自评仍只有
+3/6 与 1/8。本仓库实际同步任务则为 7/8，结果保存在[机器证据](../research/evidence/vertex-palace-0.3.0-sync-evaluation.json)。
+这些属于路由工程证据，不代表端到端 Agent Token 或时间已经下降。
+
 ## 引用边界
 
 引用本仓库时，请同时说明：这是单一 Windows 环境、单一 Codex/model build、四个

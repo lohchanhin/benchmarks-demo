@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-07-19T18:39:30.273Z",
+  "claimBoundary": "Repository pin-sync route evaluation only; not an Agent performance result.",
+  "product": {
+    "sourceCommit": "5cae580a67c3b8d3b6885abb900a69cd285ecbc0",
+    "evidenceCommit": "087d5c65a740c91f6ab849088c27c609d1f6e201",
+    "sourceCiRun": "https://github.com/lohchanhin/vertex-palace/actions/runs/29698755147",
+    "evidenceCiRun": "https://github.com/lohchanhin/vertex-palace/actions/runs/29699008823"
+  },
+  "benchmarkBaseCommit": "8aa7886a2404fa5b91a7b59c6bbaa6451f51a277",
+  "task": "同步 Vertex Palace 产品源码 5cae580、研究证据 087d5c6、CI 29698755147 与多表面路由 8/8 结果到 control-first v3 计划、英文协议、简体中文协议和 README；保留 frozen false 与零 Agent outcomes",
+  "evaluationId": "evaluation_0a2464351a59de14",
+  "routeId": "route_e8d81c4fe66524dd",
+  "taskType": "evaluation",
+  "oracleChangedFiles": [
+    "src/commands/study.mjs",
+    "test/study.test.mjs",
+    "results/control-first-v3/plan.json",
+    "docs/research/CONTROL_FIRST_V3_PREFLIGHT.md",
+    "docs/research/PROTOCOL_V3.md",
+    "docs/zh-CN/PROTOCOL_V3.md",
+    "README.md",
+    "docs/zh-CN/README.md"
+  ],
+  "routeFiles": [
+    "results/control-first-v3/plan.json",
+    "src/commands/study.mjs",
+    "docs/research/CONTROL_FIRST_V3_PREFLIGHT.md",
+    "docs/research/PROTOCOL_V3.md",
+    "README.md",
+    "docs/zh-CN/PROTOCOL_V3.md",
+    ".github/workflows/ci.yml",
+    "docs/zh-CN/README.md"
+  ],
+  "metrics": {
+    "routeFileCount": 8,
+    "matchedFileCount": 7,
+    "changedFileCoverage": 0.88,
+    "routeFocus": 0.88,
+    "confidence": 0.35,
+    "calibration": "underconfident",
+    "calibrationError": 0.53
+  },
+  "missedFiles": [
+    "test/study.test.mjs"
+  ],
+  "routeOnlyFiles": [
+    ".github/workflows/ci.yml"
+  ],
+  "staticContextEstimate": {
+    "repositoryTextFiles": 490,
+    "repositoryTokens": 1021626,
+    "packTokens": 2617,
+    "note": "Scanner estimates only; not end-to-end Agent tokens."
+  },
+  "studyState": {
+    "frozen": false,
+    "plannedTrials": 16,
+    "attemptedTrials": 0,
+    "attemptedArms": 0
+  },
+  "verification": {
+    "benchmarkTests": "54/54 passed",
+    "completeCheck": "passed",
+    "adaptiveV22Reproduction": "passed; generatedAt ignored only"
+  }
+}

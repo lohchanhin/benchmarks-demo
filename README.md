@@ -140,6 +140,14 @@ The current product gate also records exact Zod and Requests routes at recall
 1.000 / strict precision 1.000 and a clean-install 50-memory ceiling test; these
 remain engineering evidence until the independent Agent arms are frozen and run.
 
+The reviewed runtime source is pinned to Vertex Palace
+`5cae580a67c3b8d3b6885abb900a69cd285ecbc0`; the bilingual evidence record is
+pinned to `087d5c65a740c91f6ab849088c27c609d1f6e201`. A fixed evidence-maintenance
+oracle improved from 3/8 coverage and 0.30 focus to 8/8 and 1.00 focus, while
+separate product self-evaluations remained 3/6 and 1/8. This is routing evidence,
+not proof of lower end-to-end Agent tokens or time. The actual repository sync
+then reached 7/8 and is retained as [machine evidence](docs/research/evidence/vertex-palace-0.3.0-sync-evaluation.json).
+
 Validate the frozen plan without running an agent:
 
 ```sh

@@ -47,7 +47,7 @@ const adaptiveProtocols = Object.freeze({
   "3.0.0": {
     tag: "protocol-v3.0.0",
     palaceVersion: "0.3.0",
-    palaceSourceCommit: "cb93369c642135d3d924166bff62b0eaf0cacde1",
+    palaceSourceCommit: "5cae580a67c3b8d3b6885abb900a69cd285ecbc0",
     resultDirectory: "control-first-v3",
     studyId: "vertex-palace-control-first-four-scenario-pilot-v3",
     trialLabel: "control-first-v3-pilot",
