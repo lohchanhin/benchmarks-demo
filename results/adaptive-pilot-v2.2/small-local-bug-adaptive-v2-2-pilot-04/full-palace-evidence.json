@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 3,
+  "runId": "small-local-bug-adaptive-v2-2-pilot-04",
+  "arm": "full-palace",
+  "createdAt": "2026-07-19T05:07:57.043Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.2.1",
+  "execution": {
+    "durationMs": 73636,
+    "exitCode": 0,
+    "startedAt": "2026-07-19T05:05:26.758Z",
+    "endedAt": "2026-07-19T05:06:40.394Z",
+    "timedOut": false,
+    "sequence": 3,
+    "order": "adaptive-palace,control,full-palace,route-only",
+    "cacheState": "cold",
+    "platform": "win32",
+    "sandboxProfile": "workspace-write/windows-elevated",
+    "lastMessageTransport": "workspace-local-then-artifacts-v1"
+  },
+  "transcript": {
+    "eventCount": 39,
+    "malformedLines": 0,
+    "toolCalls": 15,
+    "commandCalls": 15,
+    "failedCalls": 1,
+    "commandOutputChars": 5820,
+    "agentMessageChars": 970,
+    "inspectionCommands": 4,
+    "palaceCalls": 1,
+    "successfulPalaceCalls": 1,
+    "palaceContextOutputChars": 2086,
+    "palaceContextOutputBytes": 2086,
+    "palaceContextEstimatedTokens": 522,
+    "adaptivePayload": null,
+    "adaptivePayloadMatchesOutput": null,
+    "palaceReceivedTask": "Fix currency formatting so negative zero is rendered as $0.00 while genuinely negative cent values keep their minus sign. Keep the public API stable and make the complete test suite pass without changing tests.",
+    "adaptiveRequested": false,
+    "inspectedFiles": [
+      "README.md",
+      "package.json",
+      "src/format-currency.mjs",
+      "test/format-currency.test.mjs"
+    ],
+    "referencedFiles": [
+      "README.md",
+      "package.json",
+      "packages/catalog/src/module-001.mjs",
+      "packages/catalog/src/module-002.mjs",
+      "packages/catalog/src/module-003.mjs",
+      "packages/notifications/src/module-001.mjs",
+      "packages/notifications/src/module-002.mjs",
+      "packages/notifications/src/module-003.mjs",
+      "src/format-currency.mjs",
+      "test/format-currency.test.mjs"
+    ],
+    "usage": {
+      "inputTokens": 125235,
+      "cachedInputTokens": 113664,
+      "outputTokens": 2129,
+      "totalTokens": 127364,
+      "uncachedInputTokens": 11571
+    }
+  },
+  "taskFidelityPassed": true,
+  "runtimeDiagnostics": {
+    "stderrChars": 1781,
+    "warningLines": 2,
+    "errorLines": 1,
+    "routerErrors": 1,
+    "applyPatchVerificationErrors": 0,
+    "sandboxPreparationErrors": 0
+  },
+  "validity": {
+    "verified": true,
+    "passed": true,
+    "reason": "1/1 successful/total Palace calls; adaptiveRequested=false; expected false; adaptivePayloadMatchesOutput=null; taskFidelity=true; Codex exit code 0; timedOut=false; fixed execution settings match the run plan; sandbox preparation errors=0; expected 0; fixture tree matches b97a3a0c3ba3ac7ebebc12f19484ea0496cdfea7"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": true,
+    "publicPassed": true,
+    "oraclePassed": true,
+    "exitCode": 0,
+    "durationMs": 159,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 0,
+    "oracleDurationMs": 60
+  },
+  "git": {
+    "status": [
+      "M src/format-currency.mjs"
+    ],
+    "changedFiles": [
+      "src/format-currency.mjs"
+    ],
+    "untrackedFiles": [],
+    "numstat": [
+      {
+        "file": "src/format-currency.mjs",
+        "added": 1,
+        "deleted": 1
+      }
+    ],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "warning: in the working copy of 'src/format-currency.mjs', LF will be replaced by CRLF the next time Git touches it",
+    "headTree": "b97a3a0c3ba3ac7ebebc12f19484ea0496cdfea7"
+  },
+  "score": {
+    "total": 100,
+    "points": {
+      "correctness": 60,
+      "expectedCoverage": 20,
+      "scope": 20
+    },
+    "testsPassed": true,
+    "expectedCoverage": 1,
+    "changedFileRecall": 1,
+    "changedFilePrecision": 1,
+    "forbiddenViolation": false,
+    "expectedMatched": [
+      "src/format-currency.mjs"
+    ],
+    "expectedMissed": [],
+    "forbiddenChanged": [],
+    "unexpectedChanged": []
+  },
+  "success": true,
+  "route": {
+    "routeId": "route_9d71350d7e60f367",
+    "confidence": 0.53,
+    "k": 4,
+    "recallAtK": 1,
+    "precisionAtK": 0.5,
+    "groundTruthFiles": [
+      "src/format-currency.mjs",
+      "test/format-currency.test.mjs"
+    ],
+    "matchedFiles": [
+      "src/format-currency.mjs",
+      "test/format-currency.test.mjs"
+    ],
+    "retrievedFiles": [
+      "test/format-currency.test.mjs",
+      "src/format-currency.mjs",
+      "README.md",
+      "package.json"
+    ]
+  },
+  "memory": {
+    "pitfallViolation": null,
+    "wrongMemoryAdopted": null
+  },
+  "palaceEvaluation": null
+}

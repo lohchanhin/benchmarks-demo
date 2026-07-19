@@ -1,6 +1,7 @@
 # Adaptive Pilot v2.2
 
-Status: in progress, 3 of 16 planned trials published. No agent outcome
+Status: in progress, 4 of 16 planned trials published. The preregistered
+small-local block is complete. No agent outcome
 existed at protocol freeze.
 
 Protocol v2.2 repeats the four-arm Adaptive study with fresh trial ids and
@@ -38,14 +39,22 @@ and sandbox checks. Adaptive selected `route-lite` for the third time. Against
 Full Palace it made three fewer tool calls and was 1.371 seconds faster, while
 using 28,537 more reported tokens and 6,233 more uncached input tokens.
 
+The fourth cold-index trial completed the balanced small-local block. All four
+arms again passed every validity and correctness gate. Adaptive selected
+`route-lite`; relative to Full Palace it made six fewer tool calls, was 13.525
+seconds faster, and used 22,815 fewer reported and 1,076 fewer uncached input
+tokens.
+
 | Trial | Adaptive vs Full reported tokens | Uncached input | Tool calls | Wall time |
 | --- | ---: | ---: | ---: | ---: |
 | [01](small-local-bug-adaptive-v2-2-pilot-01/comparison.md) | -17,055 | -13,145 | +2 | +0.336s |
 | [02](small-local-bug-adaptive-v2-2-pilot-02/comparison.md) | -38,931 | +2,850 | -6 | -14.638s |
 | [03](small-local-bug-adaptive-v2-2-pilot-03/comparison.md) | +28,537 | +6,233 | -3 | -1.371s |
+| [04](small-local-bug-adaptive-v2-2-pilot-04/comparison.md) | -22,815 | -1,076 | -6 | -13.525s |
 
-Across these three pairs, the paired-median Adaptive-minus-Full differences are
--17,055 reported tokens, +2,850 uncached input tokens, -3 tool calls, and
--1.371 seconds. With only 3/16 trials these are interim descriptive values, not
-a population estimate or a general efficiency claim. See the
-[interim analysis](analysis.md).
+Across the four-pair block, the paired-median Adaptive-minus-Full differences
+are -19,935 reported tokens, +887 uncached input tokens, -4.5 tool calls, and
+-7.448 seconds. The scenario is complete, but the overall study is only 4/16;
+these remain exploratory descriptive values, not a population estimate or a
+general efficiency claim. See the [block report](../../docs/research/SMALL_LOCAL_V2_2_BLOCK.md)
+and [interim analysis](analysis.md).

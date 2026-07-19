@@ -70,13 +70,14 @@ native `apply_patch`, public tests, and the hidden oracle with zero router
 errors. The [sanitized diagnostic record](docs/research/HARNESS_DIAGNOSTICS.md)
 is public; no v2.2 treatment outcome existed at freeze.
 
-After the tag was pushed, the first three v2.2 trials completed with all twelve
-arms valid, correctly scoped, and passing both public tests and the hidden
-oracle; all recorded zero sandbox-preparation errors. Adaptive selected
-`route-lite` in all three. The three-pair Adaptive-minus-Full medians are
--17,055 reported tokens, +2,850 uncached input tokens, -3 tool calls, and
--1.371 seconds. These [3/16 interim results](results/adaptive-pilot-v2.2/README.md)
-are descriptive only and do not establish a general efficiency advantage.
+After the tag was pushed, the complete four-trial small-local block finished
+with all 16 arms valid, correctly scoped, and passing both public tests and the
+hidden oracle; all recorded zero sandbox-preparation errors. Adaptive selected
+`route-lite` in all four. The Adaptive-minus-Full paired medians are -19,935
+reported tokens, +887 uncached input tokens, -4.5 tool calls, and -7.448
+seconds. These [4/16 interim results](results/adaptive-pilot-v2.2/README.md)
+and the [completed block report](docs/research/SMALL_LOCAL_V2_2_BLOCK.md) are
+descriptive only and do not establish a general efficiency advantage.
 
 Validate the frozen plan without running an agent:
 
