@@ -1,7 +1,7 @@
 # Adaptive Pilot v2.2
 
-Status: in progress, 6 of 16 planned trials published. The preregistered
-small-local block is complete and the cross-stack block is 2/4 complete. No agent outcome
+Status: in progress, 7 of 16 planned trials published. The preregistered
+small-local block is complete and the cross-stack block is 3/4 complete. No agent outcome
 existed at protocol freeze.
 
 Protocol v2.2 repeats the four-arm Adaptive study with fresh trial ids and
@@ -58,7 +58,7 @@ are -19,935 reported tokens, +887 uncached input tokens, -4.5 tool calls, and
 descriptive values, not a population estimate or a general efficiency claim.
 See the [block report](../../docs/research/SMALL_LOCAL_V2_2_BLOCK.md).
 
-## Cross-Stack Block (2/4)
+## Cross-Stack Block (3/4)
 
 The first warm-index cross-stack trial completed with all four arms valid,
 successful, and scoped 100/100. Every arm changed exactly the required client
@@ -81,10 +81,13 @@ selected `full-palace`.
 | --- | ---: | ---: | ---: | ---: |
 | [01](cross-stack-regression-adaptive-v2-2-pilot-01/comparison.md) | +24,588 | -7,710 | +2 | -55.058s |
 | [02](cross-stack-regression-adaptive-v2-2-pilot-02/comparison.md) | +26,831 | -14,511 | -8 | -11.443s |
+| [03](cross-stack-regression-adaptive-v2-2-pilot-03/comparison.md) | +111,003 | +5,338 | +4 | +17.876s |
 
-Across these two pairs, the Adaptive-minus-Full paired medians are +25,709.5
-reported tokens, -11,110.5 uncached input tokens, -3 tool calls, and -33.251
-seconds. Adaptive-minus-Control medians are +9,334.5 reported tokens, +1,069
-uncached input tokens, +3 tool calls, and +6.827 seconds. These are only two
-pairs, not a cross-stack effect estimate. See the updated
+The third warm-index trial again passed every gate, but reversed the earlier
+timing direction: Adaptive was 17.876 seconds slower than Full and used more
+tokens and calls. Across the three pairs, the Adaptive-minus-Full paired
+medians are +26,831 reported tokens, -7,710 uncached input tokens, +2 tool
+calls, and -11.443 seconds. Adaptive-minus-Control medians are +39,219 reported
+tokens, -2,296 uncached input tokens, +5 tool calls, and +9.413 seconds. These
+are only three pairs, not a cross-stack effect estimate. See the updated
 [interim analysis](analysis.md).

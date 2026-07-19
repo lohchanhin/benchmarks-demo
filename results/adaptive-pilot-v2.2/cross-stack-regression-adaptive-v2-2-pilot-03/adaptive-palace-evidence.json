@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 3,
+  "runId": "cross-stack-regression-adaptive-v2-2-pilot-03",
+  "arm": "adaptive-palace",
+  "createdAt": "2026-07-19T05:33:23.831Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.2.1",
+  "execution": {
+    "durationMs": 88315,
+    "exitCode": 0,
+    "startedAt": "2026-07-19T05:28:10.158Z",
+    "endedAt": "2026-07-19T05:29:38.475Z",
+    "timedOut": false,
+    "sequence": 1,
+    "order": "adaptive-palace,control,full-palace,route-only",
+    "cacheState": "warm",
+    "platform": "win32",
+    "sandboxProfile": "workspace-write/windows-elevated",
+    "lastMessageTransport": "workspace-local-then-artifacts-v1"
+  },
+  "transcript": {
+    "eventCount": 39,
+    "malformedLines": 0,
+    "toolCalls": 14,
+    "commandCalls": 14,
+    "failedCalls": 1,
+    "commandOutputChars": 8686,
+    "agentMessageChars": 1771,
+    "inspectionCommands": 5,
+    "palaceCalls": 1,
+    "successfulPalaceCalls": 1,
+    "palaceContextOutputChars": 2179,
+    "palaceContextOutputBytes": 2179,
+    "palaceContextEstimatedTokens": 545,
+    "adaptivePayload": {
+      "mode": "full-palace",
+      "calls": 1,
+      "contextBytes": 2179,
+      "contextEstimatedTokens": 545,
+      "routeStepCount": 5,
+      "primaryCount": 1,
+      "supportCount": 4,
+      "deferredCount": 0,
+      "memoryItemCount": 0,
+      "memoryEstimatedTokens": 0,
+      "guardrailCount": 2
+    },
+    "adaptivePayloadMatchesOutput": true,
+    "palaceReceivedTask": "Fix checkout shipping quotes end to end. Free shipping must use the discounted merchandise subtotal, and the checkout view model must display the shipping amount returned by the quote service. Preserve the public response contract and make the complete test suite pass without changing tests.",
+    "adaptiveRequested": true,
+    "inspectedFiles": [
+      "README.md",
+      "client/src/checkout/quote-view-model.mjs",
+      "package.json",
+      "server/src/pricing/create-quote.mjs",
+      "test/checkout-quote.test.mjs"
+    ],
+    "referencedFiles": [
+      "README.md",
+      "client/src/checkout/quote-view-model.mjs",
+      "package.json",
+      "server/src/pricing/create-quote.mjs",
+      "shared/src/money.mjs",
+      "test/checkout-quote.test.mjs"
+    ],
+    "usage": {
+      "inputTokens": 224011,
+      "cachedInputTokens": 201216,
+      "outputTokens": 2391,
+      "totalTokens": 226402,
+      "uncachedInputTokens": 22795
+    }
+  },
+  "taskFidelityPassed": true,
+  "runtimeDiagnostics": {
+    "stderrChars": 2930,
+    "warningLines": 2,
+    "errorLines": 1,
+    "routerErrors": 1,
+    "applyPatchVerificationErrors": 0,
+    "sandboxPreparationErrors": 0
+  },
+  "validity": {
+    "verified": true,
+    "passed": true,
+    "reason": "1/1 successful/total Palace calls; adaptiveRequested=true; expected true; adaptivePayloadMatchesOutput=true; taskFidelity=true; Codex exit code 0; timedOut=false; fixed execution settings match the run plan; sandbox preparation errors=0; expected 0; fixture tree matches 812f0000c11729e88c9f3ebb43716c8a066a7e92"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": true,
+    "publicPassed": true,
+    "oraclePassed": true,
+    "exitCode": 0,
+    "durationMs": 171,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 0,
+    "oracleDurationMs": 62
+  },
+  "git": {
+    "status": [
+      "M client/src/checkout/quote-view-model.mjs",
+      "M server/src/pricing/create-quote.mjs"
+    ],
+    "changedFiles": [
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs"
+    ],
+    "untrackedFiles": [],
+    "numstat": [
+      {
+        "file": "client/src/checkout/quote-view-model.mjs",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "file": "server/src/pricing/create-quote.mjs",
+        "added": 1,
+        "deleted": 1
+      }
+    ],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "warning: in the working copy of 'client/src/checkout/quote-view-model.mjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/src/pricing/create-quote.mjs', LF will be replaced by CRLF the next time Git touches it",
+    "headTree": "812f0000c11729e88c9f3ebb43716c8a066a7e92"
+  },
+  "score": {
+    "total": 100,
+    "points": {
+      "correctness": 60,
+      "expectedCoverage": 20,
+      "scope": 20
+    },
+    "testsPassed": true,
+    "expectedCoverage": 1,
+    "changedFileRecall": 1,
+    "changedFilePrecision": 1,
+    "forbiddenViolation": false,
+    "expectedMatched": [
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs"
+    ],
+    "expectedMissed": [],
+    "forbiddenChanged": [],
+    "unexpectedChanged": []
+  },
+  "success": true,
+  "route": {
+    "routeId": "route_48e487aef8a59e8e",
+    "confidence": 0.59,
+    "k": 5,
+    "recallAtK": 1,
+    "precisionAtK": 0.8,
+    "groundTruthFiles": [
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs",
+      "shared/src/money.mjs",
+      "test/checkout-quote.test.mjs"
+    ],
+    "matchedFiles": [
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs",
+      "shared/src/money.mjs",
+      "test/checkout-quote.test.mjs"
+    ],
+    "retrievedFiles": [
+      "test/checkout-quote.test.mjs",
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs",
+      "README.md",
+      "shared/src/money.mjs"
+    ]
+  },
+  "memory": {
+    "pitfallViolation": null,
+    "wrongMemoryAdopted": null
+  },
+  "palaceEvaluation": null
+}
