@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 2,
+  "protocolVersion": "2.0.0",
+  "status": "planned",
+  "plannedTrials": 16,
+  "plannedScenarios": [
+    "small-local-bug",
+    "cross-stack-regression",
+    "tenant-memory-pitfall",
+    "stale-memory-adversarial"
+  ],
+  "plannedSeedsPerScenario": 4,
+  "trials": []
+}

@@ -4,9 +4,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A public, preregistered, reproducible experiment comparing Codex repository
-work with no Palace, structural routing only, and full Vertex Palace memory.
+work with no Palace, structural routing only, always-on Full Palace, and
+Adaptive Palace.
 
-[Simplified Chinese](README.zh-CN.md) | [Protocol](docs/research/PROTOCOL.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
+[Simplified Chinese](README.zh-CN.md) | [v1 protocol](docs/research/PROTOCOL.md) | [Adaptive v2 protocol](docs/research/PROTOCOL_V2.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
 
 ## Falsifiable Claims
 
@@ -23,11 +24,48 @@ The exact outcomes, -10 percentage-point pilot non-inferiority margin,
 exclusions, and statistics were committed before the new trials at tag
 [`protocol-v1.0.0`](https://github.com/lohchanhin/benchmarks-ab-demo/tree/protocol-v1.0.0).
 
-## Reproduce The Pilot
+## Adaptive v2 Study
+
+The published v1 pilot found no end-to-end efficiency win for always-on Full
+Palace. That negative result motivated a new treatment rather than a rewritten
+interpretation. Protocol v2 adds `adaptive-palace`, which runs exactly one
+`palace context --auto` command and may bypass, use a Primary-only route, load
+bounded support context, or add guarded memory.
+
+The [v2 protocol](docs/research/PROTOCOL_V2.md) and
+[frozen plan](results/adaptive-pilot/plan.json) were committed before v2 agent
+outcomes. The exploratory design contains 4 scenarios x 4 seeds x 4 arms = 64
+fresh sessions. Within every scenario it uses all four Williams sequences, so
+each arm appears once in each execution position. Two trials use a warm local
+Palace index and two force an index rebuild; assignments rotate across
+scenarios so each Williams sequence occurs twice warm and twice cold.
+Provider-side model caches cannot be controlled and remain an explicit limitation.
+
+The v2 primary comparison is Adaptive Palace versus Full Palace correctness.
+Payload, cumulative Token, tool calls, and wall time are secondary and are
+compared only for mutually successful valid pairs. The v2 study is currently
+**preregistered, not completed**; no result should be inferred from the plan.
+
+Validate the frozen plan without running an agent:
+
+```sh
+npm ci
+npm run benchmark -- study --plan results/adaptive-pilot/plan.json
+```
+
+Execute or resume the preregistered pilot only with the frozen model and CLI:
+
+```sh
+npm run benchmark -- study --plan results/adaptive-pilot/plan.json --execute
+npm run analysis:adaptive
+```
+
+## Reproduce The Published v1 Pilot
 
 ```sh
 git clone https://github.com/lohchanhin/benchmarks-ab-demo.git
 cd benchmarks-ab-demo
+git checkout pilot-v1-complete
 npm ci
 npm run benchmark -- doctor
 npm run benchmark -- study --plan results/pilot/plan.json --execute
@@ -140,15 +178,19 @@ safety evidence for H4 accompanied by a clear efficiency cost.
 Vertex Palace does **not** guarantee that every task will be faster or cheaper.
 Wall time is secondary because hosted-model latency varies.
 
-## Why Three Arms
+## v1 Three Arms And v2 Four Arms
 
 - **Control:** normal Codex exploration; Palace calls and `.palace` reads are prohibited.
 - **Route-only:** one `palace context` call with a fresh index and no task memory.
 - **Full Palace:** the same route treatment plus seeded decisions, failed
   attempts, and pitfalls.
+- **Adaptive Palace (v2):** the same seeded history as Full Palace, but one
+  `palace context --auto` call selects the smallest safe mode and reports its
+  actual payload.
 
-This ablation distinguishes structural routing from historical memory. All
-three workspaces use the same task, random fixture seed, tracked files, and Git
+The v1 ablation distinguishes structural routing from historical memory. The
+v2 fourth arm directly tests adaptive selection against always-on Full Palace.
+All workspaces use the same task, random fixture seed, tracked files, and Git
 tree. Each arm runs in a fresh `codex exec --ephemeral` process with fixed
 model, reasoning effort, timeout, and CLI version.
 
@@ -241,6 +283,7 @@ npm run benchmark -- study --plan results/pilot/plan.json --execute --codex-bin 
 ```text
 docs/research/
   PROTOCOL.md
+  PROTOCOL_V2.md
   HYPOTHESES.md
   DATA_DICTIONARY.md
   THREATS_TO_VALIDITY.md
@@ -253,6 +296,8 @@ results/
   manifest.json
   pilot/plan.json
   pilot/
+  adaptive-pilot/plan.json
+  adaptive-pilot/manifest.json
   confirmatory/
 ```
 
@@ -266,11 +311,11 @@ remain in `results/manifest.json`.
 - Node.js 20 or newer
 - Git
 - Authenticated `codex-cli 0.145.0-alpha.18` for the frozen pilot
-- `vertex-palace@0.1.6`, installed by `npm ci`
+- `vertex-palace@0.2.0`, installed by `npm ci` on the v2 branch
 
 ```sh
 npm run check
-npm run benchmark -- study --plan results/pilot/plan.json
+npm run benchmark -- study --plan results/adaptive-pilot/plan.json
 ```
 
 The repository is licensed under the [MIT License](LICENSE).

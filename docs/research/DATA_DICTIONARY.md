@@ -12,8 +12,9 @@ counts, and all paths are repository-relative POSIX strings.
 | `seed` | string | Fixture and arm-order seed |
 | `protocolVersion` | string | Frozen protocol version |
 | `repositoryTree` | string | Shared tracked Git tree hash |
-| `arm` | enum | `control`, `route-only`, or `full-palace` |
+| `arm` | enum | `control`, `route-only`, `full-palace`, or `adaptive-palace` |
 | `sequence` | integer | One-based execution position |
+| `cacheState` | enum | `warm` or `cold` local Palace index state at timed start |
 | `model` | string | Codex model identifier |
 | `reasoningEffort` | string | Requested reasoning effort |
 | `codexVersion` | string | Codex CLI version |
@@ -43,6 +44,11 @@ counts, and all paths are repository-relative POSIX strings.
 | `runtime.routerErrors` | number/null | Codex router errors parsed from stderr |
 | `transcript.inspectionCommands` | number/null | Commands classified as repository inspection |
 | `transcript.commandOutputChars` | number/null | Completed command-output character count |
+| `transcript.palaceContextOutputChars` | number/null | Character count from the treatment context command stdout |
+| `transcript.palaceContextOutputBytes` | number/null | UTF-8 byte count from the treatment context command stdout |
+| `transcript.palaceContextEstimatedTokens` | number/null | Common byte-based estimate used across Palace arms |
+| `transcript.adaptivePayload` | object/null | Parsed Adaptive mode, self-reported bytes, route tiers, memory, and guardrails |
+| `transcript.adaptivePayloadMatchesOutput` | boolean/null | Self-reported Adaptive `contextBytes` exactly equals captured UTF-8 stdout bytes |
 | `transcript.referencedFiles` | string[] | Distinct repository path strings observed in JSONL |
 | `usage.inputTokens` | number/null | Cumulative input tokens |
 | `usage.cachedInputTokens` | number/null | Cumulative cached input tokens |

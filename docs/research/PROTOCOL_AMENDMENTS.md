@@ -25,6 +25,14 @@ four-scenario pilot data were collected.
   to upgrade an H1-H5 conclusion.
 - Commit and tag: the completion commit tagged `pilot-v1-complete`.
 
+## Successor Protocol Disclosure
+
+Protocol v2.0.0 is a new preregistered treatment study, not an amendment that
+changes v1 outcomes. It adds Adaptive Palace, a fourth arm, payload metrics,
+Williams order balance, and warm/cold local-index strata. The v1 protocol,
+plans, evidence, and published analyses remain unchanged. See
+[`PROTOCOL_V2.md`](./PROTOCOL_V2.md).
+
 ## Amendment Template
 
 Each future entry must contain:

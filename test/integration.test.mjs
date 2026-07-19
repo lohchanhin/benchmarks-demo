@@ -6,7 +6,7 @@ import test from "node:test";
 import { prepareCommand } from "../src/commands/prepare.mjs";
 import { writeComparisonReport } from "../src/commands/report.mjs";
 import { verifyArm } from "../src/commands/verify.mjs";
-import { writeJson } from "../src/lib/files.mjs";
+import { pathExists, writeJson } from "../src/lib/files.mjs";
 import { collectGitEvidence } from "../src/lib/git.mjs";
 import { loadRun } from "../src/lib/run-state.mjs";
 
@@ -21,23 +21,31 @@ test("prepares identical arms, verifies repairs, and writes comparison reports",
   const { runDirectory, manifest } = await prepareCommand(flags);
   assert.equal(manifest.arms.control.tree, manifest.arms["route-only"].tree);
   assert.equal(manifest.arms.control.tree, manifest.arms["full-palace"].tree);
+  assert.equal(manifest.arms.control.tree, manifest.arms["adaptive-palace"].tree);
 
   const run = await loadRun(runDirectory);
   const artifacts = path.join(runDirectory, "artifacts");
   await mkdir(artifacts, { recursive: true });
-  for (const arm of ["control", "route-only", "full-palace"]) {
+  for (const arm of ["control", "route-only", "full-palace", "adaptive-palace"]) {
     await applyCanonicalRepair(run.workspace(arm));
-    const palaceCommand = arm === "control" ? "rg Aurora src clients" : "palace context task";
+    const palaceCommand = arm === "control"
+      ? "rg Aurora src clients"
+      : arm === "adaptive-palace"
+        ? "palace context task --auto"
+        : "palace context task";
+    const palaceOutput = arm === "adaptive-palace"
+      ? measuredAdaptiveOutput("# Vertex Palace Adaptive Context\n\nMode: route-lite\n\n## Payload\n\nCalls: 1 | Bytes: 0 | Estimated tokens: 100\nRoute: 4 (2 primary, 2 support, 0 deferred)\nMemory: 0 items / ~0 tokens | Guardrails: 0")
+      : "ok";
     const transcript = [
       JSON.stringify({ type: "thread.started", thread_id: `${arm}-thread` }),
       JSON.stringify({
         type: "item.completed",
-        item: { type: "command_execution", command: palaceCommand, status: "completed", exit_code: 0, aggregated_output: "ok" }
+        item: { type: "command_execution", command: palaceCommand, status: "completed", exit_code: 0, aggregated_output: palaceOutput }
       }),
       JSON.stringify({
         type: "turn.completed",
         usage: {
-          input_tokens: arm === "control" ? 3000 : arm === "route-only" ? 2200 : 1800,
+          input_tokens: arm === "control" ? 3000 : arm === "route-only" ? 2200 : arm === "full-palace" ? 1800 : 1500,
           cached_input_tokens: 600,
           output_tokens: 500
         }
@@ -58,16 +66,22 @@ test("prepares identical arms, verifies repairs, and writes comparison reports",
   const control = await verifyArm(run, "control");
   const routeOnly = await verifyArm(run, "route-only");
   const palace = await verifyArm(run, "full-palace");
+  const adaptive = await verifyArm(run, "adaptive-palace");
   assert.equal(control.score.total, 100);
   assert.equal(routeOnly.score.total, 100);
   assert.equal(palace.score.total, 100);
+  assert.equal(adaptive.score.total, 100);
   assert.equal(control.validity.passed, true);
   assert.equal(palace.validity.passed, true);
+  assert.equal(adaptive.validity.passed, true);
 
   const report = await writeComparisonReport(run);
   const markdown = await readFile(report.markdownPath, "utf8");
-  assert.match(markdown, /Vertex Palace Three-Arm Benchmark/);
-  assert.match(markdown, /\+4\.0s/);
+  assert.match(markdown, /Vertex Palace Four-Arm Adaptive Benchmark/);
+  assert.match(markdown, /Full Palace minus Adaptive/);
+  assert.match(markdown, /\| Elapsed time \| 12\.0s \| 9\.0s \| 8\.0s \| 8\.0s \| 0\.0s \|/);
+  assert.equal(report.comparison.delta.durationMsSaved, 0);
+  assert.equal(report.comparison.pairwise.controlVsAdaptivePalace.delta.durationMsSaved, 4000);
 });
 
 test("Palace preparation records history truthfully and stays outside tracked fixture changes", async (context) => {
@@ -77,15 +91,21 @@ test("Palace preparation records history truthfully and stays outside tracked fi
     ["scenario", "small-local-bug"],
     ["run-id", "palace-scope"],
     ["seed", "palace-scope-seed"],
-    ["runs-root", root]
+    ["runs-root", root],
+    ["cache-state", "cold"]
   ]));
+  assert.equal(manifest.cacheState, "cold");
   assert.equal(manifest.palaceSeed.routeOnly.memorySeeded, false);
   assert.equal(manifest.palaceSeed.fullPalace.memorySeeded, false);
+  assert.equal(manifest.palaceSeed.adaptivePalace.memorySeeded, false);
   const run = await loadRun(runDirectory);
-  for (const arm of ["control", "route-only", "full-palace"]) {
+  for (const arm of ["control", "route-only", "full-palace", "adaptive-palace"]) {
     const git = await collectGitEvidence(run.workspace(arm));
     assert.deepEqual(git.changedFiles, []);
     assert.equal(git.headTree, run.manifest.repositoryTree);
+    if (arm !== "control") {
+      assert.equal(await pathExists(path.join(run.workspace(arm), ".palace", "indexes", "nodes.json")), false);
+    }
   }
 });
 
@@ -101,4 +121,14 @@ async function applyCanonicalRepair(workspace) {
     writeFile(rendererPath, renderer, "utf8"),
     writeFile(auroraPath, aurora, "utf8")
   ]);
+}
+
+function measuredAdaptiveOutput(source) {
+  let output = source;
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    const next = output.replace(/Bytes: \d+/, `Bytes: ${Buffer.byteLength(output, "utf8")}`);
+    if (next === output) return output;
+    output = next;
+  }
+  return output;
 }

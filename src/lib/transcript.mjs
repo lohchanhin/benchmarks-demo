@@ -24,11 +24,13 @@ export function parseCodexTranscript(source, workspaceFiles = []) {
     if (item) {
       const id = String(item.id ?? `${event.type}:${commandItems.size + toolItems.size}`);
       if (item.type === "command_execution" && typeof item.command === "string") {
+        const output = commandOutput(item);
         commandItems.set(id, {
           command: item.command,
           status: item.status ?? event.type,
           exitCode: Number.isFinite(item.exit_code) ? Number(item.exit_code) : undefined,
-          outputChars: commandOutput(item).length
+          outputChars: output.length,
+          output
         });
       } else if (String(item.type).includes("tool_call") || String(item.type).includes("mcp")) {
         const name = item.name ?? item.tool ?? item.tool_name;
@@ -62,6 +64,15 @@ export function parseCodexTranscript(source, workspaceFiles = []) {
   const inspectionCommands = commands.filter((item) =>
     /(^|\s)(rg|grep|find|ls|dir|cat|type|sed|head|tail|tree)(\s|$)|get-content|get-childitem/i.test(item.command)
   );
+  const palaceCommandOutputChars = palaceCommands.reduce((total, item) => total + item.outputChars, 0);
+  const palaceCommandOutputBytes = palaceCommands.reduce(
+    (total, item) => total + Buffer.byteLength(item.output, "utf8"),
+    0
+  );
+  const adaptivePayloads = palaceCommands.map((item) => parseAdaptivePayload(item.output)).filter(Boolean);
+  const adaptivePayload = adaptivePayloads.at(-1) ?? null;
+  const adaptiveOutput = palaceCommands.at(-1)?.output ?? "";
+  const adaptiveRequested = palaceCommands.some((item) => /\bcontext\b[^\r\n]*\s--auto(?:\s|$)/i.test(item.command));
 
   return {
     eventCount: events.length,
@@ -75,9 +86,39 @@ export function parseCodexTranscript(source, workspaceFiles = []) {
     inspectionCommands: inspectionCommands.length,
     palaceCalls,
     successfulPalaceCalls,
+    palaceContextOutputChars: palaceCommands.length ? palaceCommandOutputChars : null,
+    palaceContextOutputBytes: palaceCommands.length ? palaceCommandOutputBytes : null,
+    palaceContextEstimatedTokens: palaceCommands.length ? Math.ceil(palaceCommandOutputBytes / 4) : null,
+    adaptivePayload,
+    adaptivePayloadMatchesOutput: adaptivePayload
+      ? adaptivePayload.contextBytes === Buffer.byteLength(adaptiveOutput, "utf8")
+      : null,
+    adaptiveRequested,
     inspectedFiles,
     referencedFiles,
     usage: combineUsage(usageCandidates)
+  };
+}
+
+function parseAdaptivePayload(output) {
+  if (!output.includes("# Vertex Palace Adaptive Context") || !output.includes("## Payload")) return null;
+  const mode = /^Mode: ([^\r\n]+)$/m.exec(output)?.[1] ?? null;
+  const payload = /^Calls: (\d+) \| Bytes: (\d+) \| Estimated tokens: (\d+)$/m.exec(output);
+  const route = /^Route: (\d+) \((\d+) primary, (\d+) support, (\d+) deferred\)$/m.exec(output);
+  const memory = /^Memory: (\d+) items \/ ~(\d+) tokens \| Guardrails: (\d+)$/m.exec(output);
+  if (!payload) return null;
+  return {
+    mode,
+    calls: Number(payload[1]),
+    contextBytes: Number(payload[2]),
+    contextEstimatedTokens: Number(payload[3]),
+    routeStepCount: route ? Number(route[1]) : null,
+    primaryCount: route ? Number(route[2]) : null,
+    supportCount: route ? Number(route[3]) : null,
+    deferredCount: route ? Number(route[4]) : null,
+    memoryItemCount: memory ? Number(memory[1]) : null,
+    memoryEstimatedTokens: memory ? Number(memory[2]) : null,
+    guardrailCount: memory ? Number(memory[3]) : null
   };
 }
 

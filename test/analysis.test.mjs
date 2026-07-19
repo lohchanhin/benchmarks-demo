@@ -70,6 +70,33 @@ test("labels partial pilot output as interim against the preregistered trial cou
   assert.match(markdown, /\| demo \| Reported tokens \| 1 \| 1,100 \| 1,100 \| 0 \[0, 0\] \|/);
 });
 
+test("uses Adaptive versus Full Palace as the v2 primary comparison", () => {
+  const adaptiveEntry = entry("adaptive-1", true, true, 100, 80);
+  adaptiveEntry.report.arms["adaptive-palace"] = {
+    ...arm(true, 55),
+    palaceContextEstimatedTokens: 400,
+    palaceContextOutputChars: 1600
+  };
+  adaptiveEntry.report.arms["full-palace"] = {
+    ...adaptiveEntry.report.arms["full-palace"],
+    palaceContextEstimatedTokens: 1200,
+    palaceContextOutputChars: 4800
+  };
+
+  const result = analyzeReports([adaptiveEntry], { iterations: 100, bootstrapSeed: "adaptive-test" });
+  const scenario = result.scenarios.demo;
+  assert.equal(result.schemaVersion, 2);
+  assert.equal(scenario.primaryComparison.baselineArm, "fullPalace");
+  assert.equal(scenario.primaryComparison.treatmentArm, "adaptivePalace");
+  assert.equal(scenario.primaryComparison.metrics.durationMs.treatmentMinusBaseline.estimate, -25);
+  assert.equal(
+    scenario.primaryComparison.metrics.palaceContextEstimatedTokens.treatmentMinusBaseline.estimate,
+    -800
+  );
+  assert.match(renderAnalysisMarkdown(result), /Four-Arm Adaptive Contrasts/);
+  assert.match(renderAnalysisMarkdown(result), /Adaptive Palace - Full Palace/);
+});
+
 function entry(trialId, controlSuccess, palaceSuccess, controlDuration, palaceDuration) {
   return {
     trial: { trialId, scenario: "demo" },

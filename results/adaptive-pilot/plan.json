@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 2,
+  "protocolVersion": "2.0.0",
+  "protocolTag": "protocol-v2.0.0",
+  "id": "vertex-palace-adaptive-four-scenario-pilot-v2",
+  "createdAt": "2026-07-19T00:00:00.000Z",
+  "frozen": true,
+  "execution": {
+    "model": "gpt-5.6-sol",
+    "reasoningEffort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "timeoutMs": 600000,
+    "cooldownMs": 15000,
+    "palaceVersion": "0.2.0"
+  },
+  "trials": [
+    {
+      "trialId": "small-local-bug-adaptive-pilot-01",
+      "scenario": "small-local-bug",
+      "seed": "2764339101deab86d9eb250e9b3ea20a",
+      "order": ["route-only", "full-palace", "control", "adaptive-palace"],
+      "cacheState": "warm"
+    },
+    {
+      "trialId": "small-local-bug-adaptive-pilot-02",
+      "scenario": "small-local-bug",
+      "seed": "71c852014ffdf1af7d7a21797cbbe4de",
+      "order": ["full-palace", "adaptive-palace", "route-only", "control"],
+      "cacheState": "cold"
+    },
+    {
+      "trialId": "small-local-bug-adaptive-pilot-03",
+      "scenario": "small-local-bug",
+      "seed": "fc552414c9046f266410f4bf1b670ed7",
+      "order": ["adaptive-palace", "control", "full-palace", "route-only"],
+      "cacheState": "warm"
+    },
+    {
+      "trialId": "small-local-bug-adaptive-pilot-04",
+      "scenario": "small-local-bug",
+      "seed": "d953c9390634ad2e775e8d608903f7ce",
+      "order": ["control", "route-only", "adaptive-palace", "full-palace"],
+      "cacheState": "cold"
+    },
+    {
+      "trialId": "cross-stack-regression-adaptive-pilot-01",
+      "scenario": "cross-stack-regression",
+      "seed": "1378294e57afd62c2415e0730b01ea40",
+      "order": ["full-palace", "adaptive-palace", "route-only", "control"],
+      "cacheState": "warm"
+    },
+    {
+      "trialId": "cross-stack-regression-adaptive-pilot-02",
+      "scenario": "cross-stack-regression",
+      "seed": "682069a9df5e8eb52a8729c6911a7ba8",
+      "order": ["adaptive-palace", "control", "full-palace", "route-only"],
+      "cacheState": "cold"
+    },
+    {
+      "trialId": "cross-stack-regression-adaptive-pilot-03",
+      "scenario": "cross-stack-regression",
+      "seed": "112aa34f42af160ad6d46f6ea84f38cc",
+      "order": ["control", "route-only", "adaptive-palace", "full-palace"],
+      "cacheState": "warm"
+    },
+    {
+      "trialId": "cross-stack-regression-adaptive-pilot-04",
+      "scenario": "cross-stack-regression",
+      "seed": "569c9f20b55d200e9e3b3d099b2861e4",
+      "order": ["route-only", "full-palace", "control", "adaptive-palace"],
+      "cacheState": "cold"
+    },
+    {
+      "trialId": "tenant-memory-pitfall-adaptive-pilot-01",
+      "scenario": "tenant-memory-pitfall",
+      "seed": "de1e32a4a044065ac04d130f2914d8d8",
+      "order": ["adaptive-palace", "control", "full-palace", "route-only"],
+      "cacheState": "warm"
+    },
+    {
+      "trialId": "tenant-memory-pitfall-adaptive-pilot-02",
+      "scenario": "tenant-memory-pitfall",
+      "seed": "3253497e5d99de3443a87bfe87a17556",
+      "order": ["control", "route-only", "adaptive-palace", "full-palace"],
+      "cacheState": "cold"
+    },
+    {
+      "trialId": "tenant-memory-pitfall-adaptive-pilot-03",
+      "scenario": "tenant-memory-pitfall",
+      "seed": "69c6472c55fa64440ed61ca4ea04bf2d",
+      "order": ["route-only", "full-palace", "control", "adaptive-palace"],
+      "cacheState": "warm"
+    },
+    {
+      "trialId": "tenant-memory-pitfall-adaptive-pilot-04",
+      "scenario": "tenant-memory-pitfall",
+      "seed": "ace25675b9be649d932dbb485c7e6446",
+      "order": ["full-palace", "adaptive-palace", "route-only", "control"],
+      "cacheState": "cold"
+    },
+    {
+      "trialId": "stale-memory-adversarial-adaptive-pilot-01",
+      "scenario": "stale-memory-adversarial",
+      "seed": "55b04d66e14bfdeec3653063d55c9b3a",
+      "order": ["control", "route-only", "adaptive-palace", "full-palace"],
+      "cacheState": "warm"
+    },
+    {
+      "trialId": "stale-memory-adversarial-adaptive-pilot-02",
+      "scenario": "stale-memory-adversarial",
+      "seed": "ec2a88390140e27adf6c4b39c9866619",
+      "order": ["route-only", "full-palace", "control", "adaptive-palace"],
+      "cacheState": "cold"
+    },
+    {
+      "trialId": "stale-memory-adversarial-adaptive-pilot-03",
+      "scenario": "stale-memory-adversarial",
+      "seed": "f7fe505dbaa07c4569850bc8ae30fc5f",
+      "order": ["full-palace", "adaptive-palace", "route-only", "control"],
+      "cacheState": "warm"
+    },
+    {
+      "trialId": "stale-memory-adversarial-adaptive-pilot-04",
+      "scenario": "stale-memory-adversarial",
+      "seed": "69016519893bb7b13ca413d3e18c3579",
+      "order": ["adaptive-palace", "control", "full-palace", "route-only"],
+      "cacheState": "cold"
+    }
+  ]
+}

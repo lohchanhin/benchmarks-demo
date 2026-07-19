@@ -8,6 +8,13 @@ import { pilotScenarioIds } from "../lib/scenario.mjs";
 import { prepareCommand } from "./prepare.mjs";
 import { orderedArms, runCommand } from "./run.mjs";
 
+export const adaptiveWilliamsOrders = Object.freeze([
+  ["control", "route-only", "adaptive-palace", "full-palace"],
+  ["route-only", "full-palace", "control", "adaptive-palace"],
+  ["full-palace", "adaptive-palace", "route-only", "control"],
+  ["adaptive-palace", "control", "full-palace", "route-only"]
+]);
+
 export async function studyCommand(flags) {
   const planPath = path.resolve(stringFlag(flags, "plan", path.join(repositoryRoot, "results", "pilot", "plan.json")));
   const execute = booleanFlag(flags, "execute");
@@ -16,15 +23,17 @@ export async function studyCommand(flags) {
   }
   const plan = await readJson(planPath);
   validateStudyPlan(plan);
-  console.log(`Study plan: ${plan.id} (${plan.trials.length} trials, ${plan.trials.length * 3} arm runs)`);
+  const armRuns = plan.trials.reduce((sum, trial) => sum + trial.order.length, 0);
+  console.log(`Study plan: ${plan.id} (${plan.trials.length} trials, ${armRuns} arm runs)`);
   if (!execute) {
     console.log("Plan validated. Pass --execute to begin or resume the preregistered runs.");
     return { plan, executed: false };
   }
 
-  const resultsManifestPath = path.resolve(
-    stringFlag(flags, "manifest", path.join(repositoryRoot, "results", "manifest.json"))
-  );
+  const defaultManifest = plan.protocolVersion === "2.0.0"
+    ? path.join(repositoryRoot, "results", "adaptive-pilot", "manifest.json")
+    : path.join(repositoryRoot, "results", "manifest.json");
+  const resultsManifestPath = path.resolve(stringFlag(flags, "manifest", defaultManifest));
   const runsRoot = path.resolve(stringFlag(flags, "runs-root", path.join(repositoryRoot, ".benchmark-runs")));
   const limit = positiveIntegerOrInfinity(stringFlag(flags, "limit", undefined), "--limit");
   const results = await readJson(resultsManifestPath);
@@ -53,6 +62,8 @@ export async function studyCommand(flags) {
           ["run-id", trial.trialId],
           ["seed", trial.seed],
           ["runs-root", runsRoot],
+          ["protocol-version", plan.protocolVersion],
+          ["cache-state", trial.cacheState ?? "warm"],
           ...optionalFlag(flags, "palace-bin")
         ]));
       }
@@ -141,7 +152,46 @@ export function buildPilotPlan(options = {}) {
   };
 }
 
+export function buildAdaptivePilotPlan(options = {}) {
+  const trials = [];
+  const scenarios = options.scenarios ?? pilotScenarioIds;
+  for (const [scenarioIndex, scenario] of scenarios.entries()) {
+    for (let index = 0; index < adaptiveWilliamsOrders.length; index += 1) {
+      const orderIndex = (index + scenarioIndex) % adaptiveWilliamsOrders.length;
+      trials.push({
+        trialId: `${scenario}-adaptive-pilot-${String(index + 1).padStart(2, "0")}`,
+        scenario,
+        seed: randomBytes(16).toString("hex"),
+        order: [...adaptiveWilliamsOrders[orderIndex]],
+        cacheState: index % 2 === 0 ? "warm" : "cold"
+      });
+    }
+  }
+  return {
+    schemaVersion: 2,
+    protocolVersion: "2.0.0",
+    protocolTag: "protocol-v2.0.0",
+    id: "vertex-palace-adaptive-four-scenario-pilot-v2",
+    createdAt: new Date().toISOString(),
+    frozen: false,
+    execution: {
+      model: "gpt-5.6-sol",
+      reasoningEffort: "xhigh",
+      codexVersion: options.codexVersion ?? "codex-cli 0.145.0-alpha.18",
+      timeoutMs: 600000,
+      cooldownMs: 15000,
+      palaceVersion: "0.2.0"
+    },
+    trials
+  };
+}
+
 export function validateStudyPlan(plan) {
+  if (plan.protocolVersion === "2.0.0") return validateAdaptiveStudyPlan(plan);
+  return validateLegacyStudyPlan(plan);
+}
+
+function validateLegacyStudyPlan(plan) {
   if (plan.protocolVersion !== "1.0.0" || plan.protocolTag !== "protocol-v1.0.0") {
     throw new Error("Study plan does not match frozen protocol 1.0.0");
   }
@@ -177,6 +227,73 @@ export function validateStudyPlan(plan) {
     const trials = plan.trials.filter((trial) => trial.scenario === scenario);
     if (trials.length !== 5 || new Set(trials.map((trial) => trial.order.join(","))).size !== 5) {
       throw new Error(`Scenario ${scenario} must have five trials with five distinct arm orders`);
+    }
+  }
+  return true;
+}
+
+function validateAdaptiveStudyPlan(plan) {
+  if (plan.protocolTag !== "protocol-v2.0.0") {
+    throw new Error("Adaptive study plan does not match frozen protocol 2.0.0");
+  }
+  if (!Array.isArray(plan.trials) || !plan.trials.length) throw new Error("Study plan has no trials");
+  if (plan.frozen !== true) throw new Error("Study plan must be frozen before execution");
+  if (plan.trials.length !== pilotScenarioIds.length * adaptiveWilliamsOrders.length) {
+    throw new Error("Adaptive pilot must contain four trials per preregistered scenario");
+  }
+  if (plan.execution?.model !== "gpt-5.6-sol"
+      || plan.execution?.reasoningEffort !== "xhigh"
+      || typeof plan.execution?.codexVersion !== "string"
+      || !plan.execution.codexVersion
+      || plan.execution?.timeoutMs !== 600000
+      || plan.execution?.cooldownMs !== 15000
+      || plan.execution?.palaceVersion !== "0.2.0") {
+    throw new Error("Study execution settings do not match protocol 2.0.0");
+  }
+
+  const ids = new Set();
+  const seeds = new Set();
+  const cacheByOrder = new Map(
+    adaptiveWilliamsOrders.map((order) => [order.join(","), { warm: 0, cold: 0 }])
+  );
+  for (const trial of plan.trials) {
+    if (ids.has(trial.trialId)) throw new Error(`Duplicate trial id: ${trial.trialId}`);
+    ids.add(trial.trialId);
+    if (!pilotScenarioIds.includes(trial.scenario)) throw new Error(`Unregistered scenario: ${trial.scenario}`);
+    if (typeof trial.seed !== "string" || !trial.seed) throw new Error(`Missing seed: ${trial.trialId}`);
+    if (seeds.has(trial.seed)) throw new Error(`Duplicate adaptive fixture seed: ${trial.seed}`);
+    seeds.add(trial.seed);
+    if (!["warm", "cold"].includes(trial.cacheState)) throw new Error(`Invalid cache state: ${trial.trialId}`);
+    const arms = new Set(trial.order);
+    if (arms.size !== 4 || !["control", "route-only", "full-palace", "adaptive-palace"].every((arm) => arms.has(arm))) {
+      throw new Error(`Invalid adaptive arm order: ${trial.trialId}`);
+    }
+    const orderKey = trial.order.join(",");
+    if (!adaptiveWilliamsOrders.some((order) => order.join(",") === orderKey)) {
+      throw new Error(`Arm order is not a preregistered Williams sequence: ${trial.trialId}`);
+    }
+    cacheByOrder.get(orderKey)[trial.cacheState] += 1;
+  }
+
+  for (const scenario of pilotScenarioIds) {
+    const trials = plan.trials.filter((trial) => trial.scenario === scenario);
+    if (trials.length !== 4) throw new Error(`Scenario ${scenario} must have four adaptive trials`);
+    if (new Set(trials.map((trial) => trial.order.join(","))).size !== 4) {
+      throw new Error(`Scenario ${scenario} must use all four Williams orders exactly once`);
+    }
+    if (trials.filter((trial) => trial.cacheState === "warm").length !== 2
+        || trials.filter((trial) => trial.cacheState === "cold").length !== 2) {
+      throw new Error(`Scenario ${scenario} must balance warm and cold Palace indexes`);
+    }
+    for (let position = 0; position < 4; position += 1) {
+      if (new Set(trials.map((trial) => trial.order[position])).size !== 4) {
+        throw new Error(`Scenario ${scenario} does not balance arm position ${position + 1}`);
+      }
+    }
+  }
+  for (const [order, counts] of cacheByOrder) {
+    if (counts.warm !== 2 || counts.cold !== 2) {
+      throw new Error(`Williams order ${order} must occur twice warm and twice cold across scenarios`);
     }
   }
   return true;

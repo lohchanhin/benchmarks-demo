@@ -49,6 +49,33 @@ test("withholds efficiency deltas when either arm is invalid", () => {
   assert.equal(report.delta.durationMsSaved, null);
 });
 
+test("uses Full Palace minus Adaptive as the v2 top-level comparison", () => {
+  const run = {
+    manifest: {
+      id: "adaptive-demo",
+      scenario: "small-local-bug",
+      scenarioTitle: "Small local bug",
+      task: "Fix formatting",
+      repositoryTree: "abc123",
+      generatedFileCount: 11,
+      cacheState: "warm",
+      protocolVersion: "2.0.0"
+    }
+  };
+  const evidence = {
+    control: armEvidence({ arm: "control", durationMs: 10000, toolCalls: 10, palaceCalls: 0, tokens: 4000 }),
+    "route-only": armEvidence({ arm: "route-only", durationMs: 8000, toolCalls: 8, palaceCalls: 1, tokens: 3200 }),
+    "full-palace": armEvidence({ arm: "full-palace", durationMs: 7000, toolCalls: 7, palaceCalls: 1, tokens: 3000 }),
+    "adaptive-palace": armEvidence({ arm: "adaptive-palace", durationMs: 5000, toolCalls: 5, palaceCalls: 1, tokens: 2200 })
+  };
+
+  const report = buildComparison(run, evidence);
+  assert.equal(report.schemaVersion, 4);
+  assert.equal(report.delta.durationMsSaved, 2000);
+  assert.equal(report.pairwise.fullPalaceVsAdaptivePalace.delta.durationMsSaved, 2000);
+  assert.equal(report.pairwise.controlVsAdaptivePalace.delta.durationMsSaved, 5000);
+});
+
 function armEvidence({ arm, durationMs, toolCalls, palaceCalls, tokens }) {
   return {
     arm,

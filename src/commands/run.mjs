@@ -14,10 +14,11 @@ import { writeComparisonReport } from "./report.mjs";
 export async function runCommand(flags) {
   const runDirectory = await resolveRunDirectory(flags);
   const run = await loadRun(runDirectory);
+  const availableArms = Object.keys(run.manifest.arms);
   const armValue = enumFlag(
     flags,
     "arm",
-    ["control", "route-only", "full-palace", "all", "palace", "both"],
+    ["control", "route-only", "full-palace", "adaptive-palace", "all", "palace", "adaptive", "both"],
     "all"
   );
   const order = stringFlag(flags, "order", "seeded");
@@ -29,7 +30,7 @@ export async function runCommand(flags) {
   const codexBin = await resolveCodexBin(stringFlag(flags, "codex-bin", undefined));
   const artifacts = path.join(runDirectory, "artifacts");
   await mkdir(artifacts, { recursive: true });
-  const runArms = orderedArms(armValue, order, run.manifest.seed);
+  const runArms = orderedArms(armValue, order, run.manifest.seed, availableArms);
   const codexVersion = await commandVersion(codexBin, ["--version"]);
   const palaceVersion = await installedPalaceVersion();
   assertExpectedVersion("Codex CLI", codexVersion, stringFlag(flags, "expected-codex-version", undefined));
@@ -46,6 +47,7 @@ export async function runCommand(flags) {
     reasoningEffort,
     codexVersion,
     palaceVersion,
+    cacheState: run.manifest.cacheState ?? "unrecorded",
     seed: run.manifest.seed,
     createdAt: new Date().toISOString()
   };
@@ -120,13 +122,14 @@ export async function runCommand(flags) {
   if (failedArms.length) throw new Error(`Codex execution failed for: ${failedArms.join(", ")}`);
 }
 
-export function orderedArms(armValue, order, seed = "fixture-default") {
-  const arms = armsFor(armValue);
+export function orderedArms(armValue, order, seed = "fixture-default", availableArms) {
+  const arms = armsFor(armValue, availableArms);
   if (arms.length === 1) return arms;
-  if (order === "control-first") return preferredOrder(arms, ["control", "route-only", "full-palace"]);
+  if (order === "control-first") return preferredOrder(arms, ["control", "route-only", "full-palace", "adaptive-palace"]);
   if (order === "palace-first" || order === "full-palace-first") {
-    return preferredOrder(arms, ["full-palace", "route-only", "control"]);
+    return preferredOrder(arms, ["full-palace", "adaptive-palace", "route-only", "control"]);
   }
+  if (order === "adaptive-first") return preferredOrder(arms, ["adaptive-palace", "full-palace", "route-only", "control"]);
   if (order === "seeded") return seededOrder(arms, seed);
   const explicit = order.split(",").map((value) => value.trim()).filter(Boolean);
   if (explicit.length === arms.length && new Set(explicit).size === arms.length
@@ -203,6 +206,7 @@ function assertSameRunPlan(existing, proposed) {
     "reasoningEffort",
     "codexVersion",
     "palaceVersion",
+    "cacheState",
     "seed"
   ]) {
     if (JSON.stringify(existing[field]) !== JSON.stringify(proposed[field])) {

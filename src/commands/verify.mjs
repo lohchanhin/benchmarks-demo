@@ -13,13 +13,14 @@ import { parseCodexTranscript } from "../lib/transcript.mjs";
 export async function verifyCommand(flags) {
   const runDirectory = await resolveRunDirectory(flags);
   const run = await loadRun(runDirectory);
+  const availableArms = Object.keys(run.manifest.arms);
   const armValue = enumFlag(
     flags,
     "arm",
-    ["control", "route-only", "full-palace", "all", "palace", "both"],
+    ["control", "route-only", "full-palace", "adaptive-palace", "all", "palace", "adaptive", "both"],
     "all"
   );
-  for (const arm of armsFor(armValue)) {
+  for (const arm of armsFor(armValue, availableArms)) {
     const evidence = await verifyArm(run, arm);
     console.log(
       `${arm}: public=${evidence.tests.publicPassed ? "passed" : "failed"}, `
@@ -61,9 +62,18 @@ export async function verifyArm(run, arm) {
     forbiddenFiles: run.scenario.forbiddenChangedFiles,
     diffCheckPassed: git.diffCheckPassed
   });
+  const palaceCallPassed = transcript.palaceCalls === 1 && transcript.successfulPalaceCalls === 1;
+  const adaptivePayloadPassed = Boolean(
+    transcript.adaptivePayload
+      && ["bypass", "route-lite", "full-palace", "guarded-memory-palace"].includes(transcript.adaptivePayload.mode)
+      && transcript.adaptivePayload.calls === 1
+      && transcript.adaptivePayloadMatchesOutput === true
+  );
   const modePassed = arm === "control"
     ? transcript.palaceCalls === 0
-    : transcript.palaceCalls === 1 && transcript.successfulPalaceCalls === 1;
+    : arm === "adaptive-palace"
+      ? palaceCallPassed && transcript.adaptiveRequested === true && adaptivePayloadPassed
+      : palaceCallPassed && transcript.adaptiveRequested === false;
   const executionPassed = execution ? execution.exitCode === 0 && !execution.timedOut : false;
   const treePassed = git.headTree === run.manifest.repositoryTree;
   const settingsPassed = Boolean(
@@ -81,7 +91,9 @@ export async function verifyArm(run, arm) {
         reason: [
           arm === "control"
             ? `${transcript.palaceCalls} Palace calls detected; expected 0`
-            : `${transcript.successfulPalaceCalls}/${transcript.palaceCalls} successful/total Palace calls; expected 1/1`,
+            : `${transcript.successfulPalaceCalls}/${transcript.palaceCalls} successful/total Palace calls; `
+              + `adaptiveRequested=${transcript.adaptiveRequested}; expected ${arm === "adaptive-palace"}; `
+              + `adaptivePayloadMatchesOutput=${transcript.adaptivePayloadMatchesOutput}`,
           execution ? `Codex exit code ${execution.exitCode}; timedOut=${Boolean(execution.timedOut)}` : "Codex exit code unavailable",
           `fixed execution settings ${settingsPassed ? "match" : "do not match"} the run plan`,
           `fixture tree ${treePassed ? "matches" : "does not match"} ${run.manifest.repositoryTree}`
@@ -106,7 +118,8 @@ export async function verifyArm(run, arm) {
           endedAt: execution.endedAt,
           timedOut: Boolean(execution.timedOut),
           sequence: execution.sequence,
-          order: execution.order
+          order: execution.order,
+          cacheState: run.manifest.cacheState ?? "unrecorded"
         }
       : null,
     transcript,

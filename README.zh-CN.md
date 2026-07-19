@@ -1,12 +1,13 @@
 # Vertex Palace Agent 基准实验
 
-这是一个公开、预注册、可复现的 Codex Agent 工具实验，比较三种工作方式：
+这是一个公开、预注册、可复现的 Codex Agent 工具实验。已完成的 v1 比较三种工作方式，预注册的 v2 再加入第四种：
 
 - **Control**：普通 Codex，不得读取或调用 Palace。
 - **Route-only**：使用 `palace context` 路由，但没有历史记忆。
 - **Full Palace**：路线、Context Pack、Pitfall Board 与历史记忆全部启用。
+- **Adaptive Palace（v2）**：与 Full 使用相同记忆，但只调用一次 `palace context --auto`，由工具选择最小安全模式。
 
-[English](README.md) | [研究协议](docs/research/PROTOCOL.md) | [测试方法](METHODOLOGY.md) | [影片指南](DEMO.md)
+[English](README.md) | [v1 研究协议](docs/research/PROTOCOL.md) | [Adaptive v2 协议](docs/research/PROTOCOL_V2.md) | [测试方法](METHODOLOGY.md) | [影片指南](DEMO.md)
 
 ## 可证伪假设
 
@@ -20,11 +21,28 @@
 误导，全部都是必须保留的有效结果。新实验的指标、排除规则和统计方法已先在
 `protocol-v1.0.0` tag 冻结。
 
+## Adaptive v2 研究
+
+v1 的 Full Palace 没有观察到端到端效率优势，所以 v2 不是改写旧结论，而是测试新的 Adaptive treatment。v2 的[协议](docs/research/PROTOCOL_V2.md)与[冻结计划](results/adaptive-pilot/plan.json)会在新结果产生前提交。
+
+设计包含 4 个场景 x 4 个 seed x 4 个 Arm，共 64 个全新 Session。每个场景使用完整的四臂 Williams 顺序，让每个 Arm 在第一、第二、第三、第四位置各出现一次；两组使用 warm 本地索引，两组在计时前移除索引并强制重建。Cache 分配会跨场景轮换，使每条 Williams 顺序在完整 Pilot 中恰好出现两次 warm、两次 cold。这个控制不包含服务端模型缓存，墙钟时间仍是次要指标。
+
+v2 主比较是 Adaptive 相对 Full Palace 的正确性；只有双方都正确完成，才比较 Palace payload、Codex Token、工具调用和时间。目前 v2 是**已预注册、尚未完成**，不能从计划本身推断结果。
+
+```sh
+npm ci
+npm run benchmark -- study --plan results/adaptive-pilot/plan.json
+# 确认版本与环境后才执行：
+npm run benchmark -- study --plan results/adaptive-pilot/plan.json --execute
+npm run analysis:adaptive
+```
+
 ## 一条流程复现实验
 
 ```sh
 git clone https://github.com/lohchanhin/benchmarks-ab-demo.git
 cd benchmarks-ab-demo
+git checkout pilot-v1-complete
 npm ci
 npm run benchmark -- doctor
 npm run benchmark -- study --plan results/pilot/plan.json --execute
@@ -181,7 +199,7 @@ npm run benchmark -- report --run-dir .benchmark-runs/demo-01
 
 ```sh
 npm run check
-npm run benchmark -- study --plan results/pilot/plan.json
+npm run benchmark -- study --plan results/adaptive-pilot/plan.json
 ```
 
 `npm run check` 会验证 harness，并对四个 fixture 证明：原始版本必须同时被公开

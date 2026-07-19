@@ -2,10 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { buildPrompts } from "../src/lib/prompts.mjs";
 
-test("both Palace arms use one context command and distinguish memory", () => {
-  const { routeOnly, fullPalace } = buildPrompts({ task: "Fix the Aurora contrast regression." });
+test("all Palace arms use one context command and Adaptive alone enables auto mode", () => {
+  const { routeOnly, fullPalace, adaptivePalace } = buildPrompts({ task: "Fix the Aurora contrast regression." });
 
-  for (const prompt of [routeOnly, fullPalace]) {
+  for (const prompt of [routeOnly, fullPalace, adaptivePalace]) {
     assert.match(prompt, /palace context "Fix the Aurora contrast regression\."/);
     assert.match(prompt, /exactly one Vertex Palace preparation command/);
     assert.match(prompt, /Do not call palace status, init, index, route, pack, help, open, evaluate, or memory separately/);
@@ -13,4 +13,8 @@ test("both Palace arms use one context command and distinguish memory", () => {
   }
   assert.match(routeOnly, /without historical task memory/);
   assert.match(fullPalace, /Historical memory may be incomplete or stale/);
+  assert.doesNotMatch(routeOnly, /--auto/);
+  assert.doesNotMatch(fullPalace, /--auto/);
+  assert.match(adaptivePalace, /palace context "Fix the Aurora contrast regression\." --auto/);
+  assert.match(adaptivePalace, /same project history as Full Palace/);
 });

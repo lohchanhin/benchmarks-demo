@@ -37,11 +37,17 @@ export function buildComparison(run, evidence) {
   const control = summarize(evidence.control);
   const routeOnly = evidence["route-only"] ? summarize(evidence["route-only"]) : null;
   const palace = summarize(evidence["full-palace"] ?? evidence.palace);
-  const comparable = mutuallySuccessful(control, palace);
-  const primaryDelta = efficiencyDelta(control, palace, comparable);
+  const adaptive = evidence["adaptive-palace"] ? summarize(evidence["adaptive-palace"]) : null;
+  const primaryBaseline = adaptive ? palace : control;
+  const primaryTreatment = adaptive ?? palace;
+  const comparable = mutuallySuccessful(primaryBaseline, primaryTreatment);
+  const primaryDelta = efficiencyDelta(primaryBaseline, primaryTreatment, comparable);
+  const controlFullComparable = mutuallySuccessful(control, palace);
+  const controlAdaptiveComparable = adaptive ? mutuallySuccessful(control, adaptive) : false;
   const routeOnlyComparable = routeOnly ? mutuallySuccessful(routeOnly, palace) : false;
+  const fullAdaptiveComparable = adaptive ? mutuallySuccessful(palace, adaptive) : false;
   return {
-    schemaVersion: 3,
+    schemaVersion: adaptive ? 4 : 3,
     runId: run.manifest.id,
     createdAt: new Date().toISOString(),
     scenario: run.manifest.scenario,
@@ -49,24 +55,47 @@ export function buildComparison(run, evidence) {
     task: run.manifest.task,
     repositoryTree: run.manifest.repositoryTree,
     generatedFileCount: run.manifest.generatedFileCount,
+    cacheState: run.manifest.cacheState ?? "unrecorded",
     seed: run.manifest.seed ?? null,
     protocolVersion: run.manifest.protocolVersion ?? null,
     control,
     routeOnly,
     palace,
+    adaptive,
     arms: {
       control,
       ...(routeOnly ? { "route-only": routeOnly } : {}),
-      "full-palace": palace
+      "full-palace": palace,
+      ...(adaptive ? { "adaptive-palace": adaptive } : {})
     },
     comparable,
     execution: {
       mode: "sequential",
-      order: executionOrder({ control, ...(routeOnly ? { "route-only": routeOnly } : {}), "full-palace": palace })
+      order: executionOrder({
+        control,
+        ...(routeOnly ? { "route-only": routeOnly } : {}),
+        "full-palace": palace,
+        ...(adaptive ? { "adaptive-palace": adaptive } : {})
+      })
     },
     delta: primaryDelta,
     pairwise: {
-      controlVsFullPalace: { comparable, delta: primaryDelta },
+      controlVsFullPalace: {
+        comparable: controlFullComparable,
+        delta: efficiencyDelta(control, palace, controlFullComparable)
+      },
+      controlVsAdaptivePalace: adaptive
+        ? {
+            comparable: controlAdaptiveComparable,
+            delta: efficiencyDelta(control, adaptive, controlAdaptiveComparable)
+          }
+        : null,
+      fullPalaceVsAdaptivePalace: adaptive
+        ? {
+            comparable: fullAdaptiveComparable,
+            delta: efficiencyDelta(palace, adaptive, fullAdaptiveComparable)
+          }
+        : null,
       routeOnlyVsFullPalace: {
         comparable: routeOnlyComparable,
         delta: routeOnly ? efficiencyDelta(routeOnly, palace, routeOnlyComparable) : null
@@ -77,6 +106,7 @@ export function buildComparison(run, evidence) {
       "Command-named files and command-output characters are transcript-derived context proxies, not an operating-system file-access audit.",
       "Codex input tokens are cumulative across model turns. Cached and uncached input are shown separately and are not an API billing statement.",
       "Paired arms run sequentially, never concurrently. Repeat pairs with alternating order and report medians to reduce order and service-load effects.",
+      `Palace index cache state for this trial: ${run.manifest.cacheState ?? "unrecorded"}. This does not control provider-side model caching.`,
       "A result is comparable only when both arms start from the recorded Git tree and pass their arm-validity checks.",
       "Correctness and scope determine the score. Speed and token metrics are reported, not rewarded."
     ]
@@ -100,6 +130,11 @@ function summarize(evidence) {
     toolCalls: evidence.transcript.toolCalls,
     failedCalls: evidence.transcript.failedCalls ?? null,
     commandOutputChars: evidence.transcript.commandOutputChars ?? null,
+    palaceContextOutputChars: evidence.transcript.palaceContextOutputChars ?? null,
+    palaceContextOutputBytes: evidence.transcript.palaceContextOutputBytes ?? null,
+    palaceContextEstimatedTokens: evidence.transcript.palaceContextEstimatedTokens ?? null,
+    adaptivePayload: evidence.transcript.adaptivePayload ?? null,
+    adaptivePayloadMatchesOutput: evidence.transcript.adaptivePayloadMatchesOutput ?? null,
     inspectionCommands: evidence.transcript.inspectionCommands,
     palaceCalls: evidence.transcript.palaceCalls,
     successfulPalaceCalls: evidence.transcript.successfulPalaceCalls ?? 0,
@@ -149,6 +184,9 @@ function renderMarkdown(report) {
     metricRow("Files named in commands", report, "inspectedFiles", number, signed, "inspectedFilesSaved"),
     metricRow("Distinct repository path strings observed", report, "referencedFiles", number, signed, "referencedFilesSaved"),
     metricRow("Command output characters", report, "commandOutputChars", number, signed, "commandOutputCharsSaved"),
+    metricRow("Palace context output characters", report, "palaceContextOutputChars", number, signed, "palaceContextOutputCharsSaved"),
+    metricRow("Palace context output bytes", report, "palaceContextOutputBytes", number, signed, "palaceContextOutputBytesSaved"),
+    metricRow("Palace context estimated tokens", report, "palaceContextEstimatedTokens", number, signed, "palaceContextEstimatedTokensSaved"),
     metricRow("Cumulative input tokens", report, "inputTokens", number, signed, "inputTokensSaved"),
     metricRow("Cached input tokens", report, "cachedInputTokens", number, signed, "cachedInputTokensSaved"),
     metricRow("Uncached input tokens", report, "uncachedInputTokens", number, signed, "uncachedInputTokensSaved"),
@@ -157,12 +195,13 @@ function renderMarkdown(report) {
     resultRow("Palace calls", report, (arm) => number(arm.palaceCalls))
   ];
   const lines = [
-    "# Vertex Palace Three-Arm Benchmark",
+    report.adaptive ? "# Vertex Palace Four-Arm Adaptive Benchmark" : "# Vertex Palace Three-Arm Benchmark",
     "",
     `Run: \`${report.runId}\``,
     `Scenario: ${report.scenarioTitle}`,
     `Shared Git tree: \`${report.repositoryTree}\``,
     `Generated fixture files: ${report.generatedFileCount}`,
+    `Palace index state: ${report.cacheState}`,
     `Comparable result: ${report.comparable ? "yes" : "no"}`,
     `Execution: sequential (${report.execution.order.map(armLabel).join(" -> ")})`,
     "",
@@ -172,13 +211,13 @@ function renderMarkdown(report) {
     "",
     "## Results",
     "",
-    "| Metric | Control | Route-only | Full Palace | Control minus Full Palace |",
-    "| --- | ---: | ---: | ---: | ---: |",
+    `| Metric | Control | Route-only | Full Palace | Adaptive Palace | ${report.adaptive ? "Full Palace minus Adaptive" : "Control minus Full Palace"} |`,
+    "| --- | ---: | ---: | ---: | ---: | ---: |",
     ...rows.map((row) => `| ${row.join(" | ")} |`),
     "",
     report.comparable
-      ? "Positive values in the final column mean the Palace arm used less of that measured resource."
-      : "Efficiency deltas are withheld because both arms did not complete as valid, passing runs.",
+      ? `Positive values in the final column mean ${report.adaptive ? "Adaptive Palace used less than Full Palace" : "Full Palace used less than Control"} for that measured resource.`
+      : "Efficiency deltas are withheld because the primary baseline and treatment did not both complete as valid, passing runs.",
     "",
     "## Changed Files",
     "",
@@ -191,19 +230,30 @@ function renderMarkdown(report) {
     "",
     ...fileLines(report.palace.changedFiles),
     "",
+    ...(report.adaptive ? ["### Adaptive Palace", "", ...fileLines(report.adaptive.changedFiles)] : []),
+    "",
     "## Validity",
     "",
     `- Control: ${report.control.validityReason}`,
     ...(routeOnly ? [`- Route-only: ${routeOnly.validityReason}`] : []),
     `- Full Palace: ${report.palace.validityReason}`,
+    ...(report.adaptive ? [`- Adaptive Palace: ${report.adaptive.validityReason}`] : []),
     "",
     "## Route And Memory Signals",
     "",
     `- Route-only Recall@K / Precision@K: ${routeMetric(routeOnly?.route)}`,
     `- Full Palace Recall@K / Precision@K: ${routeMetric(report.palace.route)}`,
+    ...(report.adaptive ? [`- Adaptive Palace Recall@K / Precision@K: ${routeMetric(report.adaptive.route)}`] : []),
     `- Control pitfall violation / wrong-memory adoption: ${memoryMetric(report.control.memory)}`,
     `- Route-only pitfall violation / wrong-memory adoption: ${memoryMetric(routeOnly?.memory)}`,
     `- Full Palace pitfall violation / wrong-memory adoption: ${memoryMetric(report.palace.memory)}`,
+    ...(report.adaptive
+      ? [
+          `- Adaptive Palace pitfall violation / wrong-memory adoption: ${memoryMetric(report.adaptive.memory)}`,
+          `- Adaptive selected mode: ${report.adaptive.adaptivePayload?.mode ?? "not captured"}`,
+          `- Adaptive self-reported payload: ${payloadMetric(report.adaptive.adaptivePayload)}`
+        ]
+      : []),
     "",
     "## Caveats",
     "",
@@ -231,6 +281,7 @@ function resultRow(label, report, format) {
     format(report.control),
     report.routeOnly ? format(report.routeOnly) : "n/a",
     format(report.palace),
+    report.adaptive ? format(report.adaptive) : "n/a",
     "-"
   ];
 }
@@ -241,6 +292,7 @@ function metricRow(label, report, field, format, deltaFormat, deltaField) {
     format(report.control[field]),
     report.routeOnly ? format(report.routeOnly[field]) : "n/a",
     format(report.palace[field]),
+    report.adaptive ? format(report.adaptive[field]) : "n/a",
     deltaFormat(report.delta[deltaField])
   ];
 }
@@ -268,6 +320,9 @@ function efficiencyDelta(first, second, comparable) {
     inspectedFilesSaved: value("inspectedFiles"),
     referencedFilesSaved: value("referencedFiles"),
     commandOutputCharsSaved: value("commandOutputChars"),
+    palaceContextOutputCharsSaved: value("palaceContextOutputChars"),
+    palaceContextOutputBytesSaved: value("palaceContextOutputBytes"),
+    palaceContextEstimatedTokensSaved: value("palaceContextEstimatedTokens"),
     inputTokensSaved: value("inputTokens"),
     cachedInputTokensSaved: value("cachedInputTokens"),
     uncachedInputTokensSaved: value("uncachedInputTokens"),
@@ -288,6 +343,7 @@ function executionOrder(arms) {
 
 function armLabel(value) {
   if (value === "full-palace" || value === "palace") return "Full Palace";
+  if (value === "adaptive-palace") return "Adaptive Palace";
   if (value === "route-only") return "Route-only";
   return "Control";
 }
@@ -330,6 +386,12 @@ function memoryMetric(memory) {
   if (!memory) return "n/a / n/a";
   const value = (item) => item === null || item === undefined ? "n/a" : yesNo(item);
   return `${value(memory.pitfallViolation)} / ${value(memory.wrongMemoryAdopted)}`;
+}
+
+function payloadMetric(payload) {
+  return payload
+    ? `${number(payload.contextBytes)} bytes / ~${number(payload.contextEstimatedTokens)} tokens`
+    : "n/a";
 }
 
 function validity(arm) {

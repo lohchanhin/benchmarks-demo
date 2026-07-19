@@ -14,6 +14,9 @@ const continuousMetrics = Object.freeze([
   "routerErrors",
   "inspectionCommands",
   "commandOutputChars",
+  "palaceContextOutputChars",
+  "palaceContextOutputBytes",
+  "palaceContextEstimatedTokens",
   "inputTokens",
   "cachedInputTokens",
   "uncachedInputTokens",
@@ -26,6 +29,8 @@ const continuousMetrics = Object.freeze([
 const markdownMetrics = Object.freeze([
   ["reportedTokens", "Reported tokens"],
   ["uncachedInputTokens", "Uncached input tokens"],
+  ["palaceContextOutputBytes", "Palace context output bytes"],
+  ["palaceContextEstimatedTokens", "Palace context estimated tokens"],
   ["toolCalls", "Tool calls"],
   ["durationMs", "Wall time"]
 ]);
@@ -67,14 +72,15 @@ export function analyzeReports(entries, options = {}) {
     ])
   );
   const scenarioNames = Object.keys(scenarios);
-  const rawPValues = scenarioNames.map((name) => scenarios[name].success.mcnemarExactPValue);
+  const rawPValues = scenarioNames.map((name) => scenarios[name].primaryComparison.success.mcnemarExactPValue);
   const adjusted = holmAdjust(rawPValues);
   scenarioNames.forEach((name, index) => {
-    scenarios[name].success.holmAdjustedPValue = adjusted[index];
+    scenarios[name].primaryComparison.success.holmAdjustedPValue = adjusted[index];
   });
 
+  const adaptiveStudy = Object.values(scenarios).some((result) => result.primaryComparison.treatmentArm === "adaptivePalace");
   return {
-    schemaVersion: 1,
+    schemaVersion: adaptiveStudy ? 2 : 1,
     protocolVersion: options.manifest?.protocolVersion ?? null,
     generatedAt: new Date().toISOString(),
     exploratory: true,
@@ -86,7 +92,9 @@ export function analyzeReports(entries, options = {}) {
     overall: analyzeGroup(entries, { ...options, bootstrapSeed: `${options.bootstrapSeed ?? "pilot-v1"}:overall` }),
     multiplicity: {
       method: "Holm step-down",
-      family: "scenario-level exact paired success tests",
+      family: adaptiveStudy
+        ? "scenario-level exact Adaptive Palace versus Full Palace paired success tests"
+        : "scenario-level exact Full Palace versus Control paired success tests",
       rawPValues,
       adjustedPValues: adjusted
     },
@@ -149,8 +157,23 @@ export function analyzeGroup(entries, options = {}) {
     fullPalaceMinusRouteOnly: analyzeArmComparison(pairs, "routeOnly", "fullPalace", {
       ...options,
       bootstrapSeed: `${options.bootstrapSeed}:full-palace-minus-route-only`
+    }),
+    adaptiveMinusControl: analyzeArmComparison(pairs, "control", "adaptivePalace", {
+      ...options,
+      bootstrapSeed: `${options.bootstrapSeed}:adaptive-minus-control`
+    }),
+    adaptiveMinusFullPalace: analyzeArmComparison(pairs, "fullPalace", "adaptivePalace", {
+      ...options,
+      bootstrapSeed: `${options.bootstrapSeed}:adaptive-minus-full-palace`
     })
   };
+  const hasAdaptive = pairs.some((pair) => pair.adaptivePalace !== null);
+  const primaryComparison = hasAdaptive
+    ? comparisons.adaptiveMinusFullPalace
+    : analyzeArmComparison(pairs, "control", "fullPalace", {
+        ...options,
+        bootstrapSeed: `${options.bootstrapSeed}:full-palace-minus-control-primary`
+      });
 
   return {
     attemptedPairs: pairs.length,
@@ -171,6 +194,7 @@ export function analyzeGroup(entries, options = {}) {
     },
     metrics,
     comparisons,
+    primaryComparison,
     mechanisms: mechanismSummary(validPairs)
   };
 }
@@ -265,7 +289,8 @@ function toPair(entry) {
     trialId: entry.trial?.trialId ?? entry.report.runId,
     control: arms.control ?? entry.report.control,
     routeOnly: arms["route-only"] ?? entry.report.routeOnly ?? null,
-    fullPalace: arms["full-palace"] ?? entry.report.palace
+    fullPalace: arms["full-palace"] ?? entry.report.palace,
+    adaptivePalace: arms["adaptive-palace"] ?? entry.report.adaptive ?? null
   };
 }
 
@@ -293,19 +318,23 @@ function mechanismSummary(pairs) {
 function rawMechanism(pairs, read) {
   return {
     routeOnly: pairs.map((pair) => read(pair.routeOnly)).filter(Number.isFinite),
-    fullPalace: pairs.map((pair) => read(pair.fullPalace)).filter(Number.isFinite)
+    fullPalace: pairs.map((pair) => read(pair.fullPalace)).filter(Number.isFinite),
+    adaptivePalace: pairs.map((pair) => pair.adaptivePalace ? read(pair.adaptivePalace) : undefined).filter(Number.isFinite)
   };
 }
 
 function booleanMechanism(pairs, field) {
-  const values = (arm) => pairs.map((pair) => pair[arm].memory?.[field]).filter((value) => typeof value === "boolean");
+  const values = (arm) => pairs.map((pair) => pair[arm]?.memory?.[field]).filter((value) => typeof value === "boolean");
   const routeOnly = values("routeOnly");
   const fullPalace = values("fullPalace");
+  const adaptivePalace = values("adaptivePalace");
   return {
     routeOnlyRaw: routeOnly,
     fullPalaceRaw: fullPalace,
+    adaptivePalaceRaw: adaptivePalace,
     routeOnlyRate: rate(routeOnly.map(Number)),
-    fullPalaceRate: rate(fullPalace.map(Number))
+    fullPalaceRate: rate(fullPalace.map(Number)),
+    adaptivePalaceRate: rate(adaptivePalace.map(Number))
   };
 }
 
@@ -340,42 +369,43 @@ export function renderAnalysisMarkdown(analysis) {
       ? ["", `Interim only: ${analysis.loadedTrials}/${analysis.plannedTrials} planned trials are represented. Do not interpret these intervals or p-values as final evidence.`]
       : []),
     "",
-    "| Scenario | Valid pairs | Control success | Route-only success | Full Palace success | Full minus Control (95% bootstrap CI) | Exact p | Holm p |",
-    "| --- | ---: | ---: | ---: | ---: | --- | ---: | ---: |"
+    "| Scenario | Primary comparison | Valid pairs | Baseline success | Treatment success | Treatment minus baseline (95% bootstrap CI) | Exact p | Holm p |",
+    "| --- | --- | ---: | ---: | ---: | --- | ---: | ---: |"
   ];
   for (const [scenario, result] of Object.entries(analysis.scenarios)) {
-    const difference = result.success.fullPalaceMinusControl;
-    const routeOnlyRate = result.comparisons?.routeOnlyMinusControl?.success?.treatmentRate;
+    const primary = result.primaryComparison;
+    const difference = primary.success.treatmentMinusBaseline;
+    const contrast = `${analysisArmLabel(primary.treatmentArm)} - ${analysisArmLabel(primary.baselineArm)}`;
     lines.push(
-      `| ${scenario} | ${result.validPairs} | ${percent(result.success.controlRate)} | ${percent(routeOnlyRate)} | ${percent(result.success.fullPalaceRate)} | `
+      `| ${scenario} | ${contrast} | ${primary.validPairs} | ${percent(primary.success.baselineRate)} | ${percent(primary.success.treatmentRate)} | `
       + `${percent(difference.estimate)} [${percent(difference.confidenceInterval[0])}, ${percent(difference.confidenceInterval[1])}] | `
-      + `${fixed(result.success.mcnemarExactPValue)} | ${fixed(result.success.holmAdjustedPValue)} |`
+      + `${fixed(primary.success.mcnemarExactPValue)} | ${fixed(primary.success.holmAdjustedPValue)} |`
     );
   }
   lines.push(
     "",
     "## Mutually Successful Pair Efficiency",
     "",
-    "Paired differences are Full Palace minus Control. Negative values mean Full Palace used less of the measured resource; wall time remains secondary.",
+    "Paired differences are primary treatment minus primary baseline. Negative values mean the treatment used less of the measured resource; wall time remains secondary.",
     "",
-    "| Scenario | Metric | Pairs | Control median | Full median | Paired median difference (95% bootstrap CI) |",
+    "| Scenario | Metric | Pairs | Baseline median | Treatment median | Paired median difference (95% bootstrap CI) |",
     "| --- | --- | ---: | ---: | ---: | --- |"
   );
   for (const [scenario, result] of Object.entries(analysis.scenarios)) {
     for (const [metric, label] of markdownMetrics) {
-      const summary = result.metrics[metric];
+      const summary = result.primaryComparison.metrics[metric];
       if (!summary?.pairCount) continue;
-      const difference = summary.fullPalaceMinusControl;
+      const difference = summary.treatmentMinusBaseline;
       lines.push(
-        `| ${scenario} | ${label} | ${summary.pairCount} | ${metricValue(metric, summary.controlMedian)} | `
-        + `${metricValue(metric, summary.fullPalaceMedian)} | ${metricValue(metric, difference.estimate)} `
+        `| ${scenario} | ${label} | ${summary.pairCount} | ${metricValue(metric, summary.baselineMedian)} | `
+        + `${metricValue(metric, summary.treatmentMedian)} | ${metricValue(metric, difference.estimate)} `
         + `[${metricValue(metric, difference.confidenceInterval[0])}, ${metricValue(metric, difference.confidenceInterval[1])}] |`
       );
     }
   }
   lines.push(
     "",
-    "## Three-Arm Ablation",
+    analysis.schemaVersion === 2 ? "## Four-Arm Adaptive Contrasts" : "## Three-Arm Ablation",
     "",
     "Each contrast is treatment minus baseline. Negative efficiency values favor the treatment. These secondary mechanism contrasts are exploratory and are not multiplicity-adjusted.",
     "",
@@ -385,7 +415,9 @@ export function renderAnalysisMarkdown(analysis) {
   for (const [scenario, result] of Object.entries(analysis.scenarios)) {
     const comparisons = [
       ["Route-only - Control", result.comparisons?.routeOnlyMinusControl],
-      ["Full Palace - Route-only", result.comparisons?.fullPalaceMinusRouteOnly]
+      ["Full Palace - Route-only", result.comparisons?.fullPalaceMinusRouteOnly],
+      ["Adaptive Palace - Control", result.comparisons?.adaptiveMinusControl],
+      ["Adaptive Palace - Full Palace", result.comparisons?.adaptiveMinusFullPalace]
     ];
     for (const [contrast, comparison] of comparisons) {
       for (const [metric, label] of markdownMetrics) {
@@ -414,6 +446,13 @@ function metricValue(metric, value) {
   if (value === null || value === undefined) return "n/a";
   if (metric === "durationMs") return `${(value / 1000).toFixed(1)}s`;
   return Number(value).toLocaleString("en-US", { maximumFractionDigits: 1 });
+}
+
+function analysisArmLabel(arm) {
+  if (arm === "fullPalace") return "Full Palace";
+  if (arm === "adaptivePalace") return "Adaptive Palace";
+  if (arm === "routeOnly") return "Route-only";
+  return "Control";
 }
 
 function percent(value) {

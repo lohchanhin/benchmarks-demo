@@ -1,3 +1,4 @@
+import { mkdir, rm } from "node:fs/promises";
 import path from "node:path";
 import { readJson } from "./files.mjs";
 import { runProcess } from "./process.mjs";
@@ -41,4 +42,10 @@ export async function seedPalace(workspace, scenario, invocation, options = {}) 
   );
 
   return { routeId: route.id, memorySeeded: true };
+}
+
+export async function invalidatePalaceIndex(workspace) {
+  const indexes = path.join(path.resolve(workspace), ".palace", "indexes");
+  await rm(indexes, { recursive: true, force: true });
+  await mkdir(indexes, { recursive: true });
 }

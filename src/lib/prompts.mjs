@@ -41,5 +41,17 @@ export function buildPrompts(scenario) {
     shared
   ].join("\n");
 
-  return { task, control, routeOnly, fullPalace, palace: fullPalace };
+  const adaptivePalace = [
+    "BENCHMARK ARM: ADAPTIVE PALACE",
+    "This run measures Vertex Palace adaptive mode selection with the same project history as Full Palace.",
+    `Before ordinary repository exploration, run exactly one Vertex Palace preparation command: palace context ${quotedTask} --auto --budget 6000 --route-limit 8 --max-drawers 4`,
+    "Follow the selected mode and inspect Primary context first. Open Deferred references only when current code, tests, or runtime evidence requires it.",
+    "Treat guarded memory as scoped evidence; current code and tests outrank memory.",
+    "Do not call palace status, init, index, route, pack, help, open, evaluate, or memory separately during this benchmark arm.",
+    "Post-task evaluation, memory writing, and index maintenance are intentionally outside this timed routing comparison.",
+    "",
+    shared
+  ].join("\n");
+
+  return { task, control, routeOnly, fullPalace, adaptivePalace, palace: fullPalace };
 }

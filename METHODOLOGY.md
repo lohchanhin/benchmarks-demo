@@ -1,9 +1,10 @@
 # Benchmark Methodology
 
-The authoritative preregistration is
+The published v1 preregistration is
 [`docs/research/PROTOCOL.md`](docs/research/PROTOCOL.md), frozen at
-`protocol-v1.0.0` before the new pilot implementation and data collection.
-This page is the shorter operational explanation.
+`protocol-v1.0.0`. The successor Adaptive study is defined separately in
+[`docs/research/PROTOCOL_V2.md`](docs/research/PROTOCOL_V2.md), frozen at
+`protocol-v2.0.0`. This page summarizes both without changing v1 outcomes.
 
 ## Independent Variable
 
@@ -68,3 +69,19 @@ The pilot cannot establish universal speed, exact billing savings, behavior on
 all languages or repositories, or replacement of tests and engineering review.
 The small negative control is expected to show Palace overhead, and all such
 results are retained.
+
+## Adaptive v2 Extension
+
+Protocol v2 adds a fourth `adaptive-palace` arm. Full and Adaptive receive the
+same independently seeded history; their only treatment difference is legacy
+`palace context` versus `palace context --auto`. Adaptive validity requires a
+parseable mode and payload whose byte count matches captured stdout, while Full
+and Route-only must not use `--auto`.
+
+Each scenario uses four Williams sequences so every arm appears once in every
+execution position. Two trials begin with a warm local Palace index and two
+remove only the index before timed execution. Cache assignments rotate across
+scenarios so each Williams sequence occurs twice warm and twice cold.
+Provider-side model caching is not controlled. The v2 primary comparison is
+Adaptive versus Full correctness; payload and end-to-end efficiency remain
+secondary and correctness-gated.

@@ -13,7 +13,7 @@ Usage:
 
 Commands:
   doctor   Check Node.js, Git, Codex, and Vertex Palace availability
-  prepare  Create identical Control, Route-only, and Full Palace workspaces
+  prepare  Create identical Control, Route-only, Full Palace, and Adaptive Palace workspaces
   run      Run fresh Codex sessions in one or all arms and capture evidence
   verify   Run tests, inspect Git changes, and score correctness/scope
   report   Produce Markdown and JSON comparison reports
@@ -21,7 +21,7 @@ Commands:
 
 Common options:
   --run-dir <path>      Use a prepared run (defaults to the newest run)
-  --arm <value>         control, route-only, full-palace, all, palace, or both
+  --arm <value>         control, route-only, full-palace, adaptive-palace, all, palace, adaptive, or both
   --order <value>       seeded or a comma-separated arm order
   --cooldown-ms <ms>    Sequential pause between arms (default: 15000)
   --timeout-ms <ms>     Maximum time for each agent arm (default: 600000)
@@ -42,6 +42,10 @@ Examples:
 
 export async function main(argv) {
   const parsed = parseArgs(argv);
+  if (parsed.flags.has("help")) {
+    console.log(help);
+    return;
+  }
   switch (parsed.command) {
     case "doctor":
       return doctorCommand(parsed.flags);
