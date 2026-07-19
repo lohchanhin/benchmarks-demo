@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 3,
+  "mode": "sequential",
+  "order": "full-palace,adaptive-palace,route-only,control",
+  "arms": [
+    "full-palace",
+    "adaptive-palace",
+    "route-only",
+    "control"
+  ],
+  "cooldownMs": 15000,
+  "timeoutMs": 600000,
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.2.1",
+  "platform": "win32",
+  "sandboxProfile": "workspace-write/windows-elevated",
+  "lastMessageTransport": "workspace-local-then-artifacts-v1",
+  "cacheState": "warm",
+  "seed": "62b66f19d28467369a4c6c1bb77e4ff4",
+  "createdAt": "2026-07-19T05:45:20.078Z"
+}

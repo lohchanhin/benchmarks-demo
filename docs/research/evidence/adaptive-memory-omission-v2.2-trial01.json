@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "observationId": "adaptive-memory-omission-v2.2-trial01",
+  "observedAfterOutcomes": true,
+  "protocolVersion": "2.2.0",
+  "vertexPalaceVersion": "0.2.1",
+  "trialId": "tenant-memory-pitfall-adaptive-v2-2-pilot-01",
+  "fixture": {
+    "fullPalaceHistorySeeded": true,
+    "adaptivePalaceHistorySeeded": true
+  },
+  "fullPalace": {
+    "contextBytes": 5465,
+    "contextOutputSha256": "f979a5b2ee48c700b333d7d70ba0681155d7665c0b76b2e12994142164f1915f",
+    "sharedThemePitfallPresent": true,
+    "rendererFailedAttemptPresent": true
+  },
+  "adaptivePalace": {
+    "mode": "full-palace",
+    "contextBytes": 2450,
+    "contextEstimatedTokens": 613,
+    "contextOutputSha256": "b0e3ade5eae88dedef50e2bc566e018c68dfc4ad21c09cf5bb650813be8d0b5e",
+    "memoryItemCount": 0,
+    "memoryEstimatedTokens": 0,
+    "guardrailCount": 0,
+    "sharedThemePitfallPresent": false,
+    "rendererFailedAttemptPresent": false
+  },
+  "outcome": {
+    "validArms": 4,
+    "successfulArms": 4,
+    "pitfallViolations": 0,
+    "allPublicTestsPassed": true,
+    "allHiddenOraclesPassed": true
+  },
+  "classification": "valid frozen treatment behavior; not an infrastructure invalidity",
+  "protocolHandling": "retain v2.2 unchanged; fix only in a new release and fresh protocol",
+  "publicEvidence": [
+    "results/adaptive-pilot-v2.2/tenant-memory-pitfall-adaptive-v2-2-pilot-01/adaptive-palace-evidence.json",
+    "results/adaptive-pilot-v2.2/tenant-memory-pitfall-adaptive-v2-2-pilot-01/full-palace-evidence.json",
+    "results/adaptive-pilot-v2.2/tenant-memory-pitfall-adaptive-v2-2-pilot-01/comparison.json"
+  ]
+}

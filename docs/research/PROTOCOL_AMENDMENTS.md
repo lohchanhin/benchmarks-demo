@@ -131,6 +131,31 @@ manifest is frozen at `protocol-v2.2.0` before any v2.2 agent execution.
 - Commit: the publication-only correction is committed and pushed before the
   first v2.2 evidence bundle is generated.
 
+## A-005: Post-Outcome Adaptive Memory Omission Observation
+
+- Date: 2026-07-19
+- Author: project maintainer with Codex
+- Timing disclosure: all four outcomes from
+  `tenant-memory-pitfall-adaptive-v2-2-pilot-01` had already been generated and
+  inspected when the treatment behavior was identified.
+- Observation: fixture preparation successfully seeded the same Aurora history
+  into Full and Adaptive Palace. Full Palace emitted both seeded pitfall
+  notices. Adaptive selected `full-palace` but reported zero memory items and
+  zero guardrails and omitted both notices.
+- Classification: this is an observed behavior of the frozen
+  `vertex-palace@0.2.1` Adaptive treatment, not a benchmark infrastructure
+  failure. The Adaptive arm still used the required `--auto` command, matched
+  its captured output, and passed every frozen validity check.
+- Outcome handling: the trial remains valid and unchanged. Its four arms all
+  passed correctness and scope checks and none edited the forbidden shared
+  theme, so this trial alone does not show a correctness effect from memory.
+- Protocol handling: v2.2 continues unchanged. Adaptive memory retrieval will
+  not be fixed in place after outcomes are known. A product correction requires
+  a new package version and fresh protocol ids and seeds for confirmatory
+  testing.
+- Evidence: see [`ADAPTIVE_MEMORY_OMISSION.md`](./ADAPTIVE_MEMORY_OMISSION.md)
+  and the sanitized machine-readable record in `docs/research/evidence/`.
+
 ## Amendment Template
 
 Each future entry must contain:

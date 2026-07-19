@@ -88,6 +88,14 @@ Palace payload reduction includes zero. The
 [completed block report](docs/research/CROSS_STACK_V2_2_BLOCK.md) also shows
 that Adaptive remained slower and more call-heavy than Control.
 
+The first useful-memory trial brought the study to 9/16. All four arms avoided
+the forbidden shared-theme edit and passed every gate, so memory did not change
+correctness in that trial. More importantly, the seeded Full context contained
+both Aurora pitfall notices, while Adaptive selected `full-palace` but reported
+zero memory items and zero guardrails and omitted both notices. This
+[post-outcome treatment observation](docs/research/ADAPTIVE_MEMORY_OMISSION.md)
+is retained as valid v0.2.1 behavior; v2.2 will not be changed mid-study.
+
 Validate the frozen plan without running an agent:
 
 ```sh

@@ -1,7 +1,7 @@
 # Adaptive Pilot v2.2
 
-Status: in progress, 8 of 16 planned trials published. The preregistered
-small-local and cross-stack blocks are complete. No agent outcome
+Status: in progress, 9 of 16 planned trials published. The preregistered
+small-local and cross-stack blocks are complete; useful-memory is 1/4. No agent outcome
 existed at protocol freeze.
 
 Protocol v2.2 repeats the four-arm Adaptive study with fresh trial ids and
@@ -92,3 +92,23 @@ seconds. Adaptive-minus-Control medians are +51,917 reported tokens, +1,069
 uncached input tokens, +5.5 tool calls, and +20.228 seconds. See the
 [block report](../../docs/research/CROSS_STACK_V2_2_BLOCK.md) and updated
 [interim analysis](analysis.md).
+
+## Useful-Memory Block (1/4)
+
+The first warm-index tenant-memory trial had four valid, successful, and
+correctly scoped arms. Every arm changed only the Aurora theme and renderer,
+left the forbidden shared theme untouched, and passed public tests plus the
+hidden oracle. No arm violated the recorded pitfall.
+
+Adaptive selected `full-palace`. Relative to Full Palace it used 3,015 fewer
+Palace bytes, 15,990 fewer reported tokens, 9,164 fewer uncached input tokens,
+four fewer tool calls, and 5.992 seconds less wall time. Relative to Control it
+used 33,617 more reported tokens and three more calls and took 15.248 seconds
+longer, while using 11,762 fewer uncached input tokens. This is one pair.
+
+The seeded memory fidelity check exposed a more important treatment behavior:
+Full Palace included both Aurora pitfall notices, but Adaptive reported zero
+memory items and zero guardrails and omitted both notices. See the
+[finding](../../docs/research/ADAPTIVE_MEMORY_OMISSION.md), its
+[sanitized evidence](../../docs/research/evidence/adaptive-memory-omission-v2.2-trial01.json),
+and [trial 01](tenant-memory-pitfall-adaptive-v2-2-pilot-01/comparison.md).
