@@ -136,6 +136,10 @@ memory smoke, and full benchmark gates pass.
 The [preflight record](docs/research/CONTROL_FIRST_V3_PREFLIGHT.md) publishes the
 failed and passing memory smokes, the product fix commit, CI evidence, and the
 remaining freeze gates without presenting engineering checks as Agent outcomes.
+The subsequent [two-run Agent preflight](docs/research/CONTROL_FIRST_V3_AGENT_PREFLIGHT.md)
+keeps a 177-byte bypass that was still slower and more Token-heavy than Control,
+plus one guarded-memory run where Route-only failed but Control and Adaptive
+both succeeded. These are design inputs, not formal v3 outcomes.
 The current product gate also records exact Zod and Requests routes at recall
 1.000 / strict precision 1.000 and a clean-install 50-memory ceiling test; these
 remain engineering evidence until the independent Agent arms are frozen and run.

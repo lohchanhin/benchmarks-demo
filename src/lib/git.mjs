@@ -31,13 +31,17 @@ export async function collectGitEvidence(workspace) {
   ]);
   const statusLines = lines(status.stdout);
   const diffFiles = lines(changed.stdout).map(normalize);
-  const untrackedFiles = statusLines
+  const rawUntrackedFiles = statusLines
     .filter((line) => line.startsWith("?? "))
     .map((line) => normalize(line.slice(3)));
+  const allChangedFiles = mergeChangedFiles(diffFiles, rawUntrackedFiles);
+  const instrumentationFiles = allChangedFiles.filter(isPalaceInstrumentationPath);
   return {
     status: statusLines,
-    changedFiles: mergeChangedFiles(diffFiles, untrackedFiles),
-    untrackedFiles,
+    changedFiles: allChangedFiles.filter((file) => !isPalaceInstrumentationPath(file)),
+    untrackedFiles: rawUntrackedFiles.filter((file) => !isPalaceInstrumentationPath(file)),
+    instrumentationFiles,
+    instrumentationUntrackedFiles: rawUntrackedFiles.filter(isPalaceInstrumentationPath),
     numstat: parseNumstat(numstat.stdout),
     diffCheckPassed: check.exitCode === 0,
     diffCheckOutput: `${check.stdout}${check.stderr}`.trim(),
@@ -47,6 +51,11 @@ export async function collectGitEvidence(workspace) {
 
 export function mergeChangedFiles(diffFiles, untrackedFiles) {
   return [...new Set([...diffFiles, ...untrackedFiles])].sort();
+}
+
+export function isPalaceInstrumentationPath(value) {
+  const normalized = normalize(value).replace(/^\.\//, "");
+  return normalized === ".palace" || normalized.startsWith(".palace/");
 }
 
 function parseNumstat(value) {

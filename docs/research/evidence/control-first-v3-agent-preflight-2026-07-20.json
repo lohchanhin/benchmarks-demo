@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-20T04:41:00+08:00",
+  "status": "non-formal-engineering-preflight",
+  "claimBoundary": "Two sequential preflight trials; not part of the frozen v3 manifest and not inferential evidence of general Agent savings.",
+  "environment": {
+    "model": "gpt-5.6-sol",
+    "reasoningEffort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.18",
+    "palaceVersion": "0.3.0",
+    "platform": "win32",
+    "execution": "sequential"
+  },
+  "source": {
+    "benchmarkBaseCommit": "9444fff31901167f436bdf816106b158401c4054",
+    "productCandidateCommit": "97d1736f971438f7f2913f0b731633b0bab8441d",
+    "productEvidenceCommit": "8328ea29d55260e34e2e6170bd420e4c659af39e",
+    "npmLatestAtPreflight": "0.2.3",
+    "formalV3": {
+      "frozen": false,
+      "completedTrials": 0,
+      "plannedTrials": 16
+    }
+  },
+  "harnessCorrections": [
+    "compact_bypass_task_fidelity_from_recorded_command",
+    "root_palace_state_classified_as_auditable_instrumentation",
+    "v0_3_memory_included_candidate_excluded_telemetry"
+  ],
+  "smallLocal": {
+    "runId": "control-first-v3-preflight-small-local-20260720-a",
+    "seed": "preflight-v3-small-local-20260720-a",
+    "repositoryTree": "fa27278f1774605436ffd9dcb86b3cf97c9a8ea3",
+    "cacheState": "warm",
+    "order": ["full-palace", "adaptive-palace", "route-only", "control"],
+    "allArmsValid": true,
+    "allArmsSuccessful": true,
+    "expectedChangedFile": "src/format-currency.mjs",
+    "control": {
+      "score": 100,
+      "durationMs": 48754,
+      "toolCalls": 5,
+      "inspectionCommands": 2,
+      "uncachedInputTokens": 19545,
+      "outputTokens": 1595,
+      "reportedTokens": 104596
+    },
+    "adaptive": {
+      "mode": "bypass",
+      "score": 100,
+      "durationMs": 54216,
+      "toolCalls": 11,
+      "inspectionCommands": 4,
+      "uncachedInputTokens": 20914,
+      "outputTokens": 1781,
+      "reportedTokens": 119207,
+      "palaceContextBytes": 177,
+      "palaceContextEstimatedTokens": 45,
+      "primaryCandidate": "src/format-currency.mjs"
+    },
+    "adaptiveMinusControl": {
+      "durationMs": 5462,
+      "toolCalls": 6,
+      "inspectionCommands": 2,
+      "uncachedInputTokens": 1369,
+      "outputTokens": 186,
+      "reportedTokens": 14611
+    },
+    "interpretation": "The compact bypass contract passed, but subsequent Agent exploration erased the payload saving in this trial."
+  },
+  "memoryDependent": {
+    "runId": "control-first-v3-preflight-memory-20260720-a",
+    "seed": "preflight-v3-decision-memory-20260720-a",
+    "repositoryTree": "cd13d54a13dc97b2a2e0c37a128bc82767a1de10",
+    "cacheState": "cold",
+    "order": ["full-palace", "adaptive-palace", "control", "route-only"],
+    "baselinePublicPassed": true,
+    "baselineOraclePassed": false,
+    "expectedChangedFile": "clients/aurora/article-tokens.mjs",
+    "control": {
+      "success": true,
+      "oraclePassed": true,
+      "score": 100,
+      "changedFile": "clients/aurora/article-tokens.mjs",
+      "durationMs": 159458,
+      "toolCalls": 10,
+      "inspectionCommands": 3,
+      "uncachedInputTokens": 62222,
+      "outputTokens": 4949,
+      "reportedTokens": 310115
+    },
+    "routeOnly": {
+      "success": false,
+      "oraclePassed": false,
+      "score": 0,
+      "changedFile": "clients/borealis/article-tokens.mjs",
+      "forbiddenViolation": true,
+      "durationMs": 179842,
+      "toolCalls": 23,
+      "reportedTokens": 236146,
+      "instrumentationExcludedFromScope": [".palace/"]
+    },
+    "fullPalace": {
+      "success": true,
+      "oraclePassed": true,
+      "score": 100,
+      "changedFile": "clients/aurora/article-tokens.mjs",
+      "durationMs": 140076,
+      "toolCalls": 27,
+      "reportedTokens": 233159,
+      "instrumentationExcludedFromScope": [".palace/"]
+    },
+    "adaptive": {
+      "success": true,
+      "oraclePassed": true,
+      "mode": "guarded-memory-palace",
+      "score": 100,
+      "changedFile": "clients/aurora/article-tokens.mjs",
+      "durationMs": 92766,
+      "toolCalls": 12,
+      "inspectionCommands": 6,
+      "uncachedInputTokens": 52215,
+      "outputTokens": 2527,
+      "reportedTokens": 133334,
+      "palaceContextBytes": 6667,
+      "palaceContextEstimatedTokens": 1667,
+      "memoryIncluded": 2,
+      "memoryCandidates": 2,
+      "memoryExcluded": 0,
+      "memoryEstimatedTokens": 192,
+      "guardrails": 3,
+      "instrumentationExcludedFromScope": [".palace/"]
+    },
+    "adaptiveMinusControl": {
+      "durationMs": -66692,
+      "toolCalls": 2,
+      "inspectionCommands": 3,
+      "uncachedInputTokens": -10007,
+      "outputTokens": -2422,
+      "reportedTokens": -176781
+    },
+    "discordance": {
+      "routeOnlyFailedAdaptivePassed": true,
+      "controlFailedAdaptivePassed": false
+    },
+    "interpretation": "Guarded memory beat structure-only routing in this run, but Control also selected the correct tenant; memory benefit versus Control remains unproven."
+  },
+  "instrumentationPolicy": {
+    "rawGitStatusPreserved": true,
+    "excludedRoot": ".palace/",
+    "otherUntrackedPathsExcluded": false
+  },
+  "palaceCloseoutEvaluation": {
+    "assessment": "needs-review",
+    "changedFiles": 15,
+    "matchedFiles": 1,
+    "changedFileCoverage": 0.07,
+    "routeFocus": 0.10,
+    "routeConfidence": 0.35,
+    "calibration": "overconfident",
+    "overconfidenceError": 0.28,
+    "interpretation": "The release-classified route selected old evidence and package surfaces while missing almost all harness, test, localization, and new evidence files."
+  },
+  "next": [
+    "prompt-matched completion and stop criteria",
+    "seed-randomized hidden tenant ownership",
+    "fresh balanced sequential trials",
+    "Adaptive versus Control as the primary comparison"
+  ]
+}

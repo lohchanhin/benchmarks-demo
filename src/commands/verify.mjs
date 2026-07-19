@@ -44,7 +44,7 @@ export async function verifyArm(run, arm) {
   const stderrSource = (await pathExists(stderrPath)) ? await readFile(stderrPath, "utf8") : "";
   const runtimeDiagnostics = parseCodexStderr(stderrSource);
   const workspaceFiles = await listFiles(workspace);
-  const transcript = parseCodexTranscript(transcriptSource, workspaceFiles);
+  const transcript = parseCodexTranscript(transcriptSource, workspaceFiles, run.manifest.task);
   const git = await collectGitEvidence(workspace);
   const testResult = await runProcess(run.scenario.testCommand[0], run.scenario.testCommand.slice(1), {
     cwd: workspace,
@@ -72,7 +72,12 @@ export async function verifyArm(run, arm) {
       && transcript.adaptivePayload.calls === 1
       && transcript.adaptivePayloadMatchesOutput === true
   );
-  const taskFidelityPassed = arm === "control" || transcript.palaceReceivedTask === run.manifest.task;
+  const taskFidelityPassed = arm === "control"
+    || transcript.palaceReceivedTask === run.manifest.task
+    || (
+      transcript.adaptivePayload?.mode === "bypass"
+      && transcript.palaceCommandMatchesExpectedTask === true
+    );
   const modePassed = arm === "control"
     ? transcript.palaceCalls === 0
     : arm === "adaptive-palace"

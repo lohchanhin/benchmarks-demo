@@ -1,4 +1,4 @@
-export function parseCodexTranscript(source, workspaceFiles = []) {
+export function parseCodexTranscript(source, workspaceFiles = [], expectedTask = null) {
   const events = [];
   let malformedLines = 0;
   for (const line of source.split(/\r?\n/).filter(Boolean)) {
@@ -73,6 +73,9 @@ export function parseCodexTranscript(source, workspaceFiles = []) {
   const adaptivePayload = adaptivePayloads.at(-1) ?? null;
   const adaptiveOutput = palaceCommands.at(-1)?.output ?? "";
   const palaceReceivedTask = parsePackedTask(adaptiveOutput);
+  const palaceCommandMatchesExpectedTask = typeof expectedTask === "string" && palaceCommands.length
+    ? commandContainsTask(palaceCommands.at(-1).command, expectedTask)
+    : null;
   const adaptiveRequested = palaceCommands.some((item) => /\bcontext\b[^\r\n]*\s--auto(?:\s|$)/i.test(item.command));
 
   return {
@@ -95,6 +98,7 @@ export function parseCodexTranscript(source, workspaceFiles = []) {
       ? adaptivePayload.contextBytes === Buffer.byteLength(adaptiveOutput, "utf8")
       : null,
     palaceReceivedTask,
+    palaceCommandMatchesExpectedTask,
     adaptiveRequested,
     inspectedFiles,
     referencedFiles,
@@ -107,11 +111,31 @@ function parsePackedTask(output) {
 }
 
 function parseAdaptivePayload(output) {
+  const compactBypass = /^Mode: bypass\s*$[\s\S]*^Primary candidate: ([^\r\n]+)\s*$[\s\S]*^Reason: ([^\r\n]+)\s*$/m.exec(output);
+  if (compactBypass) {
+    return {
+      mode: "bypass",
+      calls: 1,
+      contextBytes: Buffer.byteLength(output, "utf8"),
+      contextEstimatedTokens: Math.ceil(Buffer.byteLength(output, "utf8") / 4),
+      routeStepCount: 1,
+      primaryCount: 1,
+      supportCount: 0,
+      deferredCount: 0,
+      memoryItemCount: 0,
+      memoryCandidateCount: 0,
+      memoryExcludedCount: 0,
+      memoryEstimatedTokens: 0,
+      guardrailCount: 0,
+      primaryCandidate: compactBypass[1].trim(),
+      reason: compactBypass[2].trim()
+    };
+  }
   if (!output.includes("# Vertex Palace Adaptive Context") || !output.includes("## Payload")) return null;
   const mode = /^Mode: ([^\r\n]+)$/m.exec(output)?.[1] ?? null;
   const payload = /^Calls: (\d+) \| Bytes: (\d+) \| Estimated tokens: (\d+)$/m.exec(output);
   const route = /^Route: (\d+) \((\d+) primary, (\d+) support, (\d+) deferred\)$/m.exec(output);
-  const memory = /^Memory: (\d+) items \/ ~(\d+) tokens \| Guardrails: (\d+)$/m.exec(output);
+  const memory = parseMemoryPayload(output);
   if (!payload) return null;
   return {
     mode,
@@ -122,10 +146,49 @@ function parseAdaptivePayload(output) {
     primaryCount: route ? Number(route[2]) : null,
     supportCount: route ? Number(route[3]) : null,
     deferredCount: route ? Number(route[4]) : null,
-    memoryItemCount: memory ? Number(memory[1]) : null,
-    memoryEstimatedTokens: memory ? Number(memory[2]) : null,
-    guardrailCount: memory ? Number(memory[3]) : null
+    memoryItemCount: memory?.included ?? null,
+    memoryCandidateCount: memory?.candidates ?? null,
+    memoryExcludedCount: memory?.excluded ?? null,
+    memoryEstimatedTokens: memory?.estimatedTokens ?? null,
+    guardrailCount: memory?.guardrails ?? null
   };
+}
+
+function parseMemoryPayload(output) {
+  const telemetry = /^Memory: (\d+) included \/ (\d+) candidates \/ (\d+) excluded \/ ~(\d+) tokens \| Guardrails: (\d+)$/m.exec(output);
+  if (telemetry) {
+    return {
+      included: Number(telemetry[1]),
+      candidates: Number(telemetry[2]),
+      excluded: Number(telemetry[3]),
+      estimatedTokens: Number(telemetry[4]),
+      guardrails: Number(telemetry[5])
+    };
+  }
+
+  const legacy = /^Memory: (\d+) items \/ ~(\d+) tokens \| Guardrails: (\d+)$/m.exec(output);
+  if (!legacy) return null;
+  return {
+    included: Number(legacy[1]),
+    candidates: Number(legacy[1]),
+    excluded: 0,
+    estimatedTokens: Number(legacy[2]),
+    guardrails: Number(legacy[3])
+  };
+}
+
+function commandContainsTask(command, task) {
+  const commandTokens = semanticTokens(command);
+  const taskTokens = semanticTokens(task);
+  if (!taskTokens.length) return false;
+  for (let start = 0; start <= commandTokens.length - taskTokens.length; start += 1) {
+    if (taskTokens.every((token, offset) => commandTokens[start + offset] === token)) return true;
+  }
+  return false;
+}
+
+function semanticTokens(value) {
+  return String(value).toLocaleLowerCase("en-US").match(/[\p{L}\p{N}]+/gu) ?? [];
 }
 
 function isPalaceCommand(command) {

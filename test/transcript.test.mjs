@@ -82,9 +82,47 @@ test("parses Adaptive Palace mode and measured payload from command output", () 
     supportCount: 5,
     deferredCount: 1,
     memoryItemCount: 0,
+    memoryCandidateCount: 0,
+    memoryExcludedCount: 0,
     memoryEstimatedTokens: 0,
     guardrailCount: 0
   });
+});
+
+test("parses v0.3 memory inclusion and exclusion telemetry", () => {
+  const output = measuredAdaptiveOutput([
+    "# Vertex Palace Adaptive Context",
+    "",
+    "Mode: guarded-memory-palace",
+    "",
+    "## Task",
+    "",
+    "Fix the historical tenant scope.",
+    "",
+    "## Payload",
+    "",
+    "Calls: 1 | Bytes: 0 | Estimated tokens: 1667",
+    "Route: 9 (1 primary, 8 support, 0 deferred)",
+    "Memory: 2 included / 5 candidates / 3 excluded / ~192 tokens | Guardrails: 3"
+  ].join("\n"));
+  const source = JSON.stringify({
+    type: "item.completed",
+    item: {
+      id: "adaptive-memory-telemetry",
+      type: "command_execution",
+      status: "completed",
+      exit_code: 0,
+      command: "palace context task --auto --budget 6000",
+      aggregated_output: output
+    }
+  });
+
+  const payload = parseCodexTranscript(source).adaptivePayload;
+  assert.equal(payload.memoryItemCount, 2);
+  assert.equal(payload.memoryCandidateCount, 5);
+  assert.equal(payload.memoryExcludedCount, 3);
+  assert.equal(payload.memoryEstimatedTokens, 192);
+  assert.equal(payload.guardrailCount, 3);
 });
 
 test("detects an Adaptive payload byte count that does not match captured stdout", () => {
@@ -101,6 +139,53 @@ test("detects an Adaptive payload byte count that does not match captured stdout
   });
 
   assert.equal(parseCodexTranscript(source).adaptivePayloadMatchesOutput, false);
+});
+
+test("parses the compact bypass contract and verifies the task from the command", () => {
+  const task = "Fix currency formatting so negative zero is rendered as $0.00 while negative cents keep their sign.";
+  const output = [
+    "Mode: bypass",
+    "Primary candidate: src/format-currency.mjs",
+    "Reason: High-confidence single-file route with no memory or scope risk.",
+    ""
+  ].join("\n");
+  const source = JSON.stringify({
+    type: "item.completed",
+    item: {
+      id: "adaptive-bypass",
+      type: "command_execution",
+      status: "completed",
+      exit_code: 0,
+      command: `powershell -Command "palace context '${task}' --auto --budget 6000"`,
+      aggregated_output: output
+    }
+  });
+
+  const result = parseCodexTranscript(source, [], task);
+  assert.equal(result.adaptiveRequested, true);
+  assert.equal(result.adaptivePayloadMatchesOutput, true);
+  assert.equal(result.palaceReceivedTask, null);
+  assert.equal(result.palaceCommandMatchesExpectedTask, true);
+  assert.deepEqual(result.adaptivePayload, {
+    mode: "bypass",
+    calls: 1,
+    contextBytes: Buffer.byteLength(output, "utf8"),
+    contextEstimatedTokens: Math.ceil(Buffer.byteLength(output, "utf8") / 4),
+    routeStepCount: 1,
+    primaryCount: 1,
+    supportCount: 0,
+    deferredCount: 0,
+    memoryItemCount: 0,
+    memoryCandidateCount: 0,
+    memoryExcludedCount: 0,
+    memoryEstimatedTokens: 0,
+    guardrailCount: 0,
+    primaryCandidate: "src/format-currency.mjs",
+    reason: "High-confidence single-file route with no memory or scope risk."
+  });
+  assert.equal(parseCodexTranscript(source, [], "Fix a different task.").palaceCommandMatchesExpectedTask, false);
+  const injected = source.replace("currency formatting", "currency safely formatting");
+  assert.equal(parseCodexTranscript(injected, [], task).palaceCommandMatchesExpectedTask, false);
 });
 
 test("tolerates non-JSON lines without inventing metrics", () => {

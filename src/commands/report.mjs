@@ -118,6 +118,7 @@ export function buildComparison(run, evidence) {
       "Codex input tokens are cumulative across model turns. Cached and uncached input are shown separately and are not an API billing statement.",
       "Paired arms run sequentially, never concurrently. Repeat pairs with alternating order and report medians to reduce order and service-load effects.",
       `Palace index cache state for this trial: ${run.manifest.cacheState ?? "unrecorded"}. This does not control provider-side model caching.`,
+      "Root .palace paths are recorded as benchmark instrumentation and excluded from changed-file scope; raw Git status remains in each arm evidence file.",
       "A result is comparable only when both arms start from the recorded Git tree and pass their arm-validity checks.",
       "Correctness and scope determine the score. Speed and token metrics are reported, not rewarded."
     ]
@@ -166,6 +167,9 @@ function summarize(evidence) {
     applyPatchVerificationErrors: evidence.runtimeDiagnostics?.applyPatchVerificationErrors ?? null,
     sandboxPreparationErrors: evidence.runtimeDiagnostics?.sandboxPreparationErrors ?? null,
     changedFiles: evidence.git.changedFiles,
+    gitStatus: evidence.git.status ?? [],
+    instrumentationFiles: evidence.git.instrumentationFiles ?? [],
+    instrumentationUntrackedFiles: evidence.git.instrumentationUntrackedFiles ?? [],
     forbiddenChanged: evidence.score.forbiddenChanged,
     unexpectedChanged: evidence.score.unexpectedChanged,
     expectedCoverage: evidence.score.expectedCoverage,
@@ -255,6 +259,15 @@ function renderMarkdown(report) {
     "",
     ...(report.adaptive ? ["### Adaptive Palace", "", ...fileLines(report.adaptive.changedFiles)] : []),
     "",
+    "## Instrumentation Excluded From Scope",
+    "",
+    "Raw Git status is preserved in each arm evidence file. Only root `.palace` state is excluded from correctness and changed-file precision/recall.",
+    "",
+    `- Control: ${inlineFiles(report.control.instrumentationFiles)}`,
+    ...(routeOnly ? [`- Route-only: ${inlineFiles(routeOnly.instrumentationFiles)}`] : []),
+    `- Full Palace: ${inlineFiles(report.palace.instrumentationFiles)}`,
+    ...(report.adaptive ? [`- Adaptive Palace: ${inlineFiles(report.adaptive.instrumentationFiles)}`] : []),
+    "",
     "## Validity",
     "",
     `- Control: ${report.control.validityReason}`,
@@ -274,7 +287,8 @@ function renderMarkdown(report) {
       ? [
           `- Adaptive Palace pitfall violation / wrong-memory adoption: ${memoryMetric(report.adaptive.memory)}`,
           `- Adaptive selected mode: ${report.adaptive.adaptivePayload?.mode ?? "not captured"}`,
-          `- Adaptive self-reported payload: ${payloadMetric(report.adaptive.adaptivePayload)}`
+          `- Adaptive self-reported payload: ${payloadMetric(report.adaptive.adaptivePayload)}`,
+          `- Adaptive self-reported memory: ${payloadMemoryMetric(report.adaptive.adaptivePayload)}`
         ]
       : []),
     "",
@@ -322,6 +336,10 @@ function metricRow(label, report, field, format, deltaFormat, deltaField) {
 
 function fileLines(files) {
   return files.length ? files.map((file) => `- \`${file}\``) : ["- None"];
+}
+
+function inlineFiles(files) {
+  return files.length ? files.map((file) => `\`${file}\``).join(", ") : "None";
 }
 
 function subtract(first, second) {
@@ -417,6 +435,11 @@ function payloadMetric(payload) {
   return payload
     ? `${number(payload.contextBytes)} bytes / ~${number(payload.contextEstimatedTokens)} tokens`
     : "n/a";
+}
+
+function payloadMemoryMetric(payload) {
+  if (!payload || payload.memoryItemCount === null || payload.memoryItemCount === undefined) return "n/a";
+  return `${number(payload.memoryItemCount)} included / ${number(payload.memoryCandidateCount)} candidates / ${number(payload.memoryExcludedCount)} excluded`;
 }
 
 function validity(arm) {

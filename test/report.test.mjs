@@ -108,6 +108,7 @@ test("uses Control minus Adaptive as the v3 top-level comparison", () => {
   assert.equal(report.delta.reportedTokensSaved, 1000);
   assert.equal(report.pairwise.controlVsAdaptivePalace.delta.reportedTokensSaved, 1000);
   assert.equal(report.pairwise.fullPalaceVsAdaptivePalace.delta.reportedTokensSaved, -1000);
+  assert.deepEqual(report.adaptive.instrumentationFiles, []);
 });
 
 function armEvidence({ arm, durationMs, toolCalls, palaceCalls, tokens }) {
@@ -143,7 +144,12 @@ function armEvidence({ arm, durationMs, toolCalls, palaceCalls, tokens }) {
       applyPatchVerificationErrors: 0,
       sandboxPreparationErrors: 0
     },
-    git: { changedFiles: ["a.mjs"] },
+    git: {
+      status: ["M a.mjs"],
+      changedFiles: ["a.mjs"],
+      instrumentationFiles: [],
+      instrumentationUntrackedFiles: []
+    },
     palaceEvaluation: null
   };
 }

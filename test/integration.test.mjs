@@ -82,6 +82,7 @@ test("prepares identical arms, verifies repairs, and writes comparison reports",
   const markdown = await readFile(report.markdownPath, "utf8");
   assert.match(markdown, /Vertex Palace Four-Arm Adaptive Benchmark/);
   assert.match(markdown, /Full Palace minus Adaptive/);
+  assert.match(markdown, /Instrumentation Excluded From Scope/);
   assert.match(markdown, /\| Elapsed time \| 12\.0s \| 9\.0s \| 8\.0s \| 8\.0s \| 0\.0s \|/);
   assert.equal(report.comparison.delta.durationMsSaved, 0);
   assert.equal(report.comparison.pairwise.controlVsAdaptivePalace.delta.durationMsSaved, 4000);
@@ -179,6 +180,65 @@ test("control-first v3 rejects correct output with an over-broad changed-file sc
   assert.equal(comparison.primaryComparison, "adaptive-vs-control");
   assert.equal(comparison.comparable, false);
   assert.equal(comparison.delta.reportedTokensSaved, null);
+});
+
+test("control-first v3 accepts the compact true-bypass contract", async (context) => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "benchmark-control-first-bypass-"));
+  context.after(() => rm(root, { recursive: true, force: true }));
+  const { runDirectory } = await prepareCommand(new Map([
+    ["scenario", "small-local-bug"],
+    ["run-id", "control-first-bypass"],
+    ["seed", "control-first-bypass-seed"],
+    ["runs-root", root],
+    ["protocol-version", "3.0.0"],
+    ["skip-palace-seed", true]
+  ]));
+  const run = await loadRun(runDirectory);
+  const workspace = run.workspace("adaptive-palace");
+  const repair = await applyScenarioRepair(run.scenario, workspace);
+  assert.equal(repair.exitCode, 0);
+
+  const artifacts = path.join(runDirectory, "artifacts");
+  await mkdir(artifacts, { recursive: true });
+  const bypassOutput = [
+    "Mode: bypass",
+    "Primary candidate: src/format-currency.mjs",
+    "Reason: High-confidence single-file route with no memory or scope risk.",
+    ""
+  ].join("\n");
+  await writeFile(path.join(artifacts, "adaptive-palace-transcript.jsonl"), [
+    JSON.stringify({ type: "thread.started", thread_id: "control-first-bypass" }),
+    JSON.stringify({
+      type: "item.completed",
+      item: {
+        type: "command_execution",
+        command: `palace context '${run.manifest.task}' --auto --budget 6000`,
+        status: "completed",
+        exit_code: 0,
+        aggregated_output: bypassOutput
+      }
+    }),
+    JSON.stringify({
+      type: "turn.completed",
+      usage: { input_tokens: 1000, cached_input_tokens: 100, output_tokens: 100 }
+    })
+  ].join("\n") + "\n", "utf8");
+  await writeJson(path.join(artifacts, "adaptive-palace-execution.json"), {
+    model: "gpt-5.6-sol",
+    reasoningEffort: "xhigh",
+    durationMs: 1000,
+    exitCode: 0,
+    timedOut: false,
+    startedAt: "2026-01-01T00:00:00.000Z",
+    endedAt: "2026-01-01T00:00:01.000Z"
+  });
+
+  const evidence = await verifyArm(run, "adaptive-palace");
+  assert.equal(evidence.transcript.adaptivePayload.mode, "bypass");
+  assert.equal(evidence.transcript.adaptivePayloadMatchesOutput, true);
+  assert.equal(evidence.taskFidelityPassed, true);
+  assert.equal(evidence.validity.passed, true);
+  assert.equal(evidence.success, true);
 });
 
 test("Palace preparation records history truthfully and stays outside tracked fixture changes", async (context) => {

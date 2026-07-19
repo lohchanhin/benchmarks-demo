@@ -4,6 +4,10 @@ Date: 2026-07-20 (UTC+08:00)
 
 Status: engineering evidence only; **not a formal Agent trial**.
 
+The later two-run [Agent preflight](./CONTROL_FIRST_V3_AGENT_PREFLIGHT.md)
+preserves the first end-to-end 0.3.0 behavior without adding it to the formal
+manifest.
+
 This record preserves the product and harness work performed before the v3
 plan can be frozen. No Control, Route-only, Full, or Adaptive Codex arm was
 started, and the public v3 result manifest remains empty.
