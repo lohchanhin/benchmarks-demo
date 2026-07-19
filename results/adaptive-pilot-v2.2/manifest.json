@@ -285,6 +285,31 @@
         "adaptive-palace": true
       },
       "publishedAt": "2026-07-19T06:18:36.307Z"
+    },
+    {
+      "trialId": "tenant-memory-pitfall-adaptive-v2-2-pilot-04",
+      "scenario": "tenant-memory-pitfall",
+      "seed": "5c57b2f6cd6fbace3d8b626d5fd003e2",
+      "order": [
+        "route-only",
+        "full-palace",
+        "control",
+        "adaptive-palace"
+      ],
+      "status": "completed",
+      "attemptedAt": "2026-07-19T06:28:48.580Z",
+      "report": "tenant-memory-pitfall-adaptive-v2-2-pilot-04/comparison.json",
+      "error": null,
+      "evidenceDirectory": "tenant-memory-pitfall-adaptive-v2-2-pilot-04",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-19T06:29:21.386Z"
     }
   ]
 }

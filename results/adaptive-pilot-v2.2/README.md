@@ -1,7 +1,7 @@
 # Adaptive Pilot v2.2
 
-Status: in progress, 11 of 16 planned trials published. The preregistered
-small-local and cross-stack blocks are complete; useful-memory is 3/4. No agent outcome
+Status: in progress, 12 of 16 planned trials published. The preregistered
+small-local, cross-stack, and useful-memory blocks are complete. No agent outcome
 existed at protocol freeze.
 
 Protocol v2.2 repeats the four-arm Adaptive study with fresh trial ids and
@@ -93,7 +93,7 @@ uncached input tokens, +5.5 tool calls, and +20.228 seconds. See the
 [block report](../../docs/research/CROSS_STACK_V2_2_BLOCK.md) and updated
 [interim analysis](analysis.md).
 
-## Useful-Memory Block (3/4)
+## Useful-Memory Block (4/4)
 
 The first warm-index tenant-memory trial had four valid, successful, and
 correctly scoped arms. Every arm changed only the Aurora theme and renderer,
@@ -122,12 +122,14 @@ zero memory items and zero guardrails.
 | [01](tenant-memory-pitfall-adaptive-v2-2-pilot-01/comparison.md) | -15,990 | -9,164 | -4 | -5.992s |
 | [02](tenant-memory-pitfall-adaptive-v2-2-pilot-02/comparison.md) | -185,297 | -40,807 | -15 | -51.258s |
 | [03](tenant-memory-pitfall-adaptive-v2-2-pilot-03/comparison.md) | -27,372 | -15,425 | -1 | +5.306s |
+| [04](tenant-memory-pitfall-adaptive-v2-2-pilot-04/comparison.md) | +1,892 | -20,414 | -11 | +0.984s |
 
-The third warm-index trial again passed every gate and repeated the omission;
-Adaptive was 5.306 seconds slower than Full but used fewer tokens and calls.
-Across three pairs, Adaptive-minus-Full medians are -27,372 reported tokens,
--15,425 uncached input tokens, -4 tool calls, and -5.992 seconds. Those
-differences compare Full memory delivery with Adaptive memory omission, not two
-equally memory-aware treatments. Adaptive-minus-Control medians are +33,617
-reported tokens, -11,762 uncached input tokens, +3 tool calls, and +15.248
-seconds. See the updated [interim analysis](analysis.md).
+The third and fourth trials again passed every gate and repeated the omission.
+Across the complete block, Adaptive-minus-Full medians are -21,681 reported
+tokens, -17,919.5 uncached input tokens, -7.5 tool calls, and -2.504 seconds.
+Those differences compare Full memory delivery with Adaptive memory omission,
+not two equally memory-aware treatments. Adaptive-minus-Control medians are
++35,850.5 reported tokens, -6,453.5 uncached input tokens, +4.5 tool calls, and
++16.361 seconds. See the
+[block report](../../docs/research/USEFUL_MEMORY_V2_2_BLOCK.md) and updated
+[interim analysis](analysis.md).

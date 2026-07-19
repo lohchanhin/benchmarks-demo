@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 3,
+  "protocolVersion": "2.2.0",
+  "id": "tenant-memory-pitfall-adaptive-v2-2-pilot-04",
+  "createdAt": "2026-07-19T06:22:32.383Z",
+  "seed": "5c57b2f6cd6fbace3d8b626d5fd003e2",
+  "scenario": "tenant-memory-pitfall",
+  "scenarioTitle": "Tenant-scoped article theme regression with prior pitfall",
+  "task": "Fix the Aurora article hero contrast regression while preserving the appearance of every other tenant. The renderer must honor an explicit tenant text-color override, the Aurora hero must meet WCAG AA contrast, and the complete test suite must pass. Do not weaken or rewrite the tests.",
+  "cacheState": "cold",
+  "repositoryTree": "6394986e531de8424ff9050f8bff1f919bebebdb",
+  "baseline": {
+    "expectedToFail": true,
+    "testExitCode": 1,
+    "testDurationMs": 243,
+    "oracleExitCode": 1,
+    "oracleDurationMs": 81
+  },
+  "palaceSeed": {
+    "cli": "vertex-palace (local package)",
+    "routeOnly": {
+      "routeId": null,
+      "memorySeeded": false
+    },
+    "fullPalace": {
+      "routeId": "route_0fd36bddb6c68830",
+      "memorySeeded": true
+    },
+    "adaptivePalace": {
+      "routeId": "route_704364ae91d34e89",
+      "memorySeeded": true
+    }
+  },
+  "paths": {
+    "run": ".",
+    "controlWorkspace": "arms/control",
+    "routeOnlyWorkspace": "arms/route-only",
+    "fullPalaceWorkspace": "arms/full-palace",
+    "controlPrompt": "prompts/control.txt",
+    "routeOnlyPrompt": "prompts/route-only.txt",
+    "fullPalacePrompt": "prompts/full-palace.txt",
+    "adaptivePalaceWorkspace": "arms/adaptive-palace",
+    "adaptivePalacePrompt": "prompts/adaptive-palace.txt"
+  },
+  "arms": {
+    "control": {
+      "commit": "6e2c3f65d2a68447c3b4906dc41e937845c07ca5",
+      "tree": "6394986e531de8424ff9050f8bff1f919bebebdb"
+    },
+    "route-only": {
+      "commit": "6e2c3f65d2a68447c3b4906dc41e937845c07ca5",
+      "tree": "6394986e531de8424ff9050f8bff1f919bebebdb"
+    },
+    "full-palace": {
+      "commit": "6e2c3f65d2a68447c3b4906dc41e937845c07ca5",
+      "tree": "6394986e531de8424ff9050f8bff1f919bebebdb"
+    },
+    "adaptive-palace": {
+      "commit": "6e2c3f65d2a68447c3b4906dc41e937845c07ca5",
+      "tree": "6394986e531de8424ff9050f8bff1f919bebebdb"
+    }
+  },
+  "generatedFileCount": 240,
+  "publishedFrom": ".benchmark-runs/<reviewed-local-run>",
+  "publication": {
+    "rawTranscriptsIncluded": false,
+    "sessionIdentifiersIncluded": false,
+    "localPathsIncluded": false
+  }
+}
