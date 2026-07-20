@@ -1,10 +1,10 @@
 # Vertex Palace Control-First Exploratory Analysis
 
 Planned pilot trials: 16
-Attempted trials: 11
-Loaded reports: 11
+Attempted trials: 12
+Loaded reports: 12
 
-Interim only: 11/16 planned trials are represented. Do not interpret these intervals or p-values as final evidence.
+Interim only: 12/16 planned trials are represented. Do not interpret these intervals or p-values as final evidence.
 
 Primary comparison: Adaptive Palace versus Control
 Primary efficiency metric: cumulative reported tokens
@@ -13,7 +13,7 @@ Primary efficiency metric: cumulative reported tokens
 | --- | --- | ---: | ---: | ---: | --- | ---: | ---: |
 | small-local-bug | Adaptive Palace - Control | 4 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
 | cross-stack-regression | Adaptive Palace - Control | 4 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
-| decision-memory-dependent | Adaptive Palace - Control | 3 | 0.0% | 100.0% | 100.0% [100.0%, 100.0%] | 0.2500 | 0.7500 |
+| decision-memory-dependent | Adaptive Palace - Control | 4 | 25.0% | 100.0% | 75.0% [25.0%, 100.0%] | 0.2500 | 0.7500 |
 
 ## Mutually Successful Pair Efficiency
 
@@ -29,6 +29,10 @@ Paired differences are primary treatment minus primary baseline. Negative values
 | cross-stack-regression | Uncached input tokens | 4 | 15,660.5 | 14,145 | -559 [-16,224, 10,410] |
 | cross-stack-regression | Tool calls | 4 | 4 | 3 | -1 [-1, 0] |
 | cross-stack-regression | Wall time | 4 | 44.5s | 44.5s | 0.1s [-10.0s, 10.7s] |
+| decision-memory-dependent | Reported tokens | 1 | 228,534 | 131,235 | -97,299 [-97,299, -97,299] |
+| decision-memory-dependent | Uncached input tokens | 1 | 33,189 | 12,425 | -20,764 [-20,764, -20,764] |
+| decision-memory-dependent | Tool calls | 1 | 24 | 8 | -16 [-16, -16] |
+| decision-memory-dependent | Wall time | 1 | 138.0s | 58.8s | -79.2s [-79.2s, -79.2s] |
 
 ## Four-Arm Control-First Contrasts
 
@@ -76,12 +80,26 @@ Each contrast is treatment minus baseline. Negative efficiency values favor the 
 | cross-stack-regression | Full Palace - Route-only | Palace context estimated tokens | 4 | 781 | 781 | 0 [0, 0] |
 | cross-stack-regression | Full Palace - Route-only | Tool calls | 4 | 12 | 10 | -2.5 [-6, 6] |
 | cross-stack-regression | Full Palace - Route-only | Wall time | 4 | 55.9s | 57.8s | 0.7s [-3.3s, 4.1s] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Reported tokens | 3 | 193,557 | 116,843 | -76,714 [-122,055, -38,098] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Uncached input tokens | 3 | 20,233 | 15,477 | -4,756 [-15,630, -1,029] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Palace context output bytes | 3 | 4,571 | 6,890 | 2,319 [2,308, 2,334] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Palace context estimated tokens | 3 | 1,143 | 1,723 | 580 [577, 583] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Tool calls | 3 | 20 | 9 | -12 [-15, -11] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Wall time | 3 | 93.8s | 65.8s | -22.1s [-39.9s, -17.5s] |
+| decision-memory-dependent | Adaptive Palace - Control | Reported tokens | 1 | 228,534 | 131,235 | -97,299 [-97,299, -97,299] |
+| decision-memory-dependent | Adaptive Palace - Control | Uncached input tokens | 1 | 33,189 | 12,425 | -20,764 [-20,764, -20,764] |
+| decision-memory-dependent | Adaptive Palace - Control | Tool calls | 1 | 24 | 8 | -16 [-16, -16] |
+| decision-memory-dependent | Adaptive Palace - Control | Wall time | 1 | 138.0s | 58.8s | -79.2s [-79.2s, -79.2s] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Reported tokens | 4 | 193,020.5 | 123,698 | -68,981.5 [-122,055, -38,098] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Uncached input tokens | 4 | 19,041.5 | 13,951 | -5,090.5 [-15,630, -1,029] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Palace context output bytes | 4 | 4,571 | 6,890 | 2,319 [2,308, 2,334] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Palace context estimated tokens | 4 | 1,143 | 1,723 | 580 [577, 583] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Tool calls | 4 | 20.5 | 8.5 | -12.5 [-15, -11] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Wall time | 4 | 99.8s | 62.3s | -31.0s [-49.8s, -17.5s] |
+| decision-memory-dependent | Route-only - Control | Reported tokens | 1 | 228,534 | 208,780 | -19,754 [-19,754, -19,754] |
+| decision-memory-dependent | Route-only - Control | Uncached input tokens | 1 | 33,189 | 23,893 | -9,296 [-9,296, -9,296] |
+| decision-memory-dependent | Route-only - Control | Tool calls | 1 | 24 | 17 | -7 [-7, -7] |
+| decision-memory-dependent | Route-only - Control | Wall time | 1 | 138.0s | 167.4s | 29.4s [29.4s, 29.4s] |
+| decision-memory-dependent | Full Palace - Route-only | Reported tokens | 1 | 208,780 | 192,484 | -16,296 [-16,296, -16,296] |
+| decision-memory-dependent | Full Palace - Route-only | Uncached input tokens | 1 | 23,893 | 17,850 | -6,043 [-6,043, -6,043] |
+| decision-memory-dependent | Full Palace - Route-only | Palace context output bytes | 1 | 3,600 | 4,571 | 971 [971, 971] |
+| decision-memory-dependent | Full Palace - Route-only | Palace context estimated tokens | 1 | 900 | 1,143 | 243 [243, 243] |
+| decision-memory-dependent | Full Palace - Route-only | Tool calls | 1 | 17 | 21 | 4 [4, 4] |
+| decision-memory-dependent | Full Palace - Route-only | Wall time | 1 | 167.4s | 108.6s | -58.8s [-58.8s, -58.8s] |
 
 ## Scope Outcomes Across Valid Primary Pairs
 
