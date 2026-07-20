@@ -1,10 +1,10 @@
 # Vertex Palace Control-First Exploratory Analysis
 
 Planned pilot trials: 16
-Attempted trials: 8
-Loaded reports: 8
+Attempted trials: 9
+Loaded reports: 9
 
-Interim only: 8/16 planned trials are represented. Do not interpret these intervals or p-values as final evidence.
+Interim only: 9/16 planned trials are represented. Do not interpret these intervals or p-values as final evidence.
 
 Primary comparison: Adaptive Palace versus Control
 Primary efficiency metric: cumulative reported tokens
@@ -13,6 +13,7 @@ Primary efficiency metric: cumulative reported tokens
 | --- | --- | ---: | ---: | ---: | --- | ---: | ---: |
 | small-local-bug | Adaptive Palace - Control | 4 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
 | cross-stack-regression | Adaptive Palace - Control | 4 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
+| decision-memory-dependent | Adaptive Palace - Control | 1 | 0.0% | 100.0% | 100.0% [100.0%, 100.0%] | 1.0000 | 1.0000 |
 
 ## Mutually Successful Pair Efficiency
 
@@ -75,6 +76,12 @@ Each contrast is treatment minus baseline. Negative efficiency values favor the 
 | cross-stack-regression | Full Palace - Route-only | Palace context estimated tokens | 4 | 781 | 781 | 0 [0, 0] |
 | cross-stack-regression | Full Palace - Route-only | Tool calls | 4 | 12 | 10 | -2.5 [-6, 6] |
 | cross-stack-regression | Full Palace - Route-only | Wall time | 4 | 55.9s | 57.8s | 0.7s [-3.3s, 4.1s] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Reported tokens | 1 | 193,557 | 116,843 | -76,714 [-76,714, -76,714] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Uncached input tokens | 1 | 17,001 | 15,972 | -1,029 [-1,029, -1,029] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Palace context output bytes | 1 | 4,581 | 6,915 | 2,334 [2,334, 2,334] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Palace context estimated tokens | 1 | 1,146 | 1,729 | 583 [583, 583] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Tool calls | 1 | 20 | 9 | -11 [-11, -11] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Wall time | 1 | 93.8s | 76.4s | -17.5s [-17.5s, -17.5s] |
 
 ## Scope Outcomes Across Valid Primary Pairs
 
@@ -86,6 +93,8 @@ Scope is summarized for every valid Adaptive-Control pair, including runs that d
 | small-local-bug | Adaptive Palace | 100.0% | 100.0% | 0 | none |
 | cross-stack-regression | Control | 100.0% | 100.0% | 0 | none |
 | cross-stack-regression | Adaptive Palace | 100.0% | 100.0% | 0 | none |
+| decision-memory-dependent | Control | 0.0% | 0.0% | 1 | none |
+| decision-memory-dependent | Adaptive Palace | 100.0% | 100.0% | 0 | `decision-memory-dependent-control-first-v3-pilot-01` |
 
 Efficiency metrics are calculated only for mutually successful pairs. Raw values and bootstrap intervals are available in the JSON report.
 
