@@ -37,6 +37,31 @@
         "adaptive-palace": true
       },
       "publishedAt": "2026-07-20T21:03:56.830Z"
+    },
+    {
+      "trialId": "small-local-bug-control-first-v3-pilot-02",
+      "scenario": "small-local-bug",
+      "seed": "50631072c2f39cc98d729f7033c4a5e3",
+      "order": [
+        "route-only",
+        "full-palace",
+        "control",
+        "adaptive-palace"
+      ],
+      "status": "completed",
+      "attemptedAt": "2026-07-20T21:09:42.285Z",
+      "report": "small-local-bug-control-first-v3-pilot-02/comparison.json",
+      "error": null,
+      "evidenceDirectory": "small-local-bug-control-first-v3-pilot-02",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T21:10:03.334Z"
     }
   ]
 }
