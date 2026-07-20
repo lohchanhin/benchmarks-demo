@@ -97,6 +97,9 @@ test("keeps the validation coverage matrix synchronized with published evidence"
   const manifest = JSON.parse(await read("results/control-first-v3/manifest.json"));
   const firstAnalysis = JSON.parse(await read("results/pilot/analysis.json"));
   const analysis = JSON.parse(await read("results/adaptive-pilot-v2.2/analysis.json"));
+  const publicRelease = JSON.parse(
+    await read("docs/research/evidence/vertex-palace-0.3.0-public-release-2026-07-20.json")
+  );
   const rows = new Map(matrix.coverage.map((row) => [row.id, row]));
 
   const v3 = rows.get("control-first-v3-formal");
@@ -119,7 +122,14 @@ test("keeps the validation coverage matrix synchronized with published evidence"
 
   assert.equal(rows.get("independent-small-oss-stratum").status, "not-tested");
   assert.equal(rows.get("real-repository-history-dependent-agent").status, "not-tested");
-  assert.equal(rows.get("npm-publication-0-3-0").status, "blocked");
+  const publication = rows.get("npm-publication-0-3-0");
+  assert.equal(publication.status, "validated-release-gate");
+  assert.equal(publication.observed.registryLatest, publicRelease.npm.latest);
+  assert.equal(publication.observed.shasum, publicRelease.npm.shasum);
+  assert.equal(publication.observed.cleanInstallPassed, true);
+  assert.equal(publication.observed.githubReleasePublished, true);
+  assert.equal(publication.observed.codexPluginInstallPassed, true);
+  assert.equal(publicRelease.codexPlugin.mcpPackagePin, "vertex-palace@0.3.0");
 
   const studies = new Map(matrix.studyEvolution.map((study) => [study.id, study]));
   const first = studies.get("fixed-treatments-v1");

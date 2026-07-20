@@ -8,9 +8,9 @@ Date: 2026-07-20
 
 Vertex Palace has several different kinds of evidence. A deterministic routing
 gate is not an Agent benchmark, a fixture preflight is not a real-repository
-result, and a historical exploratory study is not a result for the unpublished
-0.3.0 candidate. This matrix keeps those boundaries visible for judges and for
-future development.
+result, and a historical exploratory study is not a result for the current
+public 0.3.0 implementation. This matrix keeps those boundaries visible for
+judges and for future development.
 
 Palace's own route for creating this matrix matched `0/7` actual files
 (coverage `0`, focus `0`, confidence `0.35`). It remained inside fixture source
@@ -58,18 +58,19 @@ guardrails, not a universal speed or Token advantage.
 
 The negative findings drove true bypass, explicit memory telemetry, scoped
 guardrails, execution boundaries, confidence calibration, and exact package
-provenance in 0.3.0. A separate non-formal candidate study has now exercised
-the exact tarball across 16 trials and 64 arms. It found one memory-dependent
+provenance in 0.3.0. A separate non-formal candidate study exercised the exact
+candidate tarball across 16 trials and 64 arms. It found one memory-dependent
 scope correction and safe stale-memory behavior, but also systematic Adaptive
-overhead versus Control. Stable npm publication is held while that overhead is
-revised. The formal protocol remains `frozen:false` at 0/16 trials and 0/64
-Arms.
+overhead versus Control. After two fresh small-local pairs showed a narrower
+directional result, 0.3.0 was published without turning that exploratory result
+into a general speed claim. The formal protocol remains `frozen:false` at 0/16
+trials and 0/64 Arms and is not yet rebound to the public artifact.
 
 ## Coverage
 
 | Surface | Status | Evidence | Honest interpretation |
 | --- | --- | --- | --- |
-| Local clean package, CLI, and MCP | **Validated product gate** | Seven-file 0.3.0 tarball; clean install; 10 MCP tools; cross-platform CI | The candidate package works before publication. This is not an Agent comparison. |
+| Local clean package, CLI, and MCP | **Validated product gate** | Seven-file 0.3.0 tarball; clean install; 10 MCP tools; cross-platform CI | The exact release candidate passed before publication and is now public. This is not an Agent comparison. |
 | TypeScript monorepo routing | **Validated product gate** | Pinned Zod, two identical routes, recall 1.000, strict precision 1.000 | The known issue-style implementation and test are retrieved in this fixed case. |
 | Python repository routing | **Validated product gate** | Pinned Requests, two identical routes, recall 1.000, strict precision 1.000 | The known issue-style implementation and test are retrieved in this fixed case. |
 | Independent small-OSS stratum | **Not separately tested** | Requests has 123 indexed files, but no size threshold was preregistered | Do not relabel Requests after seeing the result. Add a separately defined small-OSS case later. |
@@ -82,7 +83,7 @@ Arms.
 | Stale-memory resistance | **Candidate exploratory evidence** | 0.3.0 candidate: 4 trials, 16/16 successful Arms, zero wrong-memory adoption | Guardrails were safe, but Adaptive carried two stale memories as warnings instead of excluding them. |
 | Adaptive versus Control efficiency | **Candidate negative evidence** | 14 mutual successes: Adaptive +19,922.5 tokens, +10.135 s, +2.5 calls; all 95% CIs above zero | The tested 0.3.0 candidate did not improve end-to-end efficiency and should not be marketed as a speedup. |
 | Control-first v3 formal study | **Blocked, not run** | `frozen:false`; 0/16 trials; 0/64 Arms | No 0.3.0 formal outcome exists yet. |
-| Public npm installation | **Blocked** | Registry latest remains 0.2.3; browser authorization expired | Local 0.3.0 evidence cannot substitute for immutable public registry metadata. |
+| Public npm and Codex plugin installation | **Validated release gate** | npm latest `0.3.0`; SHA-1 `9a04440d...`; clean registry install; GitHub Release `v0.3.0`; isolated Codex marketplace and plugin install | The public package and plugin path are installable. This verifies distribution, not an Agent efficiency effect. |
 
 ## Claims We Can Make
 
@@ -100,6 +101,8 @@ Arms.
 - In the retained v2.2 study, Adaptive reduced Palace's own payload relative to
   Full Palace, but did not demonstrate lower end-to-end Token use or wall time
   than Control.
+- `vertex-palace@0.3.0` is publicly installable, and the GitHub `v0.3.0`
+  marketplace installs the 0.3.0 Codex plugin in an isolated configuration.
 
 ## Claims We Cannot Make Yet
 
@@ -107,12 +110,13 @@ Arms.
 - Vertex Palace improves correctness over ordinary Codex on real repositories.
 - The current evidence covers a separately preregistered small-OSS stratum,
   real-repository historical decisions, or architecture/refactor tasks.
-- `vertex-palace@0.3.0` is publicly installable from npm.
+- The public 0.3.0 release by itself proves an end-to-end Agent performance
+  advantage.
 
 ## Next Evidence
 
-1. Publish the hash-bound 0.3.0 candidate only after npm, clean-install, CLI,
-   MCP, and repository tests agree on the same artifact.
+1. Rebind the still-unfrozen v3 plan, benchmark dependency, lockfile, and
+   release gate to the immutable public 0.3.0 SHA and integrity.
 2. Preregister a fresh confirmation that repeats the small-local result and
    tests bounded cross-stack behavior without changing treatment mid-study.
 3. After release provenance is updated, freeze and tag the formal v3 plan.

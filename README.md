@@ -130,9 +130,8 @@ and 58 succeeded. Adaptive prevented one Control scope error in the
 decision-memory scenario and safely resisted stale memory, but across 14 mutual
 successes it used a paired median +19,922.5 reported tokens, +10.135 seconds,
 and +2.5 tool calls versus Control. The [final candidate report](docs/research/CONTROL_FIRST_V3_CANDIDATE_FINAL.md)
-therefore holds stable npm publication while bypass and repeated-inspection
-overhead are revised. This is a safety and auditability result, not a speedup
-claim.
+therefore held publication while bypass and repeated-inspection overhead were
+revised. This remains a safety and auditability result, not a speedup claim.
 
 The [post-candidate engineering confirmation](docs/research/REVISED_BYPASS_CONFIRMATION.md)
 now publishes five fresh exploratory trials and 20/20 valid, successful arms.
@@ -142,6 +141,14 @@ median seven fewer repository paths. Adaptive was 9.445 seconds faster and used
 17,316.5 fewer reported tokens at the paired median, while still using one more
 call. This is encouraging small-local `bypass` evidence, not a general Token or
 speed claim.
+
+Vertex Palace 0.3.0 is now public on npm and as a GitHub Release. A clean
+registry install returned the published CLI, and an isolated Codex CLI 0.144.6
+configuration successfully added the `v0.3.0` marketplace and installed the
+0.3.0 plugin whose MCP command pins `vertex-palace@0.3.0`. The exact public
+SHA-1, integrity, tag, and install observations are retained in the
+[release verification record](docs/research/evidence/vertex-palace-0.3.0-public-release-2026-07-20.json).
+Distribution success does not change the benchmark claim boundary.
 
 The next independent protocol now asks the product-facing question directly:
 Adaptive Palace versus normal Codex. Its primary efficiency metric is paired
@@ -156,8 +163,9 @@ The [v3 protocol draft](docs/research/PROTOCOL_V3.md), [16-trial candidate
 plan](results/control-first-v3/plan.json), and empty [result
 manifest](results/control-first-v3/manifest.json) are public. The plan remains
 `frozen:false`, has zero Agent outcomes, and cannot execute. It will be frozen
-and tagged only after the immutable Palace 0.3.0 package, clean-install checks,
-memory smoke, and full benchmark gates pass.
+and tagged only after the benchmark dependency, lockfile, and plan are rebound
+to the immutable public Palace 0.3.0 package and the clean-install, memory, and
+full benchmark gates pass.
 
 The [preflight record](docs/research/CONTROL_FIRST_V3_PREFLIGHT.md) publishes the
 failed and passing memory smokes, the product fix commit, CI evidence, and the
@@ -172,12 +180,15 @@ prompt-matched stop conditions without running another Agent arm. The draft key
 commitment remains `null`, so the plan still cannot be frozen accidentally.
 The [release-provenance gate](docs/research/CONTROL_FIRST_V3_RELEASE_PROVENANCE.md)
 pins the exact candidate tarball and records the first expired npm browser
-authorization without pretending the package was published.
+authorization as historical pre-release evidence. The later
+[public release verification](docs/research/evidence/vertex-palace-0.3.0-public-release-2026-07-20.json)
+records the successful npm, GitHub Release, marketplace, and plugin checks.
 Run `npm run gate:control-first:v3` for a machine-readable 19-check pre-freeze
 audit, or `npm run check:release-ready` to run the complete benchmark checks
-first. Both intentionally fail until public registry metadata, `package.json`,
-`package-lock.json`, and the installed package all identify the same 0.3.0
-tarball while the public v3 manifest remains empty.
+first. Both intentionally fail until the still-0.2.1 benchmark dependency,
+`package-lock.json`, plan provenance, and installed package are deliberately
+rebound to the same public 0.3.0 artifact while the public v3 manifest remains
+empty.
 After those checks pass, `npm run freeze:control-first:v3` performs a dry run
 using the private key from `VERTEX_PALACE_BENCHMARK_VARIANT_KEY`; append
 `-- --write` only after reviewing the public commitment. The key is never

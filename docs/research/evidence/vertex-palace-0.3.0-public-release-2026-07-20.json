@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-07-20T20:16:19.431Z",
+  "subject": "Vertex Palace 0.3.0 public distribution verification",
+  "npm": {
+    "package": "vertex-palace",
+    "latest": "0.3.0",
+    "version": "0.3.0",
+    "tarball": "https://registry.npmjs.org/vertex-palace/-/vertex-palace-0.3.0.tgz",
+    "shasum": "9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e",
+    "integrity": "sha512-DXALXKH1k/Gj7PoprNDmz/tHlYum2T7QsU32el76mHy/U3u42zY02cshm5P8lwY6yqzkIoZ6h9/6df0QOlJp4Q==",
+    "cleanInstallPassed": true,
+    "installedCliVersion": "0.3.0",
+    "installedMcpToolCount": 10
+  },
+  "github": {
+    "repository": "https://github.com/lohchanhin/vertex-palace",
+    "release": "https://github.com/lohchanhin/vertex-palace/releases/tag/v0.3.0",
+    "tag": "v0.3.0",
+    "tagCommit": "1331d9da0aa242549026d70e7c752638c3169044",
+    "publishedAt": "2026-07-20T20:10:01Z",
+    "draft": false,
+    "prerelease": false
+  },
+  "codexPlugin": {
+    "codexCliVersion": "0.144.6",
+    "isolatedConfiguration": true,
+    "marketplaceCommand": "codex plugin marketplace add lohchanhin/vertex-palace --ref v0.3.0",
+    "marketplaceAddPassed": true,
+    "pluginCommand": "codex plugin add vertex-palace@vertex-palace-marketplace",
+    "pluginAddPassed": true,
+    "installedPluginVersion": "0.3.0",
+    "installedSourceRef": "v0.3.0",
+    "mcpPackagePin": "vertex-palace@0.3.0"
+  },
+  "claimBoundary": {
+    "supported": "The public npm package, GitHub Release, marketplace source, and Codex plugin installation path are available and mutually version-aligned.",
+    "notSupported": "Distribution verification does not establish a general Agent token, time, tool-call, or correctness advantage."
+  }
+}

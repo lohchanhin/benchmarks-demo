@@ -69,14 +69,20 @@ commitment、包哈希、脱敏结果与失败记录都会公开审计。
 这轮候选研究现已完成：尝试 64 个 Arm，63 个有效，58 个成功。Adaptive 在 decision-memory
 场景阻止了一次 Control scope 错误，也安全抵抗 stale memory；但 14 组双方成功配对中，
 相对 Control 的配对中位数仍多 +19,922.5 reported tokens、+10.135 秒、+2.5 calls。因此
-[候选最终报告](docs/zh-CN/CONTROL_FIRST_V3_CANDIDATE_FINAL.md)建议暂缓 stable npm 发布，
-先修正 bypass 与重复检查成本。这是安全性与可审计性结果，不是加速结论。
+[候选最终报告](docs/zh-CN/CONTROL_FIRST_V3_CANDIDATE_FINAL.md)当时建议暂缓发布，先修正
+bypass 与重复检查成本。这仍是安全性与可审计性结果，不是加速结论。
 
 [候选修订后工程确认](docs/zh-CN/REVISED_BYPASS_CONFIRMATION.md)现已公开 5 次全新探索性
 trial，20/20 个 Arm 全部有效且成功。移除 package 命令探索并收紧最终指引后，最新两组
 反向顺序配对中，Adaptive 每次少 1 个检索命令，引用路径的配对中位数少 7 条；配对
 中位数快 9.445 秒并少 17,316.5 reported tokens，但仍多 1 次调用。这是 small-local
 `bypass` 的正面证据，不是普遍 Token 或速度结论。
+
+Vertex Palace 0.3.0 现已公开发布到 npm 与 GitHub Release。全新 registry 安装能运行公开
+CLI；隔离的 Codex CLI 0.144.6 配置也成功加入 `v0.3.0` marketplace、安装 0.3.0 插件，
+并确认 MCP 命令固定使用 `vertex-palace@0.3.0`。公开 SHA-1、integrity、tag 与安装观察保留在
+[发布验证记录](docs/research/evidence/vertex-palace-0.3.0-public-release-2026-07-20.json)。
+发布成功只证明分发路径可用，不会改变 benchmark 的结论边界。
 
 下一轮独立协议把主比较改为 Adaptive Palace 对普通 Codex，主要效率指标固定为
 配对累计 `reportedTokens`，但仍先判断正确性与严格修改范围。新
@@ -87,7 +93,8 @@ oracle 拒绝。Aurora、Borealis 与 Cedar 只是三个虚构租户；正式 tr
 [英文 v3 协议草案](docs/research/PROTOCOL_V3.md)、[简体中文辅助说明](docs/zh-CN/PROTOCOL_V3.md)、
 [16-trial 草案计划](results/control-first-v3/plan.json)与[空结果 manifest](results/control-first-v3/manifest.json)
 已经公开。目前计划仍是 `frozen:false`、0 个 Agent 结果，不能执行。产品 0.3.0、
-clean install、记忆 smoke 与完整 benchmark 闸门通过后，才会冻结并打协议 tag。
+benchmark dependency、lockfile 与计划来源共同改绑到公开 0.3.0，并通过 clean install、
+记忆 smoke 与完整 benchmark 闸门后，才会冻结并打协议 tag。
 
 计划 schema 6 同时固定实现提交 `e901c1739c5aa907bc44ebcbd25bbdd7abd75e7a`、
 发布提交 `f2e0ccabb0f5a7af77a72b971524122469f47172`、候选 tarball SHA-1
@@ -103,11 +110,13 @@ memory smoke 的失败与修复、产品 commit、CI 证据和剩余闸门，不
 Control 与 Adaptive 都成功的记忆任务。它们只是修订正式设计的依据，不在 v3 manifest 内。
 
 [发布来源闸门](docs/zh-CN/CONTROL_FIRST_V3_RELEASE_PROVENANCE.md)固定候选 tarball，
-并如实记录第一次 npm 浏览器授权过期；不会把未完成发布写成成功。
+并如实记录第一次 npm 浏览器授权过期，作为发布前的历史证据；后续
+[公开发布验证](docs/research/evidence/vertex-palace-0.3.0-public-release-2026-07-20.json)
+则记录 npm、GitHub Release、marketplace 与插件安装全部成功。
 执行 `npm run gate:control-first:v3` 会得到机器可读的 19 项冻结前检查；
-`npm run check:release-ready` 会先跑完整 benchmark check。只要公开 registry、
-`package.json`、`package-lock.json` 与实际安装包还没有共同指向同一份 0.3.0，命令就会
-刻意失败，同时继续确认 v3 manifest 没有正式结果。
+`npm run check:release-ready` 会先跑完整 benchmark check。当前 benchmark dependency
+仍是 0.2.1；在 `package.json`、`package-lock.json`、计划来源与实际安装包刻意改绑到同一份
+公开 0.3.0 前，命令仍会失败，同时继续确认 v3 manifest 没有正式结果。
 上述检查通过后，`npm run freeze:control-first:v3` 会从
 `VERTEX_PALACE_BENCHMARK_VARIANT_KEY` 读取私钥并默认只做 dry run；审阅公开 commitment
 后才追加 `-- --write`。私钥不会输出、写文件或传给子进程。第一次正式执行必须从

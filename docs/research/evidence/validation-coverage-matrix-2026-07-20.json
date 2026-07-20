@@ -180,22 +180,32 @@
       "status": "blocked",
       "evidence": ["results/control-first-v3/plan.json", "results/control-first-v3/manifest.json"],
       "observed": { "frozen": false, "plannedTrials": 16, "attemptedTrials": 0, "plannedArms": 64, "attemptedArms": 0 },
-      "blocker": "Public npm 0.3.0, exact dependency install, clean release gate, freeze commit, and protocol tag are incomplete.",
+      "blocker": "The benchmark dependency and lockfile remain on 0.2.1, the draft plan still pins a pre-release candidate hash, and the clean release gate, freeze commit, and protocol tag are incomplete.",
       "allowedClaim": "The Control-first design is preregistered but unexecuted.",
       "forbiddenClaim": "Any v3 efficiency or correctness outcome exists."
     },
     {
       "id": "npm-publication-0-3-0",
-      "status": "blocked",
-      "evidence": ["docs/research/evidence/control-first-v3-release-provenance-2026-07-20.json"],
-      "observed": { "registryLatest": "0.2.3", "version0_3_0Exists": false },
-      "blocker": "Interactive npm browser authorization must complete and registry metadata must be read back.",
-      "allowedClaim": "0.3.0 is a locally verified release candidate.",
-      "forbiddenClaim": "npm users can install public 0.3.0."
+      "status": "validated-release-gate",
+      "evidence": [
+        "docs/research/evidence/control-first-v3-release-provenance-2026-07-20.json",
+        "docs/research/evidence/vertex-palace-0.3.0-public-release-2026-07-20.json"
+      ],
+      "observed": {
+        "registryLatest": "0.3.0",
+        "version0_3_0Exists": true,
+        "shasum": "9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e",
+        "cleanInstallPassed": true,
+        "githubReleasePublished": true,
+        "codexPluginInstallPassed": true
+      },
+      "blocker": null,
+      "allowedClaim": "npm users can install public 0.3.0 and Codex users can install the version-aligned v0.3.0 plugin from the Git marketplace.",
+      "forbiddenClaim": "Successful distribution proves an Agent efficiency or correctness advantage."
     }
   ],
   "nextEvidence": [
-    "publish and verify immutable npm 0.3.0 metadata",
+    "rebind the v3 plan, benchmark dependency, lockfile, and release gate to the immutable public 0.3.0 metadata",
     "freeze and tag the Control-first v3 protocol after a clean exact install",
     "run 16 preregistered sequential v3 trials",
     "preregister a separate small-OSS size threshold and repository",
