@@ -6,9 +6,10 @@ Plan: [`results/control-first-v3-candidate/plan.json`](../../results/control-fir
 
 Manifest: [`results/control-first-v3-candidate/manifest.json`](../../results/control-first-v3-candidate/manifest.json)
 
-Current progress: **8/16 trials complete**. See the audited
+Current progress: **12/16 trials complete**. See the audited
 [small-local block report](./CONTROL_FIRST_V3_CANDIDATE_SMALL_LOCAL.md),
-[cross-stack block report](./CONTROL_FIRST_V3_CANDIDATE_CROSS_STACK.md), and the
+[cross-stack block report](./CONTROL_FIRST_V3_CANDIDATE_CROSS_STACK.md),
+[decision-memory block report](./CONTROL_FIRST_V3_CANDIDATE_DECISION_MEMORY.md), and the
 post-outcome [system-awake amendment](./CONTROL_FIRST_V3_CANDIDATE_AMENDMENT_1.md).
 
 ## Why this validation exists

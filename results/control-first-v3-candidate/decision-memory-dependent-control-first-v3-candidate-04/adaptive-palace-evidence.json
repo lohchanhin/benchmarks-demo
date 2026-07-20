@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 5,
+  "runId": "decision-memory-dependent-control-first-v3-candidate-04",
+  "arm": "adaptive-palace",
+  "createdAt": "2026-07-20T18:03:54.129Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.3.0",
+  "scenarioVariant": {
+    "id": "seeded-tenant-owner-v1",
+    "stratum": 2,
+    "blindingKeyCommitment": "ae5fe2d428ec96d9398236bdd5fd34825d8ca16819507b7794cdcdaecd78262c",
+    "assignmentCommitment": "66ec34fd1c769a569d74d7e2c7d9a8e2063c5f8ca7b57d51bf4501ed1353f74f",
+    "candidateCount": 3,
+    "ownerDisclosedToPrompt": false
+  },
+  "execution": {
+    "durationMs": 102670,
+    "exitCode": 0,
+    "startedAt": "2026-07-20T18:02:11.133Z",
+    "endedAt": "2026-07-20T18:03:53.792Z",
+    "timedOut": false,
+    "sequence": 4,
+    "order": "route-only,full-palace,control,adaptive-palace",
+    "cacheState": "cold",
+    "platform": "win32",
+    "sandboxProfile": "workspace-write/windows-elevated",
+    "lastMessageTransport": "workspace-local-then-artifacts-v1"
+  },
+  "transcript": {
+    "eventCount": 35,
+    "malformedLines": 0,
+    "toolCalls": 12,
+    "commandCalls": 12,
+    "failedCalls": 0,
+    "commandOutputChars": 9235,
+    "agentMessageChars": 1585,
+    "inspectionCommands": 4,
+    "palaceCalls": 1,
+    "successfulPalaceCalls": 1,
+    "palaceContextOutputChars": 6353,
+    "palaceContextOutputBytes": 6353,
+    "palaceContextEstimatedTokens": 1589,
+    "adaptivePayload": {
+      "mode": "guarded-memory-palace",
+      "calls": 1,
+      "contextBytes": 6353,
+      "contextEstimatedTokens": 1589,
+      "routeStepCount": 9,
+      "primaryCount": 1,
+      "supportCount": 8,
+      "deferredCount": 0,
+      "memoryItemCount": 2,
+      "memoryCandidateCount": 2,
+      "memoryExcludedCount": 0,
+      "memoryEstimatedTokens": 192,
+      "guardrailCount": 3
+    },
+    "adaptivePayloadMatchesOutput": true,
+    "palaceReceivedTask": "Fix the article body text contrast regression for the independently governed launch tenant. Historical project decisions define which tenant owns this token. Keep the shared token, every other tenant, the resolver, and the public API unchanged. The launch tenant must meet WCAG AA, and the complete test suite must pass. Do not rewrite tests.",
+    "palaceCommandMatchesExpectedTask": true,
+    "adaptiveRequested": true,
+    "inspectedFiles": [
+      "clients/aurora/article-tokens.mjs",
+      "package.json",
+      "src/clients/tenant-registry.mjs",
+      "test/article-tokens.test.mjs"
+    ],
+    "referencedFiles": [
+      "README.md",
+      "clients/aurora/article-tokens.mjs",
+      "clients/borealis/article-tokens.mjs",
+      "clients/cedar/article-tokens.mjs",
+      "package.json",
+      "src/clients/tenant-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/rendering/article-tokens.mjs",
+      "src/themes/shared-article-tokens.mjs",
+      "test/article-tokens.test.mjs"
+    ],
+    "usage": {
+      "inputTokens": 185079,
+      "cachedInputTokens": 171264,
+      "outputTokens": 3298,
+      "totalTokens": 188377,
+      "uncachedInputTokens": 13815
+    }
+  },
+  "taskFidelityPassed": true,
+  "runtimeDiagnostics": {
+    "stderrChars": 523,
+    "warningLines": 2,
+    "errorLines": 0,
+    "routerErrors": 0,
+    "applyPatchVerificationErrors": 0,
+    "sandboxPreparationErrors": 0
+  },
+  "validity": {
+    "verified": true,
+    "passed": true,
+    "reason": "1/1 successful/total Palace calls; adaptiveRequested=true; expected true; adaptivePayloadMatchesOutput=true; taskFidelity=true; Codex exit code 0; timedOut=false; fixed execution settings match the run plan; sandbox preparation errors=0; expected 0; fixture tree matches 75509415d1dd9b17b118d7cb78be0c6d50e7b166"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": true,
+    "publicPassed": true,
+    "oraclePassed": true,
+    "exitCode": 0,
+    "durationMs": 178,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 0,
+    "oracleDurationMs": 75
+  },
+  "git": {
+    "status": [
+      "M clients/aurora/article-tokens.mjs"
+    ],
+    "changedFiles": [
+      "clients/aurora/article-tokens.mjs"
+    ],
+    "untrackedFiles": [],
+    "instrumentationFiles": [],
+    "instrumentationUntrackedFiles": [],
+    "numstat": [
+      {
+        "file": "clients/aurora/article-tokens.mjs",
+        "added": 1,
+        "deleted": 1
+      }
+    ],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "warning: in the working copy of 'clients/aurora/article-tokens.mjs', LF will be replaced by CRLF the next time Git touches it",
+    "headTree": "75509415d1dd9b17b118d7cb78be0c6d50e7b166"
+  },
+  "score": {
+    "total": 100,
+    "points": {
+      "correctness": 60,
+      "expectedCoverage": 20,
+      "scope": 20
+    },
+    "testsPassed": true,
+    "expectedCoverage": 1,
+    "changedFileRecall": 1,
+    "changedFilePrecision": 1,
+    "forbiddenViolation": false,
+    "expectedMatched": [
+      "clients/aurora/article-tokens.mjs"
+    ],
+    "expectedMissed": [],
+    "forbiddenChanged": [],
+    "unexpectedChanged": []
+  },
+  "scopeRequirement": {
+    "strict": true,
+    "passed": true,
+    "requiredChangedFilePrecision": 1,
+    "requiredChangedFileRecall": 1
+  },
+  "success": true,
+  "route": {
+    "routeId": "route_1eae7d1c4a308b45",
+    "confidence": 0.53,
+    "k": 8,
+    "recallAtK": 1,
+    "precisionAtK": 1,
+    "groundTruthFiles": [
+      "clients/aurora/article-tokens.mjs",
+      "clients/borealis/article-tokens.mjs",
+      "clients/cedar/article-tokens.mjs",
+      "src/clients/tenant-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/rendering/article-tokens.mjs",
+      "src/themes/shared-article-tokens.mjs",
+      "test/article-tokens.test.mjs"
+    ],
+    "matchedFiles": [
+      "clients/aurora/article-tokens.mjs",
+      "clients/borealis/article-tokens.mjs",
+      "clients/cedar/article-tokens.mjs",
+      "src/clients/tenant-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/rendering/article-tokens.mjs",
+      "src/themes/shared-article-tokens.mjs",
+      "test/article-tokens.test.mjs"
+    ],
+    "retrievedFiles": [
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-article-tokens.mjs",
+      "test/article-tokens.test.mjs",
+      "src/clients/tenant-registry.mjs",
+      "src/rendering/article-tokens.mjs",
+      "clients/cedar/article-tokens.mjs",
+      "clients/borealis/article-tokens.mjs",
+      "clients/aurora/article-tokens.mjs"
+    ]
+  },
+  "memory": {
+    "pitfallViolation": false,
+    "wrongMemoryAdopted": null
+  },
+  "palaceEvaluation": null
+}

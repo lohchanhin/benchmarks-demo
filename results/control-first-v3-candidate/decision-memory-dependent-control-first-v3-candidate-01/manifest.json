@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 5,
+  "protocolVersion": "3.0.0",
+  "id": "decision-memory-dependent-control-first-v3-candidate-01",
+  "createdAt": "2026-07-20T17:28:14.125Z",
+  "seed": "6da403bb44e960343999637114711d77",
+  "scenario": "decision-memory-dependent",
+  "scenarioTitle": "Launch-tenant ownership decision hidden from public tests",
+  "task": "Fix the article body text contrast regression for the independently governed launch tenant. Historical project decisions define which tenant owns this token. Keep the shared token, every other tenant, the resolver, and the public API unchanged. The launch tenant must meet WCAG AA, and the complete test suite must pass. Do not rewrite tests.",
+  "scenarioVariant": {
+    "id": "seeded-tenant-owner-v1",
+    "stratum": 1,
+    "blindingKeyCommitment": "ae5fe2d428ec96d9398236bdd5fd34825d8ca16819507b7794cdcdaecd78262c",
+    "assignmentCommitment": "75f17097f6a8ba6a1c348a703f7f86a164755136962a3a07e6ca93fae6586227",
+    "candidateCount": 3,
+    "ownerDisclosedToPrompt": false
+  },
+  "primaryComparison": "adaptive-vs-control",
+  "primaryEfficiencyMetric": "reportedTokens",
+  "cacheState": "warm",
+  "repositoryTree": "1768dbcde2e19b401e56e2c899d177bc8d8a17c9",
+  "baseline": {
+    "publicExpectedToFail": false,
+    "oracleExpectedToFail": true,
+    "testExitCode": 0,
+    "testDurationMs": 189,
+    "oracleExitCode": 1,
+    "oracleDurationMs": 76
+  },
+  "palaceSeed": {
+    "cli": "vertex-palace (local package)",
+    "routeOnly": {
+      "routeId": null,
+      "memorySeeded": false
+    },
+    "fullPalace": {
+      "routeId": "route_2521625f6e406c12",
+      "memorySeeded": true
+    },
+    "adaptivePalace": {
+      "routeId": "route_8fbdc817823bce44",
+      "memorySeeded": true
+    }
+  },
+  "paths": {
+    "run": ".",
+    "controlWorkspace": "arms/control",
+    "routeOnlyWorkspace": "arms/route-only",
+    "fullPalaceWorkspace": "arms/full-palace",
+    "controlPrompt": "prompts/control.txt",
+    "routeOnlyPrompt": "prompts/route-only.txt",
+    "fullPalacePrompt": "prompts/full-palace.txt",
+    "adaptivePalaceWorkspace": "arms/adaptive-palace",
+    "adaptivePalacePrompt": "prompts/adaptive-palace.txt"
+  },
+  "arms": {
+    "control": {
+      "commit": "2209dbb1d7dad528480db6885c71d73c543ba700",
+      "tree": "1768dbcde2e19b401e56e2c899d177bc8d8a17c9"
+    },
+    "route-only": {
+      "commit": "2209dbb1d7dad528480db6885c71d73c543ba700",
+      "tree": "1768dbcde2e19b401e56e2c899d177bc8d8a17c9"
+    },
+    "full-palace": {
+      "commit": "2209dbb1d7dad528480db6885c71d73c543ba700",
+      "tree": "1768dbcde2e19b401e56e2c899d177bc8d8a17c9"
+    },
+    "adaptive-palace": {
+      "commit": "2209dbb1d7dad528480db6885c71d73c543ba700",
+      "tree": "1768dbcde2e19b401e56e2c899d177bc8d8a17c9"
+    }
+  },
+  "generatedFileCount": 142,
+  "publishedFrom": ".benchmark-runs/<reviewed-local-run>",
+  "publication": {
+    "rawTranscriptsIncluded": false,
+    "sessionIdentifiersIncluded": false,
+    "localPathsIncluded": false
+  }
+}

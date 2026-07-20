@@ -5,7 +5,7 @@
   "status": "candidate-in-progress",
   "claimBoundary": "Non-formal prepublication Agent validation using the exact local 0.3.0 tarball. It does not replace or contribute observations to formal v3.",
   "plannedTrials": 16,
-  "completedTrials": 8,
+  "completedTrials": 12,
   "plannedScenarios": [
     "small-local-bug",
     "cross-stack-regression",
@@ -230,6 +230,110 @@
       },
       "publishedAt": "2026-07-20T17:25:14.551Z",
       "error": null
+    },
+    {
+      "trialId": "decision-memory-dependent-control-first-v3-candidate-01",
+      "formalTrialId": "decision-memory-dependent-control-first-v3-pilot-01",
+      "scenario": "decision-memory-dependent",
+      "seed": "6da403bb44e960343999637114711d77",
+      "order": [
+        "full-palace",
+        "adaptive-palace",
+        "route-only",
+        "control"
+      ],
+      "cacheState": "warm",
+      "status": "completed",
+      "report": "decision-memory-dependent-control-first-v3-candidate-01/comparison.json",
+      "evidenceDirectory": "decision-memory-dependent-control-first-v3-candidate-01",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": false,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T17:36:11.562Z",
+      "error": null
+    },
+    {
+      "trialId": "decision-memory-dependent-control-first-v3-candidate-02",
+      "formalTrialId": "decision-memory-dependent-control-first-v3-pilot-02",
+      "scenario": "decision-memory-dependent",
+      "seed": "8467a1fd15ca2b856c2264fdc90f5faa",
+      "order": [
+        "adaptive-palace",
+        "control",
+        "full-palace",
+        "route-only"
+      ],
+      "cacheState": "cold",
+      "status": "completed",
+      "report": "decision-memory-dependent-control-first-v3-candidate-02/comparison.json",
+      "evidenceDirectory": "decision-memory-dependent-control-first-v3-candidate-02",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T17:43:33.464Z",
+      "error": null
+    },
+    {
+      "trialId": "decision-memory-dependent-control-first-v3-candidate-03",
+      "formalTrialId": "decision-memory-dependent-control-first-v3-pilot-03",
+      "scenario": "decision-memory-dependent",
+      "seed": "fec53ebb71898490181bda46e37955bf",
+      "order": [
+        "control",
+        "route-only",
+        "adaptive-palace",
+        "full-palace"
+      ],
+      "cacheState": "warm",
+      "status": "completed",
+      "report": "decision-memory-dependent-control-first-v3-candidate-03/comparison.json",
+      "evidenceDirectory": "decision-memory-dependent-control-first-v3-candidate-03",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T17:53:17.292Z",
+      "error": null
+    },
+    {
+      "trialId": "decision-memory-dependent-control-first-v3-candidate-04",
+      "formalTrialId": "decision-memory-dependent-control-first-v3-pilot-04",
+      "scenario": "decision-memory-dependent",
+      "seed": "11395795da3624d59145a6abca39f16e",
+      "order": [
+        "route-only",
+        "full-palace",
+        "control",
+        "adaptive-palace"
+      ],
+      "cacheState": "cold",
+      "status": "completed",
+      "report": "decision-memory-dependent-control-first-v3-candidate-04/comparison.json",
+      "evidenceDirectory": "decision-memory-dependent-control-first-v3-candidate-04",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T18:03:54.156Z",
+      "error": null
     }
   ],
   "attempts": [
@@ -280,6 +384,30 @@
       "status": "completed",
       "attemptedAt": "2026-07-20T17:25:14.552Z",
       "error": null
+    },
+    {
+      "trialId": "decision-memory-dependent-control-first-v3-candidate-01",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T17:36:11.563Z",
+      "error": null
+    },
+    {
+      "trialId": "decision-memory-dependent-control-first-v3-candidate-02",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T17:43:33.465Z",
+      "error": null
+    },
+    {
+      "trialId": "decision-memory-dependent-control-first-v3-candidate-03",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T17:53:17.292Z",
+      "error": null
+    },
+    {
+      "trialId": "decision-memory-dependent-control-first-v3-candidate-04",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T18:03:54.156Z",
+      "error": null
     }
   ],
   "amendments": [
@@ -313,6 +441,20 @@
         "displayRequired": false
       },
       "completedAt": "2026-07-20T17:25:14.571Z",
+      "guardStopped": true,
+      "guardExitCode": 0,
+      "guardCleanExit": true,
+      "error": null
+    },
+    {
+      "scenario": "decision-memory-dependent",
+      "startedAt": "2026-07-20T17:28:06.100Z",
+      "systemAwake": {
+        "active": true,
+        "method": "windows-set-thread-execution-state-system-required",
+        "displayRequired": false
+      },
+      "completedAt": "2026-07-20T18:03:54.176Z",
       "guardStopped": true,
       "guardExitCode": 0,
       "guardCleanExit": true,
