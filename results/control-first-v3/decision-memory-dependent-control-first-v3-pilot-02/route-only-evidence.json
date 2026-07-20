@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 5,
+  "runId": "decision-memory-dependent-control-first-v3-pilot-02",
+  "arm": "route-only",
+  "createdAt": "2026-07-20T22:04:20.744Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.3.0",
+  "scenarioVariant": {
+    "id": "seeded-tenant-owner-v1",
+    "stratum": 2,
+    "blindingKeyCommitment": "6c835757dc87f59011486b17fa1adf0db07c996f92c7be0cb4e5c13129697b2c",
+    "assignmentCommitment": "87337057da0433d6544734d33626c2f7dbd1bdd755ad31cd726adf898296aaaf",
+    "candidateCount": 3,
+    "ownerDisclosedToPrompt": false
+  },
+  "execution": {
+    "durationMs": 149254,
+    "exitCode": 0,
+    "startedAt": "2026-07-20T22:01:51.138Z",
+    "endedAt": "2026-07-20T22:04:20.395Z",
+    "timedOut": false,
+    "sequence": 4,
+    "order": "adaptive-palace,control,full-palace,route-only",
+    "cacheState": "cold",
+    "platform": "win32",
+    "sandboxProfile": "workspace-write/windows-elevated",
+    "lastMessageTransport": "workspace-local-then-artifacts-v1"
+  },
+  "transcript": {
+    "eventCount": 58,
+    "malformedLines": 0,
+    "toolCalls": 22,
+    "commandCalls": 22,
+    "failedCalls": 0,
+    "commandOutputChars": 8827,
+    "agentMessageChars": 2342,
+    "inspectionCommands": 9,
+    "palaceCalls": 1,
+    "successfulPalaceCalls": 1,
+    "palaceContextOutputChars": 3600,
+    "palaceContextOutputBytes": 3600,
+    "palaceContextEstimatedTokens": 900,
+    "adaptivePayload": null,
+    "adaptivePayloadMatchesOutput": null,
+    "palaceReceivedTask": "Fix the article body text contrast regression for the independently governed launch tenant. Historical project decisions define which tenant owns this token. Keep the shared token, every other tenant, the resolver, and the public API unchanged. The launch tenant must meet WCAG AA, and the complete test suite must pass. Do not rewrite tests.",
+    "palaceCommandMatchesExpectedTask": true,
+    "adaptiveRequested": false,
+    "inspectedFiles": [
+      "README.md",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "src/clients/tenant-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/rendering/article-tokens.mjs",
+      "src/themes/shared-article-tokens.mjs",
+      "test/article-tokens.test.mjs"
+    ],
+    "referencedFiles": [
+      "README.md",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "src/clients/tenant-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/rendering/article-tokens.mjs",
+      "src/themes/shared-article-tokens.mjs",
+      "test/article-tokens.test.mjs"
+    ],
+    "usage": {
+      "inputTokens": 215855,
+      "cachedInputTokens": 190464,
+      "outputTokens": 5150,
+      "totalTokens": 221005,
+      "uncachedInputTokens": 25391
+    }
+  },
+  "taskFidelityPassed": true,
+  "runtimeDiagnostics": {
+    "stderrChars": 523,
+    "warningLines": 2,
+    "errorLines": 0,
+    "routerErrors": 0,
+    "applyPatchVerificationErrors": 0,
+    "sandboxPreparationErrors": 0
+  },
+  "validity": {
+    "verified": true,
+    "passed": true,
+    "reason": "1/1 successful/total Palace calls; adaptiveRequested=false; expected false; adaptivePayloadMatchesOutput=null; taskFidelity=true; Codex exit code 0; timedOut=false; fixed execution settings match the run plan; sandbox preparation errors=0; expected 0; fixture tree matches 395e27718268702d2ab4908736ae4d9d44d27cfa"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": false,
+    "publicPassed": true,
+    "oraclePassed": false,
+    "exitCode": 0,
+    "durationMs": 180,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 1,
+    "oracleDurationMs": 75
+  },
+  "git": {
+    "status": [
+      "M clients/<blinded-tenant>/article-tokens.mjs"
+    ],
+    "changedFiles": [
+      "clients/<blinded-tenant>/article-tokens.mjs"
+    ],
+    "untrackedFiles": [],
+    "instrumentationFiles": [],
+    "instrumentationUntrackedFiles": [],
+    "numstat": [
+      {
+        "file": "clients/<blinded-tenant>/article-tokens.mjs",
+        "added": 1,
+        "deleted": 1
+      }
+    ],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "warning: in the working copy of 'clients/<blinded-tenant>/article-tokens.mjs', LF will be replaced by CRLF the next time Git touches it",
+    "headTree": "395e27718268702d2ab4908736ae4d9d44d27cfa"
+  },
+  "score": {
+    "total": 0,
+    "points": {
+      "correctness": 0,
+      "expectedCoverage": 0,
+      "scope": 0
+    },
+    "testsPassed": false,
+    "expectedCoverage": 0,
+    "changedFileRecall": 0,
+    "changedFilePrecision": 0,
+    "forbiddenViolation": true,
+    "expectedMatched": [],
+    "expectedMissed": [
+      "clients/<blinded-tenant>/article-tokens.mjs"
+    ],
+    "forbiddenChanged": [
+      "clients/<blinded-tenant>/article-tokens.mjs"
+    ],
+    "unexpectedChanged": [
+      "clients/<blinded-tenant>/article-tokens.mjs"
+    ]
+  },
+  "scopeRequirement": {
+    "strict": true,
+    "passed": false,
+    "requiredChangedFilePrecision": 1,
+    "requiredChangedFileRecall": 1
+  },
+  "success": false,
+  "route": {
+    "routeId": "route_b8b32bda7fa12345",
+    "confidence": 0.53,
+    "k": 8,
+    "recallAtK": 1,
+    "precisionAtK": 1,
+    "groundTruthFiles": [
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "src/clients/tenant-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/rendering/article-tokens.mjs",
+      "src/themes/shared-article-tokens.mjs",
+      "test/article-tokens.test.mjs"
+    ],
+    "matchedFiles": [
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "src/clients/tenant-registry.mjs",
+      "src/rendering/article-page.mjs",
+      "src/rendering/article-tokens.mjs",
+      "src/themes/shared-article-tokens.mjs",
+      "test/article-tokens.test.mjs"
+    ],
+    "retrievedFiles": [
+      "src/rendering/article-page.mjs",
+      "src/themes/shared-article-tokens.mjs",
+      "test/article-tokens.test.mjs",
+      "src/clients/tenant-registry.mjs",
+      "src/rendering/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs",
+      "clients/<blinded-tenant>/article-tokens.mjs"
+    ]
+  },
+  "memory": {
+    "pitfallViolation": true,
+    "wrongMemoryAdopted": null
+  },
+  "palaceEvaluation": null
+}
