@@ -20,16 +20,24 @@ test("candidate validation mirrors all formal v3 trials without sharing result i
   assert.ok(candidate.trials.every((trial) => trial.trialId !== trial.formalTrialId));
 });
 
-test("candidate manifest starts empty and cannot contaminate formal v3 evidence", async () => {
-  const [formal, candidate] = await Promise.all([
+test("candidate manifest evolves only inside its own preregistered trial set", async () => {
+  const [formal, candidate, plan] = await Promise.all([
     readFile(`${repositoryRoot}/results/control-first-v3/manifest.json`, "utf8").then(JSON.parse),
-    readFile(`${repositoryRoot}/results/control-first-v3-candidate/manifest.json`, "utf8").then(JSON.parse)
+    readFile(`${repositoryRoot}/results/control-first-v3-candidate/manifest.json`, "utf8").then(JSON.parse),
+    readFile(`${repositoryRoot}/results/control-first-v3-candidate/plan.json`, "utf8").then(JSON.parse)
   ]);
   assert.deepEqual(formal.trials, []);
   assert.equal(candidate.formal, false);
   assert.equal(candidate.plannedTrials, 16);
-  assert.deepEqual(candidate.trials, []);
-  assert.deepEqual(candidate.attempts, []);
+  assert.ok(candidate.trials.length <= candidate.plannedTrials);
+  assert.equal(new Set(candidate.trials.map((trial) => trial.trialId)).size, candidate.trials.length);
+  const plannedIds = new Set(plan.trials.map((trial) => trial.trialId));
+  assert.ok(candidate.trials.every((trial) => plannedIds.has(trial.trialId)));
+  assert.ok(candidate.attempts.every((attempt) => plannedIds.has(attempt.trialId)));
+  assert.equal(
+    candidate.completedTrials,
+    candidate.trials.filter((trial) => trial.status === "completed").length
+  );
 });
 
 test("candidate ids change only the study label", () => {

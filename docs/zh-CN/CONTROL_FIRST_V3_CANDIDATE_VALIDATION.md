@@ -6,6 +6,9 @@
 
 Manifest：[`results/control-first-v3-candidate/manifest.json`](../../results/control-first-v3-candidate/manifest.json)
 
+当前进度：**完成 4/16 trial**。审计结果见
+[Small Local 区块报告](./CONTROL_FIRST_V3_CANDIDATE_SMALL_LOCAL.md)。
+
 ## 为什么先做这轮验证
 
 npm 正式发布需要操作者在浏览器或安全密钥页面互动授权。操作者暂时不在电脑前时，

@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 5,
+  "runId": "small-local-bug-control-first-v3-candidate-01",
+  "arm": "adaptive-palace",
+  "createdAt": "2026-07-20T13:35:45.594Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.3.0",
+  "scenarioVariant": null,
+  "execution": {
+    "durationMs": 56754,
+    "exitCode": 0,
+    "startedAt": "2026-07-20T13:34:48.414Z",
+    "endedAt": "2026-07-20T13:35:45.167Z",
+    "timedOut": false,
+    "sequence": 3,
+    "order": "control,route-only,adaptive-palace,full-palace",
+    "cacheState": "warm",
+    "platform": "win32",
+    "sandboxProfile": "workspace-write/windows-elevated",
+    "lastMessageTransport": "workspace-local-then-artifacts-v1"
+  },
+  "transcript": {
+    "eventCount": 23,
+    "malformedLines": 0,
+    "toolCalls": 7,
+    "commandCalls": 7,
+    "failedCalls": 0,
+    "commandOutputChars": 1539,
+    "agentMessageChars": 985,
+    "inspectionCommands": 2,
+    "palaceCalls": 1,
+    "successfulPalaceCalls": 1,
+    "palaceContextOutputChars": 177,
+    "palaceContextOutputBytes": 177,
+    "palaceContextEstimatedTokens": 45,
+    "adaptivePayload": {
+      "mode": "bypass",
+      "calls": 1,
+      "contextBytes": 177,
+      "contextEstimatedTokens": 45,
+      "routeStepCount": 1,
+      "primaryCount": 1,
+      "supportCount": 0,
+      "deferredCount": 0,
+      "memoryItemCount": 0,
+      "memoryCandidateCount": 0,
+      "memoryExcludedCount": 0,
+      "memoryEstimatedTokens": 0,
+      "guardrailCount": 0,
+      "primaryCandidate": "src/format-currency.mjs",
+      "reason": "High-confidence single-file route with no relevant memory, cross-stack dependency, contract risk, or scope risk."
+    },
+    "adaptivePayloadMatchesOutput": true,
+    "palaceReceivedTask": null,
+    "palaceCommandMatchesExpectedTask": true,
+    "adaptiveRequested": true,
+    "inspectedFiles": [
+      "package.json",
+      "src/format-currency.mjs"
+    ],
+    "referencedFiles": [
+      "package.json",
+      "src/format-currency.mjs"
+    ],
+    "usage": {
+      "inputTokens": 100278,
+      "cachedInputTokens": 67328,
+      "outputTokens": 1366,
+      "totalTokens": 101644,
+      "uncachedInputTokens": 32950
+    }
+  },
+  "taskFidelityPassed": true,
+  "runtimeDiagnostics": {
+    "stderrChars": 523,
+    "warningLines": 2,
+    "errorLines": 0,
+    "routerErrors": 0,
+    "applyPatchVerificationErrors": 0,
+    "sandboxPreparationErrors": 0
+  },
+  "validity": {
+    "verified": true,
+    "passed": true,
+    "reason": "1/1 successful/total Palace calls; adaptiveRequested=true; expected true; adaptivePayloadMatchesOutput=true; taskFidelity=true; Codex exit code 0; timedOut=false; fixed execution settings match the run plan; sandbox preparation errors=0; expected 0; fixture tree matches fb8f8e56054590c6fa09fc2844d18e3f93b95e3b"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": true,
+    "publicPassed": true,
+    "oraclePassed": true,
+    "exitCode": 0,
+    "durationMs": 213,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 0,
+    "oracleDurationMs": 94
+  },
+  "git": {
+    "status": [
+      "M src/format-currency.mjs"
+    ],
+    "changedFiles": [
+      "src/format-currency.mjs"
+    ],
+    "untrackedFiles": [],
+    "instrumentationFiles": [],
+    "instrumentationUntrackedFiles": [],
+    "numstat": [
+      {
+        "file": "src/format-currency.mjs",
+        "added": 1,
+        "deleted": 1
+      }
+    ],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "warning: in the working copy of 'src/format-currency.mjs', LF will be replaced by CRLF the next time Git touches it",
+    "headTree": "fb8f8e56054590c6fa09fc2844d18e3f93b95e3b"
+  },
+  "score": {
+    "total": 100,
+    "points": {
+      "correctness": 60,
+      "expectedCoverage": 20,
+      "scope": 20
+    },
+    "testsPassed": true,
+    "expectedCoverage": 1,
+    "changedFileRecall": 1,
+    "changedFilePrecision": 1,
+    "forbiddenViolation": false,
+    "expectedMatched": [
+      "src/format-currency.mjs"
+    ],
+    "expectedMissed": [],
+    "forbiddenChanged": [],
+    "unexpectedChanged": []
+  },
+  "scopeRequirement": {
+    "strict": true,
+    "passed": true,
+    "requiredChangedFilePrecision": 1,
+    "requiredChangedFileRecall": 1
+  },
+  "success": true,
+  "route": {
+    "routeId": "route_e43a03148b82cdaa",
+    "confidence": 0.52,
+    "k": 3,
+    "recallAtK": 1,
+    "precisionAtK": 0.6666666666666666,
+    "groundTruthFiles": [
+      "src/format-currency.mjs",
+      "test/format-currency.test.mjs"
+    ],
+    "matchedFiles": [
+      "src/format-currency.mjs",
+      "test/format-currency.test.mjs"
+    ],
+    "retrievedFiles": [
+      "src/format-currency.mjs",
+      "test/format-currency.test.mjs",
+      "README.md"
+    ]
+  },
+  "memory": {
+    "pitfallViolation": null,
+    "wrongMemoryAdopted": null
+  },
+  "palaceEvaluation": null
+}

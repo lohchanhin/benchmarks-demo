@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 5,
+  "runId": "small-local-bug-control-first-v3-candidate-03",
+  "arm": "adaptive-palace",
+  "createdAt": "2026-07-20T16:44:55.507Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": "0.3.0",
+  "scenarioVariant": null,
+  "execution": {
+    "durationMs": 35892,
+    "exitCode": 1,
+    "startedAt": "2026-07-20T16:44:19.289Z",
+    "endedAt": "2026-07-20T16:44:55.181Z",
+    "timedOut": false,
+    "sequence": 2,
+    "order": "full-palace,adaptive-palace,route-only,control",
+    "cacheState": "warm",
+    "platform": "win32",
+    "sandboxProfile": "workspace-write/windows-elevated",
+    "lastMessageTransport": "workspace-local-then-artifacts-v1"
+  },
+  "transcript": {
+    "eventCount": 14,
+    "malformedLines": 0,
+    "toolCalls": 0,
+    "commandCalls": 0,
+    "failedCalls": 0,
+    "commandOutputChars": 0,
+    "agentMessageChars": 0,
+    "inspectionCommands": 0,
+    "palaceCalls": 0,
+    "successfulPalaceCalls": 0,
+    "palaceContextOutputChars": null,
+    "palaceContextOutputBytes": null,
+    "palaceContextEstimatedTokens": null,
+    "adaptivePayload": null,
+    "adaptivePayloadMatchesOutput": null,
+    "palaceReceivedTask": null,
+    "palaceCommandMatchesExpectedTask": null,
+    "adaptiveRequested": false,
+    "inspectedFiles": [],
+    "referencedFiles": [],
+    "usage": {
+      "inputTokens": 0,
+      "cachedInputTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0,
+      "uncachedInputTokens": 0
+    }
+  },
+  "taskFidelityPassed": false,
+  "runtimeDiagnostics": {
+    "stderrChars": 15366,
+    "warningLines": 41,
+    "errorLines": 15,
+    "routerErrors": 0,
+    "applyPatchVerificationErrors": 0,
+    "sandboxPreparationErrors": 0
+  },
+  "validity": {
+    "verified": true,
+    "passed": false,
+    "reason": "0/0 successful/total Palace calls; adaptiveRequested=false; expected true; adaptivePayloadMatchesOutput=null; taskFidelity=false; Codex exit code 1; timedOut=false; fixed execution settings match the run plan; sandbox preparation errors=0; expected 0; fixture tree matches 61c287de05e8baa7dd87935a51922d974ba74b2c"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": false,
+    "publicPassed": false,
+    "oraclePassed": false,
+    "exitCode": 1,
+    "durationMs": 157,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 1,
+    "oracleDurationMs": 70
+  },
+  "git": {
+    "status": [],
+    "changedFiles": [],
+    "untrackedFiles": [],
+    "instrumentationFiles": [],
+    "instrumentationUntrackedFiles": [],
+    "numstat": [],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "",
+    "headTree": "61c287de05e8baa7dd87935a51922d974ba74b2c"
+  },
+  "score": {
+    "total": 20,
+    "points": {
+      "correctness": 0,
+      "expectedCoverage": 0,
+      "scope": 20
+    },
+    "testsPassed": false,
+    "expectedCoverage": 0,
+    "changedFileRecall": 0,
+    "changedFilePrecision": 0,
+    "forbiddenViolation": false,
+    "expectedMatched": [],
+    "expectedMissed": [
+      "src/format-currency.mjs"
+    ],
+    "forbiddenChanged": [],
+    "unexpectedChanged": []
+  },
+  "scopeRequirement": {
+    "strict": true,
+    "passed": false,
+    "requiredChangedFilePrecision": 1,
+    "requiredChangedFileRecall": 1
+  },
+  "success": false,
+  "route": null,
+  "memory": {
+    "pitfallViolation": null,
+    "wrongMemoryAdopted": null
+  },
+  "palaceEvaluation": null
+}

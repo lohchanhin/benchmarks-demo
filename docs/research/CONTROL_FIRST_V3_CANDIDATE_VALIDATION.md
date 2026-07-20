@@ -6,6 +6,9 @@ Plan: [`results/control-first-v3-candidate/plan.json`](../../results/control-fir
 
 Manifest: [`results/control-first-v3-candidate/manifest.json`](../../results/control-first-v3-candidate/manifest.json)
 
+Current progress: **4/16 trials complete**. See the audited
+[small-local block report](./CONTROL_FIRST_V3_CANDIDATE_SMALL_LOCAL.md).
+
 ## Why this validation exists
 
 The public npm release requires an interactive browser or security-key approval.

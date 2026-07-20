@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-07-21T01:05:00+08:00",
+  "scope": "Sanitized local Windows System event observations for candidate trial 03; no machine identifiers or raw event export.",
+  "trialId": "small-local-bug-control-first-v3-candidate-03",
+  "armEvidence": {
+    "fullPalace": {
+      "startedAtUtc": "2026-07-20T13:41:54.968Z",
+      "endedAtUtc": "2026-07-20T14:42:31.676Z",
+      "durationMs": 3636707,
+      "timedOut": true
+    },
+    "adaptivePalace": {
+      "startedAtUtc": "2026-07-20T16:44:19.289Z",
+      "endedAtUtc": "2026-07-20T16:44:55.181Z",
+      "durationMs": 35892,
+      "timedOut": false,
+      "startupFailure": "DNS resolution failed for chatgpt.com before any tool call."
+    }
+  },
+  "systemEvents": [
+    {
+      "localTime": "2026-07-20T21:43:36+08:00",
+      "eventId": 506,
+      "provider": "Microsoft-Windows-Kernel-Power",
+      "state": "entering-modern-standby",
+      "reason": "Idle Timeout"
+    },
+    {
+      "localTime": "2026-07-20T22:42:28+08:00",
+      "eventId": 507,
+      "provider": "Microsoft-Windows-Kernel-Power",
+      "state": "exiting-modern-standby",
+      "reason": "Austerity Battery Drain Budget Exceeded"
+    },
+    {
+      "localTime": "2026-07-21T00:44:20+08:00",
+      "eventId": 507,
+      "provider": "Microsoft-Windows-Kernel-Power",
+      "state": "exiting-modern-standby",
+      "reason": "AC/DC Display Burst"
+    }
+  ],
+  "classification": "Infrastructure-noisy candidate outcome. Full remains a timed-out failed outcome; Adaptive remains invalid for the primary pair. Neither is rewritten or replaced."
+}

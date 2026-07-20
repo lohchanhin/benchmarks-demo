@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "protocolVersion": "3.0.0",
   "formal": false,
-  "status": "candidate-not-started",
+  "status": "candidate-in-progress",
   "claimBoundary": "Non-formal prepublication Agent validation using the exact local 0.3.0 tarball. It does not replace or contribute observations to formal v3.",
   "plannedTrials": 16,
-  "completedTrials": 0,
+  "completedTrials": 4,
   "plannedScenarios": [
     "small-local-bug",
     "cross-stack-regression",
@@ -22,6 +22,136 @@
     "integrity": "sha512-muQvR5KxELoxhFKCUfnASJW58g9xdWp3+u6UJxtzAtiCpz8nh2GWDSm6UNmVIMeFt+qY7IdQ/s5yWrCcwgPRvg=="
   },
   "blindingKeyCommitment": "ae5fe2d428ec96d9398236bdd5fd34825d8ca16819507b7794cdcdaecd78262c",
-  "trials": [],
-  "attempts": []
+  "trials": [
+    {
+      "trialId": "small-local-bug-control-first-v3-candidate-01",
+      "formalTrialId": "small-local-bug-control-first-v3-pilot-01",
+      "scenario": "small-local-bug",
+      "seed": "79711b534b15afe141abbe405320f7e3",
+      "order": [
+        "control",
+        "route-only",
+        "adaptive-palace",
+        "full-palace"
+      ],
+      "cacheState": "warm",
+      "status": "completed",
+      "report": "small-local-bug-control-first-v3-candidate-01/comparison.json",
+      "evidenceDirectory": "small-local-bug-control-first-v3-candidate-01",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T13:36:50.491Z",
+      "error": null
+    },
+    {
+      "trialId": "small-local-bug-control-first-v3-candidate-02",
+      "formalTrialId": "small-local-bug-control-first-v3-pilot-02",
+      "scenario": "small-local-bug",
+      "seed": "50631072c2f39cc98d729f7033c4a5e3",
+      "order": [
+        "route-only",
+        "full-palace",
+        "control",
+        "adaptive-palace"
+      ],
+      "cacheState": "cold",
+      "status": "completed",
+      "report": "small-local-bug-control-first-v3-candidate-02/comparison.json",
+      "evidenceDirectory": "small-local-bug-control-first-v3-candidate-02",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T13:41:50.420Z",
+      "error": null
+    },
+    {
+      "trialId": "small-local-bug-control-first-v3-candidate-03",
+      "formalTrialId": "small-local-bug-control-first-v3-pilot-03",
+      "scenario": "small-local-bug",
+      "seed": "dd3f627d22686503d6b78a3217f9169b",
+      "order": [
+        "full-palace",
+        "adaptive-palace",
+        "route-only",
+        "control"
+      ],
+      "cacheState": "warm",
+      "status": "completed",
+      "report": "small-local-bug-control-first-v3-candidate-03/comparison.json",
+      "evidenceDirectory": "small-local-bug-control-first-v3-candidate-03",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": false,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": false
+      },
+      "publishedAt": "2026-07-20T16:48:12.890Z",
+      "error": "Codex execution failed for: full-palace, adaptive-palace"
+    },
+    {
+      "trialId": "small-local-bug-control-first-v3-candidate-04",
+      "formalTrialId": "small-local-bug-control-first-v3-pilot-04",
+      "scenario": "small-local-bug",
+      "seed": "b9cc6e0864c39e70b5b28d8058eefffe",
+      "order": [
+        "adaptive-palace",
+        "control",
+        "full-palace",
+        "route-only"
+      ],
+      "cacheState": "cold",
+      "status": "completed",
+      "report": "small-local-bug-control-first-v3-candidate-04/comparison.json",
+      "evidenceDirectory": "small-local-bug-control-first-v3-candidate-04",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T16:52:47.758Z",
+      "error": null
+    }
+  ],
+  "attempts": [
+    {
+      "trialId": "small-local-bug-control-first-v3-candidate-01",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T13:36:50.492Z",
+      "error": null
+    },
+    {
+      "trialId": "small-local-bug-control-first-v3-candidate-02",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T13:41:50.421Z",
+      "error": null
+    },
+    {
+      "trialId": "small-local-bug-control-first-v3-candidate-03",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T16:48:12.891Z",
+      "error": "Codex execution failed for: full-palace, adaptive-palace"
+    },
+    {
+      "trialId": "small-local-bug-control-first-v3-candidate-04",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T16:52:47.758Z",
+      "error": null
+    }
+  ]
 }
