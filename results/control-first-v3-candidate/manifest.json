@@ -153,5 +153,26 @@
       "attemptedAt": "2026-07-20T16:52:47.758Z",
       "error": null
     }
+  ],
+  "amendments": [
+    {
+      "id": "candidate-amendment-1-system-awake",
+      "recordedAfterCompletedTrials": 4,
+      "appliesFromScenario": "cross-stack-regression",
+      "reason": "Windows Modern Standby interrupted candidate trial 03 while the computer was unattended.",
+      "change": "Require a process-scoped ES_CONTINUOUS | ES_SYSTEM_REQUIRED guard for every remaining scenario block; do not request display wakefulness.",
+      "unchanged": [
+        "trial ids",
+        "seeds",
+        "arm order",
+        "cache state",
+        "model",
+        "reasoning effort",
+        "timeout",
+        "package artifact",
+        "tasks and oracles"
+      ],
+      "replacementPolicy": "No completed or failed trial is replaced. Trial 03 remains published as observed."
+    }
   ]
 }

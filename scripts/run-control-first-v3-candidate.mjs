@@ -8,6 +8,7 @@ import { runCommand } from "../src/commands/run.mjs";
 import { pathExists, readJson, writeJson } from "../src/lib/files.mjs";
 import { runProcess } from "../src/lib/process.mjs";
 import { repositoryRoot } from "../src/lib/root.mjs";
+import { startSystemAwake } from "../src/lib/system-awake.mjs";
 import {
   controlFirstScenarioIds,
   scenarioVariantKeyCommitment,
@@ -108,17 +109,27 @@ async function main() {
   assert.equal(metadata.shasum, candidatePlan.package.shasum, "Candidate tarball SHA-1 mismatch");
   assert.equal(metadata.integrity, candidatePlan.package.integrity, "Candidate tarball integrity mismatch");
   await assertCandidateOnlyWorktreeChanges();
-  await installCandidateTarball(options.tarball);
-  const installed = await readJson(path.join(repositoryRoot, "node_modules", "vertex-palace", "package.json"));
-  assert.equal(installed.version, candidatePlan.package.version);
-
-  process.env[scenarioVariantKeyEnvironment] = key;
+  const awake = await startSystemAwake();
+  await beginInfrastructureBlock(options.scenario, awake);
+  let blockError = null;
   try {
+    await installCandidateTarball(options.tarball);
+    const installed = await readJson(path.join(repositoryRoot, "node_modules", "vertex-palace", "package.json"));
+    assert.equal(installed.version, candidatePlan.package.version);
+    process.env[scenarioVariantKeyEnvironment] = key;
     for (const trial of selectedTrials) await executeTrial(trial, candidatePlan);
+    await updateCandidateStatus();
+  } catch (error) {
+    blockError = error instanceof Error ? error.message : String(error);
+    throw error;
   } finally {
     delete process.env[scenarioVariantKeyEnvironment];
+    const stopped = await awake.stop();
+    await finishInfrastructureBlock(options.scenario, { ...stopped, error: blockError });
+    if (!blockError && (stopped.exitCode !== 0 || stopped.stderr)) {
+      throw new Error(`System-awake guard did not stop cleanly (exit ${stopped.exitCode ?? "unknown"})`);
+    }
   }
-  await updateCandidateStatus();
   process.stdout.write(`Completed candidate block ${options.scenario} (4 trials / 16 Agent arms).\n`);
 }
 
@@ -252,6 +263,39 @@ async function updateCandidateStatus() {
   const completed = manifest.trials.filter((trial) => trial.status === "completed").length;
   manifest.status = completed === manifest.plannedTrials ? "candidate-complete" : "candidate-in-progress";
   manifest.completedTrials = completed;
+  await writeJson(candidateManifestPath, manifest);
+}
+
+async function beginInfrastructureBlock(scenario, awake) {
+  assert.equal(awake.active, true, "Candidate Agent blocks require an active system-awake guard");
+  const manifest = await readJson(candidateManifestPath);
+  manifest.infrastructureBlocks ??= [];
+  assert.equal(
+    manifest.infrastructureBlocks.some((block) => block.scenario === scenario),
+    false,
+    `Infrastructure metadata already exists for ${scenario}`
+  );
+  manifest.infrastructureBlocks.push({
+    scenario,
+    startedAt: new Date().toISOString(),
+    systemAwake: {
+      active: awake.active,
+      method: awake.method,
+      displayRequired: awake.displayRequired
+    }
+  });
+  await writeJson(candidateManifestPath, manifest);
+}
+
+async function finishInfrastructureBlock(scenario, result) {
+  const manifest = await readJson(candidateManifestPath);
+  const block = manifest.infrastructureBlocks?.find((entry) => entry.scenario === scenario);
+  assert.ok(block, `Infrastructure metadata is missing for ${scenario}`);
+  block.completedAt = new Date().toISOString();
+  block.guardStopped = result.stopped === true;
+  block.guardExitCode = result.exitCode;
+  block.guardCleanExit = result.exitCode === 0 && !result.stderr;
+  block.error = result.error;
   await writeJson(candidateManifestPath, manifest);
 }
 
