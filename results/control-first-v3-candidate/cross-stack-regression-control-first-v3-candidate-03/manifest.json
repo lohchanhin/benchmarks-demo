@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 5,
+  "protocolVersion": "3.0.0",
+  "id": "cross-stack-regression-control-first-v3-candidate-03",
+  "createdAt": "2026-07-20T17:15:05.059Z",
+  "seed": "e2f24a98e993f50efe9f29a9ada0b8db",
+  "scenario": "cross-stack-regression",
+  "scenarioTitle": "Cross-stack discounted shipping quote regression",
+  "task": "Fix checkout shipping quotes end to end. Free shipping must use the discounted merchandise subtotal, and the checkout view model must display the shipping amount returned by the quote service. Preserve the public response contract and make the complete test suite pass without changing tests.",
+  "primaryComparison": "adaptive-vs-control",
+  "primaryEfficiencyMetric": "reportedTokens",
+  "cacheState": "warm",
+  "repositoryTree": "eeb6f27c4c69653a93f085286693be9e34f76465",
+  "baseline": {
+    "publicExpectedToFail": true,
+    "oracleExpectedToFail": true,
+    "testExitCode": 1,
+    "testDurationMs": 280,
+    "oracleExitCode": 1,
+    "oracleDurationMs": 104
+  },
+  "palaceSeed": {
+    "cli": "vertex-palace (local package)",
+    "routeOnly": {
+      "routeId": null,
+      "memorySeeded": false
+    },
+    "fullPalace": {
+      "routeId": null,
+      "memorySeeded": false
+    },
+    "adaptivePalace": {
+      "routeId": null,
+      "memorySeeded": false
+    }
+  },
+  "paths": {
+    "run": ".",
+    "controlWorkspace": "arms/control",
+    "routeOnlyWorkspace": "arms/route-only",
+    "fullPalaceWorkspace": "arms/full-palace",
+    "controlPrompt": "prompts/control.txt",
+    "routeOnlyPrompt": "prompts/route-only.txt",
+    "fullPalacePrompt": "prompts/full-palace.txt",
+    "adaptivePalaceWorkspace": "arms/adaptive-palace",
+    "adaptivePalacePrompt": "prompts/adaptive-palace.txt"
+  },
+  "arms": {
+    "control": {
+      "commit": "698c2eb33ad0b34dcd142372b38b84c309323bef",
+      "tree": "eeb6f27c4c69653a93f085286693be9e34f76465"
+    },
+    "route-only": {
+      "commit": "698c2eb33ad0b34dcd142372b38b84c309323bef",
+      "tree": "eeb6f27c4c69653a93f085286693be9e34f76465"
+    },
+    "full-palace": {
+      "commit": "698c2eb33ad0b34dcd142372b38b84c309323bef",
+      "tree": "eeb6f27c4c69653a93f085286693be9e34f76465"
+    },
+    "adaptive-palace": {
+      "commit": "698c2eb33ad0b34dcd142372b38b84c309323bef",
+      "tree": "eeb6f27c4c69653a93f085286693be9e34f76465"
+    }
+  },
+  "generatedFileCount": 87,
+  "publishedFrom": ".benchmark-runs/<reviewed-local-run>",
+  "publication": {
+    "rawTranscriptsIncluded": false,
+    "sessionIdentifiersIncluded": false,
+    "localPathsIncluded": false
+  }
+}

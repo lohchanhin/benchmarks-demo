@@ -6,8 +6,9 @@
 
 Manifest：[`results/control-first-v3-candidate/manifest.json`](../../results/control-first-v3-candidate/manifest.json)
 
-当前进度：**完成 4/16 trial**。审计结果见
-[Small Local 区块报告](./CONTROL_FIRST_V3_CANDIDATE_SMALL_LOCAL.md)，后续基础设施修订见
+当前进度：**完成 8/16 trial**。审计结果见
+[Small Local 区块报告](./CONTROL_FIRST_V3_CANDIDATE_SMALL_LOCAL.md)、
+[Cross-Stack 区块报告](./CONTROL_FIRST_V3_CANDIDATE_CROSS_STACK.md)，后续基础设施修订见
 [防休眠守卫说明](./CONTROL_FIRST_V3_CANDIDATE_AMENDMENT_1.md)。
 
 ## 为什么先做这轮验证

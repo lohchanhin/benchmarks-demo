@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 5,
+  "runId": "cross-stack-regression-control-first-v3-candidate-03",
+  "arm": "control",
+  "createdAt": "2026-07-20T17:17:12.332Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "xhigh",
+  "codexVersion": "codex-cli 0.145.0-alpha.18",
+  "palaceVersion": null,
+  "scenarioVariant": null,
+  "execution": {
+    "durationMs": 51018,
+    "exitCode": 0,
+    "startedAt": "2026-07-20T17:16:20.780Z",
+    "endedAt": "2026-07-20T17:17:11.781Z",
+    "timedOut": false,
+    "sequence": 2,
+    "order": "adaptive-palace,control,full-palace,route-only",
+    "cacheState": "warm",
+    "platform": "win32",
+    "sandboxProfile": "workspace-write/windows-elevated",
+    "lastMessageTransport": "workspace-local-then-artifacts-v1"
+  },
+  "transcript": {
+    "eventCount": 21,
+    "malformedLines": 0,
+    "toolCalls": 4,
+    "commandCalls": 4,
+    "failedCalls": 0,
+    "commandOutputChars": 4520,
+    "agentMessageChars": 1146,
+    "inspectionCommands": 2,
+    "palaceCalls": 0,
+    "successfulPalaceCalls": 0,
+    "palaceContextOutputChars": null,
+    "palaceContextOutputBytes": null,
+    "palaceContextEstimatedTokens": null,
+    "adaptivePayload": null,
+    "adaptivePayloadMatchesOutput": null,
+    "palaceReceivedTask": null,
+    "palaceCommandMatchesExpectedTask": null,
+    "adaptiveRequested": false,
+    "inspectedFiles": [
+      "README.md",
+      "client/src/checkout/quote-view-model.mjs",
+      "package.json",
+      "server/src/pricing/create-quote.mjs",
+      "test/checkout-quote.test.mjs"
+    ],
+    "referencedFiles": [
+      "README.md",
+      "client/src/checkout/quote-view-model.mjs",
+      "package.json",
+      "server/src/pricing/create-quote.mjs",
+      "shared/src/money.mjs",
+      "test/checkout-quote.test.mjs"
+    ],
+    "usage": {
+      "inputTokens": 87616,
+      "cachedInputTokens": 74240,
+      "outputTokens": 1372,
+      "totalTokens": 88988,
+      "uncachedInputTokens": 13376
+    }
+  },
+  "taskFidelityPassed": null,
+  "runtimeDiagnostics": {
+    "stderrChars": 523,
+    "warningLines": 2,
+    "errorLines": 0,
+    "routerErrors": 0,
+    "applyPatchVerificationErrors": 0,
+    "sandboxPreparationErrors": 0
+  },
+  "validity": {
+    "verified": true,
+    "passed": true,
+    "reason": "0 Palace calls detected; expected 0; Codex exit code 0; timedOut=false; fixed execution settings match the run plan; sandbox preparation errors=0; expected 0; fixture tree matches eeb6f27c4c69653a93f085286693be9e34f76465"
+  },
+  "tests": {
+    "command": "node --test",
+    "passed": true,
+    "publicPassed": true,
+    "oraclePassed": true,
+    "exitCode": 0,
+    "durationMs": 286,
+    "oracleCommand": "node oracle/verify.mjs",
+    "oracleExitCode": 0,
+    "oracleDurationMs": 102
+  },
+  "git": {
+    "status": [
+      "M client/src/checkout/quote-view-model.mjs",
+      "M server/src/pricing/create-quote.mjs"
+    ],
+    "changedFiles": [
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs"
+    ],
+    "untrackedFiles": [],
+    "instrumentationFiles": [],
+    "instrumentationUntrackedFiles": [],
+    "numstat": [
+      {
+        "file": "client/src/checkout/quote-view-model.mjs",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "file": "server/src/pricing/create-quote.mjs",
+        "added": 1,
+        "deleted": 1
+      }
+    ],
+    "diffCheckPassed": true,
+    "diffCheckOutput": "warning: in the working copy of 'client/src/checkout/quote-view-model.mjs', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'server/src/pricing/create-quote.mjs', LF will be replaced by CRLF the next time Git touches it",
+    "headTree": "eeb6f27c4c69653a93f085286693be9e34f76465"
+  },
+  "score": {
+    "total": 100,
+    "points": {
+      "correctness": 60,
+      "expectedCoverage": 20,
+      "scope": 20
+    },
+    "testsPassed": true,
+    "expectedCoverage": 1,
+    "changedFileRecall": 1,
+    "changedFilePrecision": 1,
+    "forbiddenViolation": false,
+    "expectedMatched": [
+      "client/src/checkout/quote-view-model.mjs",
+      "server/src/pricing/create-quote.mjs"
+    ],
+    "expectedMissed": [],
+    "forbiddenChanged": [],
+    "unexpectedChanged": []
+  },
+  "scopeRequirement": {
+    "strict": true,
+    "passed": true,
+    "requiredChangedFilePrecision": 1,
+    "requiredChangedFileRecall": 1
+  },
+  "success": true,
+  "route": null,
+  "memory": {
+    "pitfallViolation": null,
+    "wrongMemoryAdopted": null
+  },
+  "palaceEvaluation": null
+}

@@ -5,7 +5,7 @@
   "status": "candidate-in-progress",
   "claimBoundary": "Non-formal prepublication Agent validation using the exact local 0.3.0 tarball. It does not replace or contribute observations to formal v3.",
   "plannedTrials": 16,
-  "completedTrials": 4,
+  "completedTrials": 8,
   "plannedScenarios": [
     "small-local-bug",
     "cross-stack-regression",
@@ -126,6 +126,110 @@
       },
       "publishedAt": "2026-07-20T16:52:47.758Z",
       "error": null
+    },
+    {
+      "trialId": "cross-stack-regression-control-first-v3-candidate-01",
+      "formalTrialId": "cross-stack-regression-control-first-v3-pilot-01",
+      "scenario": "cross-stack-regression",
+      "seed": "7584c744bb7e44ffa311e5e0c7751348",
+      "order": [
+        "route-only",
+        "full-palace",
+        "control",
+        "adaptive-palace"
+      ],
+      "cacheState": "warm",
+      "status": "completed",
+      "report": "cross-stack-regression-control-first-v3-candidate-01/comparison.json",
+      "evidenceDirectory": "cross-stack-regression-control-first-v3-candidate-01",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T17:09:42.249Z",
+      "error": null
+    },
+    {
+      "trialId": "cross-stack-regression-control-first-v3-candidate-02",
+      "formalTrialId": "cross-stack-regression-control-first-v3-pilot-02",
+      "scenario": "cross-stack-regression",
+      "seed": "558fab1450d9e23edbf72a204743c6e3",
+      "order": [
+        "full-palace",
+        "adaptive-palace",
+        "route-only",
+        "control"
+      ],
+      "cacheState": "cold",
+      "status": "completed",
+      "report": "cross-stack-regression-control-first-v3-candidate-02/comparison.json",
+      "evidenceDirectory": "cross-stack-regression-control-first-v3-candidate-02",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T17:14:59.142Z",
+      "error": null
+    },
+    {
+      "trialId": "cross-stack-regression-control-first-v3-candidate-03",
+      "formalTrialId": "cross-stack-regression-control-first-v3-pilot-03",
+      "scenario": "cross-stack-regression",
+      "seed": "e2f24a98e993f50efe9f29a9ada0b8db",
+      "order": [
+        "adaptive-palace",
+        "control",
+        "full-palace",
+        "route-only"
+      ],
+      "cacheState": "warm",
+      "status": "completed",
+      "report": "cross-stack-regression-control-first-v3-candidate-03/comparison.json",
+      "evidenceDirectory": "cross-stack-regression-control-first-v3-candidate-03",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T17:20:19.148Z",
+      "error": null
+    },
+    {
+      "trialId": "cross-stack-regression-control-first-v3-candidate-04",
+      "formalTrialId": "cross-stack-regression-control-first-v3-pilot-04",
+      "scenario": "cross-stack-regression",
+      "seed": "80c8b2585cb2bde3184a762aeee821c6",
+      "order": [
+        "control",
+        "route-only",
+        "adaptive-palace",
+        "full-palace"
+      ],
+      "cacheState": "cold",
+      "status": "completed",
+      "report": "cross-stack-regression-control-first-v3-candidate-04/comparison.json",
+      "evidenceDirectory": "cross-stack-regression-control-first-v3-candidate-04",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T17:25:14.551Z",
+      "error": null
     }
   ],
   "attempts": [
@@ -152,6 +256,30 @@
       "status": "completed",
       "attemptedAt": "2026-07-20T16:52:47.758Z",
       "error": null
+    },
+    {
+      "trialId": "cross-stack-regression-control-first-v3-candidate-01",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T17:09:42.249Z",
+      "error": null
+    },
+    {
+      "trialId": "cross-stack-regression-control-first-v3-candidate-02",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T17:14:59.144Z",
+      "error": null
+    },
+    {
+      "trialId": "cross-stack-regression-control-first-v3-candidate-03",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T17:20:19.149Z",
+      "error": null
+    },
+    {
+      "trialId": "cross-stack-regression-control-first-v3-candidate-04",
+      "status": "completed",
+      "attemptedAt": "2026-07-20T17:25:14.552Z",
+      "error": null
     }
   ],
   "amendments": [
@@ -173,6 +301,22 @@
         "tasks and oracles"
       ],
       "replacementPolicy": "No completed or failed trial is replaced. Trial 03 remains published as observed."
+    }
+  ],
+  "infrastructureBlocks": [
+    {
+      "scenario": "cross-stack-regression",
+      "startedAt": "2026-07-20T17:04:29.447Z",
+      "systemAwake": {
+        "active": true,
+        "method": "windows-set-thread-execution-state-system-required",
+        "displayRequired": false
+      },
+      "completedAt": "2026-07-20T17:25:14.571Z",
+      "guardStopped": true,
+      "guardExitCode": 0,
+      "guardCleanExit": true,
+      "error": null
     }
   ]
 }
