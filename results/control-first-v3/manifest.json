@@ -264,6 +264,32 @@
       },
       "publishedAt": "2026-07-20T22:04:41.618Z",
       "tenantIdentifiersRedacted": true
+    },
+    {
+      "trialId": "decision-memory-dependent-control-first-v3-pilot-03",
+      "scenario": "decision-memory-dependent",
+      "seed": "fec53ebb71898490181bda46e37955bf",
+      "order": [
+        "control",
+        "route-only",
+        "adaptive-palace",
+        "full-palace"
+      ],
+      "status": "completed",
+      "attemptedAt": "2026-07-20T22:13:07.829Z",
+      "report": "decision-memory-dependent-control-first-v3-pilot-03/comparison.json",
+      "error": null,
+      "evidenceDirectory": "decision-memory-dependent-control-first-v3-pilot-03",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": false,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T22:13:26.295Z",
+      "tenantIdentifiersRedacted": true
     }
   ]
 }

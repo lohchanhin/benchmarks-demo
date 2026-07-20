@@ -1,10 +1,10 @@
 # Vertex Palace Control-First Exploratory Analysis
 
 Planned pilot trials: 16
-Attempted trials: 10
-Loaded reports: 10
+Attempted trials: 11
+Loaded reports: 11
 
-Interim only: 10/16 planned trials are represented. Do not interpret these intervals or p-values as final evidence.
+Interim only: 11/16 planned trials are represented. Do not interpret these intervals or p-values as final evidence.
 
 Primary comparison: Adaptive Palace versus Control
 Primary efficiency metric: cumulative reported tokens
@@ -13,7 +13,7 @@ Primary efficiency metric: cumulative reported tokens
 | --- | --- | ---: | ---: | ---: | --- | ---: | ---: |
 | small-local-bug | Adaptive Palace - Control | 4 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
 | cross-stack-regression | Adaptive Palace - Control | 4 | 100.0% | 100.0% | 0.0% [0.0%, 0.0%] | 1.0000 | 1.0000 |
-| decision-memory-dependent | Adaptive Palace - Control | 2 | 0.0% | 100.0% | 100.0% [100.0%, 100.0%] | 0.5000 | 1.0000 |
+| decision-memory-dependent | Adaptive Palace - Control | 3 | 0.0% | 100.0% | 100.0% [100.0%, 100.0%] | 0.2500 | 0.7500 |
 
 ## Mutually Successful Pair Efficiency
 
@@ -76,12 +76,12 @@ Each contrast is treatment minus baseline. Negative efficiency values favor the 
 | cross-stack-regression | Full Palace - Route-only | Palace context estimated tokens | 4 | 781 | 781 | 0 [0, 0] |
 | cross-stack-regression | Full Palace - Route-only | Tool calls | 4 | 12 | 10 | -2.5 [-6, 6] |
 | cross-stack-regression | Full Palace - Route-only | Wall time | 4 | 55.9s | 57.8s | 0.7s [-3.3s, 4.1s] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Reported tokens | 2 | 223,082.5 | 123,698 | -99,384.5 [-122,055, -76,714] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Uncached input tokens | 2 | 22,231.5 | 13,902 | -8,329.5 [-15,630, -1,029] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Palace context output bytes | 2 | 4,576 | 6,902.5 | 2,326.5 [2,319, 2,334] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Palace context estimated tokens | 2 | 1,144.5 | 1,726 | 581.5 [580, 583] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Tool calls | 2 | 22 | 9 | -13 [-15, -11] |
-| decision-memory-dependent | Adaptive Palace - Full Palace | Wall time | 2 | 99.8s | 71.1s | -28.7s [-39.9s, -17.5s] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Reported tokens | 3 | 193,557 | 116,843 | -76,714 [-122,055, -38,098] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Uncached input tokens | 3 | 20,233 | 15,477 | -4,756 [-15,630, -1,029] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Palace context output bytes | 3 | 4,571 | 6,890 | 2,319 [2,308, 2,334] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Palace context estimated tokens | 3 | 1,143 | 1,723 | 580 [577, 583] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Tool calls | 3 | 20 | 9 | -12 [-15, -11] |
+| decision-memory-dependent | Adaptive Palace - Full Palace | Wall time | 3 | 93.8s | 65.8s | -22.1s [-39.9s, -17.5s] |
 
 ## Scope Outcomes Across Valid Primary Pairs
 
@@ -93,8 +93,8 @@ Scope is summarized for every valid Adaptive-Control pair, including runs that d
 | small-local-bug | Adaptive Palace | 100.0% | 100.0% | 0 | none |
 | cross-stack-regression | Control | 100.0% | 100.0% | 0 | none |
 | cross-stack-regression | Adaptive Palace | 100.0% | 100.0% | 0 | none |
-| decision-memory-dependent | Control | 0.0% | 0.0% | 2 | none |
-| decision-memory-dependent | Adaptive Palace | 100.0% | 100.0% | 0 | `decision-memory-dependent-control-first-v3-pilot-01`, `decision-memory-dependent-control-first-v3-pilot-02` |
+| decision-memory-dependent | Control | 0.0% | 0.0% | 3 | none |
+| decision-memory-dependent | Adaptive Palace | 100.0% | 100.0% | 0 | `decision-memory-dependent-control-first-v3-pilot-01`, `decision-memory-dependent-control-first-v3-pilot-02`, `decision-memory-dependent-control-first-v3-pilot-03` |
 
 Efficiency metrics are calculated only for mutually successful pairs. Raw values and bootstrap intervals are available in the JSON report.
 
