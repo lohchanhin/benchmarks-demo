@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-20T20:00:12.022Z",
+  "claimBoundary": "Two exploratory final-command pairs. Descriptive mechanism evidence only; no general performance or causal claim.",
+  "candidate": {
+    "name": "vertex-palace",
+    "version": "0.3.0",
+    "sourceCommit": "a29053f5952131887ff057a8fa7e6777ab045e1f",
+    "shasum": "9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e",
+    "integrity": "sha512-DXALXKH1k/Gj7PoprNDmz/tHlYum2T7QsU32el76mHy/U3u42zY02cshm5P8lwY6yqzkIoZ6h9/6df0QOlJp4Q=="
+  },
+  "validPairs": 2,
+  "successfulPairs": 2,
+  "pairDeltasAdaptiveMinusControl": [
+    {
+      "trialId": "final-command-small-local-04",
+      "durationMs": -15397,
+      "toolCalls": 0,
+      "reportedTokens": -33698,
+      "uncachedInputTokens": -18114,
+      "inspectionCommands": -1,
+      "referencedPaths": -4,
+      "controlRouterErrors": 1
+    },
+    {
+      "trialId": "final-command-small-local-05",
+      "durationMs": -3492,
+      "toolCalls": 2,
+      "reportedTokens": -935,
+      "uncachedInputTokens": -6861,
+      "inspectionCommands": -1,
+      "referencedPaths": -10,
+      "controlRouterErrors": 0
+    }
+  ],
+  "pairedMediansAdaptiveMinusControl": {
+    "durationMs": -9444.5,
+    "toolCalls": 1,
+    "reportedTokens": -17316.5,
+    "uncachedInputTokens": -12487.5,
+    "inspectionCommands": -1,
+    "referencedPaths": -7
+  },
+  "mechanism": {
+    "adaptivePayloadEstimatedTokens": [
+      65,
+      65
+    ],
+    "adaptivePackageMetadataReads": [
+      0,
+      0
+    ],
+    "adaptiveReferencedPaths": [
+      [
+        "src/format-currency.mjs"
+      ],
+      [
+        "src/format-currency.mjs"
+      ]
+    ],
+    "exactFinalCommandCopiedAsOneShellCall": [
+      false,
+      false
+    ],
+    "adaptiveFinalCheckCommands": [
+      3,
+      3
+    ],
+    "finalChecksLaunchedInOneModelTurn": [
+      true,
+      true
+    ]
+  },
+  "priorExactCommandPairedMediansAdaptiveMinusControl": {
+    "durationMs": -86,
+    "toolCalls": 1.5,
+    "reportedTokens": 6670.5,
+    "uncachedInputTokens": 7177.5,
+    "inspectionCommands": -1,
+    "referencedPaths": -3
+  },
+  "interpretation": "Both final-command pairs were valid, correct, and faster with fewer reported and uncached input tokens than Control. Adaptive consistently inspected one file and avoided package metadata. The Agent did not copy the final check as one shell call, so call batching remains unresolved. One Control arm had a router error; the error-free reverse-order pair still showed a smaller improvement. These two pairs support a fresh confirmatory study, not a universal speedup claim."
+}

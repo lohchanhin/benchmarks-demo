@@ -1,9 +1,10 @@
 # 修订版 Bypass 工程确认
 
-状态：**3 次探索性试验完成，12 个 Agent arm 全部有效且成功**。
+状态：**5 次探索性试验完成，20 个 Agent arm 全部有效且成功**。
 
 [英文报告](../research/REVISED_BYPASS_CONFIRMATION.md) |
-[机器可读摘要](../../results/revised-confirmation/exact-command-summary.json) |
+[最终命令机器摘要](../../results/revised-confirmation/final-command-summary.json) |
+[精确命令机器摘要](../../results/revised-confirmation/exact-command-summary.json) |
 [证据清单](../../results/revised-confirmation/manifest.json)
 
 ## 为什么要做这组确认
@@ -27,6 +28,10 @@ Adaptive 仍然打开 `package.json`。它虽然正确且有效，但比 Control
 `4b0440cd32270c951b13e83e0d18fd5038e1108f`，SHA-1 为
 `19c8f5452050959ae6a7beb18dc71199a2174a76`。
 
+最终候选版进一步缩短 bypass 原因，并输出一条包含目标文件的精确 Git 检查命令。
+测试 artifact 绑定源码提交 `a29053f5952131887ff057a8fa7e6777ab045e1f`，
+SHA-1 为 `9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e`。
+
 ## 精确命令的两个配对
 
 两个试验的所有 arm 都通过公开测试、hidden oracle、严格修改范围、任务忠实度
@@ -40,7 +45,7 @@ Adaptive 仍然打开 `package.json`。它虽然正确且有效，但比 Control
 
 时间为负代表 Adaptive 较快；调用或 token 为正代表 Adaptive 使用更多。
 
-## 已经确认的好发展
+## 精确测试命令已经确认的改善
 
 - 两个配对中 Adaptive 都选择 `bypass`，输出只有约 64 tokens。
 - Adaptive 两次都没有再读取 `package.json`。
@@ -55,5 +60,31 @@ Agent 没有稳定遵守「合并最终检查」的文字指令。一次把 `git
 拆成三次。因此即使 package 重读已经消失，仍保留多 1 到 2 次调用的成本，
 目前也还不能声称节省 reported tokens。
 
-下一项产品实验应直接输出一条可执行的最终检查命令，而不是继续增加说明文字。
-只有两个配对不足以支持发布层级的性能结论，exact-command 版本仍是工程候选。
+因此下一版改为直接输出一条可执行的最终检查命令，而不是继续增加说明文字。
+
+## 最终命令的两个配对
+
+最终候选使用两组全新 seed，并交换 Control 与 Adaptive 的先后顺序。8 个 Arm 全部
+通过公开测试、hidden oracle、严格修改范围、任务忠实度与 runtime 有效性检查。
+
+| 试验 | 顺序前两项 | Adaptive - Control 时间 | 调用 | Reported tokens | 检索命令 | 引用路径 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| `final-command-small-local-04` | Adaptive -> Control | -15.397 秒 | 0 | -33,698 | -1 | -4 |
+| `final-command-small-local-05` | Control -> Adaptive | -3.492 秒 | +2 | -935 | -1 | -10 |
+| **配对中位数** | 顺序平衡 | **-9.445 秒** | **+1** | **-17,316.5** | **-1** | **-7** |
+
+两组中 Adaptive 都更快，也都减少 reported tokens 与 uncached input tokens；每次
+只交付约 65 tokens，没有读取 package metadata，只检索并引用
+`src/format-currency.mjs`。第一组 Control 有 1 次 router error 与 1 次失败调用，可能
+放大差值；没有错误且 Control 先执行的第二组，Adaptive 仍快 3.492 秒并少 935
+reported tokens。
+
+## 当前结论边界
+
+Agent 并没有把 Palace 提供的 Git 检查逐字复制成一个 shell call；两次都在同一个
+model turn 内并行启动 3 个检查。因此「调用合并」仍未真正解决，但 package 重读与
+重复仓库探索已经消失。
+
+这两组结果是 small-local `bypass` 的正面候选证据，不足以证明 Vertex Palace 普遍
+省时间或 Token。它们支持启动新的正式复验，也支持在保留这条说明边界的前提下发布
+产品版本。

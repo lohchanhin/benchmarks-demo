@@ -134,14 +134,14 @@ therefore holds stable npm publication while bypass and repeated-inspection
 overhead are revised. This is a safety and auditability result, not a speedup
 claim.
 
-The first [post-candidate engineering confirmation](docs/research/REVISED_BYPASS_CONFIRMATION.md)
-now publishes three fresh exploratory trials and 12/12 valid, successful arms.
-In two exact-command pairs, Adaptive stopped reopening `package.json`, used one
-fewer inspection command, and referenced a paired median three fewer repository
-paths. The paired median wall-time difference was effectively zero (-0.086 s),
-while Adaptive still used +1.5 calls and +6,670.5 reported tokens. This narrows
-the remaining overhead to split final checks; it does not establish a Token or
-speed advantage.
+The [post-candidate engineering confirmation](docs/research/REVISED_BYPASS_CONFIRMATION.md)
+now publishes five fresh exploratory trials and 20/20 valid, successful arms.
+After removing package-command discovery and tightening final guidance, the two
+latest opposite-order pairs used one fewer inspection command and a paired
+median seven fewer repository paths. Adaptive was 9.445 seconds faster and used
+17,316.5 fewer reported tokens at the paired median, while still using one more
+call. This is encouraging small-local `bypass` evidence, not a general Token or
+speed claim.
 
 The next independent protocol now asks the product-facing question directly:
 Adaptive Palace versus normal Codex. Its primary efficiency metric is paired

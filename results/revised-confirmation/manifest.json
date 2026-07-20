@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "protocolVersion": "3.0.0",
   "formal": false,
-  "status": "engineering-confirmation-in-progress",
+  "status": "engineering-confirmation-complete",
   "claimBoundary": "Exploratory post-candidate engineering confirmation. These trials do not replace, amend, or contribute observations to the frozen candidate study or formal v3.",
-  "plannedTrials": 3,
-  "completedTrials": 3,
+  "plannedTrials": 5,
+  "completedTrials": 5,
   "formalV3Unchanged": true,
   "trials": [
     {
@@ -103,6 +103,70 @@
         "adaptive-palace": true
       },
       "publishedAt": "2026-07-20T19:32:31.261Z"
+    },
+    {
+      "trialId": "final-command-small-local-04",
+      "scenario": "small-local-bug",
+      "seed": "final-command-small-local-seed-04",
+      "order": [
+        "adaptive-palace",
+        "control",
+        "full-palace",
+        "route-only"
+      ],
+      "cacheState": "warm",
+      "intervention": "exact-final-check-command",
+      "package": {
+        "name": "vertex-palace",
+        "version": "0.3.0",
+        "sourceCommit": "a29053f5952131887ff057a8fa7e6777ab045e1f",
+        "shasum": "9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e",
+        "integrity": "sha512-DXALXKH1k/Gj7PoprNDmz/tHlYum2T7QsU32el76mHy/U3u42zY02cshm5P8lwY6yqzkIoZ6h9/6df0QOlJp4Q=="
+      },
+      "status": "completed",
+      "report": "final-command-small-local-04/comparison.json",
+      "evidenceDirectory": "final-command-small-local-04",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T20:00:11.022Z"
+    },
+    {
+      "trialId": "final-command-small-local-05",
+      "scenario": "small-local-bug",
+      "seed": "final-command-small-local-seed-05",
+      "order": [
+        "control",
+        "adaptive-palace",
+        "route-only",
+        "full-palace"
+      ],
+      "cacheState": "warm",
+      "intervention": "exact-final-check-command",
+      "package": {
+        "name": "vertex-palace",
+        "version": "0.3.0",
+        "sourceCommit": "a29053f5952131887ff057a8fa7e6777ab045e1f",
+        "shasum": "9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e",
+        "integrity": "sha512-DXALXKH1k/Gj7PoprNDmz/tHlYum2T7QsU32el76mHy/U3u42zY02cshm5P8lwY6yqzkIoZ6h9/6df0QOlJp4Q=="
+      },
+      "status": "completed",
+      "report": "final-command-small-local-05/comparison.json",
+      "evidenceDirectory": "final-command-small-local-05",
+      "rawTranscriptsPublished": false,
+      "comparisonEligible": true,
+      "armValidity": {
+        "control": true,
+        "route-only": true,
+        "full-palace": true,
+        "adaptive-palace": true
+      },
+      "publishedAt": "2026-07-20T20:00:12.022Z"
     }
   ]
 }

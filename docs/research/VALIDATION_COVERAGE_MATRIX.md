@@ -77,6 +77,7 @@ Arms.
 | Real-repository history-dependent task | **Not tested** | None | Memory value on a real project remains unknown. |
 | Real-repository architecture/refactor task | **Not tested** | None | Cross-module architecture coverage remains unknown. |
 | True adaptive bypass contract | **Candidate evidence** | 0.3.0 candidate: Adaptive selected bypass in 3/3 valid small-local runs; 177-byte payload | Palace payload shrank, but Agent cost still increased by +14,029 tokens and +2 calls versus Control. |
+| Revised small-local bypass | **Post-candidate exploratory evidence** | Final candidate: 2 opposite-order pairs, 8/8 valid and successful Arms; 65-token payload; Adaptive median -17,316.5 reported tokens, -9.445 s, +1 call versus Control | A repeated directional improvement after removing package rereads; n=2 and one Control router error do not establish a general effect. |
 | Memory-dependent tenant fixture | **Candidate exploratory evidence** | 4 trials: Adaptive and Full 4/4, Control 3/4, Route-only 1/4 | One Control scope violation was prevented; exact paired p=1.0, so the correctness effect is not established. |
 | Stale-memory resistance | **Candidate exploratory evidence** | 0.3.0 candidate: 4 trials, 16/16 successful Arms, zero wrong-memory adoption | Guardrails were safe, but Adaptive carried two stale memories as warnings instead of excluding them. |
 | Adaptive versus Control efficiency | **Candidate negative evidence** | 14 mutual successes: Adaptive +19,922.5 tokens, +10.135 s, +2.5 calls; all 95% CIs above zero | The tested 0.3.0 candidate did not improve end-to-end efficiency and should not be marketed as a speedup. |
@@ -93,6 +94,9 @@ Arms.
   tenant-scope error and never adopted stale memory.
 - The same candidate study found higher end-to-end Token, time, and tool-call
   cost than Control across mutually successful pairs.
+- In two fresh final-candidate small-local pairs, Adaptive inspected one file
+  and used fewer reported tokens and less wall time than Control in both pairs;
+  this is exploratory post-candidate evidence, not a universal result.
 - In the retained v2.2 study, Adaptive reduced Palace's own payload relative to
   Full Palace, but did not demonstrate lower end-to-end Token use or wall time
   than Control.
@@ -107,11 +111,11 @@ Arms.
 
 ## Next Evidence
 
-1. Remove explicit-call and repeated-inspection overhead for bypass and bounded
-   cross-stack tasks; exclude clear stale scope mismatches.
-2. Build an immutable revised candidate and rerun a fresh preregistered
-   confirmation before stable npm publication.
-3. After npm and clean-install gates pass, freeze and tag the formal v3 plan.
+1. Publish the hash-bound 0.3.0 candidate only after npm, clean-install, CLI,
+   MCP, and repository tests agree on the same artifact.
+2. Preregister a fresh confirmation that repeats the small-local result and
+   tests bounded cross-stack behavior without changing treatment mid-study.
+3. After release provenance is updated, freeze and tag the formal v3 plan.
 4. Run the 16 formal Control-first trials sequentially.
 5. In a separate future protocol, define a small-OSS size threshold before
    selecting a repository and add real-repository history and architecture
