@@ -3,8 +3,8 @@ import test from "node:test";
 import { evaluateControlFirstReleaseGate } from "../src/lib/release-gate.mjs";
 
 const version = "0.3.0";
-const shasum = "04602918f8e661a57c8286fb7b6d344baf9fb3aa";
-const integrity = "sha512-muQvR5KxELoxhFKCUfnASJW58g9xdWp3+u6UJxtzAtiCpz8nh2GWDSm6UNmVIMeFt+qY7IdQ/s5yWrCcwgPRvg==";
+const shasum = "9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e";
+const integrity = "sha512-DXALXKH1k/Gj7PoprNDmz/tHlYum2T7QsU32el76mHy/U3u42zY02cshm5P8lwY6yqzkIoZ6h9/6df0QOlJp4Q==";
 
 test("passes only when registry, lockfile, install, and empty v3 study agree", () => {
   const report = evaluateControlFirstReleaseGate(validFixture());
@@ -37,8 +37,8 @@ function validFixture() {
       frozen: false,
       execution: {
         palaceVersion: version,
-        palaceSourceCommit: "e901c1739c5aa907bc44ebcbd25bbdd7abd75e7a",
-        palaceReleaseCommit: "f2e0ccabb0f5a7af77a72b971524122469f47172",
+        palaceSourceCommit: "a29053f5952131887ff057a8fa7e6777ab045e1f",
+        palaceReleaseCommit: "1331d9da0aa242549026d70e7c752638c3169044",
         palacePackageShasum: shasum,
         palacePackageIntegrity: integrity
       },

@@ -177,11 +177,15 @@
     },
     {
       "id": "control-first-v3-formal",
-      "status": "blocked",
-      "evidence": ["results/control-first-v3/plan.json", "results/control-first-v3/manifest.json"],
+      "status": "ready-to-freeze",
+      "evidence": [
+        "results/control-first-v3/plan.json",
+        "results/control-first-v3/manifest.json",
+        "docs/research/evidence/control-first-v3-public-binding-2026-07-21.json"
+      ],
       "observed": { "frozen": false, "plannedTrials": 16, "attemptedTrials": 0, "plannedArms": 64, "attemptedArms": 0 },
-      "blocker": "The benchmark dependency and lockfile remain on 0.2.1, the draft plan still pins a pre-release candidate hash, and the clean release gate, freeze commit, and protocol tag are incomplete.",
-      "allowedClaim": "The Control-first design is preregistered but unexecuted.",
+      "blocker": "The private-key commitment, freeze commit, and protocol-v3.0.0 tag are incomplete.",
+      "allowedClaim": "The Control-first design is bound to public 0.3.0 and passes the 19-check release gate, but remains unfrozen and unexecuted.",
       "forbiddenClaim": "Any v3 efficiency or correctness outcome exists."
     },
     {
@@ -205,8 +209,8 @@
     }
   ],
   "nextEvidence": [
-    "rebind the v3 plan, benchmark dependency, lockfile, and release gate to the immutable public 0.3.0 metadata",
-    "freeze and tag the Control-first v3 protocol after a clean exact install",
+    "generate the private variant key outside Git and commit only its SHA-256 commitment",
+    "freeze and tag the Control-first v3 protocol after the clean 19-check public-artifact gate",
     "run 16 preregistered sequential v3 trials",
     "preregister a separate small-OSS size threshold and repository",
     "add real-repository history-dependent and architecture/refactor tasks with hidden objective oracles"

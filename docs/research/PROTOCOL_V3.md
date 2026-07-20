@@ -134,30 +134,29 @@ The analysis publishes:
 This remains an exploratory pilot with four pairs per scenario. It is not
 powered as a confirmatory non-inferiority or superiority study.
 
-## Fixed Candidate Environment
+## Fixed Public Environment
 
 - Model: `gpt-5.6-sol`
 - Reasoning: `xhigh`
 - Codex: `codex-cli 0.145.0-alpha.18`
-- Vertex Palace candidate: `0.3.0`
+- Vertex Palace release: `0.3.0`
 - Vertex Palace source commit:
-  `e901c1739c5aa907bc44ebcbd25bbdd7abd75e7a`
-- Vertex Palace evidence commit:
-  `f2e0ccabb0f5a7af77a72b971524122469f47172`
+  `a29053f5952131887ff057a8fa7e6777ab045e1f`
 - Vertex Palace release commit:
-  `f2e0ccabb0f5a7af77a72b971524122469f47172`
-- Candidate npm tarball SHA-1:
-  `04602918f8e661a57c8286fb7b6d344baf9fb3aa`
-- Candidate npm integrity:
-  `sha512-muQvR5KxELoxhFKCUfnASJW58g9xdWp3+u6UJxtzAtiCpz8nh2GWDSm6UNmVIMeFt+qY7IdQ/s5yWrCcwgPRvg==`
+  `1331d9da0aa242549026d70e7c752638c3169044`
+- Public npm tarball SHA-1:
+  `9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e`
+- Public npm integrity:
+  `sha512-DXALXKH1k/Gj7PoprNDmz/tHlYum2T7QsU32el76mHy/U3u42zY02cshm5P8lwY6yqzkIoZ6h9/6df0QOlJp4Q==`
 - Platform: `win32`
 - Sandbox: `workspace-write/windows-elevated`
 - Timeout: 600 seconds per arm
 - Cooldown: 15 seconds between arms
 
-The benchmark repository still installs the previously published Palace while
-this plan is in design review. That mismatch is intentional and prevents an
-accidental formal run.
+The benchmark dependency, lockfile, installed package, draft plan, and public
+registry now identify this same artifact. The plan remains non-executable until
+its blinding-key commitment is committed, `frozen` becomes true, and the exact
+freeze commit is tagged `protocol-v3.0.0`.
 
 Engineering evidence at the pinned source commit reports exact two-file routes
 for both pinned Zod and Requests tasks (recall 1.000, strict precision 1.000)
@@ -189,13 +188,15 @@ Before changing `frozen` to `true` or creating `protocol-v3.0.0`:
    committed before freeze, and the key is scrubbed from every Agent process.
 11. The reviewed plan is frozen and tagged before any formal arm runs.
 
-Publishing the npm package uses an interactive browser/device verification only
-after these engineering and research gates succeed.
+The npm package was published only after the non-formal candidate and revised
+bypass engineering checks. Formal v3 still requires this independent binding,
+freeze, and protocol tag before any Agent arm runs.
 
 `npm run gate:control-first:v3` performs the 19 machine-readable package and
 empty-study checks without invoking Codex. `npm run check:release-ready` runs
 the complete local suite before that network-backed gate. The command must fail
-until npm publication and the exact dependency update are both complete.
+until npm publication and the exact dependency update are both complete; it
+passed 19/19 after the public artifact was bound.
 
 Once it passes, `npm run freeze:control-first:v3` is dry-run-only by default.
 It reads `VERTEX_PALACE_BENCHMARK_VARIANT_KEY` only after every child process has

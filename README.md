@@ -162,10 +162,11 @@ do not reveal which one owns a given formal trial.
 The [v3 protocol draft](docs/research/PROTOCOL_V3.md), [16-trial candidate
 plan](results/control-first-v3/plan.json), and empty [result
 manifest](results/control-first-v3/manifest.json) are public. The plan remains
-`frozen:false`, has zero Agent outcomes, and cannot execute. It will be frozen
-and tagged only after the benchmark dependency, lockfile, and plan are rebound
-to the immutable public Palace 0.3.0 package and the clean-install, memory, and
-full benchmark gates pass.
+`frozen:false`, has zero Agent outcomes, and cannot execute. The benchmark
+dependency, lockfile, installed package, and plan are now rebound to the
+immutable public Palace 0.3.0 package, and the release gate passes 19/19. The
+remaining pre-execution steps are the private-key commitment, freeze commit,
+and exact `protocol-v3.0.0` tag.
 
 The [preflight record](docs/research/CONTROL_FIRST_V3_PREFLIGHT.md) publishes the
 failed and passing memory smokes, the product fix commit, CI evidence, and the
@@ -185,10 +186,8 @@ authorization as historical pre-release evidence. The later
 records the successful npm, GitHub Release, marketplace, and plugin checks.
 Run `npm run gate:control-first:v3` for a machine-readable 19-check pre-freeze
 audit, or `npm run check:release-ready` to run the complete benchmark checks
-first. Both intentionally fail until the still-0.2.1 benchmark dependency,
-`package-lock.json`, plan provenance, and installed package are deliberately
-rebound to the same public 0.3.0 artifact while the public v3 manifest remains
-empty.
+first. The public binding now passes all 19 checks while the public v3 manifest
+remains empty. This is release-readiness evidence, not a formal Agent outcome.
 After those checks pass, `npm run freeze:control-first:v3` performs a dry run
 using the private key from `VERTEX_PALACE_BENCHMARK_VARIANT_KEY`; append
 `-- --write` only after reviewing the public commitment. The key is never
@@ -200,10 +199,10 @@ The current product gate also records exact Zod and Requests routes at recall
 remain engineering evidence until the independent Agent arms are frozen and run.
 
 The reviewed runtime source is pinned to Vertex Palace
-`e901c1739c5aa907bc44ebcbd25bbdd7abd75e7a`; the bilingual evidence record is
-pinned to `f2e0ccabb0f5a7af77a72b971524122469f47172`, which is also the release
-HEAD. Plan schema 6 additionally pins candidate tarball SHA-1
-`04602918f8e661a57c8286fb7b6d344baf9fb3aa` and its full npm integrity. Formal
+`a29053f5952131887ff057a8fa7e6777ab045e1f`; the public release and `v0.3.0`
+tag are pinned to `1331d9da0aa242549026d70e7c752638c3169044`.
+Plan schema 6 additionally pins public tarball SHA-1
+`9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e` and its full npm integrity. Formal
 execution validates the exact version and integrity in `package-lock.json` plus
 the installed package before any arm starts. Historical route evaluations
 progressed from 3/8 to an exact 8/8 fixed oracle, yet a real nine-file update

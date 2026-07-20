@@ -37,7 +37,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "vertex-palace": "0.2.1"
+    "vertex-palace": "0.3.0"
   },
   "license": "MIT"
 }

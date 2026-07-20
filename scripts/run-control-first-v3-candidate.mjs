@@ -39,13 +39,23 @@ export function validateCandidatePlan(candidatePlan, formalPlan) {
   assert.equal(candidatePlan.primaryComparison, formalPlan.primaryComparison);
   assert.equal(candidatePlan.primaryEfficiencyMetric, formalPlan.primaryEfficiencyMetric);
   assert.deepEqual(candidatePlan.comparisonOrder, formalPlan.comparisonOrder);
-  assert.deepEqual(candidatePlan.execution, formalPlan.execution);
+  const provenanceFields = new Set([
+    "palaceSourceCommit",
+    "palaceReleaseCommit",
+    "palacePackageShasum",
+    "palacePackageIntegrity"
+  ]);
+  const withoutProvenance = (execution) => Object.fromEntries(
+    Object.entries(execution).filter(([key]) => !provenanceFields.has(key))
+  );
+  assert.deepEqual(withoutProvenance(candidatePlan.execution), withoutProvenance(formalPlan.execution));
   assert.equal(candidatePlan.package.name, "vertex-palace");
-  assert.equal(candidatePlan.package.version, formalPlan.execution.palaceVersion);
-  assert.equal(candidatePlan.package.sourceCommit, formalPlan.execution.palaceSourceCommit);
-  assert.equal(candidatePlan.package.releaseCommit, formalPlan.execution.palaceReleaseCommit);
-  assert.equal(candidatePlan.package.shasum, formalPlan.execution.palacePackageShasum);
-  assert.equal(candidatePlan.package.integrity, formalPlan.execution.palacePackageIntegrity);
+  assert.equal(candidatePlan.package.version, candidatePlan.execution.palaceVersion);
+  assert.equal(candidatePlan.package.sourceCommit, candidatePlan.execution.palaceSourceCommit);
+  assert.equal(candidatePlan.package.releaseCommit, candidatePlan.execution.palaceReleaseCommit);
+  assert.equal(candidatePlan.package.shasum, candidatePlan.execution.palacePackageShasum);
+  assert.equal(candidatePlan.package.integrity, candidatePlan.execution.palacePackageIntegrity);
+  assert.notEqual(candidatePlan.package.shasum, formalPlan.execution.palacePackageShasum);
   assert.match(candidatePlan.blindingKeyCommitment, /^[a-f0-9]{64}$/);
   assert.equal(candidatePlan.trials.length, formalPlan.trials.length);
   assert.equal(candidatePlan.trials.length, 16);

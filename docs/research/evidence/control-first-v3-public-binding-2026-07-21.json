@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-07-20T20:29:06.773Z",
+  "subject": "Control-first v3 binding to public Vertex Palace 0.3.0",
+  "studyState": {
+    "protocolVersion": "3.0.0",
+    "frozen": false,
+    "plannedTrials": 16,
+    "attemptedTrials": 0,
+    "plannedArms": 64,
+    "attemptedArms": 0,
+    "blindingKeyCommitment": null
+  },
+  "artifact": {
+    "package": "vertex-palace@0.3.0",
+    "sourceCommit": "a29053f5952131887ff057a8fa7e6777ab045e1f",
+    "releaseCommit": "1331d9da0aa242549026d70e7c752638c3169044",
+    "npmShasum": "9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e",
+    "npmIntegrity": "sha512-DXALXKH1k/Gj7PoprNDmz/tHlYum2T7QsU32el76mHy/U3u42zY02cshm5P8lwY6yqzkIoZ6h9/6df0QOlJp4Q=="
+  },
+  "binding": {
+    "packageJsonVersion": "0.3.0",
+    "lockRootVersion": "0.3.0",
+    "lockPackageVersion": "0.3.0",
+    "installedVersion": "0.3.0",
+    "registryVersion": "0.3.0",
+    "registryShasumMatches": true,
+    "registryIntegrityMatches": true
+  },
+  "realRepositoryValidation": {
+    "evidenceCommit": "4817b4a6c10ccd1e71fb069f4a005ea28bc68020",
+    "evidenceUrl": "https://github.com/lohchanhin/vertex-palace/blob/4817b4a6c10ccd1e71fb069f4a005ea28bc68020/docs/research/evidence/real-repository-validation-0.3.0-public.json",
+    "evidenceSha256": "e44a33af0a439014e4950049d281d1ce5c30a209ee73394820d436903d6d8f56",
+    "sourceCommit": "a29053f5952131887ff057a8fa7e6777ab045e1f",
+    "releaseCommit": "1331d9da0aa242549026d70e7c752638c3169044",
+    "candidate": {
+      "package": "vertex-palace@0.3.0",
+      "distribution": "npm-registry",
+      "shasum": "9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e",
+      "integrity": "sha512-DXALXKH1k/Gj7PoprNDmz/tHlYum2T7QsU32el76mHy/U3u42zY02cshm5P8lwY6yqzkIoZ6h9/6df0QOlJp4Q=="
+    },
+    "protocol": {
+      "repetitionsPerRepository": 2,
+      "trackedWorktreeMutationAllowed": false
+    },
+    "repositories": [
+      {
+        "name": "zod",
+        "observedFiles": [
+          "packages/zod/src/v4/core/schemas.ts",
+          "packages/zod/src/v4/classic/tests/discriminated-unions.test.ts"
+        ],
+        "expectedFiles": [
+          "packages/zod/src/v4/core/schemas.ts",
+          "packages/zod/src/v4/classic/tests/discriminated-unions.test.ts"
+        ],
+        "targetRecall": 1,
+        "strictTargetPrecision": 1,
+        "deterministicRepetitions": "2/2",
+        "trackedWorktreeClean": true
+      },
+      {
+        "name": "requests",
+        "observedFiles": [
+          "src/requests/sessions.py",
+          "tests/test_requests.py"
+        ],
+        "expectedFiles": [
+          "src/requests/sessions.py",
+          "tests/test_requests.py"
+        ],
+        "targetRecall": 1,
+        "strictTargetPrecision": 1,
+        "deterministicRepetitions": "2/2",
+        "trackedWorktreeClean": true
+      }
+    ]
+  },
+  "releaseGate": {
+    "before": {
+      "passed": false,
+      "checksPassed": 12,
+      "checksFailed": 7,
+      "failedChecks": [
+        "registry-shasum",
+        "registry-integrity",
+        "package-json-version",
+        "lock-root-version",
+        "lock-package-version",
+        "lock-tarball",
+        "lock-integrity"
+      ]
+    },
+    "after": {
+      "passed": true,
+      "checksPassed": 19,
+      "checksFailed": 0
+    }
+  },
+  "designPreservation": {
+    "trialIdsChanged": false,
+    "seedsChanged": false,
+    "armOrdersChanged": false,
+    "primaryComparison": "adaptive-vs-control",
+    "primaryEfficiencyMetric": "reportedTokens"
+  },
+  "pendingBeforeFormalExecution": [
+    "generate the private 256-bit variant key outside Git",
+    "commit only the SHA-256 key commitment",
+    "set frozen true",
+    "tag the exact freeze commit as protocol-v3.0.0"
+  ],
+  "claimBoundary": {
+    "supported": "The unfrozen formal plan and benchmark installation are bound to the immutable public 0.3.0 artifact, and all 19 release checks pass.",
+    "notSupported": "No formal v3 Agent outcome exists before the committed key commitment, freeze commit, protocol tag, and sequential trial execution."
+  }
+}
