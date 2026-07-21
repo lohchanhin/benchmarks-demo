@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import path from "node:path";
 import test from "node:test";
 import {
   buildV4ExecutionEnvironment,
@@ -84,21 +85,24 @@ test("fixture profiles bind exact runtimes, setup, and Windows exceptions", () =
 });
 
 test("execution environment pins the reviewed tools ahead of inherited PATH", () => {
+  const nodeBin = path.resolve("test-paths", "reviewed", "node");
+  const pythonBin = path.resolve("test-paths", "reviewed", "python");
+  const dependencyBin = path.resolve("test-paths", "reviewed", "dependencies");
+  const corepackHome = path.resolve("test-paths", "reviewed", "corepack");
   const environment = buildV4ExecutionEnvironment({
-    inheritedPath: ["C:/Windows/System32", "C:/Node"].join(";"),
-    nodeBin: "C:/reviewed/node",
-    pythonBin: "C:/reviewed/python",
-    dependencyBin: "C:/reviewed/dependencies",
-    corepackHome: "C:/reviewed/corepack",
+    inheritedPath: [
+      path.resolve("test-paths", "system"),
+      path.resolve("test-paths", "node")
+    ].join(path.delimiter),
+    nodeBin,
+    pythonBin,
+    dependencyBin,
+    corepackHome,
     extra: { CI: "1" }
   });
-  const parts = environment.PATH.split(";").map((entry) => entry.replaceAll("\\", "/"));
-  assert.deepEqual(parts.slice(0, 3), [
-    "C:/reviewed/dependencies",
-    "C:/reviewed/python",
-    "C:/reviewed/node"
-  ]);
-  assert.equal(environment.COREPACK_HOME, "C:/reviewed/corepack");
+  const parts = environment.PATH.split(path.delimiter);
+  assert.deepEqual(parts.slice(0, 3), [dependencyBin, pythonBin, nodeBin]);
+  assert.equal(environment.COREPACK_HOME, corepackHome);
   assert.equal(environment.CI, "1");
 });
 

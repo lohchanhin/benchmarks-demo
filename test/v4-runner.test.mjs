@@ -93,23 +93,29 @@ test("prompt exposes frozen baseline and invalid-command adaptations symmetrical
 
 test("process environment removes Palace from control and prepends the reviewed binary for Adaptive", () => {
   const separator = path.delimiter;
-  const inherited = ["C:/Windows/System32", "C:/global-palace", "C:/Node"].join(separator);
+  const systemBin = path.resolve("test-paths", "system");
+  const globalPalace = path.resolve("test-paths", "global-palace");
+  const nodeBin = path.resolve("test-paths", "node");
+  const reviewedPalace = path.resolve("test-paths", "reviewed-palace");
+  const inherited = [systemBin, globalPalace, nodeBin].join(separator);
   const control = buildV4ProcessEnvironment({
     treatment: "control",
     inheritedPath: inherited,
-    palaceBinDirectory: "C:/reviewed-palace",
-    forbiddenPalaceDirectories: ["C:/global-palace"]
+    palaceBinDirectory: reviewedPalace,
+    forbiddenPalaceDirectories: [globalPalace]
   });
   const adaptive = buildV4ProcessEnvironment({
     treatment: "adaptive-palace",
     inheritedPath: inherited,
-    palaceBinDirectory: "C:/reviewed-palace",
-    forbiddenPalaceDirectories: ["C:/global-palace"]
+    palaceBinDirectory: reviewedPalace,
+    forbiddenPalaceDirectories: [globalPalace]
   });
-  assert.equal(control.env.PATH.includes("global-palace"), false);
-  assert.equal(control.env.PATH.includes("reviewed-palace"), false);
-  assert.equal(adaptive.env.PATH.split(separator)[0].replaceAll("\\", "/"), "C:/reviewed-palace");
-  assert.equal(adaptive.env.PATH.includes("global-palace"), false);
+  const controlParts = control.env.PATH.split(separator);
+  const adaptiveParts = adaptive.env.PATH.split(separator);
+  assert.equal(controlParts.includes(globalPalace), false);
+  assert.equal(controlParts.includes(reviewedPalace), false);
+  assert.equal(adaptiveParts[0], reviewedPalace);
+  assert.equal(adaptiveParts.includes(globalPalace), false);
   assert.equal(control.env.VERTEX_PALACE_BENCHMARK_ARM, "control");
   assert.equal(adaptive.env.VERTEX_PALACE_BENCHMARK_ARM, "adaptive-palace");
 });
