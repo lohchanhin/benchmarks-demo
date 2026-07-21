@@ -3,7 +3,7 @@
   "protocolVersion": "4.0.0-candidate.1",
   "incidentId": "v4-infra-001",
   "detectedAt": "2026-07-21T10:44:25.108Z",
-  "status": "corrected-and-refrozen-awaiting-binding-commit",
+  "status": "corrected-and-refrozen",
   "trialId": "zod-transform-refine-4926-v4-01",
   "blindedLabel": "arm-a",
   "attempts": 3,
@@ -18,6 +18,7 @@
   "correctiveBoundary": "Move the unchanged -a never option before exec, add an exact argument-order regression test, publish a new runner commit, and freeze a superseding execution binding before retrying.",
   "correctiveRunnerCommit": "c1ec47fb9bd14c498d2eb17dc324a33e66f0b820",
   "correctiveRunnerSha256": "2b1d9c329d54339af6321bbe4f912e87e461ffa3e50fc179616f177a61adcd86",
+  "supersedingExecutionBindingCommit": "b9adef093bdf1cf1e783cf6e032f5739e8b34f02",
   "correctiveParserSmokePassed": true,
   "supersedingExecutionGate": {
     "checks": 10,

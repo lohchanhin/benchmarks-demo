@@ -3,15 +3,15 @@
   "protocolVersion": "4.0.0-candidate.1",
   "status": "formal-ready",
   "formal": true,
-  "createdAt": "2026-07-21T10:37:13.971Z",
-  "executionBindingCommit": "e151adda08109998fa080a8b3716f92ae9114e06",
-  "executionBindingSha256": "6e0323895ce7940e765a43378f6108602fe632ed757c706c7e952e08ac077914",
+  "createdAt": "2026-07-21T10:51:51.693Z",
+  "executionBindingCommit": "b9adef093bdf1cf1e783cf6e032f5739e8b34f02",
+  "executionBindingSha256": "210deb9ce78076007d82295eb3a95a73f283af2dfe13b0e65688b28e43870bc0",
   "frozenPlanSha256": "e811e734d3f7152c80c16044530fef27870de5663b7ad6f64ac6b088137493fb",
   "plannedTrials": 16,
   "plannedArmRuns": 32,
   "completedTrials": 0,
   "completedArmRuns": 0,
-  "infrastructureFailures": 3,
+  "infrastructureFailures": 0,
   "mappingRevealed": false,
   "trials": [
     {
@@ -223,34 +223,6 @@
       "completedArmRuns": 0
     }
   ],
-  "attempts": [
-    {
-      "armId": "zod-transform-refine-4926-v4-01-arm-a",
-      "trialId": "zod-transform-refine-4926-v4-01",
-      "blindedLabel": "arm-a",
-      "attempt": 1,
-      "status": "infrastructure-failure",
-      "reason": "codex-no-json-events",
-      "attemptedAt": "2026-07-21T10:44:25.108Z"
-    },
-    {
-      "armId": "zod-transform-refine-4926-v4-01-arm-a",
-      "trialId": "zod-transform-refine-4926-v4-01",
-      "blindedLabel": "arm-a",
-      "attempt": 2,
-      "status": "infrastructure-failure",
-      "reason": "codex-no-json-events",
-      "attemptedAt": "2026-07-21T10:44:26.489Z"
-    },
-    {
-      "armId": "zod-transform-refine-4926-v4-01-arm-a",
-      "trialId": "zod-transform-refine-4926-v4-01",
-      "blindedLabel": "arm-a",
-      "attempt": 3,
-      "status": "infrastructure-failure",
-      "reason": "codex-no-json-events",
-      "attemptedAt": "2026-07-21T10:44:27.879Z"
-    }
-  ],
+  "attempts": [],
   "arms": []
 }
