@@ -15,10 +15,13 @@ const documentationFiles = [
   "docs/zh-CN/PROTOCOL_V3.md",
   "docs/zh-CN/PROTOCOL_V4_CANDIDATE.md",
   "docs/zh-CN/REAL_REPOSITORY_V4_EXECUTION_FREEZE.md",
+  "docs/zh-CN/REAL_REPOSITORY_V4_FINAL.md",
   "docs/zh-CN/VALIDATION_COVERAGE_MATRIX.md",
   "docs/research/VALIDATION_COVERAGE_MATRIX.md",
   "docs/research/PROTOCOL_V4_CANDIDATE.md",
   "docs/research/REAL_REPOSITORY_V4_EXECUTION_FREEZE.md",
+  "docs/research/REAL_REPOSITORY_V4_FINAL.md",
+  "results/real-repository-v4/README.md",
   "protocol/v4/README.md"
 ];
 
@@ -33,6 +36,7 @@ test("publishes discoverable Simplified Chinese judge guidance", async () => {
   const protocolV4English = await read("docs/research/PROTOCOL_V4_CANDIDATE.md");
   const executionFreeze = await read("docs/zh-CN/REAL_REPOSITORY_V4_EXECUTION_FREEZE.md");
   const coverageMatrix = await read("docs/zh-CN/VALIDATION_COVERAGE_MATRIX.md");
+  const v4Final = await read("docs/research/REAL_REPOSITORY_V4_FINAL.md");
 
   for (const content of [english, chinese]) {
     assert.match(content, /docs\/zh-CN\/README\.md/);
@@ -69,6 +73,10 @@ test("publishes discoverable Simplified Chinese judge guidance", async () => {
   assert.match(executionFreeze, /Agent JSON event 为 0/);
   assert.match(executionFreeze, /任务、fixture、产品、模型/);
   assert.match(executionFreeze, /strict-config/);
+  assert.match(v4Final, /3\/16/);
+  assert.match(v4Final, /11\/16/);
+  assert.match(v4Final, /0\.0078125/);
+  assert.match(v4Final, /does \*\*not\*\* support/);
   assert.match(executionFreeze, /两次修正都没有改变 treatment/);
   assert.match(coverageMatrix, /独立 small-OSS 分层/);
   assert.match(coverageMatrix, /尚未单独测试/);
@@ -116,7 +124,7 @@ test("pins real-repository evidence to the preregistered Palace package", async 
 
 test("keeps the validation coverage matrix synchronized with published evidence", async () => {
   const matrix = JSON.parse(
-    await read("docs/research/evidence/validation-coverage-matrix-2026-07-20.json")
+    await read("docs/research/evidence/validation-coverage-matrix-2026-07-22.json")
   );
   const planText = await read("results/control-first-v3/plan.json");
   const plan = JSON.parse(planText);
@@ -177,7 +185,14 @@ test("keeps the validation coverage matrix synchronized with published evidence"
   );
 
   assert.equal(rows.get("independent-small-oss-stratum").status, "not-tested");
-  assert.equal(rows.get("real-repository-history-dependent-agent").status, "not-tested");
+  assert.equal(rows.get("real-repository-history-dependent-agent").status, "formal-exploratory");
+  const v4 = rows.get("real-repository-v4-formal");
+  const v4Analysis = JSON.parse(await read("results/real-repository-v4/analysis.json"));
+  assert.equal(v4.observed.completedTrials, v4Analysis.study.completedTrials);
+  assert.equal(v4.observed.completedArms, v4Analysis.study.completedArmRuns);
+  assert.equal(v4.observed.adaptiveSuccessRate, v4Analysis.primary.strictSuccess.adaptivePalaceRate);
+  assert.equal(v4.observed.controlSuccessRate, v4Analysis.primary.strictSuccess.controlRate);
+  assert.equal(v4.observed.evidenceHashesVerified, v4Analysis.integrity.evidenceHashesVerified);
   const publication = rows.get("npm-publication-0-3-0");
   assert.equal(publication.status, "validated-release-gate");
   assert.equal(publication.observed.registryLatest, publicRelease.npm.latest);
@@ -199,6 +214,7 @@ test("keeps the validation coverage matrix synchronized with published evidence"
     firstAnalysis.overall.metrics.durationMs.fullPalaceMinusControl.confidenceInterval
   );
   assert.equal(studies.get("control-first-v3").status.attemptedTrials, manifest.trials.length);
+  assert.equal(studies.get("real-repository-v4").status.completedArms, v4Analysis.study.completedArmRuns);
 });
 
 async function read(relativeFile) {

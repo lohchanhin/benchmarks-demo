@@ -1,0 +1,621 @@
+{
+  "schemaVersion": 1,
+  "artifact": "real-repository-v4-mechanism-audit",
+  "analysisClass": "post-hoc-exploratory",
+  "generatedAt": "2026-07-21T18:15:56.590Z",
+  "outcomesLockedAtCommit": "cc493b198bdff95138805b18b2b4dff2dec940ee",
+  "scope": "Adaptive Palace arms only; sanitized telemetry extracted after outcome lock",
+  "summary": {
+    "adaptiveArms": 16,
+    "successes": 3,
+    "modeCounts": {
+      "full-palace": 8,
+      "guarded-memory-palace": 8
+    },
+    "bypassOrRouteLiteSelections": 0,
+    "fullOrGuardedSelections": 16,
+    "exactTaskMatches": 16,
+    "medianPalaceCalls": 3,
+    "medianContextEstimatedTokens": 3640.5
+  },
+  "byFixture": {
+    "open-webui-analytics-25919": {
+      "arms": 4,
+      "successes": 0,
+      "correctnessPasses": 0,
+      "exactScopePasses": 2,
+      "modeCounts": {
+        "full-palace": 4
+      },
+      "medianPalaceCalls": 4,
+      "medianContextEstimatedTokens": 1777,
+      "memoryItems": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "guardrails": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "requests-stream-regression-7432": {
+      "arms": 4,
+      "successes": 0,
+      "correctnessPasses": 0,
+      "exactScopePasses": 4,
+      "modeCounts": {
+        "guarded-memory-palace": 4
+      },
+      "medianPalaceCalls": 3,
+      "medianContextEstimatedTokens": 4420,
+      "memoryItems": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "guardrails": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "zod-report-input-decision-5509": {
+      "arms": 4,
+      "successes": 2,
+      "correctnessPasses": 4,
+      "exactScopePasses": 2,
+      "modeCounts": {
+        "guarded-memory-palace": 4
+      },
+      "medianPalaceCalls": 4,
+      "medianContextEstimatedTokens": 2861,
+      "memoryItems": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "guardrails": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "zod-transform-refine-4926": {
+      "arms": 4,
+      "successes": 1,
+      "correctnessPasses": 1,
+      "exactScopePasses": 2,
+      "modeCounts": {
+        "full-palace": 4
+      },
+      "medianPalaceCalls": 3,
+      "medianContextEstimatedTokens": 4784,
+      "memoryItems": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "guardrails": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "privacy": {
+    "rawAgentEventsPublished": false,
+    "agentIdentifiersPublished": false,
+    "localPathsPublished": false,
+    "oracleDetailsPublished": false,
+    "sourceHashesPermitEvaluatorSideAudit": true
+  },
+  "interpretationBoundary": "This artifact may explain mechanisms and guide development. It was not preregistered and cannot replace the primary V4 outcomes.",
+  "records": [
+    {
+      "armId": "open-webui-analytics-25919-v4-01-arm-b",
+      "fixtureId": "open-webui-analytics-25919",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": true,
+      "mode": "full-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 7107,
+        "estimatedTokens": 1777,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 1,
+        "deferred": 7,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 1
+      },
+      "adherence": {
+        "palaceCalls": 5,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 14
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "5eff1bfe33f8f83101dd82541a277a01f1578e7fbae8dd2f7c79128e35001572"
+      }
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-02-arm-b",
+      "fixtureId": "open-webui-analytics-25919",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": false,
+      "mode": "full-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 7107,
+        "estimatedTokens": 1777,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 1,
+        "deferred": 7,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 1
+      },
+      "adherence": {
+        "palaceCalls": 4,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 15
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "ed4cf6d79d26c131d6e592f06fc9c87d1823cd0ff45b2319fad509206ef11233"
+      }
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-03-arm-b",
+      "fixtureId": "open-webui-analytics-25919",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": true,
+      "mode": "full-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 7107,
+        "estimatedTokens": 1777,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 1,
+        "deferred": 7,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 1
+      },
+      "adherence": {
+        "palaceCalls": 4,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 2
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "8f4f8b53e6fa3a9d18c95506bbfe2ea4cc25931e264b29856136f6d3c971afc2"
+      }
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-04-arm-b",
+      "fixtureId": "open-webui-analytics-25919",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": false,
+      "mode": "full-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 7107,
+        "estimatedTokens": 1777,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 1,
+        "deferred": 7,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 1
+      },
+      "adherence": {
+        "palaceCalls": 4,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": null
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "df33672c9ba5f1668b16f7a19706251b9733e6dd0d38779ce0af2ce240fba144"
+      }
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-01-arm-b",
+      "fixtureId": "requests-stream-regression-7432",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": true,
+      "mode": "guarded-memory-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 17679,
+        "estimatedTokens": 4420,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 7,
+        "deferred": 1,
+        "memoryItems": 1,
+        "memoryCandidates": 1,
+        "guardrails": 2
+      },
+      "adherence": {
+        "palaceCalls": 3,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 4
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "413ebf43380fc9d89b5f2089396aff6623272b5832d4d1f68c82e7cf7364211d"
+      }
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-02-arm-b",
+      "fixtureId": "requests-stream-regression-7432",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": true,
+      "mode": "guarded-memory-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 17679,
+        "estimatedTokens": 4420,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 7,
+        "deferred": 1,
+        "memoryItems": 1,
+        "memoryCandidates": 1,
+        "guardrails": 2
+      },
+      "adherence": {
+        "palaceCalls": 3,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 4
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "cfb29c42483819d60896f54f405a7c340e2a2c3e21c384b6dd3afadc6bb6ccd2"
+      }
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-03-arm-b",
+      "fixtureId": "requests-stream-regression-7432",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": true,
+      "mode": "guarded-memory-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 17679,
+        "estimatedTokens": 4420,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 7,
+        "deferred": 1,
+        "memoryItems": 1,
+        "memoryCandidates": 1,
+        "guardrails": 2
+      },
+      "adherence": {
+        "palaceCalls": 3,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 4
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "d8d20b70a4a5af64640d0ab7714a9f81dd663f62cf70bc2887a4b7e57c820e82"
+      }
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-04-arm-b",
+      "fixtureId": "requests-stream-regression-7432",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": true,
+      "mode": "guarded-memory-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 17679,
+        "estimatedTokens": 4420,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 7,
+        "deferred": 1,
+        "memoryItems": 1,
+        "memoryCandidates": 1,
+        "guardrails": 2
+      },
+      "adherence": {
+        "palaceCalls": 3,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 5
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "8ecc040db195492db35a9634f1df94baf7112ef07aef46ed0fe1b1219534ec58"
+      }
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-01-arm-b",
+      "fixtureId": "zod-report-input-decision-5509",
+      "success": true,
+      "correctnessPassed": true,
+      "exactScopePassed": true,
+      "mode": "guarded-memory-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 11443,
+        "estimatedTokens": 2861,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 8,
+        "deferred": 0,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 1
+      },
+      "adherence": {
+        "palaceCalls": 4,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 10
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "a5825dbbf78a4b86eb31d82b1b090a15e99545361fe77308e5b3d9d86f63b815"
+      }
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-02-arm-b",
+      "fixtureId": "zod-report-input-decision-5509",
+      "success": false,
+      "correctnessPassed": true,
+      "exactScopePassed": false,
+      "mode": "guarded-memory-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 11443,
+        "estimatedTokens": 2861,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 8,
+        "deferred": 0,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 1
+      },
+      "adherence": {
+        "palaceCalls": 4,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 20
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "ff85389f753e50e8f7b311dc653416316f5327231d9fc2ff77e94b8757e71f00"
+      }
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-03-arm-b",
+      "fixtureId": "zod-report-input-decision-5509",
+      "success": true,
+      "correctnessPassed": true,
+      "exactScopePassed": true,
+      "mode": "guarded-memory-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 11443,
+        "estimatedTokens": 2861,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 8,
+        "deferred": 0,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 1
+      },
+      "adherence": {
+        "palaceCalls": 3,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 7
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "17802e8a2819d0a4caa13afa0b0617eceab2e3349a7a68d769ed92199bddc5b7"
+      }
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-04-arm-b",
+      "fixtureId": "zod-report-input-decision-5509",
+      "success": false,
+      "correctnessPassed": true,
+      "exactScopePassed": false,
+      "mode": "guarded-memory-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 11443,
+        "estimatedTokens": 2861,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 8,
+        "deferred": 0,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 1
+      },
+      "adherence": {
+        "palaceCalls": 4,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 19
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "99bc8f5371cad082e70b176f86bf20a3020e1e7fe0c3b869f2ec12caf9674eea"
+      }
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-01-arm-b",
+      "fixtureId": "zod-transform-refine-4926",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": false,
+      "mode": "full-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 19134,
+        "estimatedTokens": 4784,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 7,
+        "deferred": 1,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 0
+      },
+      "adherence": {
+        "palaceCalls": 3,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 21
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "7e96028e9ac4eb1771989dcd25d18b8d0dd5a62da1b43a82becc30883750316c"
+      }
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-02-arm-b",
+      "fixtureId": "zod-transform-refine-4926",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": true,
+      "mode": "full-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 19134,
+        "estimatedTokens": 4784,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 7,
+        "deferred": 1,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 0
+      },
+      "adherence": {
+        "palaceCalls": 3,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 22
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "161c97c326d8890d2edae542ed178158f2761da7557a5297f8cc7aa0f4ad8563"
+      }
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-03-arm-b",
+      "fixtureId": "zod-transform-refine-4926",
+      "success": false,
+      "correctnessPassed": false,
+      "exactScopePassed": false,
+      "mode": "full-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 19134,
+        "estimatedTokens": 4784,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 7,
+        "deferred": 1,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 0
+      },
+      "adherence": {
+        "palaceCalls": 3,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 15
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "ee54deff6ab8f00a23bac800cfddb33770c5dc5e48b1b649e55eba217b2ed12d"
+      }
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-04-arm-b",
+      "fixtureId": "zod-transform-refine-4926",
+      "success": true,
+      "correctnessPassed": true,
+      "exactScopePassed": true,
+      "mode": "full-palace",
+      "context": {
+        "calls": 1,
+        "bytes": 19134,
+        "estimatedTokens": 4784,
+        "routeSteps": 10,
+        "primary": 2,
+        "support": 7,
+        "deferred": 1,
+        "memoryItems": 0,
+        "memoryCandidates": 0,
+        "guardrails": 0
+      },
+      "adherence": {
+        "palaceCalls": 3,
+        "taskMatched": true,
+        "deliveredFullPathsReopened": 0,
+        "deferredOpenedWithoutConflict": 0,
+        "excludedPathsOpened": 0,
+        "toolCallsAfterTestsPassed": 18
+      },
+      "sourceCommitment": {
+        "evaluatorPrivateEvidenceSha256": "68219d0892232ecdc27cd59b356c4f822885747cacd6eab17cae2ac57a664761"
+      }
+    }
+  ]
+}

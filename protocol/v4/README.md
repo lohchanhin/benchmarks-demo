@@ -1,7 +1,8 @@
 # V4 Protocol Workspace
 
 This directory contains the public, outcome-free preparation artifacts for the
-real-repository v4 candidate.
+real-repository v4 candidate. Formal execution later completed under this
+unchanged frozen identity; results live outside this directory.
 
 - `fixtures.candidates.json`: real issues, frozen commits, prompts, and tests.
 - `plan.draft.json`: deterministic 16-trial blinded plan and frozen statistics.
@@ -20,7 +21,10 @@ default `.benchmark-private/v4/` is ignored.
 
 Read the [English protocol](../../docs/research/PROTOCOL_V4_CANDIDATE.md) or the
 [execution freeze](../../docs/research/REAL_REPOSITORY_V4_EXECUTION_FREEZE.md),
-or the [Simplified Chinese guide](../../docs/zh-CN/REAL_REPOSITORY_V4_EXECUTION_FREEZE.md). Run
+the [completed final report](../../docs/research/REAL_REPOSITORY_V4_FINAL.md),
+or the [Simplified Chinese final report](../../docs/zh-CN/REAL_REPOSITORY_V4_FINAL.md). Run
 `npm run check:v4-prep` to verify that the public frozen plan remains
 outcome-free. The formal runner is implemented, but the frozen binding records
-zero formal Agent arms and does not itself establish a product benefit.
+zero formal Agent arms because it describes the pre-outcome state. The separate
+result manifest records 32/32 completed arms and does not establish a product
+benefit; the final report records a negative result for this sample.

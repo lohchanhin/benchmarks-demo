@@ -1,9 +1,15 @@
 # Real-Repository v4 Candidate Protocol
 
-Status: **human-reviewed and frozen, not executed**
+Protocol status at freeze: **human-reviewed and frozen, not executed**
+
+Current study status: **16/16 trials completed after freeze; outcomes locked before reveal**
 Protocol: `4.0.0-candidate.1`
 Protocol field tag: `protocol-v4.0.0-candidate.1` (this is not a Git tag)
 Primary comparison: Adaptive Palace versus Control
+
+The protocol text below preserves the pre-outcome state. See the
+[final report](REAL_REPOSITORY_V4_FINAL.md) for the completed result; the result
+does not rewrite this frozen design.
 
 ## Why v4 exists
 

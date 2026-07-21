@@ -3,6 +3,11 @@
 Status: superseding owner-reviewed amendment frozen. Execution gate: **10/10
 passed**. Formal Agent arms run at freeze time: **0/32**.
 
+Post-freeze status: all **32/32** arms completed, outcomes were locked at
+`cc493b198bdff95138805b18b2b4dff2dec940ee`, and the assignment key was then
+revealed. See the [final report](REAL_REPOSITORY_V4_FINAL.md). This note does
+not alter the frozen execution identity below.
+
 This amendment closes the gap between the frozen V4 research design and the
 executable runner. It records the exact code, product artifact, Agent runtime,
 dependency profile, verification baselines, and privacy boundary that must be

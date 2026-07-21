@@ -1,0 +1,4797 @@
+{
+  "schemaVersion": 1,
+  "artifact": "real-repository-v4-analysis",
+  "generatedAt": "2026-07-21T18:12:40.042Z",
+  "protocolVersion": "4.0.0-candidate.1",
+  "preregistered": true,
+  "exploratory": true,
+  "study": {
+    "id": "vertex-palace-real-repository-v4",
+    "outcomesLockedAtCommit": "cc493b198bdff95138805b18b2b4dff2dec940ee",
+    "executionBindingCommit": "26dfa485f21369d2181be00d80b58fe7180f2d66",
+    "plannedTrials": 16,
+    "completedTrials": 16,
+    "plannedArmRuns": 32,
+    "completedArmRuns": 32,
+    "infrastructureFailures": 1,
+    "model": "gpt-5.6-sol",
+    "reasoningEffort": "xhigh",
+    "codexVersion": "codex-cli 0.145.0-alpha.28",
+    "productVersion": "0.3.0",
+    "productSourceCommit": "322b15ec6cbbbc9c86f0a03e54e7a13ebf050c5e"
+  },
+  "integrity": {
+    "manifestSha256": "cc0f0f5664048f051614004fb29608c41d74c2fa56de07a5de0bda6b48085680",
+    "revealSha256": "d917754c5171337684047605093387f8f88f3b20beeb4cef14b0c3700532899c",
+    "retryCostDisclosureSha256": "26590fc42d68d09bdb9e4283126f87ea76c919c1ccfbbdc947743c651a51a6de",
+    "evidenceHashesVerified": 32,
+    "oracleDetailsPublished": false
+  },
+  "methods": {
+    "primaryComparison": "adaptive-palace-minus-control",
+    "hierarchy": [
+      "success",
+      "exact-scope",
+      "reported-tokens",
+      "wall-time"
+    ],
+    "bootstrap": {
+      "method": "paired stratified bootstrap within fixture",
+      "iterations": 10000,
+      "confidenceLevel": 0.95,
+      "seed": "vertex-palace-real-repository-v4-analysis-v1"
+    },
+    "exactPairedSuccessTest": "two-sided exact McNemar/binomial test",
+    "noOutcomeDependentExclusions": true,
+    "retryAccounting": {
+      "wallTime": "All completed attempts plus every infrastructure retry",
+      "reportedTokens": "Lower bound only because one timed-out attempt emitted no final usage event",
+      "zeroWithoutUsageEventTreatedAsUnknown": true
+    },
+    "protocolNote": "The frozen definitions make cost_per_successful_solution and retry_adjusted_cost equivalent when every attempt is included; both names point to the same all-attempt calculation."
+  },
+  "primary": {
+    "correctness": {
+      "adaptivePalaceCount": 5,
+      "controlCount": 12,
+      "adaptivePalaceRate": 0.3125,
+      "controlRate": 0.75,
+      "adaptiveMinusControl": {
+        "estimate": -0.4375,
+        "confidenceInterval": [
+          -0.5,
+          -0.3125
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:correctness",
+        "estimable": true
+      },
+      "discordance": {
+        "adaptiveOnly": 0,
+        "controlOnly": 7,
+        "both": 5,
+        "neither": 4
+      },
+      "exactTwoSidedMcNemarPValue": 0.015625
+    },
+    "strictSuccess": {
+      "adaptivePalaceCount": 3,
+      "controlCount": 11,
+      "adaptivePalaceRate": 0.1875,
+      "controlRate": 0.6875,
+      "adaptiveMinusControl": {
+        "estimate": -0.5,
+        "confidenceInterval": [
+          -0.625,
+          -0.375
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall",
+        "estimable": true
+      },
+      "discordance": {
+        "adaptiveOnly": 0,
+        "controlOnly": 8,
+        "both": 3,
+        "neither": 5
+      },
+      "exactTwoSidedMcNemarPValue": 0.0078125
+    },
+    "changedFileScope": {
+      "exactScope": {
+        "adaptivePalaceCount": 10,
+        "controlCount": 15,
+        "adaptivePalaceRate": 0.625,
+        "controlRate": 0.9375,
+        "adaptiveMinusControl": {
+          "estimate": -0.3125,
+          "confidenceInterval": [
+            -0.5,
+            -0.125
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:exact-scope",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 5,
+          "both": 10,
+          "neither": 1
+        },
+        "exactTwoSidedMcNemarPValue": 0.0625
+      },
+      "nonExactScope": {
+        "adaptivePalaceFailures": 6,
+        "controlFailures": 1,
+        "adaptivePalaceRate": 0.375,
+        "controlRate": 0.0625,
+        "adaptiveMinusControl": {
+          "estimate": 0.3125,
+          "confidenceInterval": [
+            0.125,
+            0.5
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:exact-scope",
+          "estimable": true
+        }
+      },
+      "forbiddenViolation": {
+        "adaptivePalaceCount": 2,
+        "controlCount": 1,
+        "adaptivePalaceRate": 0.125,
+        "controlRate": 0.0625,
+        "adaptiveMinusControl": {
+          "estimate": 0.0625,
+          "confidenceInterval": [
+            0,
+            0.1875
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:forbidden",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 1,
+          "controlOnly": 0,
+          "both": 1,
+          "neither": 14
+        },
+        "exactTwoSidedMcNemarPValue": 1
+      }
+    },
+    "costPerSuccessfulSolution": {
+      "definition": "All completed and infrastructure-retry attempt cost divided by strict successful solutions",
+      "adaptivePalace": {
+        "denominatorSuccesses": 3,
+        "wallTimeMs": 2435435,
+        "reportedTokens": null,
+        "reportedTokensLowerBound": 7295691.333333333,
+        "tokenEstimateComplete": false
+      },
+      "control": {
+        "denominatorSuccesses": 11,
+        "wallTimeMs": 618798.1818181818,
+        "reportedTokens": 2733539.3636363638,
+        "reportedTokensLowerBound": 2733539.3636363638,
+        "tokenEstimateComplete": true
+      },
+      "adaptiveMinusControl": {
+        "wallTimeMs": {
+          "estimate": 1816636.8181818184,
+          "confidenceInterval": [
+            614119.1400000001,
+            7436672.799999999
+          ],
+          "iterations": 10000,
+          "validIterations": 9789,
+          "undefinedIterations": 211,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:cost-per-success:wall",
+          "estimable": true
+        },
+        "reportedTokens": {
+          "estimate": null,
+          "confidenceInterval": [
+            null,
+            null
+          ],
+          "iterations": 0,
+          "validIterations": 0,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": null,
+          "estimable": false,
+          "reason": "An infrastructure retry has no observed final token usage event"
+        },
+        "reportedTokensLowerBound": 4562151.969696969
+      }
+    },
+    "successWeightedReportedTokens": {
+      "definition": "Mean final reported tokens among strict successful solutions; success rates are reported beside it",
+      "adaptivePalace": 934909.3333333334,
+      "control": 2157709.4545454546,
+      "adaptiveMinusControl": {
+        "estimate": -1222800.121212121,
+        "confidenceInterval": [
+          -1837983.2000000002,
+          -653558.3999999999
+        ],
+        "iterations": 10000,
+        "validIterations": 9801,
+        "undefinedIterations": 199,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:success-weighted-tokens",
+        "estimable": true
+      }
+    },
+    "retryAdjustedCost": {
+      "sameCalculationAsCostPerSuccessfulSolution": true,
+      "definition": "All completed and infrastructure-retry attempt cost divided by strict successful solutions",
+      "adaptivePalace": {
+        "denominatorSuccesses": 3,
+        "wallTimeMs": 2435435,
+        "reportedTokens": null,
+        "reportedTokensLowerBound": 7295691.333333333,
+        "tokenEstimateComplete": false
+      },
+      "control": {
+        "denominatorSuccesses": 11,
+        "wallTimeMs": 618798.1818181818,
+        "reportedTokens": 2733539.3636363638,
+        "reportedTokensLowerBound": 2733539.3636363638,
+        "tokenEstimateComplete": true
+      },
+      "adaptiveMinusControl": {
+        "wallTimeMs": {
+          "estimate": 1816636.8181818184,
+          "confidenceInterval": [
+            614119.1400000001,
+            7436672.799999999
+          ],
+          "iterations": 10000,
+          "validIterations": 9789,
+          "undefinedIterations": 211,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:cost-per-success:wall",
+          "estimable": true
+        },
+        "reportedTokens": {
+          "estimate": null,
+          "confidenceInterval": [
+            null,
+            null
+          ],
+          "iterations": 0,
+          "validIterations": 0,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": null,
+          "estimable": false,
+          "reason": "An infrastructure retry has no observed final token usage event"
+        },
+        "reportedTokensLowerBound": 4562151.969696969
+      }
+    },
+    "hierarchicalWin": {
+      "order": [
+        "success",
+        "exact-scope",
+        "reported-tokens",
+        "wall-time"
+      ],
+      "adaptivePalaceWins": 7,
+      "controlWins": 9,
+      "ties": 0,
+      "exactTwoSidedPValueIgnoringTies": 0.803619384765625,
+      "meanScoreAdaptivePositive": {
+        "estimate": -0.125,
+        "confidenceInterval": [
+          -0.5,
+          0.25
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:hierarchical-score",
+        "estimable": true
+      },
+      "pairs": [
+        {
+          "trialId": "zod-transform-refine-4926-v4-01",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "zod-transform-refine-4926-v4-02",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "zod-transform-refine-4926-v4-03",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "zod-transform-refine-4926-v4-04",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "open-webui-analytics-25919-v4-01",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "open-webui-analytics-25919-v4-02",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "open-webui-analytics-25919-v4-03",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "open-webui-analytics-25919-v4-04",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "zod-report-input-decision-5509-v4-01",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "zod-report-input-decision-5509-v4-02",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "zod-report-input-decision-5509-v4-03",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "zod-report-input-decision-5509-v4-04",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "requests-stream-regression-7432-v4-01",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "requests-stream-regression-7432-v4-02",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "requests-stream-regression-7432-v4-03",
+          "winner": "control",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "requests-stream-regression-7432-v4-04",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        }
+      ]
+    }
+  },
+  "secondary": {
+    "reportedTokens": {
+      "pairedTrials": 16,
+      "adaptivePalaceMedian": 1134891,
+      "controlMedian": 1494115,
+      "adaptiveMinusControlMedianPairedDifference": {
+        "estimate": -221872,
+        "confidenceInterval": [
+          -666550,
+          -42951
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:reportedTokens",
+        "estimable": true
+      }
+    },
+    "inputTokens": {
+      "pairedTrials": 16,
+      "adaptivePalaceMedian": 1125646.5,
+      "controlMedian": 1483192.5,
+      "adaptiveMinusControlMedianPairedDifference": {
+        "estimate": -223416,
+        "confidenceInterval": [
+          -665878,
+          5120.5
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:inputTokens",
+        "estimable": true
+      }
+    },
+    "cachedInputTokens": {
+      "pairedTrials": 16,
+      "adaptivePalaceMedian": 1055872,
+      "controlMedian": 1387520,
+      "adaptiveMinusControlMedianPairedDifference": {
+        "estimate": -208384,
+        "confidenceInterval": [
+          -632192,
+          5120
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:cachedInputTokens",
+        "estimable": true
+      }
+    },
+    "uncachedInputTokens": {
+      "pairedTrials": 16,
+      "adaptivePalaceMedian": 74356.5,
+      "controlMedian": 89720.5,
+      "adaptiveMinusControlMedianPairedDifference": {
+        "estimate": -24687,
+        "confidenceInterval": [
+          -29244.5,
+          -21804.5
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:uncachedInputTokens",
+        "estimable": true
+      }
+    },
+    "outputTokens": {
+      "pairedTrials": 16,
+      "adaptivePalaceMedian": 10583,
+      "controlMedian": 11084,
+      "adaptiveMinusControlMedianPairedDifference": {
+        "estimate": 773,
+        "confidenceInterval": [
+          -1229,
+          1948.5
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:outputTokens",
+        "estimable": true
+      }
+    },
+    "toolCalls": {
+      "pairedTrials": 16,
+      "adaptivePalaceMedian": 25.5,
+      "controlMedian": 20,
+      "adaptiveMinusControlMedianPairedDifference": {
+        "estimate": 3,
+        "confidenceInterval": [
+          -0.5,
+          8
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:toolCalls",
+        "estimable": true
+      }
+    },
+    "failedCalls": {
+      "pairedTrials": 16,
+      "adaptivePalaceMedian": 5,
+      "controlMedian": 5.5,
+      "adaptiveMinusControlMedianPairedDifference": {
+        "estimate": -1,
+        "confidenceInterval": [
+          -2.5,
+          0
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:failedCalls",
+        "estimable": true
+      }
+    },
+    "wallTimeMs": {
+      "pairedTrials": 16,
+      "adaptivePalaceMedian": 303926,
+      "controlMedian": 327536.5,
+      "adaptiveMinusControlMedianPairedDifference": {
+        "estimate": -18180.5,
+        "confidenceInterval": [
+          -49727.5,
+          38203
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:wallTimeMs",
+        "estimable": true
+      }
+    },
+    "allAttemptWallTimeMs": {
+      "pairedTrials": 16,
+      "adaptivePalaceMedian": 320278,
+      "controlMedian": 327536.5,
+      "adaptiveMinusControlMedianPairedDifference": {
+        "estimate": 3069.5,
+        "confidenceInterval": [
+          -46476,
+          39094.5
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:allAttemptWallTimeMs",
+        "estimable": true
+      }
+    }
+  },
+  "overall": {
+    "pairedTrials": 16,
+    "treatment": {
+      "adaptivePalace": {
+        "armRuns": 16,
+        "successes": 3,
+        "successRate": 0.1875,
+        "correctnessPasses": 5,
+        "exactScopePasses": 10,
+        "forbiddenViolations": 2,
+        "infrastructureRetries": 1,
+        "total": {
+          "completedReportedTokens": 21887074,
+          "completedInputTokens": 21684049,
+          "completedCachedInputTokens": 20386048,
+          "completedUncachedInputTokens": 1298001,
+          "completedOutputTokens": 203025,
+          "allAttemptWallTimeMs": 7306305,
+          "allAttemptReportedTokens": null,
+          "allAttemptReportedTokensLowerBound": 21887074,
+          "missingRetryTokenAttempts": 1
+        },
+        "costPerSuccessfulSolution": {
+          "denominatorSuccesses": 3,
+          "wallTimeMs": 2435435,
+          "reportedTokens": null,
+          "reportedTokensLowerBound": 7295691.333333333,
+          "tokenEstimateComplete": false
+        },
+        "successWeightedReportedTokens": 934909.3333333334,
+        "descriptiveMedians": {
+          "reportedTokens": 1134891,
+          "uncachedInputTokens": 74356.5,
+          "toolCalls": 25.5,
+          "wallTimeMs": 303926
+        }
+      },
+      "control": {
+        "armRuns": 16,
+        "successes": 11,
+        "successRate": 0.6875,
+        "correctnessPasses": 12,
+        "exactScopePasses": 15,
+        "forbiddenViolations": 1,
+        "infrastructureRetries": 0,
+        "total": {
+          "completedReportedTokens": 30068933,
+          "completedInputTokens": 29873786,
+          "completedCachedInputTokens": 28180480,
+          "completedUncachedInputTokens": 1693306,
+          "completedOutputTokens": 195147,
+          "allAttemptWallTimeMs": 6806780,
+          "allAttemptReportedTokens": 30068933,
+          "allAttemptReportedTokensLowerBound": 30068933,
+          "missingRetryTokenAttempts": 0
+        },
+        "costPerSuccessfulSolution": {
+          "denominatorSuccesses": 11,
+          "wallTimeMs": 618798.1818181818,
+          "reportedTokens": 2733539.3636363638,
+          "reportedTokensLowerBound": 2733539.3636363638,
+          "tokenEstimateComplete": true
+        },
+        "successWeightedReportedTokens": 2157709.4545454546,
+        "descriptiveMedians": {
+          "reportedTokens": 1494115,
+          "uncachedInputTokens": 89720.5,
+          "toolCalls": 20,
+          "wallTimeMs": 327536.5
+        }
+      }
+    },
+    "correctness": {
+      "adaptivePalaceCount": 5,
+      "controlCount": 12,
+      "adaptivePalaceRate": 0.3125,
+      "controlRate": 0.75,
+      "adaptiveMinusControl": {
+        "estimate": -0.4375,
+        "confidenceInterval": [
+          -0.5,
+          -0.3125
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:correctness",
+        "estimable": true
+      },
+      "discordance": {
+        "adaptiveOnly": 0,
+        "controlOnly": 7,
+        "both": 5,
+        "neither": 4
+      },
+      "exactTwoSidedMcNemarPValue": 0.015625
+    },
+    "success": {
+      "adaptivePalaceCount": 3,
+      "controlCount": 11,
+      "adaptivePalaceRate": 0.1875,
+      "controlRate": 0.6875,
+      "adaptiveMinusControl": {
+        "estimate": -0.5,
+        "confidenceInterval": [
+          -0.625,
+          -0.375
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall",
+        "estimable": true
+      },
+      "discordance": {
+        "adaptiveOnly": 0,
+        "controlOnly": 8,
+        "both": 3,
+        "neither": 5
+      },
+      "exactTwoSidedMcNemarPValue": 0.0078125
+    },
+    "scope": {
+      "exactScope": {
+        "adaptivePalaceCount": 10,
+        "controlCount": 15,
+        "adaptivePalaceRate": 0.625,
+        "controlRate": 0.9375,
+        "adaptiveMinusControl": {
+          "estimate": -0.3125,
+          "confidenceInterval": [
+            -0.5,
+            -0.125
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:exact-scope",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 5,
+          "both": 10,
+          "neither": 1
+        },
+        "exactTwoSidedMcNemarPValue": 0.0625
+      },
+      "nonExactScope": {
+        "adaptivePalaceFailures": 6,
+        "controlFailures": 1,
+        "adaptivePalaceRate": 0.375,
+        "controlRate": 0.0625,
+        "adaptiveMinusControl": {
+          "estimate": 0.3125,
+          "confidenceInterval": [
+            0.125,
+            0.5
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:exact-scope",
+          "estimable": true
+        }
+      },
+      "forbiddenViolation": {
+        "adaptivePalaceCount": 2,
+        "controlCount": 1,
+        "adaptivePalaceRate": 0.125,
+        "controlRate": 0.0625,
+        "adaptiveMinusControl": {
+          "estimate": 0.0625,
+          "confidenceInterval": [
+            0,
+            0.1875
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:forbidden",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 1,
+          "controlOnly": 0,
+          "both": 1,
+          "neither": 14
+        },
+        "exactTwoSidedMcNemarPValue": 1
+      }
+    },
+    "costPerSuccessfulSolution": {
+      "definition": "All completed and infrastructure-retry attempt cost divided by strict successful solutions",
+      "adaptivePalace": {
+        "denominatorSuccesses": 3,
+        "wallTimeMs": 2435435,
+        "reportedTokens": null,
+        "reportedTokensLowerBound": 7295691.333333333,
+        "tokenEstimateComplete": false
+      },
+      "control": {
+        "denominatorSuccesses": 11,
+        "wallTimeMs": 618798.1818181818,
+        "reportedTokens": 2733539.3636363638,
+        "reportedTokensLowerBound": 2733539.3636363638,
+        "tokenEstimateComplete": true
+      },
+      "adaptiveMinusControl": {
+        "wallTimeMs": {
+          "estimate": 1816636.8181818184,
+          "confidenceInterval": [
+            614119.1400000001,
+            7436672.799999999
+          ],
+          "iterations": 10000,
+          "validIterations": 9789,
+          "undefinedIterations": 211,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:cost-per-success:wall",
+          "estimable": true
+        },
+        "reportedTokens": {
+          "estimate": null,
+          "confidenceInterval": [
+            null,
+            null
+          ],
+          "iterations": 0,
+          "validIterations": 0,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": null,
+          "estimable": false,
+          "reason": "An infrastructure retry has no observed final token usage event"
+        },
+        "reportedTokensLowerBound": 4562151.969696969
+      }
+    },
+    "successWeightedReportedTokens": {
+      "definition": "Mean final reported tokens among strict successful solutions; success rates are reported beside it",
+      "adaptivePalace": 934909.3333333334,
+      "control": 2157709.4545454546,
+      "adaptiveMinusControl": {
+        "estimate": -1222800.121212121,
+        "confidenceInterval": [
+          -1837983.2000000002,
+          -653558.3999999999
+        ],
+        "iterations": 10000,
+        "validIterations": 9801,
+        "undefinedIterations": 199,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:success-weighted-tokens",
+        "estimable": true
+      }
+    },
+    "hierarchicalWin": {
+      "order": [
+        "success",
+        "exact-scope",
+        "reported-tokens",
+        "wall-time"
+      ],
+      "adaptivePalaceWins": 7,
+      "controlWins": 9,
+      "ties": 0,
+      "exactTwoSidedPValueIgnoringTies": 0.803619384765625,
+      "meanScoreAdaptivePositive": {
+        "estimate": -0.125,
+        "confidenceInterval": [
+          -0.5,
+          0.25
+        ],
+        "iterations": 10000,
+        "validIterations": 10000,
+        "undefinedIterations": 0,
+        "confidence": 0.95,
+        "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:hierarchical-score",
+        "estimable": true
+      },
+      "pairs": [
+        {
+          "trialId": "zod-transform-refine-4926-v4-01",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "zod-transform-refine-4926-v4-02",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "zod-transform-refine-4926-v4-03",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "zod-transform-refine-4926-v4-04",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "open-webui-analytics-25919-v4-01",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "open-webui-analytics-25919-v4-02",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "open-webui-analytics-25919-v4-03",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "open-webui-analytics-25919-v4-04",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "zod-report-input-decision-5509-v4-01",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "zod-report-input-decision-5509-v4-02",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "zod-report-input-decision-5509-v4-03",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "zod-report-input-decision-5509-v4-04",
+          "winner": "control",
+          "decidedBy": "success"
+        },
+        {
+          "trialId": "requests-stream-regression-7432-v4-01",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "requests-stream-regression-7432-v4-02",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "requests-stream-regression-7432-v4-03",
+          "winner": "control",
+          "decidedBy": "reported-tokens"
+        },
+        {
+          "trialId": "requests-stream-regression-7432-v4-04",
+          "winner": "adaptive-palace",
+          "decidedBy": "reported-tokens"
+        }
+      ]
+    },
+    "secondary": {
+      "reportedTokens": {
+        "pairedTrials": 16,
+        "adaptivePalaceMedian": 1134891,
+        "controlMedian": 1494115,
+        "adaptiveMinusControlMedianPairedDifference": {
+          "estimate": -221872,
+          "confidenceInterval": [
+            -666550,
+            -42951
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:reportedTokens",
+          "estimable": true
+        }
+      },
+      "inputTokens": {
+        "pairedTrials": 16,
+        "adaptivePalaceMedian": 1125646.5,
+        "controlMedian": 1483192.5,
+        "adaptiveMinusControlMedianPairedDifference": {
+          "estimate": -223416,
+          "confidenceInterval": [
+            -665878,
+            5120.5
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:inputTokens",
+          "estimable": true
+        }
+      },
+      "cachedInputTokens": {
+        "pairedTrials": 16,
+        "adaptivePalaceMedian": 1055872,
+        "controlMedian": 1387520,
+        "adaptiveMinusControlMedianPairedDifference": {
+          "estimate": -208384,
+          "confidenceInterval": [
+            -632192,
+            5120
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:cachedInputTokens",
+          "estimable": true
+        }
+      },
+      "uncachedInputTokens": {
+        "pairedTrials": 16,
+        "adaptivePalaceMedian": 74356.5,
+        "controlMedian": 89720.5,
+        "adaptiveMinusControlMedianPairedDifference": {
+          "estimate": -24687,
+          "confidenceInterval": [
+            -29244.5,
+            -21804.5
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:uncachedInputTokens",
+          "estimable": true
+        }
+      },
+      "outputTokens": {
+        "pairedTrials": 16,
+        "adaptivePalaceMedian": 10583,
+        "controlMedian": 11084,
+        "adaptiveMinusControlMedianPairedDifference": {
+          "estimate": 773,
+          "confidenceInterval": [
+            -1229,
+            1948.5
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:outputTokens",
+          "estimable": true
+        }
+      },
+      "toolCalls": {
+        "pairedTrials": 16,
+        "adaptivePalaceMedian": 25.5,
+        "controlMedian": 20,
+        "adaptiveMinusControlMedianPairedDifference": {
+          "estimate": 3,
+          "confidenceInterval": [
+            -0.5,
+            8
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:toolCalls",
+          "estimable": true
+        }
+      },
+      "failedCalls": {
+        "pairedTrials": 16,
+        "adaptivePalaceMedian": 5,
+        "controlMedian": 5.5,
+        "adaptiveMinusControlMedianPairedDifference": {
+          "estimate": -1,
+          "confidenceInterval": [
+            -2.5,
+            0
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:failedCalls",
+          "estimable": true
+        }
+      },
+      "wallTimeMs": {
+        "pairedTrials": 16,
+        "adaptivePalaceMedian": 303926,
+        "controlMedian": 327536.5,
+        "adaptiveMinusControlMedianPairedDifference": {
+          "estimate": -18180.5,
+          "confidenceInterval": [
+            -49727.5,
+            38203
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:wallTimeMs",
+          "estimable": true
+        }
+      },
+      "allAttemptWallTimeMs": {
+        "pairedTrials": 16,
+        "adaptivePalaceMedian": 320278,
+        "controlMedian": 327536.5,
+        "adaptiveMinusControlMedianPairedDifference": {
+          "estimate": 3069.5,
+          "confidenceInterval": [
+            -46476,
+            39094.5
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:overall:secondary:allAttemptWallTimeMs",
+          "estimable": true
+        }
+      }
+    }
+  },
+  "byFixture": {
+    "zod-transform-refine-4926": {
+      "pairedTrials": 4,
+      "treatment": {
+        "adaptivePalace": {
+          "armRuns": 4,
+          "successes": 1,
+          "successRate": 0.25,
+          "correctnessPasses": 1,
+          "exactScopePasses": 2,
+          "forbiddenViolations": 0,
+          "infrastructureRetries": 0,
+          "total": {
+            "completedReportedTokens": 6535546,
+            "completedInputTokens": 6480130,
+            "completedCachedInputTokens": 6135296,
+            "completedUncachedInputTokens": 344834,
+            "completedOutputTokens": 55416,
+            "allAttemptWallTimeMs": 1530872,
+            "allAttemptReportedTokens": 6535546,
+            "allAttemptReportedTokensLowerBound": 6535546,
+            "missingRetryTokenAttempts": 0
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 1,
+            "wallTimeMs": 1530872,
+            "reportedTokens": 6535546,
+            "reportedTokensLowerBound": 6535546,
+            "tokenEstimateComplete": true
+          },
+          "successWeightedReportedTokens": 1688933,
+          "descriptiveMedians": {
+            "reportedTokens": 1647979.5,
+            "uncachedInputTokens": 87789.5,
+            "toolCalls": 27.5,
+            "wallTimeMs": 357353
+          }
+        },
+        "control": {
+          "armRuns": 4,
+          "successes": 4,
+          "successRate": 1,
+          "correctnessPasses": 4,
+          "exactScopePasses": 4,
+          "forbiddenViolations": 0,
+          "infrastructureRetries": 0,
+          "total": {
+            "completedReportedTokens": 5415229,
+            "completedInputTokens": 5364144,
+            "completedCachedInputTokens": 5004544,
+            "completedUncachedInputTokens": 359600,
+            "completedOutputTokens": 51085,
+            "allAttemptWallTimeMs": 1345180,
+            "allAttemptReportedTokens": 5415229,
+            "allAttemptReportedTokensLowerBound": 5415229,
+            "missingRetryTokenAttempts": 0
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 4,
+            "wallTimeMs": 336295,
+            "reportedTokens": 1353807.25,
+            "reportedTokensLowerBound": 1353807.25,
+            "tokenEstimateComplete": true
+          },
+          "successWeightedReportedTokens": 1353807.25,
+          "descriptiveMedians": {
+            "reportedTokens": 1269180.5,
+            "uncachedInputTokens": 83271,
+            "toolCalls": 22,
+            "wallTimeMs": 327536.5
+          }
+        }
+      },
+      "correctness": {
+        "adaptivePalaceCount": 1,
+        "controlCount": 4,
+        "adaptivePalaceRate": 0.25,
+        "controlRate": 1,
+        "adaptiveMinusControl": {
+          "estimate": -0.75,
+          "confidenceInterval": [
+            -1,
+            -0.25
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:correctness",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 3,
+          "both": 1,
+          "neither": 0
+        },
+        "exactTwoSidedMcNemarPValue": 0.25
+      },
+      "success": {
+        "adaptivePalaceCount": 1,
+        "controlCount": 4,
+        "adaptivePalaceRate": 0.25,
+        "controlRate": 1,
+        "adaptiveMinusControl": {
+          "estimate": -0.75,
+          "confidenceInterval": [
+            -1,
+            -0.25
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 3,
+          "both": 1,
+          "neither": 0
+        },
+        "exactTwoSidedMcNemarPValue": 0.25
+      },
+      "scope": {
+        "exactScope": {
+          "adaptivePalaceCount": 2,
+          "controlCount": 4,
+          "adaptivePalaceRate": 0.5,
+          "controlRate": 1,
+          "adaptiveMinusControl": {
+            "estimate": -0.5,
+            "confidenceInterval": [
+              -1,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:exact-scope",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 0,
+            "controlOnly": 2,
+            "both": 2,
+            "neither": 0
+          },
+          "exactTwoSidedMcNemarPValue": 0.5
+        },
+        "nonExactScope": {
+          "adaptivePalaceFailures": 2,
+          "controlFailures": 0,
+          "adaptivePalaceRate": 0.5,
+          "controlRate": 0,
+          "adaptiveMinusControl": {
+            "estimate": 0.5,
+            "confidenceInterval": [
+              0,
+              1
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:exact-scope",
+            "estimable": true
+          }
+        },
+        "forbiddenViolation": {
+          "adaptivePalaceCount": 0,
+          "controlCount": 0,
+          "adaptivePalaceRate": 0,
+          "controlRate": 0,
+          "adaptiveMinusControl": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:forbidden",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 0,
+            "controlOnly": 0,
+            "both": 0,
+            "neither": 4
+          },
+          "exactTwoSidedMcNemarPValue": 1
+        }
+      },
+      "costPerSuccessfulSolution": {
+        "definition": "All completed and infrastructure-retry attempt cost divided by strict successful solutions",
+        "adaptivePalace": {
+          "denominatorSuccesses": 1,
+          "wallTimeMs": 1530872,
+          "reportedTokens": 6535546,
+          "reportedTokensLowerBound": 6535546,
+          "tokenEstimateComplete": true
+        },
+        "control": {
+          "denominatorSuccesses": 4,
+          "wallTimeMs": 336295,
+          "reportedTokens": 1353807.25,
+          "reportedTokensLowerBound": 1353807.25,
+          "tokenEstimateComplete": true
+        },
+        "adaptiveMinusControl": {
+          "wallTimeMs": {
+            "estimate": 1194577,
+            "confidenceInterval": [
+              153681.0833333333,
+              1409041.75
+            ],
+            "iterations": 10000,
+            "validIterations": 6808,
+            "undefinedIterations": 3192,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:cost-per-success:wall",
+            "estimable": true
+          },
+          "reportedTokens": {
+            "estimate": 5181738.75,
+            "confidenceInterval": [
+              520929.5833333335,
+              5643199
+            ],
+            "iterations": 10000,
+            "validIterations": 6819,
+            "undefinedIterations": 3181,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:cost-per-success:tokens",
+            "estimable": true
+          },
+          "reportedTokensLowerBound": 5181738.75
+        }
+      },
+      "successWeightedReportedTokens": {
+        "definition": "Mean final reported tokens among strict successful solutions; success rates are reported beside it",
+        "adaptivePalace": 1688933,
+        "control": 1353807.25,
+        "adaptiveMinusControl": {
+          "estimate": 335125.75,
+          "confidenceInterval": [
+            50500.25,
+            388399.5
+          ],
+          "iterations": 10000,
+          "validIterations": 6742,
+          "undefinedIterations": 3258,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:success-weighted-tokens",
+          "estimable": true
+        }
+      },
+      "hierarchicalWin": {
+        "order": [
+          "success",
+          "exact-scope",
+          "reported-tokens",
+          "wall-time"
+        ],
+        "adaptivePalaceWins": 1,
+        "controlWins": 3,
+        "ties": 0,
+        "exactTwoSidedPValueIgnoringTies": 0.625,
+        "meanScoreAdaptivePositive": {
+          "estimate": -0.5,
+          "confidenceInterval": [
+            -1,
+            0.5
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:hierarchical-score",
+          "estimable": true
+        },
+        "pairs": [
+          {
+            "trialId": "zod-transform-refine-4926-v4-01",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "zod-transform-refine-4926-v4-02",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "zod-transform-refine-4926-v4-03",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "zod-transform-refine-4926-v4-04",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          }
+        ]
+      },
+      "secondary": {
+        "reportedTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 1647979.5,
+          "controlMedian": 1269180.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 257625.5,
+            "confidenceInterval": [
+              -42951,
+              648017
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:secondary:reportedTokens",
+            "estimable": true
+          }
+        },
+        "inputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 1635309.5,
+          "controlMedian": 1256443.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 258998.5,
+            "confidenceInterval": [
+              -44197,
+              642186
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:secondary:inputTokens",
+            "estimable": true
+          }
+        },
+        "cachedInputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 1547520,
+          "controlMedian": 1174272,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 272768,
+            "confidenceInterval": [
+              -48128,
+              633344
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:secondary:cachedInputTokens",
+            "estimable": true
+          }
+        },
+        "uncachedInputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 87789.5,
+          "controlMedian": 83271,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 0.5,
+            "confidenceInterval": [
+              -23609,
+              8842
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:secondary:uncachedInputTokens",
+            "estimable": true
+          }
+        },
+        "outputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 12759,
+          "controlMedian": 12792,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 8.5,
+            "confidenceInterval": [
+              -1517,
+              5831
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:secondary:outputTokens",
+            "estimable": true
+          }
+        },
+        "toolCalls": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 27.5,
+          "controlMedian": 22,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 4,
+            "confidenceInterval": [
+              1,
+              8
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:secondary:toolCalls",
+            "estimable": true
+          }
+        },
+        "failedCalls": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 11,
+          "controlMedian": 7,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 5,
+            "confidenceInterval": [
+              -2,
+              6
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:secondary:failedCalls",
+            "estimable": true
+          }
+        },
+        "wallTimeMs": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 357353,
+          "controlMedian": 327536.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 11481.5,
+            "confidenceInterval": [
+              -19925,
+              182654
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:secondary:wallTimeMs",
+            "estimable": true
+          }
+        },
+        "allAttemptWallTimeMs": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 357353,
+          "controlMedian": 327536.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 11481.5,
+            "confidenceInterval": [
+              -19925,
+              182654
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-transform-refine-4926:secondary:allAttemptWallTimeMs",
+            "estimable": true
+          }
+        }
+      }
+    },
+    "open-webui-analytics-25919": {
+      "pairedTrials": 4,
+      "treatment": {
+        "adaptivePalace": {
+          "armRuns": 4,
+          "successes": 0,
+          "successRate": 0,
+          "correctnessPasses": 0,
+          "exactScopePasses": 2,
+          "forbiddenViolations": 0,
+          "infrastructureRetries": 0,
+          "total": {
+            "completedReportedTokens": 9740657,
+            "completedInputTokens": 9655221,
+            "completedCachedInputTokens": 9167616,
+            "completedUncachedInputTokens": 487605,
+            "completedOutputTokens": 85436,
+            "allAttemptWallTimeMs": 2669064,
+            "allAttemptReportedTokens": 9740657,
+            "allAttemptReportedTokensLowerBound": 9740657,
+            "missingRetryTokenAttempts": 0
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 0,
+            "wallTimeMs": null,
+            "reportedTokens": null,
+            "reportedTokensLowerBound": null,
+            "tokenEstimateComplete": true
+          },
+          "successWeightedReportedTokens": null,
+          "descriptiveMedians": {
+            "reportedTokens": 2595248,
+            "uncachedInputTokens": 121400,
+            "toolCalls": 30,
+            "wallTimeMs": 686151
+          }
+        },
+        "control": {
+          "armRuns": 4,
+          "successes": 4,
+          "successRate": 1,
+          "correctnessPasses": 4,
+          "exactScopePasses": 4,
+          "forbiddenViolations": 0,
+          "infrastructureRetries": 0,
+          "total": {
+            "completedReportedTokens": 14817437,
+            "completedInputTokens": 14733150,
+            "completedCachedInputTokens": 14128128,
+            "completedUncachedInputTokens": 605022,
+            "completedOutputTokens": 84287,
+            "allAttemptWallTimeMs": 2861101,
+            "allAttemptReportedTokens": 14817437,
+            "allAttemptReportedTokensLowerBound": 14817437,
+            "missingRetryTokenAttempts": 0
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 4,
+            "wallTimeMs": 715275.25,
+            "reportedTokens": 3704359.25,
+            "reportedTokensLowerBound": 3704359.25,
+            "tokenEstimateComplete": true
+          },
+          "successWeightedReportedTokens": 3704359.25,
+          "descriptiveMedians": {
+            "reportedTokens": 3818798.5,
+            "uncachedInputTokens": 150864,
+            "toolCalls": 25.5,
+            "wallTimeMs": 768375
+          }
+        }
+      },
+      "correctness": {
+        "adaptivePalaceCount": 0,
+        "controlCount": 4,
+        "adaptivePalaceRate": 0,
+        "controlRate": 1,
+        "adaptiveMinusControl": {
+          "estimate": -1,
+          "confidenceInterval": [
+            -1,
+            -1
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:correctness",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 4,
+          "both": 0,
+          "neither": 0
+        },
+        "exactTwoSidedMcNemarPValue": 0.125
+      },
+      "success": {
+        "adaptivePalaceCount": 0,
+        "controlCount": 4,
+        "adaptivePalaceRate": 0,
+        "controlRate": 1,
+        "adaptiveMinusControl": {
+          "estimate": -1,
+          "confidenceInterval": [
+            -1,
+            -1
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 4,
+          "both": 0,
+          "neither": 0
+        },
+        "exactTwoSidedMcNemarPValue": 0.125
+      },
+      "scope": {
+        "exactScope": {
+          "adaptivePalaceCount": 2,
+          "controlCount": 4,
+          "adaptivePalaceRate": 0.5,
+          "controlRate": 1,
+          "adaptiveMinusControl": {
+            "estimate": -0.5,
+            "confidenceInterval": [
+              -1,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:exact-scope",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 0,
+            "controlOnly": 2,
+            "both": 2,
+            "neither": 0
+          },
+          "exactTwoSidedMcNemarPValue": 0.5
+        },
+        "nonExactScope": {
+          "adaptivePalaceFailures": 2,
+          "controlFailures": 0,
+          "adaptivePalaceRate": 0.5,
+          "controlRate": 0,
+          "adaptiveMinusControl": {
+            "estimate": 0.5,
+            "confidenceInterval": [
+              0,
+              1
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:exact-scope",
+            "estimable": true
+          }
+        },
+        "forbiddenViolation": {
+          "adaptivePalaceCount": 0,
+          "controlCount": 0,
+          "adaptivePalaceRate": 0,
+          "controlRate": 0,
+          "adaptiveMinusControl": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:forbidden",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 0,
+            "controlOnly": 0,
+            "both": 0,
+            "neither": 4
+          },
+          "exactTwoSidedMcNemarPValue": 1
+        }
+      },
+      "costPerSuccessfulSolution": {
+        "definition": "All completed and infrastructure-retry attempt cost divided by strict successful solutions",
+        "adaptivePalace": {
+          "denominatorSuccesses": 0,
+          "wallTimeMs": null,
+          "reportedTokens": null,
+          "reportedTokensLowerBound": null,
+          "tokenEstimateComplete": true
+        },
+        "control": {
+          "denominatorSuccesses": 4,
+          "wallTimeMs": 715275.25,
+          "reportedTokens": 3704359.25,
+          "reportedTokensLowerBound": 3704359.25,
+          "tokenEstimateComplete": true
+        },
+        "adaptiveMinusControl": {
+          "wallTimeMs": {
+            "estimate": null,
+            "confidenceInterval": [
+              null,
+              null
+            ],
+            "iterations": 0,
+            "validIterations": 0,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": null,
+            "estimable": false,
+            "reason": "Statistic is undefined for the observed sample"
+          },
+          "reportedTokens": {
+            "estimate": null,
+            "confidenceInterval": [
+              null,
+              null
+            ],
+            "iterations": 0,
+            "validIterations": 0,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": null,
+            "estimable": false,
+            "reason": "Statistic is undefined for the observed sample"
+          },
+          "reportedTokensLowerBound": null
+        }
+      },
+      "successWeightedReportedTokens": {
+        "definition": "Mean final reported tokens among strict successful solutions; success rates are reported beside it",
+        "adaptivePalace": null,
+        "control": 3704359.25,
+        "adaptiveMinusControl": {
+          "estimate": null,
+          "confidenceInterval": [
+            null,
+            null
+          ],
+          "iterations": 0,
+          "validIterations": 0,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": null,
+          "estimable": false,
+          "reason": "Statistic is undefined for the observed sample"
+        }
+      },
+      "hierarchicalWin": {
+        "order": [
+          "success",
+          "exact-scope",
+          "reported-tokens",
+          "wall-time"
+        ],
+        "adaptivePalaceWins": 0,
+        "controlWins": 4,
+        "ties": 0,
+        "exactTwoSidedPValueIgnoringTies": 0.125,
+        "meanScoreAdaptivePositive": {
+          "estimate": -1,
+          "confidenceInterval": [
+            -1,
+            -1
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:hierarchical-score",
+          "estimable": true
+        },
+        "pairs": [
+          {
+            "trialId": "open-webui-analytics-25919-v4-01",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "open-webui-analytics-25919-v4-02",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "open-webui-analytics-25919-v4-03",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "open-webui-analytics-25919-v4-04",
+            "winner": "control",
+            "decidedBy": "success"
+          }
+        ]
+      },
+      "secondary": {
+        "reportedTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 2595248,
+          "controlMedian": 3818798.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -1287951,
+            "confidenceInterval": [
+              -2929506,
+              428628
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:secondary:reportedTokens",
+            "estimable": true
+          }
+        },
+        "inputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 2571928,
+          "controlMedian": 3796299,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -1289276.5,
+            "confidenceInterval": [
+              -2923001,
+              423625
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:secondary:inputTokens",
+            "estimable": true
+          }
+        },
+        "cachedInputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 2446592,
+          "controlMedian": 3645440,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -1260032,
+            "confidenceInterval": [
+              -2886400,
+              445952
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:secondary:cachedInputTokens",
+            "estimable": true
+          }
+        },
+        "uncachedInputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 121400,
+          "controlMedian": 150864,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -29244.5,
+            "confidenceInterval": [
+              -36601,
+              -22327
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:secondary:uncachedInputTokens",
+            "estimable": true
+          }
+        },
+        "outputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 23289.5,
+          "controlMedian": 21506.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 1325.5,
+            "confidenceInterval": [
+              -6505,
+              5003
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:secondary:outputTokens",
+            "estimable": true
+          }
+        },
+        "toolCalls": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 30,
+          "controlMedian": 25.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 6,
+            "confidenceInterval": [
+              -6,
+              10
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:secondary:toolCalls",
+            "estimable": true
+          }
+        },
+        "failedCalls": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 5,
+          "controlMedian": 6,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -1.5,
+            "confidenceInterval": [
+              -5,
+              3
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:secondary:failedCalls",
+            "estimable": true
+          }
+        },
+        "wallTimeMs": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 686151,
+          "controlMedian": 768375,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -46476,
+            "confidenceInterval": [
+              -290975,
+              191890
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:secondary:wallTimeMs",
+            "estimable": true
+          }
+        },
+        "allAttemptWallTimeMs": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 686151,
+          "controlMedian": 768375,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -46476,
+            "confidenceInterval": [
+              -290975,
+              191890
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:open-webui-analytics-25919:secondary:allAttemptWallTimeMs",
+            "estimable": true
+          }
+        }
+      }
+    },
+    "zod-report-input-decision-5509": {
+      "pairedTrials": 4,
+      "treatment": {
+        "adaptivePalace": {
+          "armRuns": 4,
+          "successes": 2,
+          "successRate": 0.5,
+          "correctnessPasses": 4,
+          "exactScopePasses": 2,
+          "forbiddenViolations": 2,
+          "infrastructureRetries": 0,
+          "total": {
+            "completedReportedTokens": 2734167,
+            "completedInputTokens": 2700424,
+            "completedCachedInputTokens": 2442496,
+            "completedUncachedInputTokens": 257928,
+            "completedOutputTokens": 33743,
+            "allAttemptWallTimeMs": 1056664,
+            "allAttemptReportedTokens": 2734167,
+            "allAttemptReportedTokensLowerBound": 2734167,
+            "missingRetryTokenAttempts": 0
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 2,
+            "wallTimeMs": 528332,
+            "reportedTokens": 1367083.5,
+            "reportedTokensLowerBound": 1367083.5,
+            "tokenEstimateComplete": true
+          },
+          "successWeightedReportedTokens": 557897.5,
+          "descriptiveMedians": {
+            "reportedTokens": 700706,
+            "uncachedInputTokens": 64819,
+            "toolCalls": 23.5,
+            "wallTimeMs": 269615
+          }
+        },
+        "control": {
+          "armRuns": 4,
+          "successes": 3,
+          "successRate": 0.75,
+          "correctnessPasses": 4,
+          "exactScopePasses": 3,
+          "forbiddenViolations": 1,
+          "infrastructureRetries": 0,
+          "total": {
+            "completedReportedTokens": 4649025,
+            "completedInputTokens": 4618212,
+            "completedCachedInputTokens": 4269568,
+            "completedUncachedInputTokens": 348644,
+            "completedOutputTokens": 30813,
+            "allAttemptWallTimeMs": 1051151,
+            "allAttemptReportedTokens": 4649025,
+            "allAttemptReportedTokensLowerBound": 4649025,
+            "missingRetryTokenAttempts": 0
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 3,
+            "wallTimeMs": 350383.6666666667,
+            "reportedTokens": 1549675,
+            "reportedTokensLowerBound": 1549675,
+            "tokenEstimateComplete": true
+          },
+          "successWeightedReportedTokens": 1167379.3333333333,
+          "descriptiveMedians": {
+            "reportedTokens": 1054216.5,
+            "uncachedInputTokens": 85468,
+            "toolCalls": 19.5,
+            "wallTimeMs": 270291
+          }
+        }
+      },
+      "correctness": {
+        "adaptivePalaceCount": 4,
+        "controlCount": 4,
+        "adaptivePalaceRate": 1,
+        "controlRate": 1,
+        "adaptiveMinusControl": {
+          "estimate": 0,
+          "confidenceInterval": [
+            0,
+            0
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:correctness",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 0,
+          "both": 4,
+          "neither": 0
+        },
+        "exactTwoSidedMcNemarPValue": 1
+      },
+      "success": {
+        "adaptivePalaceCount": 2,
+        "controlCount": 3,
+        "adaptivePalaceRate": 0.5,
+        "controlRate": 0.75,
+        "adaptiveMinusControl": {
+          "estimate": -0.25,
+          "confidenceInterval": [
+            -0.75,
+            0
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 1,
+          "both": 2,
+          "neither": 1
+        },
+        "exactTwoSidedMcNemarPValue": 1
+      },
+      "scope": {
+        "exactScope": {
+          "adaptivePalaceCount": 2,
+          "controlCount": 3,
+          "adaptivePalaceRate": 0.5,
+          "controlRate": 0.75,
+          "adaptiveMinusControl": {
+            "estimate": -0.25,
+            "confidenceInterval": [
+              -0.75,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:exact-scope",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 0,
+            "controlOnly": 1,
+            "both": 2,
+            "neither": 1
+          },
+          "exactTwoSidedMcNemarPValue": 1
+        },
+        "nonExactScope": {
+          "adaptivePalaceFailures": 2,
+          "controlFailures": 1,
+          "adaptivePalaceRate": 0.5,
+          "controlRate": 0.25,
+          "adaptiveMinusControl": {
+            "estimate": 0.25,
+            "confidenceInterval": [
+              0,
+              0.75
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:exact-scope",
+            "estimable": true
+          }
+        },
+        "forbiddenViolation": {
+          "adaptivePalaceCount": 2,
+          "controlCount": 1,
+          "adaptivePalaceRate": 0.5,
+          "controlRate": 0.25,
+          "adaptiveMinusControl": {
+            "estimate": 0.25,
+            "confidenceInterval": [
+              0,
+              0.75
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:forbidden",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 1,
+            "controlOnly": 0,
+            "both": 1,
+            "neither": 2
+          },
+          "exactTwoSidedMcNemarPValue": 1
+        }
+      },
+      "costPerSuccessfulSolution": {
+        "definition": "All completed and infrastructure-retry attempt cost divided by strict successful solutions",
+        "adaptivePalace": {
+          "denominatorSuccesses": 2,
+          "wallTimeMs": 528332,
+          "reportedTokens": 1367083.5,
+          "reportedTokensLowerBound": 1367083.5,
+          "tokenEstimateComplete": true
+        },
+        "control": {
+          "denominatorSuccesses": 3,
+          "wallTimeMs": 350383.6666666667,
+          "reportedTokens": 1549675,
+          "reportedTokensLowerBound": 1549675,
+          "tokenEstimateComplete": true
+        },
+        "adaptiveMinusControl": {
+          "wallTimeMs": {
+            "estimate": 177948.3333333333,
+            "confidenceInterval": [
+              -55852,
+              887085.5
+            ],
+            "iterations": 10000,
+            "validIterations": 9368,
+            "undefinedIterations": 632,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:cost-per-success:wall",
+            "estimable": true
+          },
+          "reportedTokens": {
+            "estimate": -182591.5,
+            "confidenceInterval": [
+              -1183002,
+              1339811.25
+            ],
+            "iterations": 10000,
+            "validIterations": 9411,
+            "undefinedIterations": 589,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:cost-per-success:tokens",
+            "estimable": true
+          },
+          "reportedTokensLowerBound": -182591.5
+        }
+      },
+      "successWeightedReportedTokens": {
+        "definition": "Mean final reported tokens among strict successful solutions; success rates are reported beside it",
+        "adaptivePalace": 557897.5,
+        "control": 1167379.3333333333,
+        "adaptiveMinusControl": {
+          "estimate": -609481.8333333333,
+          "confidenceInterval": [
+            -920792.6666666667,
+            -281136
+          ],
+          "iterations": 10000,
+          "validIterations": 9367,
+          "undefinedIterations": 633,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:success-weighted-tokens",
+          "estimable": true
+        }
+      },
+      "hierarchicalWin": {
+        "order": [
+          "success",
+          "exact-scope",
+          "reported-tokens",
+          "wall-time"
+        ],
+        "adaptivePalaceWins": 3,
+        "controlWins": 1,
+        "ties": 0,
+        "exactTwoSidedPValueIgnoringTies": 0.625,
+        "meanScoreAdaptivePositive": {
+          "estimate": 0.5,
+          "confidenceInterval": [
+            -0.5,
+            1
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:hierarchical-score",
+          "estimable": true
+        },
+        "pairs": [
+          {
+            "trialId": "zod-report-input-decision-5509-v4-01",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "zod-report-input-decision-5509-v4-02",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "zod-report-input-decision-5509-v4-03",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "zod-report-input-decision-5509-v4-04",
+            "winner": "control",
+            "decidedBy": "success"
+          }
+        ]
+      },
+      "secondary": {
+        "reportedTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 700706,
+          "controlMedian": 1054216.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -387839,
+            "confidenceInterval": [
+              -858044,
+              -281136
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:secondary:reportedTokens",
+            "estimable": true
+          }
+        },
+        "inputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 691397,
+          "controlMedian": 1046620,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -387805,
+            "confidenceInterval": [
+              -858772,
+              -283406
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:secondary:inputTokens",
+            "estimable": true
+          }
+        },
+        "cachedInputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 627840,
+          "controlMedian": 961152,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -367744,
+            "confidenceInterval": [
+              -810240,
+              -281344
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:secondary:cachedInputTokens",
+            "estimable": true
+          }
+        },
+        "uncachedInputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 64819,
+          "controlMedian": 85468,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -20061,
+            "confidenceInterval": [
+              -48532,
+              -2062
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:secondary:uncachedInputTokens",
+            "estimable": true
+          }
+        },
+        "outputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 9217,
+          "controlMedian": 7596.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 1366,
+            "confidenceInterval": [
+              -2072,
+              2270
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:secondary:outputTokens",
+            "estimable": true
+          }
+        },
+        "toolCalls": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 23.5,
+          "controlMedian": 19.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 1,
+            "confidenceInterval": [
+              -5,
+              12
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:secondary:toolCalls",
+            "estimable": true
+          }
+        },
+        "failedCalls": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 5,
+          "controlMedian": 6.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -1,
+            "confidenceInterval": [
+              -3,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:secondary:failedCalls",
+            "estimable": true
+          }
+        },
+        "wallTimeMs": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 269615,
+          "controlMedian": 270291,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 24871,
+            "confidenceInterval": [
+              -82432,
+              38203
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:secondary:wallTimeMs",
+            "estimable": true
+          }
+        },
+        "allAttemptWallTimeMs": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 269615,
+          "controlMedian": 270291,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 24871,
+            "confidenceInterval": [
+              -82432,
+              38203
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:zod-report-input-decision-5509:secondary:allAttemptWallTimeMs",
+            "estimable": true
+          }
+        }
+      }
+    },
+    "requests-stream-regression-7432": {
+      "pairedTrials": 4,
+      "treatment": {
+        "adaptivePalace": {
+          "armRuns": 4,
+          "successes": 0,
+          "successRate": 0,
+          "correctnessPasses": 0,
+          "exactScopePasses": 4,
+          "forbiddenViolations": 0,
+          "infrastructureRetries": 1,
+          "total": {
+            "completedReportedTokens": 2876704,
+            "completedInputTokens": 2848274,
+            "completedCachedInputTokens": 2640640,
+            "completedUncachedInputTokens": 207634,
+            "completedOutputTokens": 28430,
+            "allAttemptWallTimeMs": 2049705,
+            "allAttemptReportedTokens": null,
+            "allAttemptReportedTokensLowerBound": 2876704,
+            "missingRetryTokenAttempts": 1
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 0,
+            "wallTimeMs": null,
+            "reportedTokens": null,
+            "reportedTokensLowerBound": null,
+            "tokenEstimateComplete": false
+          },
+          "successWeightedReportedTokens": null,
+          "descriptiveMedians": {
+            "reportedTokens": 693393,
+            "uncachedInputTokens": 50394,
+            "toolCalls": 16.5,
+            "wallTimeMs": 285202
+          }
+        },
+        "control": {
+          "armRuns": 4,
+          "successes": 0,
+          "successRate": 0,
+          "correctnessPasses": 0,
+          "exactScopePasses": 4,
+          "forbiddenViolations": 0,
+          "infrastructureRetries": 0,
+          "total": {
+            "completedReportedTokens": 5187242,
+            "completedInputTokens": 5158280,
+            "completedCachedInputTokens": 4778240,
+            "completedUncachedInputTokens": 380040,
+            "completedOutputTokens": 28962,
+            "allAttemptWallTimeMs": 1549348,
+            "allAttemptReportedTokens": 5187242,
+            "allAttemptReportedTokensLowerBound": 5187242,
+            "missingRetryTokenAttempts": 0
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 0,
+            "wallTimeMs": null,
+            "reportedTokens": null,
+            "reportedTokensLowerBound": null,
+            "tokenEstimateComplete": true
+          },
+          "successWeightedReportedTokens": null,
+          "descriptiveMedians": {
+            "reportedTokens": 1353554,
+            "uncachedInputTokens": 82047.5,
+            "toolCalls": 16.5,
+            "wallTimeMs": 392757.5
+          }
+        }
+      },
+      "correctness": {
+        "adaptivePalaceCount": 0,
+        "controlCount": 0,
+        "adaptivePalaceRate": 0,
+        "controlRate": 0,
+        "adaptiveMinusControl": {
+          "estimate": 0,
+          "confidenceInterval": [
+            0,
+            0
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:correctness",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 0,
+          "both": 0,
+          "neither": 4
+        },
+        "exactTwoSidedMcNemarPValue": 1
+      },
+      "success": {
+        "adaptivePalaceCount": 0,
+        "controlCount": 0,
+        "adaptivePalaceRate": 0,
+        "controlRate": 0,
+        "adaptiveMinusControl": {
+          "estimate": 0,
+          "confidenceInterval": [
+            0,
+            0
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 0,
+          "both": 0,
+          "neither": 4
+        },
+        "exactTwoSidedMcNemarPValue": 1
+      },
+      "scope": {
+        "exactScope": {
+          "adaptivePalaceCount": 4,
+          "controlCount": 4,
+          "adaptivePalaceRate": 1,
+          "controlRate": 1,
+          "adaptiveMinusControl": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:exact-scope",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 0,
+            "controlOnly": 0,
+            "both": 4,
+            "neither": 0
+          },
+          "exactTwoSidedMcNemarPValue": 1
+        },
+        "nonExactScope": {
+          "adaptivePalaceFailures": 0,
+          "controlFailures": 0,
+          "adaptivePalaceRate": 0,
+          "controlRate": 0,
+          "adaptiveMinusControl": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:exact-scope",
+            "estimable": true
+          }
+        },
+        "forbiddenViolation": {
+          "adaptivePalaceCount": 0,
+          "controlCount": 0,
+          "adaptivePalaceRate": 0,
+          "controlRate": 0,
+          "adaptiveMinusControl": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:forbidden",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 0,
+            "controlOnly": 0,
+            "both": 0,
+            "neither": 4
+          },
+          "exactTwoSidedMcNemarPValue": 1
+        }
+      },
+      "costPerSuccessfulSolution": {
+        "definition": "All completed and infrastructure-retry attempt cost divided by strict successful solutions",
+        "adaptivePalace": {
+          "denominatorSuccesses": 0,
+          "wallTimeMs": null,
+          "reportedTokens": null,
+          "reportedTokensLowerBound": null,
+          "tokenEstimateComplete": false
+        },
+        "control": {
+          "denominatorSuccesses": 0,
+          "wallTimeMs": null,
+          "reportedTokens": null,
+          "reportedTokensLowerBound": null,
+          "tokenEstimateComplete": true
+        },
+        "adaptiveMinusControl": {
+          "wallTimeMs": {
+            "estimate": null,
+            "confidenceInterval": [
+              null,
+              null
+            ],
+            "iterations": 0,
+            "validIterations": 0,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": null,
+            "estimable": false,
+            "reason": "Statistic is undefined for the observed sample"
+          },
+          "reportedTokens": {
+            "estimate": null,
+            "confidenceInterval": [
+              null,
+              null
+            ],
+            "iterations": 0,
+            "validIterations": 0,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": null,
+            "estimable": false,
+            "reason": "An infrastructure retry has no observed final token usage event"
+          },
+          "reportedTokensLowerBound": null
+        }
+      },
+      "successWeightedReportedTokens": {
+        "definition": "Mean final reported tokens among strict successful solutions; success rates are reported beside it",
+        "adaptivePalace": null,
+        "control": null,
+        "adaptiveMinusControl": {
+          "estimate": null,
+          "confidenceInterval": [
+            null,
+            null
+          ],
+          "iterations": 0,
+          "validIterations": 0,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": null,
+          "estimable": false,
+          "reason": "Statistic is undefined for the observed sample"
+        }
+      },
+      "hierarchicalWin": {
+        "order": [
+          "success",
+          "exact-scope",
+          "reported-tokens",
+          "wall-time"
+        ],
+        "adaptivePalaceWins": 3,
+        "controlWins": 1,
+        "ties": 0,
+        "exactTwoSidedPValueIgnoringTies": 0.625,
+        "meanScoreAdaptivePositive": {
+          "estimate": 0.5,
+          "confidenceInterval": [
+            -0.5,
+            1
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:hierarchical-score",
+          "estimable": true
+        },
+        "pairs": [
+          {
+            "trialId": "requests-stream-regression-7432-v4-01",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "requests-stream-regression-7432-v4-02",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "requests-stream-regression-7432-v4-03",
+            "winner": "control",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "requests-stream-regression-7432-v4-04",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          }
+        ]
+      },
+      "secondary": {
+        "reportedTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 693393,
+          "controlMedian": 1353554,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -608595,
+            "confidenceInterval": [
+              -1289636,
+              196288
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:secondary:reportedTokens",
+            "estimable": true
+          }
+        },
+        "inputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 686298,
+          "controlMedian": 1346628.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -608789.5,
+            "confidenceInterval": [
+              -1286822,
+              194395
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:secondary:inputTokens",
+            "estimable": true
+          }
+        },
+        "cachedInputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 635904,
+          "controlMedian": 1238656,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -554240,
+            "confidenceInterval": [
+              -1249280,
+              220160
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:secondary:cachedInputTokens",
+            "estimable": true
+          }
+        },
+        "uncachedInputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 50394,
+          "controlMedian": 82047.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -32772,
+            "confidenceInterval": [
+              -81097,
+              -25765
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:secondary:uncachedInputTokens",
+            "estimable": true
+          }
+        },
+        "outputTokens": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 7095,
+          "controlMedian": 6925.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 194.5,
+            "confidenceInterval": [
+              -2814,
+              1893
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:secondary:outputTokens",
+            "estimable": true
+          }
+        },
+        "toolCalls": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 16.5,
+          "controlMedian": 16.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -1,
+            "confidenceInterval": [
+              -7,
+              8
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:secondary:toolCalls",
+            "estimable": true
+          }
+        },
+        "failedCalls": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 1,
+          "controlMedian": 3.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -2.5,
+            "confidenceInterval": [
+              -4,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:secondary:failedCalls",
+            "estimable": true
+          }
+        },
+        "wallTimeMs": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 285202,
+          "controlMedian": 392757.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -99573.5,
+            "confidenceInterval": [
+              -269426,
+              68715
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:secondary:wallTimeMs",
+            "estimable": true
+          }
+        },
+        "allAttemptWallTimeMs": {
+          "pairedTrials": 4,
+          "adaptivePalaceMedian": 297743,
+          "controlMedian": 392757.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -55547,
+            "confidenceInterval": [
+              -269426,
+              880877
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:requests-stream-regression-7432:secondary:allAttemptWallTimeMs",
+            "estimable": true
+          }
+        }
+      }
+    }
+  },
+  "byCacheState": {
+    "cold": {
+      "pairedTrials": 8,
+      "treatment": {
+        "adaptivePalace": {
+          "armRuns": 8,
+          "successes": 1,
+          "successRate": 0.125,
+          "correctnessPasses": 2,
+          "exactScopePasses": 5,
+          "forbiddenViolations": 1,
+          "infrastructureRetries": 1,
+          "total": {
+            "completedReportedTokens": 10115407,
+            "completedInputTokens": 10014164,
+            "completedCachedInputTokens": 9361152,
+            "completedUncachedInputTokens": 653012,
+            "completedOutputTokens": 101243,
+            "allAttemptWallTimeMs": 4071507,
+            "allAttemptReportedTokens": null,
+            "allAttemptReportedTokensLowerBound": 10115407,
+            "missingRetryTokenAttempts": 1
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 1,
+            "wallTimeMs": 4071507,
+            "reportedTokens": null,
+            "reportedTokensLowerBound": 10115407,
+            "tokenEstimateComplete": false
+          },
+          "successWeightedReportedTokens": 629305,
+          "descriptiveMedians": {
+            "reportedTokens": 1128776.5,
+            "uncachedInputTokens": 74356.5,
+            "toolCalls": 25.5,
+            "wallTimeMs": 301074.5
+          }
+        },
+        "control": {
+          "armRuns": 8,
+          "successes": 5,
+          "successRate": 0.625,
+          "correctnessPasses": 6,
+          "exactScopePasses": 7,
+          "forbiddenViolations": 1,
+          "infrastructureRetries": 0,
+          "total": {
+            "completedReportedTokens": 16795661,
+            "completedInputTokens": 16697142,
+            "completedCachedInputTokens": 15893248,
+            "completedUncachedInputTokens": 803894,
+            "completedOutputTokens": 98519,
+            "allAttemptWallTimeMs": 3578987,
+            "allAttemptReportedTokens": 16795661,
+            "allAttemptReportedTokensLowerBound": 16795661,
+            "missingRetryTokenAttempts": 0
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 5,
+            "wallTimeMs": 715797.4,
+            "reportedTokens": 3359132.2,
+            "reportedTokensLowerBound": 3359132.2,
+            "tokenEstimateComplete": true
+          },
+          "successWeightedReportedTokens": 2574499.8,
+          "descriptiveMedians": {
+            "reportedTokens": 1269180.5,
+            "uncachedInputTokens": 86341,
+            "toolCalls": 21.5,
+            "wallTimeMs": 327536.5
+          }
+        }
+      },
+      "correctness": {
+        "adaptivePalaceCount": 2,
+        "controlCount": 6,
+        "adaptivePalaceRate": 0.25,
+        "controlRate": 0.75,
+        "adaptiveMinusControl": {
+          "estimate": -0.5,
+          "confidenceInterval": [
+            -0.5,
+            -0.5
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:correctness",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 4,
+          "both": 2,
+          "neither": 2
+        },
+        "exactTwoSidedMcNemarPValue": 0.125
+      },
+      "success": {
+        "adaptivePalaceCount": 1,
+        "controlCount": 5,
+        "adaptivePalaceRate": 0.125,
+        "controlRate": 0.625,
+        "adaptiveMinusControl": {
+          "estimate": -0.5,
+          "confidenceInterval": [
+            -0.5,
+            -0.5
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 4,
+          "both": 1,
+          "neither": 3
+        },
+        "exactTwoSidedMcNemarPValue": 0.125
+      },
+      "scope": {
+        "exactScope": {
+          "adaptivePalaceCount": 5,
+          "controlCount": 7,
+          "adaptivePalaceRate": 0.625,
+          "controlRate": 0.875,
+          "adaptiveMinusControl": {
+            "estimate": -0.25,
+            "confidenceInterval": [
+              -0.5,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:exact-scope",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 0,
+            "controlOnly": 2,
+            "both": 5,
+            "neither": 1
+          },
+          "exactTwoSidedMcNemarPValue": 0.5
+        },
+        "nonExactScope": {
+          "adaptivePalaceFailures": 3,
+          "controlFailures": 1,
+          "adaptivePalaceRate": 0.375,
+          "controlRate": 0.125,
+          "adaptiveMinusControl": {
+            "estimate": 0.25,
+            "confidenceInterval": [
+              0,
+              0.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:exact-scope",
+            "estimable": true
+          }
+        },
+        "forbiddenViolation": {
+          "adaptivePalaceCount": 1,
+          "controlCount": 1,
+          "adaptivePalaceRate": 0.125,
+          "controlRate": 0.125,
+          "adaptiveMinusControl": {
+            "estimate": 0,
+            "confidenceInterval": [
+              0,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:forbidden",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 0,
+            "controlOnly": 0,
+            "both": 1,
+            "neither": 7
+          },
+          "exactTwoSidedMcNemarPValue": 1
+        }
+      },
+      "costPerSuccessfulSolution": {
+        "definition": "All completed and infrastructure-retry attempt cost divided by strict successful solutions",
+        "adaptivePalace": {
+          "denominatorSuccesses": 1,
+          "wallTimeMs": 4071507,
+          "reportedTokens": null,
+          "reportedTokensLowerBound": 10115407,
+          "tokenEstimateComplete": false
+        },
+        "control": {
+          "denominatorSuccesses": 5,
+          "wallTimeMs": 715797.4,
+          "reportedTokens": 3359132.2,
+          "reportedTokensLowerBound": 3359132.2,
+          "tokenEstimateComplete": true
+        },
+        "adaptiveMinusControl": {
+          "wallTimeMs": {
+            "estimate": 3355709.6,
+            "confidenceInterval": [
+              837038.8333333334,
+              4526490
+            ],
+            "iterations": 10000,
+            "validIterations": 7411,
+            "undefinedIterations": 2589,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:cost-per-success:wall",
+            "estimable": true
+          },
+          "reportedTokens": {
+            "estimate": null,
+            "confidenceInterval": [
+              null,
+              null
+            ],
+            "iterations": 0,
+            "validIterations": 0,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": null,
+            "estimable": false,
+            "reason": "An infrastructure retry has no observed final token usage event"
+          },
+          "reportedTokensLowerBound": 6756274.8
+        }
+      },
+      "successWeightedReportedTokens": {
+        "definition": "Mean final reported tokens among strict successful solutions; success rates are reported beside it",
+        "adaptivePalace": 629305,
+        "control": 2574499.8,
+        "adaptiveMinusControl": {
+          "estimate": -1945194.7999999998,
+          "confidenceInterval": [
+            -2013134,
+            -1638218.8333333335
+          ],
+          "iterations": 10000,
+          "validIterations": 7447,
+          "undefinedIterations": 2553,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:success-weighted-tokens",
+          "estimable": true
+        }
+      },
+      "hierarchicalWin": {
+        "order": [
+          "success",
+          "exact-scope",
+          "reported-tokens",
+          "wall-time"
+        ],
+        "adaptivePalaceWins": 4,
+        "controlWins": 4,
+        "ties": 0,
+        "exactTwoSidedPValueIgnoringTies": 1,
+        "meanScoreAdaptivePositive": {
+          "estimate": 0,
+          "confidenceInterval": [
+            0,
+            0
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:hierarchical-score",
+          "estimable": true
+        },
+        "pairs": [
+          {
+            "trialId": "zod-transform-refine-4926-v4-01",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "zod-transform-refine-4926-v4-02",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "open-webui-analytics-25919-v4-01",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "open-webui-analytics-25919-v4-02",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "zod-report-input-decision-5509-v4-01",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "zod-report-input-decision-5509-v4-02",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "requests-stream-regression-7432-v4-01",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "requests-stream-regression-7432-v4-02",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          }
+        ]
+      },
+      "secondary": {
+        "reportedTokens": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 1128776.5,
+          "controlMedian": 1269180.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -290879,
+            "confidenceInterval": [
+              -795129,
+              -221872
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:secondary:reportedTokens",
+            "estimable": true
+          }
+        },
+        "inputTokens": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 1118196.5,
+          "controlMedian": 1256443.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -293016,
+            "confidenceInterval": [
+              -794724,
+              -223416
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:secondary:inputTokens",
+            "estimable": true
+          }
+        },
+        "cachedInputTokens": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 1043840,
+          "controlMedian": 1174272,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -281344,
+            "confidenceInterval": [
+              -765312,
+              -208384
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:secondary:cachedInputTokens",
+            "estimable": true
+          }
+        },
+        "uncachedInputTokens": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 74356.5,
+          "controlMedian": 86341,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -24642,
+            "confidenceInterval": [
+              -28941.5,
+              -15032
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:secondary:uncachedInputTokens",
+            "estimable": true
+          }
+        },
+        "outputTokens": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 10580,
+          "controlMedian": 11084,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 1411,
+            "confidenceInterval": [
+              -2021.5,
+              2309.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:secondary:outputTokens",
+            "estimable": true
+          }
+        },
+        "toolCalls": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 25.5,
+          "controlMedian": 21.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 1.5,
+            "confidenceInterval": [
+              -3.5,
+              8.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:secondary:toolCalls",
+            "estimable": true
+          }
+        },
+        "failedCalls": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 5,
+          "controlMedian": 6.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 0,
+            "confidenceInterval": [
+              -3,
+              0
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:secondary:failedCalls",
+            "estimable": true
+          }
+        },
+        "wallTimeMs": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 301074.5,
+          "controlMedian": 327536.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -19631.5,
+            "confidenceInterval": [
+              -144675.5,
+              9432.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:secondary:wallTimeMs",
+            "estimable": true
+          }
+        },
+        "allAttemptWallTimeMs": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 409953.5,
+          "controlMedian": 327536.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 3327.5,
+            "confidenceInterval": [
+              -144675.5,
+              110428.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:cold:secondary:allAttemptWallTimeMs",
+            "estimable": true
+          }
+        }
+      }
+    },
+    "warm": {
+      "pairedTrials": 8,
+      "treatment": {
+        "adaptivePalace": {
+          "armRuns": 8,
+          "successes": 2,
+          "successRate": 0.25,
+          "correctnessPasses": 3,
+          "exactScopePasses": 5,
+          "forbiddenViolations": 1,
+          "infrastructureRetries": 0,
+          "total": {
+            "completedReportedTokens": 11771667,
+            "completedInputTokens": 11669885,
+            "completedCachedInputTokens": 11024896,
+            "completedUncachedInputTokens": 644989,
+            "completedOutputTokens": 101782,
+            "allAttemptWallTimeMs": 3234798,
+            "allAttemptReportedTokens": 11771667,
+            "allAttemptReportedTokensLowerBound": 11771667,
+            "missingRetryTokenAttempts": 0
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 2,
+            "wallTimeMs": 1617399,
+            "reportedTokens": 5885833.5,
+            "reportedTokensLowerBound": 5885833.5,
+            "tokenEstimateComplete": true
+          },
+          "successWeightedReportedTokens": 1087711.5,
+          "descriptiveMedians": {
+            "reportedTokens": 1232760,
+            "uncachedInputTokens": 74322,
+            "toolCalls": 27,
+            "wallTimeMs": 320278
+          }
+        },
+        "control": {
+          "armRuns": 8,
+          "successes": 6,
+          "successRate": 0.75,
+          "correctnessPasses": 6,
+          "exactScopePasses": 8,
+          "forbiddenViolations": 0,
+          "infrastructureRetries": 0,
+          "total": {
+            "completedReportedTokens": 13273272,
+            "completedInputTokens": 13176644,
+            "completedCachedInputTokens": 12287232,
+            "completedUncachedInputTokens": 889412,
+            "completedOutputTokens": 96628,
+            "allAttemptWallTimeMs": 3227793,
+            "allAttemptReportedTokens": 13273272,
+            "allAttemptReportedTokensLowerBound": 13273272,
+            "missingRetryTokenAttempts": 0
+          },
+          "costPerSuccessfulSolution": {
+            "denominatorSuccesses": 6,
+            "wallTimeMs": 537965.5,
+            "reportedTokens": 2212212,
+            "reportedTokensLowerBound": 2212212,
+            "tokenEstimateComplete": true
+          },
+          "successWeightedReportedTokens": 1810384.1666666667,
+          "descriptiveMedians": {
+            "reportedTokens": 1681017.5,
+            "uncachedInputTokens": 110030,
+            "toolCalls": 19.5,
+            "wallTimeMs": 345053.5
+          }
+        }
+      },
+      "correctness": {
+        "adaptivePalaceCount": 3,
+        "controlCount": 6,
+        "adaptivePalaceRate": 0.375,
+        "controlRate": 0.75,
+        "adaptiveMinusControl": {
+          "estimate": -0.375,
+          "confidenceInterval": [
+            -0.5,
+            -0.25
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:correctness",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 3,
+          "both": 3,
+          "neither": 2
+        },
+        "exactTwoSidedMcNemarPValue": 0.25
+      },
+      "success": {
+        "adaptivePalaceCount": 2,
+        "controlCount": 6,
+        "adaptivePalaceRate": 0.25,
+        "controlRate": 0.75,
+        "adaptiveMinusControl": {
+          "estimate": -0.5,
+          "confidenceInterval": [
+            -0.75,
+            -0.25
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm",
+          "estimable": true
+        },
+        "discordance": {
+          "adaptiveOnly": 0,
+          "controlOnly": 4,
+          "both": 2,
+          "neither": 2
+        },
+        "exactTwoSidedMcNemarPValue": 0.125
+      },
+      "scope": {
+        "exactScope": {
+          "adaptivePalaceCount": 5,
+          "controlCount": 8,
+          "adaptivePalaceRate": 0.625,
+          "controlRate": 1,
+          "adaptiveMinusControl": {
+            "estimate": -0.375,
+            "confidenceInterval": [
+              -0.625,
+              -0.125
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:exact-scope",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 0,
+            "controlOnly": 3,
+            "both": 5,
+            "neither": 0
+          },
+          "exactTwoSidedMcNemarPValue": 0.25
+        },
+        "nonExactScope": {
+          "adaptivePalaceFailures": 3,
+          "controlFailures": 0,
+          "adaptivePalaceRate": 0.375,
+          "controlRate": 0,
+          "adaptiveMinusControl": {
+            "estimate": 0.375,
+            "confidenceInterval": [
+              0.125,
+              0.625
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:exact-scope",
+            "estimable": true
+          }
+        },
+        "forbiddenViolation": {
+          "adaptivePalaceCount": 1,
+          "controlCount": 0,
+          "adaptivePalaceRate": 0.125,
+          "controlRate": 0,
+          "adaptiveMinusControl": {
+            "estimate": 0.125,
+            "confidenceInterval": [
+              0,
+              0.25
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:forbidden",
+            "estimable": true
+          },
+          "discordance": {
+            "adaptiveOnly": 1,
+            "controlOnly": 0,
+            "both": 0,
+            "neither": 7
+          },
+          "exactTwoSidedMcNemarPValue": 1
+        }
+      },
+      "costPerSuccessfulSolution": {
+        "definition": "All completed and infrastructure-retry attempt cost divided by strict successful solutions",
+        "adaptivePalace": {
+          "denominatorSuccesses": 2,
+          "wallTimeMs": 1617399,
+          "reportedTokens": 5885833.5,
+          "reportedTokensLowerBound": 5885833.5,
+          "tokenEstimateComplete": true
+        },
+        "control": {
+          "denominatorSuccesses": 6,
+          "wallTimeMs": 537965.5,
+          "reportedTokens": 2212212,
+          "reportedTokensLowerBound": 2212212,
+          "tokenEstimateComplete": true
+        },
+        "adaptiveMinusControl": {
+          "wallTimeMs": {
+            "estimate": 1079433.5,
+            "confidenceInterval": [
+              259642.33333333337,
+              2862639.1666666665
+            ],
+            "iterations": 10000,
+            "validIterations": 9381,
+            "undefinedIterations": 619,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:cost-per-success:wall",
+            "estimable": true
+          },
+          "reportedTokens": {
+            "estimate": 3673621.5,
+            "confidenceInterval": [
+              693394.75,
+              9805187
+            ],
+            "iterations": 10000,
+            "validIterations": 9355,
+            "undefinedIterations": 645,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:cost-per-success:tokens",
+            "estimable": true
+          },
+          "reportedTokensLowerBound": 3673621.5
+        }
+      },
+      "successWeightedReportedTokens": {
+        "definition": "Mean final reported tokens among strict successful solutions; success rates are reported beside it",
+        "adaptivePalace": 1087711.5,
+        "control": 1810384.1666666667,
+        "adaptiveMinusControl": {
+          "estimate": -722672.6666666667,
+          "confidenceInterval": [
+            -1329353.5,
+            -129609.33333333326
+          ],
+          "iterations": 10000,
+          "validIterations": 9339,
+          "undefinedIterations": 661,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:success-weighted-tokens",
+          "estimable": true
+        }
+      },
+      "hierarchicalWin": {
+        "order": [
+          "success",
+          "exact-scope",
+          "reported-tokens",
+          "wall-time"
+        ],
+        "adaptivePalaceWins": 3,
+        "controlWins": 5,
+        "ties": 0,
+        "exactTwoSidedPValueIgnoringTies": 0.7265625,
+        "meanScoreAdaptivePositive": {
+          "estimate": -0.25,
+          "confidenceInterval": [
+            -0.75,
+            0.25
+          ],
+          "iterations": 10000,
+          "validIterations": 10000,
+          "undefinedIterations": 0,
+          "confidence": 0.95,
+          "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:hierarchical-score",
+          "estimable": true
+        },
+        "pairs": [
+          {
+            "trialId": "zod-transform-refine-4926-v4-03",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "zod-transform-refine-4926-v4-04",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "open-webui-analytics-25919-v4-03",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "open-webui-analytics-25919-v4-04",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "zod-report-input-decision-5509-v4-03",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "zod-report-input-decision-5509-v4-04",
+            "winner": "control",
+            "decidedBy": "success"
+          },
+          {
+            "trialId": "requests-stream-regression-7432-v4-03",
+            "winner": "control",
+            "decidedBy": "reported-tokens"
+          },
+          {
+            "trialId": "requests-stream-regression-7432-v4-04",
+            "winner": "adaptive-palace",
+            "decidedBy": "reported-tokens"
+          }
+        ]
+      },
+      "secondary": {
+        "reportedTokens": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 1232760,
+          "controlMedian": 1681017.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -100440.5,
+            "confidenceInterval": [
+              -507987,
+              312458
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:secondary:reportedTokens",
+            "estimable": true
+          }
+        },
+        "inputTokens": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 1223604.5,
+          "controlMedian": 1669760.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -101214.5,
+            "confidenceInterval": [
+              -508502,
+              309010
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:secondary:inputTokens",
+            "estimable": true
+          }
+        },
+        "cachedInputTokens": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 1149312,
+          "controlMedian": 1574400,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -89088,
+            "confidenceInterval": [
+              -470144,
+              333056
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:secondary:cachedInputTokens",
+            "estimable": true
+          }
+        },
+        "uncachedInputTokens": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 74322,
+          "controlMedian": 110030,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -24687,
+            "confidenceInterval": [
+              -38358,
+              -20583.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:secondary:uncachedInputTokens",
+            "estimable": true
+          }
+        },
+        "outputTokens": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 10583,
+          "controlMedian": 10977.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 515,
+            "confidenceInterval": [
+              -973,
+              1569.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:secondary:outputTokens",
+            "estimable": true
+          }
+        },
+        "toolCalls": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 27,
+          "controlMedian": 19.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 3,
+            "confidenceInterval": [
+              -0.5,
+              6.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:secondary:toolCalls",
+            "estimable": true
+          }
+        },
+        "failedCalls": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 4.5,
+          "controlMedian": 5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": -2,
+            "confidenceInterval": [
+              -2.5,
+              1.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:secondary:failedCalls",
+            "estimable": true
+          }
+        },
+        "wallTimeMs": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 320278,
+          "controlMedian": 345053.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 3069.5,
+            "confidenceInterval": [
+              -59958,
+              54350.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:secondary:wallTimeMs",
+            "estimable": true
+          }
+        },
+        "allAttemptWallTimeMs": {
+          "pairedTrials": 8,
+          "adaptivePalaceMedian": 320278,
+          "controlMedian": 345053.5,
+          "adaptiveMinusControlMedianPairedDifference": {
+            "estimate": 3069.5,
+            "confidenceInterval": [
+              -59958,
+              54350.5
+            ],
+            "iterations": 10000,
+            "validIterations": 10000,
+            "undefinedIterations": 0,
+            "confidence": 0.95,
+            "seed": "vertex-palace-real-repository-v4-analysis-v1:cache:warm:secondary:allAttemptWallTimeMs",
+            "estimable": true
+          }
+        }
+      }
+    }
+  },
+  "trialOutcomes": [
+    {
+      "trialId": "zod-transform-refine-4926-v4-01",
+      "fixtureId": "zod-transform-refine-4926",
+      "taskType": "simple-local",
+      "replicate": 1,
+      "cacheState": "cold",
+      "adaptivePalace": {
+        "armId": "zod-transform-refine-4926-v4-01-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": false,
+        "forbiddenViolation": false,
+        "reportedTokens": 1411288,
+        "inputTokens": 1400101,
+        "cachedInputTokens": 1320448,
+        "uncachedInputTokens": 79653,
+        "outputTokens": 11187,
+        "toolCalls": 28,
+        "wallTimeMs": 300022,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 300022,
+        "allAttemptReportedTokens": 1411288,
+        "allAttemptReportedTokensLowerBound": 1411288
+      },
+      "control": {
+        "armId": "zod-transform-refine-4926-v4-01-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 1358079,
+        "inputTokens": 1345663,
+        "cachedInputTokens": 1262080,
+        "uncachedInputTokens": 83583,
+        "outputTokens": 12416,
+        "toolCalls": 25,
+        "wallTimeMs": 319947,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 319947,
+        "allAttemptReportedTokens": 1358079,
+        "allAttemptReportedTokensLowerBound": 1358079
+      },
+      "hierarchical": {
+        "trialId": "zod-transform-refine-4926-v4-01",
+        "winner": "control",
+        "decidedBy": "success"
+      }
+    },
+    {
+      "trialId": "zod-transform-refine-4926-v4-02",
+      "fixtureId": "zod-transform-refine-4926",
+      "taskType": "simple-local",
+      "replicate": 2,
+      "cacheState": "cold",
+      "adaptivePalace": {
+        "armId": "zod-transform-refine-4926-v4-02-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 1828299,
+        "inputTokens": 1809410,
+        "cachedInputTokens": 1719808,
+        "uncachedInputTokens": 89602,
+        "outputTokens": 18889,
+        "toolCalls": 27,
+        "wallTimeMs": 517780,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 517780,
+        "allAttemptReportedTokens": 1828299,
+        "allAttemptReportedTokensLowerBound": 1828299
+      },
+      "control": {
+        "armId": "zod-transform-refine-4926-v4-02-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 1180282,
+        "inputTokens": 1167224,
+        "cachedInputTokens": 1086464,
+        "uncachedInputTokens": 80760,
+        "outputTokens": 13058,
+        "toolCalls": 19,
+        "wallTimeMs": 335126,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 335126,
+        "allAttemptReportedTokens": 1180282,
+        "allAttemptReportedTokensLowerBound": 1180282
+      },
+      "hierarchical": {
+        "trialId": "zod-transform-refine-4926-v4-02",
+        "winner": "control",
+        "decidedBy": "success"
+      }
+    },
+    {
+      "trialId": "zod-transform-refine-4926-v4-03",
+      "fixtureId": "zod-transform-refine-4926",
+      "taskType": "simple-local",
+      "replicate": 3,
+      "cacheState": "warm",
+      "adaptivePalace": {
+        "armId": "zod-transform-refine-4926-v4-03-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": false,
+        "forbiddenViolation": false,
+        "reportedTokens": 1607026,
+        "inputTokens": 1596017,
+        "cachedInputTokens": 1507328,
+        "uncachedInputTokens": 88689,
+        "outputTokens": 11009,
+        "toolCalls": 24,
+        "wallTimeMs": 298386,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 298386,
+        "allAttemptReportedTokens": 1607026,
+        "allAttemptReportedTokensLowerBound": 1607026
+      },
+      "control": {
+        "armId": "zod-transform-refine-4926-v4-03-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 1144984,
+        "inputTokens": 1132458,
+        "cachedInputTokens": 1020160,
+        "uncachedInputTokens": 112298,
+        "outputTokens": 12526,
+        "toolCalls": 19,
+        "wallTimeMs": 315409,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 315409,
+        "allAttemptReportedTokens": 1144984,
+        "allAttemptReportedTokensLowerBound": 1144984
+      },
+      "hierarchical": {
+        "trialId": "zod-transform-refine-4926-v4-03",
+        "winner": "control",
+        "decidedBy": "success"
+      }
+    },
+    {
+      "trialId": "zod-transform-refine-4926-v4-04",
+      "fixtureId": "zod-transform-refine-4926",
+      "taskType": "simple-local",
+      "replicate": 4,
+      "cacheState": "warm",
+      "adaptivePalace": {
+        "armId": "zod-transform-refine-4926-v4-04-arm-b",
+        "blindedLabel": "arm-b",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 1688933,
+        "inputTokens": 1674602,
+        "cachedInputTokens": 1587712,
+        "uncachedInputTokens": 86890,
+        "outputTokens": 14331,
+        "toolCalls": 34,
+        "wallTimeMs": 414684,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 414684,
+        "allAttemptReportedTokens": 1688933,
+        "allAttemptReportedTokensLowerBound": 1688933
+      },
+      "control": {
+        "armId": "zod-transform-refine-4926-v4-04-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 1731884,
+        "inputTokens": 1718799,
+        "cachedInputTokens": 1635840,
+        "uncachedInputTokens": 82959,
+        "outputTokens": 13085,
+        "toolCalls": 33,
+        "wallTimeMs": 374698,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 374698,
+        "allAttemptReportedTokens": 1731884,
+        "allAttemptReportedTokensLowerBound": 1731884
+      },
+      "hierarchical": {
+        "trialId": "zod-transform-refine-4926-v4-04",
+        "winner": "adaptive-palace",
+        "decidedBy": "reported-tokens"
+      }
+    },
+    {
+      "trialId": "open-webui-analytics-25919-v4-01",
+      "fixtureId": "open-webui-analytics-25919",
+      "taskType": "cross-stack",
+      "replicate": 1,
+      "cacheState": "cold",
+      "adaptivePalace": {
+        "armId": "open-webui-analytics-25919-v4-01-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 1701393,
+        "inputTokens": 1687193,
+        "cachedInputTokens": 1566976,
+        "uncachedInputTokens": 120217,
+        "outputTokens": 14200,
+        "toolCalls": 33,
+        "wallTimeMs": 556610,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 556610,
+        "allAttemptReportedTokens": 1701393,
+        "allAttemptReportedTokensLowerBound": 1701393
+      },
+      "control": {
+        "armId": "open-webui-analytics-25919-v4-01-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 4630899,
+        "inputTokens": 4610194,
+        "cachedInputTokens": 4453376,
+        "uncachedInputTokens": 156818,
+        "outputTokens": 20705,
+        "toolCalls": 24,
+        "wallTimeMs": 847585,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 847585,
+        "allAttemptReportedTokens": 4630899,
+        "allAttemptReportedTokensLowerBound": 4630899
+      },
+      "hierarchical": {
+        "trialId": "open-webui-analytics-25919-v4-01",
+        "winner": "control",
+        "decidedBy": "success"
+      }
+    },
+    {
+      "trialId": "open-webui-analytics-25919-v4-02",
+      "fixtureId": "open-webui-analytics-25919",
+      "taskType": "cross-stack",
+      "replicate": 2,
+      "cacheState": "cold",
+      "adaptivePalace": {
+        "armId": "open-webui-analytics-25919-v4-02-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": false,
+        "forbiddenViolation": false,
+        "reportedTokens": 2374826,
+        "inputTokens": 2350169,
+        "cachedInputTokens": 2222080,
+        "uncachedInputTokens": 128089,
+        "outputTokens": 24657,
+        "toolCalls": 24,
+        "wallTimeMs": 703646,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 703646,
+        "allAttemptReportedTokens": 2374826,
+        "allAttemptReportedTokensLowerBound": 2374826
+      },
+      "control": {
+        "armId": "open-webui-analytics-25919-v4-02-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 4792798,
+        "inputTokens": 4770490,
+        "cachedInputTokens": 4612096,
+        "uncachedInputTokens": 158394,
+        "outputTokens": 22308,
+        "toolCalls": 30,
+        "wallTimeMs": 759114,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 759114,
+        "allAttemptReportedTokens": 4792798,
+        "allAttemptReportedTokensLowerBound": 4792798
+      },
+      "hierarchical": {
+        "trialId": "open-webui-analytics-25919-v4-02",
+        "winner": "control",
+        "decidedBy": "success"
+      }
+    },
+    {
+      "trialId": "open-webui-analytics-25919-v4-03",
+      "fixtureId": "open-webui-analytics-25919",
+      "taskType": "cross-stack",
+      "replicate": 3,
+      "cacheState": "warm",
+      "adaptivePalace": {
+        "armId": "open-webui-analytics-25919-v4-03-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 2848768,
+        "inputTokens": 2824172,
+        "cachedInputTokens": 2707456,
+        "uncachedInputTokens": 116716,
+        "outputTokens": 24596,
+        "toolCalls": 30,
+        "wallTimeMs": 740152,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 740152,
+        "allAttemptReportedTokens": 2848768,
+        "allAttemptReportedTokensLowerBound": 2848768
+      },
+      "control": {
+        "armId": "open-webui-analytics-25919-v4-03-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 3006698,
+        "inputTokens": 2982404,
+        "cachedInputTokens": 2837504,
+        "uncachedInputTokens": 144900,
+        "outputTokens": 24294,
+        "toolCalls": 27,
+        "wallTimeMs": 777636,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 777636,
+        "allAttemptReportedTokens": 3006698,
+        "allAttemptReportedTokensLowerBound": 3006698
+      },
+      "hierarchical": {
+        "trialId": "open-webui-analytics-25919-v4-03",
+        "winner": "control",
+        "decidedBy": "success"
+      }
+    },
+    {
+      "trialId": "open-webui-analytics-25919-v4-04",
+      "fixtureId": "open-webui-analytics-25919",
+      "taskType": "cross-stack",
+      "replicate": 4,
+      "cacheState": "warm",
+      "adaptivePalace": {
+        "armId": "open-webui-analytics-25919-v4-04-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": false,
+        "forbiddenViolation": false,
+        "reportedTokens": 2815670,
+        "inputTokens": 2793687,
+        "cachedInputTokens": 2671104,
+        "uncachedInputTokens": 122583,
+        "outputTokens": 21983,
+        "toolCalls": 30,
+        "wallTimeMs": 668656,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 668656,
+        "allAttemptReportedTokens": 2815670,
+        "allAttemptReportedTokensLowerBound": 2815670
+      },
+      "control": {
+        "armId": "open-webui-analytics-25919-v4-04-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 2387042,
+        "inputTokens": 2370062,
+        "cachedInputTokens": 2225152,
+        "uncachedInputTokens": 144910,
+        "outputTokens": 16980,
+        "toolCalls": 20,
+        "wallTimeMs": 476766,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 476766,
+        "allAttemptReportedTokens": 2387042,
+        "allAttemptReportedTokensLowerBound": 2387042
+      },
+      "hierarchical": {
+        "trialId": "open-webui-analytics-25919-v4-04",
+        "winner": "control",
+        "decidedBy": "success"
+      }
+    },
+    {
+      "trialId": "zod-report-input-decision-5509-v4-01",
+      "fixtureId": "zod-report-input-decision-5509",
+      "taskType": "decision-memory-dependent",
+      "replicate": 1,
+      "cacheState": "cold",
+      "adaptivePalace": {
+        "armId": "zod-report-input-decision-5509-v4-01-arm-b",
+        "blindedLabel": "arm-b",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 629305,
+        "inputTokens": 620844,
+        "cachedInputTokens": 552960,
+        "uncachedInputTokens": 67884,
+        "outputTokens": 8461,
+        "toolCalls": 16,
+        "wallTimeMs": 237103,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 237103,
+        "allAttemptReportedTokens": 629305,
+        "allAttemptReportedTokensLowerBound": 629305
+      },
+      "control": {
+        "armId": "zod-report-input-decision-5509-v4-01-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 910441,
+        "inputTokens": 904250,
+        "cachedInputTokens": 834304,
+        "uncachedInputTokens": 69946,
+        "outputTokens": 6191,
+        "toolCalls": 17,
+        "wallTimeMs": 198900,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 198900,
+        "allAttemptReportedTokens": 910441,
+        "allAttemptReportedTokensLowerBound": 910441
+      },
+      "hierarchical": {
+        "trialId": "zod-report-input-decision-5509-v4-01",
+        "winner": "adaptive-palace",
+        "decidedBy": "reported-tokens"
+      }
+    },
+    {
+      "trialId": "zod-report-input-decision-5509-v4-02",
+      "fixtureId": "zod-report-input-decision-5509",
+      "taskType": "decision-memory-dependent",
+      "replicate": 2,
+      "cacheState": "cold",
+      "adaptivePalace": {
+        "armId": "zod-report-input-decision-5509-v4-02-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": true,
+        "exactScopePassed": false,
+        "forbiddenViolation": true,
+        "reportedTokens": 846265,
+        "inputTokens": 836292,
+        "cachedInputTokens": 767232,
+        "uncachedInputTokens": 69060,
+        "outputTokens": 9973,
+        "toolCalls": 32,
+        "wallTimeMs": 302127,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 302127,
+        "allAttemptReportedTokens": 846265,
+        "allAttemptReportedTokensLowerBound": 846265
+      },
+      "control": {
+        "armId": "zod-report-input-decision-5509-v4-02-arm-a",
+        "blindedLabel": "arm-a",
+        "success": false,
+        "correctnessPassed": true,
+        "exactScopePassed": false,
+        "forbiddenViolation": true,
+        "reportedTokens": 1146887,
+        "inputTokens": 1138918,
+        "cachedInputTokens": 1048576,
+        "uncachedInputTokens": 90342,
+        "outputTokens": 7969,
+        "toolCalls": 20,
+        "wallTimeMs": 275547,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 275547,
+        "allAttemptReportedTokens": 1146887,
+        "allAttemptReportedTokensLowerBound": 1146887
+      },
+      "hierarchical": {
+        "trialId": "zod-report-input-decision-5509-v4-02",
+        "winner": "adaptive-palace",
+        "decidedBy": "reported-tokens"
+      }
+    },
+    {
+      "trialId": "zod-report-input-decision-5509-v4-03",
+      "fixtureId": "zod-report-input-decision-5509",
+      "taskType": "decision-memory-dependent",
+      "replicate": 3,
+      "cacheState": "warm",
+      "adaptivePalace": {
+        "armId": "zod-report-input-decision-5509-v4-03-arm-b",
+        "blindedLabel": "arm-b",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 486490,
+        "inputTokens": 481338,
+        "cachedInputTokens": 419584,
+        "uncachedInputTokens": 61754,
+        "outputTokens": 5152,
+        "toolCalls": 14,
+        "wallTimeMs": 182603,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 182603,
+        "allAttemptReportedTokens": 486490,
+        "allAttemptReportedTokensLowerBound": 486490
+      },
+      "control": {
+        "armId": "zod-report-input-decision-5509-v4-03-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 961546,
+        "inputTokens": 954322,
+        "cachedInputTokens": 873728,
+        "uncachedInputTokens": 80594,
+        "outputTokens": 7224,
+        "toolCalls": 19,
+        "wallTimeMs": 265035,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 265035,
+        "allAttemptReportedTokens": 961546,
+        "allAttemptReportedTokensLowerBound": 961546
+      },
+      "hierarchical": {
+        "trialId": "zod-report-input-decision-5509-v4-03",
+        "winner": "adaptive-palace",
+        "decidedBy": "reported-tokens"
+      }
+    },
+    {
+      "trialId": "zod-report-input-decision-5509-v4-04",
+      "fixtureId": "zod-report-input-decision-5509",
+      "taskType": "decision-memory-dependent",
+      "replicate": 4,
+      "cacheState": "warm",
+      "adaptivePalace": {
+        "armId": "zod-report-input-decision-5509-v4-04-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": true,
+        "exactScopePassed": false,
+        "forbiddenViolation": true,
+        "reportedTokens": 772107,
+        "inputTokens": 761950,
+        "cachedInputTokens": 702720,
+        "uncachedInputTokens": 59230,
+        "outputTokens": 10157,
+        "toolCalls": 31,
+        "wallTimeMs": 334831,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 334831,
+        "allAttemptReportedTokens": 772107,
+        "allAttemptReportedTokensLowerBound": 772107
+      },
+      "control": {
+        "armId": "zod-report-input-decision-5509-v4-04-arm-a",
+        "blindedLabel": "arm-a",
+        "success": true,
+        "correctnessPassed": true,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 1630151,
+        "inputTokens": 1620722,
+        "cachedInputTokens": 1512960,
+        "uncachedInputTokens": 107762,
+        "outputTokens": 9429,
+        "toolCalls": 28,
+        "wallTimeMs": 311669,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 311669,
+        "allAttemptReportedTokens": 1630151,
+        "allAttemptReportedTokensLowerBound": 1630151
+      },
+      "hierarchical": {
+        "trialId": "zod-report-input-decision-5509-v4-04",
+        "winner": "control",
+        "decidedBy": "success"
+      }
+    },
+    {
+      "trialId": "requests-stream-regression-7432-v4-01",
+      "fixtureId": "requests-stream-regression-7432",
+      "taskType": "stale-memory",
+      "replicate": 1,
+      "cacheState": "cold",
+      "adaptivePalace": {
+        "armId": "requests-stream-regression-7432-v4-01-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 631424,
+        "inputTokens": 624486,
+        "cachedInputTokens": 577536,
+        "uncachedInputTokens": 46950,
+        "outputTokens": 6938,
+        "toolCalls": 14,
+        "wallTimeMs": 280643,
+        "infrastructureRetries": 1,
+        "allAttemptWallTimeMs": 1180858,
+        "allAttemptReportedTokens": null,
+        "allAttemptReportedTokensLowerBound": 631424
+      },
+      "control": {
+        "armId": "requests-stream-regression-7432-v4-01-arm-a",
+        "blindedLabel": "arm-a",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 794032,
+        "inputTokens": 787912,
+        "cachedInputTokens": 712960,
+        "uncachedInputTokens": 74952,
+        "outputTokens": 6120,
+        "toolCalls": 14,
+        "wallTimeMs": 299981,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 299981,
+        "allAttemptReportedTokens": 794032,
+        "allAttemptReportedTokensLowerBound": 794032
+      },
+      "hierarchical": {
+        "trialId": "requests-stream-regression-7432-v4-01",
+        "winner": "adaptive-palace",
+        "decidedBy": "reported-tokens"
+      }
+    },
+    {
+      "trialId": "requests-stream-regression-7432-v4-02",
+      "fixtureId": "requests-stream-regression-7432",
+      "taskType": "stale-memory",
+      "replicate": 2,
+      "cacheState": "cold",
+      "adaptivePalace": {
+        "armId": "requests-stream-regression-7432-v4-02-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 692607,
+        "inputTokens": 685669,
+        "cachedInputTokens": 634112,
+        "uncachedInputTokens": 51557,
+        "outputTokens": 6938,
+        "toolCalls": 16,
+        "wallTimeMs": 273361,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 273361,
+        "allAttemptReportedTokens": 692607,
+        "allAttemptReportedTokensLowerBound": 692607
+      },
+      "control": {
+        "armId": "requests-stream-regression-7432-v4-02-arm-a",
+        "blindedLabel": "arm-a",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 1982243,
+        "inputTokens": 1972491,
+        "cachedInputTokens": 1883392,
+        "uncachedInputTokens": 89099,
+        "outputTokens": 9752,
+        "toolCalls": 23,
+        "wallTimeMs": 542787,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 542787,
+        "allAttemptReportedTokens": 1982243,
+        "allAttemptReportedTokensLowerBound": 1982243
+      },
+      "hierarchical": {
+        "trialId": "requests-stream-regression-7432-v4-02",
+        "winner": "adaptive-palace",
+        "decidedBy": "reported-tokens"
+      }
+    },
+    {
+      "trialId": "requests-stream-regression-7432-v4-03",
+      "fixtureId": "requests-stream-regression-7432",
+      "taskType": "stale-memory",
+      "replicate": 3,
+      "cacheState": "warm",
+      "adaptivePalace": {
+        "armId": "requests-stream-regression-7432-v4-03-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 694179,
+        "inputTokens": 686927,
+        "cachedInputTokens": 637696,
+        "uncachedInputTokens": 49231,
+        "outputTokens": 7252,
+        "toolCalls": 20,
+        "wallTimeMs": 289761,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 289761,
+        "allAttemptReportedTokens": 694179,
+        "allAttemptReportedTokensLowerBound": 694179
+      },
+      "control": {
+        "armId": "requests-stream-regression-7432-v4-03-arm-a",
+        "blindedLabel": "arm-a",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 497891,
+        "inputTokens": 492532,
+        "cachedInputTokens": 417536,
+        "uncachedInputTokens": 74996,
+        "outputTokens": 5359,
+        "toolCalls": 12,
+        "wallTimeMs": 221046,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 221046,
+        "allAttemptReportedTokens": 497891,
+        "allAttemptReportedTokensLowerBound": 497891
+      },
+      "hierarchical": {
+        "trialId": "requests-stream-regression-7432-v4-03",
+        "winner": "control",
+        "decidedBy": "reported-tokens"
+      }
+    },
+    {
+      "trialId": "requests-stream-regression-7432-v4-04",
+      "fixtureId": "requests-stream-regression-7432",
+      "taskType": "stale-memory",
+      "replicate": 4,
+      "cacheState": "warm",
+      "adaptivePalace": {
+        "armId": "requests-stream-regression-7432-v4-04-arm-b",
+        "blindedLabel": "arm-b",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 858494,
+        "inputTokens": 851192,
+        "cachedInputTokens": 791296,
+        "uncachedInputTokens": 59896,
+        "outputTokens": 7302,
+        "toolCalls": 17,
+        "wallTimeMs": 305725,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 305725,
+        "allAttemptReportedTokens": 858494,
+        "allAttemptReportedTokensLowerBound": 858494
+      },
+      "control": {
+        "armId": "requests-stream-regression-7432-v4-04-arm-a",
+        "blindedLabel": "arm-a",
+        "success": false,
+        "correctnessPassed": false,
+        "exactScopePassed": true,
+        "forbiddenViolation": false,
+        "reportedTokens": 1913076,
+        "inputTokens": 1905345,
+        "cachedInputTokens": 1764352,
+        "uncachedInputTokens": 140993,
+        "outputTokens": 7731,
+        "toolCalls": 19,
+        "wallTimeMs": 485534,
+        "infrastructureRetries": 0,
+        "allAttemptWallTimeMs": 485534,
+        "allAttemptReportedTokens": 1913076,
+        "allAttemptReportedTokensLowerBound": 1913076
+      },
+      "hierarchical": {
+        "trialId": "requests-stream-regression-7432-v4-04",
+        "winner": "adaptive-palace",
+        "decidedBy": "reported-tokens"
+      }
+    }
+  ],
+  "limitations": [
+    "The study has four real issues and four repetitions per issue; fixture-level estimates are descriptive and underpowered.",
+    "All runs used one Codex build, one model configuration, one machine, and Windows.",
+    "One timed-out infrastructure attempt emitted no final token-usage event. Retry wall time is complete, but retry-adjusted token cost is a lower bound and has no confidence interval.",
+    "Success requires hidden-oracle correctness, exact changed-file scope, no forbidden files, a clean diff check, and completed execution; this is stricter than ordinary task acceptance.",
+    "The frozen cost_per_successful_solution and retry_adjusted_cost definitions overlap, so the report treats them as one all-attempt measure rather than manufacturing two claims.",
+    "Secondary Token, tool-call, cache, and wall-time comparisons are descriptive and cannot replace the preregistered hierarchy."
+  ]
+}

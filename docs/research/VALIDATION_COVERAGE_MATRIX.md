@@ -1,8 +1,8 @@
 # Validation Coverage Matrix
 
-Date: 2026-07-20
+Date: 2026-07-22
 
-[Simplified Chinese](../zh-CN/VALIDATION_COVERAGE_MATRIX.md) | [Machine-readable matrix](./evidence/validation-coverage-matrix-2026-07-20.json)
+[Simplified Chinese](../zh-CN/VALIDATION_COVERAGE_MATRIX.md) | [Machine-readable matrix](./evidence/validation-coverage-matrix-2026-07-22.json)
 
 ## Why This Exists
 
@@ -69,6 +69,23 @@ discordant outcomes were hidden decision-memory scope errors. Across 13 mutual
 successes, reported Tokens, time, and calls remained inconclusive. The private
 assignment key was revealed only after commit `0c81fb2` locked all outcomes.
 
+### Fourth study: real-repository v4 (0.3.0)
+
+V4 moved from synthetic fixtures to four public issues at immutable commits:
+two Zod tasks, one Open WebUI cross-stack task, and one Requests stale-memory
+task. The protocol, hidden-oracle commitment, blinded treatment mapping,
+runtime, dependencies, model, runner, and exact 0.3.0 tarball were frozen before
+16 paired trials and 32 isolated Agent arms. Outcomes were committed at
+`cc493b198bdff95138805b18b2b4dff2dec940ee` before the mapping key was revealed.
+
+Adaptive Palace achieved 3/16 strict successes versus Control's 11/16. The
+paired difference was -50 percentage points and exact McNemar `p=0.0078125`;
+there were zero Adaptive-only successes. Adaptive used fewer descriptive
+reported and uncached Tokens, but retry-adjusted cost per successful solution
+was much higher because it failed more often. This is completed exploratory
+negative evidence for the tested product and sample, not a universal proof
+that routing can never help.
+
 ## Coverage
 
 | Surface | Status | Evidence | Honest interpretation |
@@ -77,8 +94,9 @@ assignment key was revealed only after commit `0c81fb2` locked all outcomes.
 | TypeScript monorepo routing | **Validated product gate** | Pinned Zod, two identical routes, recall 1.000, strict precision 1.000 | The known issue-style implementation and test are retrieved in this fixed case. |
 | Python repository routing | **Validated product gate** | Pinned Requests, two identical routes, recall 1.000, strict precision 1.000 | The known issue-style implementation and test are retrieved in this fixed case. |
 | Independent small-OSS stratum | **Not separately tested** | Requests has 123 indexed files, but no size threshold was preregistered | Do not relabel Requests after seeing the result. Add a separately defined small-OSS case later. |
-| Real-repository issue-style tasks | **Validated product gate** | Zod and Requests retrieval only | Routing is supported for two fixed tasks; end-to-end Agent repair is not tested. |
-| Real-repository history-dependent task | **Not tested** | None | Memory value on a real project remains unknown. |
+| Real-repository issue-style tasks | **Completed exploratory negative evidence** | V4: 4 issues, 16 pairs, 32 isolated arms; Adaptive 3/16, Control 11/16 | The tested 0.3.0 treatment reduced descriptive context but materially reduced strict success. |
+| Real-repository history-dependent task | **Completed exploratory negative evidence** | Zod #5509 decision profile: Adaptive 2/4, Control 3/4; Requests stale profile: both 0/4 | Current memory selection did not improve these real tasks; the decision profile received zero selected memories in the post-hoc audit. |
+| Real-repository cross-stack implementation | **Completed exploratory negative evidence** | Open WebUI #25919: Adaptive 0/4, Control 4/4 | Lower Adaptive Token totals reflected incorrect solutions, not useful acceleration. |
 | Real-repository architecture/refactor task | **Not tested** | None | Cross-module architecture coverage remains unknown. |
 | True adaptive bypass contract | **Candidate evidence** | 0.3.0 candidate: Adaptive selected bypass in 3/3 valid small-local runs; 177-byte payload | Palace payload shrank, but Agent cost still increased by +14,029 tokens and +2 calls versus Control. |
 | Revised small-local bypass | **Post-candidate exploratory evidence** | Final candidate: 2 opposite-order pairs, 8/8 valid and successful Arms; 65-token payload; Adaptive median -17,316.5 reported tokens, -9.445 s, +1 call versus Control | A repeated directional improvement after removing package rereads; n=2 and one Control router error do not establish a general effect. |
@@ -90,6 +108,13 @@ assignment key was revealed only after commit `0c81fb2` locked all outcomes.
 
 ## Claims We Can Make
 
+- In real-repository V4, Adaptive Palace 0.3.0 had 3/16 strict successes versus
+  Control's 11/16, with no Adaptive-only success and exact paired `p=0.0078125`.
+- Adaptive had lower descriptive Token totals but a substantially higher
+  all-attempt cost per successful solution; reading less did not preserve
+  correctness in this sample.
+- All 32 public V4 evidence hashes and all 32 revealed assignments verify from
+  the locked results, while raw Agent events and oracle details remain private.
 - The packed 0.3.0 candidate deterministically retrieves the exact known code
   and focused tests for the pinned Zod and Requests tasks.
 - The candidate has a compact true-bypass contract and auditable memory
@@ -118,16 +143,21 @@ assignment key was revealed only after commit `0c81fb2` locked all outcomes.
 ## Claims We Cannot Make Yet
 
 - Vertex Palace generally saves Agent Token, time, or tool calls.
-- Vertex Palace improves correctness over ordinary Codex on real repositories.
-- The current evidence covers a separately preregistered small-OSS stratum,
-  real-repository historical decisions, or architecture/refactor tasks.
+- Vertex Palace improves correctness over ordinary Codex on real repositories;
+  V4 observed the opposite direction in all eight discordant success pairs.
+- Four issues establish performance across repository sizes, languages,
+  organizations, architecture/refactor work, or later Codex builds.
 - The public 0.3.0 release by itself proves an end-to-end Agent performance
   advantage.
 
 ## Next Evidence
 
-1. Preregister a fresh confirmation that repeats the small-local result and
-   tests bounded cross-stack behavior without changing treatment mid-study.
-2. In a separate future protocol, define a small-OSS size threshold before
-   selecting a repository and add real-repository history and architecture
-   tasks with hidden, objective oracles.
+1. Redesign Palace as advisory evidence prioritization with an explicit
+   insufficiency state, dependency-coverage checks, and no restrictive stop
+   contract until correctness evidence is complete.
+2. Add fixed retrieval gates for implementation files, tests, indirect
+   dependencies, and owner decisions before another end-to-end Agent study.
+3. Preregister V5 on fresh issues and trial IDs after the product changes. Do
+   not overwrite or reuse V4 outcomes as confirmation data.
+4. Seek independent reproduction on another operating system, Codex build,
+   machine, and evaluator-owned oracle.

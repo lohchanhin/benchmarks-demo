@@ -5,15 +5,20 @@
 
 [中文文档索引](./README.md) | [结果阅读指南](./RESULTS_GUIDE.md) | [项目中文首页](../../README.zh-CN.md)
 
-## 第四代执行冻结与预检（不执行 Agent）
+## 第四代结果验证（不执行 Agent）
 
-第四代计划、runner 与固定执行 profile 已实现，独立 execution amendment 也已通过
-10/10 闸门并冻结。公开克隆可检查协议和测试：
+第四代已经完成 16/16 配对 trial 与 32/32 Agent arm。计划、runner 与固定执行
+profile 在结果出现前冻结；结果锁定后才揭盲。公开克隆可以验证协议、全部 evidence
+哈希、揭盲分配、重试成本与统计分析：
 
 ```powershell
 npm run v4:plan
 npm run v4:gate
 npm run check:v4-prep
+npm run verify:retry-cost:real-repository:v4
+npm run verify:reveal:real-repository:v4
+npm run verify:analysis:real-repository:v4
+npm run verify:mechanism-audit:real-repository:v4
 ```
 
 拥有私有 oracle 的研究维护者还可以执行 profile 与 evaluator 的无 Agent 自测：
@@ -23,12 +28,13 @@ npm run prepare:real-repository:v4:profile
 npm run self-test:real-repository:v4:evaluator
 ```
 
-正式 runner 入口是 `npm run run:real-repository:v4`。冻结后的 commit 只允许在
-`results/real-repository-v4/` 建立空白盲测 ledger、保存 no-Agent dry run 与逐批结果；
-每次执行都会重算 binding，不一致就停止。冻结时正式 Agent arm 为 0/32。完整绑定见
+正式 runner 入口是 `npm run run:real-repository:v4`，但一般评审不应重新运行高成本
+Agent。冻结后的执行阶段只在 `results/real-repository-v4/` 建立盲测 ledger 与逐批结果；
+每次执行都会重算 binding，不一致就停止。冻结时是 0/32，正式结果现在是 32/32。完整绑定见
 [第四代执行冻结](./REAL_REPOSITORY_V4_EXECUTION_FREEZE.md)，环境事实见
 [第四代 Agent 预检](./REAL_REPOSITORY_V4_AGENT_PREFLIGHT.md)，研究设计见
-[第四代真实仓库候选协议](./PROTOCOL_V4_CANDIDATE.md)。
+[第四代真实仓库候选协议](./PROTOCOL_V4_CANDIDATE.md)，结论见
+[V4 最终报告](./REAL_REPOSITORY_V4_FINAL.md)。
 
 ## 环境要求
 
@@ -37,8 +43,9 @@ npm run self-test:real-repository:v4:evaluator
 - 能访问 npm registry
 - 只有执行 Agent trial 时，才需要已认证且版本匹配的 Codex CLI
 
-研究依赖中的 `vertex-palace@0.2.1` 是冻结 treatment，不是忘记升级。不要为了
-“使用最新版”而修改 lockfile，否则运行的就不再是已发表 v2.2 条件。
+V4 固定使用 `vertex-palace@0.3.0` 的精确 tarball；更早的 v2.2 固定使用
+`vertex-palace@0.2.1`。
+不要为了“使用最新版”修改任一历史研究输入，否则就不再是已发表条件。
 
 ## 快速验证：不执行 Agent
 
@@ -61,6 +68,7 @@ npm run benchmark -- study --plan results/adaptive-pilot-v2.2/plan.json
 ```bash
 npm run audit:adaptive:v2.2
 npm run audit:control-first:v3
+npm run verify:analysis:real-repository:v4
 ```
 
 审核器会检查 manifest、每个 trial 的文件集合与 `SHA256SUMS`。公开 evidence

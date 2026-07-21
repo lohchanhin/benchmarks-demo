@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "artifact": "real-repository-v4-infrastructure-attempt-costs",
+  "generatedAt": "2026-07-21T18:09:11.710Z",
+  "outcomesLockedAtCommit": "cc493b198bdff95138805b18b2b4dff2dec940ee",
+  "manifestSha256": "cc0f0f5664048f051614004fb29608c41d74c2fa56de07a5de0bda6b48085680",
+  "lockedManifestCanonicalSha256": "cdae0e78b823ccca7dc4d53d99d3621c612da394478dae5861a8142bd6dae5a5",
+  "accounting": {
+    "infrastructureAttempts": 1,
+    "wallTimeComplete": true,
+    "tokenUsageComplete": false,
+    "missingTokenUsageAttempts": [
+      "requests-stream-regression-7432-v4-01-arm-b#1"
+    ],
+    "zeroWithoutUsageEventMeansUnknown": true
+  },
+  "privacy": {
+    "rawTranscriptsPublished": false,
+    "sessionIdsPublished": false,
+    "privatePathsPublished": false,
+    "oracleDetailsPublished": false,
+    "sourceHashesPermitEvaluatorSideAudit": true
+  },
+  "attempts": [
+    {
+      "armId": "requests-stream-regression-7432-v4-01-arm-b",
+      "attempt": 1,
+      "status": "infrastructure-failure",
+      "reason": "codex-timeout",
+      "metrics": {
+        "wallTimeMs": 900215,
+        "timedOut": true,
+        "toolCalls": 18,
+        "failedCalls": 3,
+        "usageEventObserved": false,
+        "reportedTokens": null,
+        "inputTokens": null,
+        "cachedInputTokens": null,
+        "outputTokens": null
+      },
+      "sourceCommitments": {
+        "privateAttemptSha256": "0556fae8b7d90f98e8a362f905762d5b8ba15eb2d1c793cf2f69d1fbf4a26d4d",
+        "privateTranscriptSha256": "5f80174ba1086cdcd8e0bfb4f34c1ec5b661ecf5617b4dd2b8311be8e6b70294"
+      }
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "artifact": "real-repository-v4-blinding-reveal",
+  "revealedAt": "2026-07-21T18:12:01.836Z",
+  "study": {
+    "id": "vertex-palace-real-repository-v4",
+    "protocolVersion": "4.0.0-candidate.1",
+    "outcomesLockedAtCommit": "cc493b198bdff95138805b18b2b4dff2dec940ee",
+    "lockedManifestSha256": "cc0f0f5664048f051614004fb29608c41d74c2fa56de07a5de0bda6b48085680",
+    "lockedManifestCanonicalSha256": "cdae0e78b823ccca7dc4d53d99d3621c612da394478dae5861a8142bd6dae5a5",
+    "evidenceFiles": 32
+  },
+  "blinding": {
+    "keyEncoding": "64-character lowercase hexadecimal",
+    "key": "0c2cdd0c3e41570bcbb77baa64abd14f089782347e335d437ebc3d56e995ff90",
+    "keyCommitment": "59ad9ff53dbda6e4b583e88462e9182f0d1e8b97f507eff2b327c53b63198c16",
+    "commitmentFormula": "sha256(UTF-8 vertex-palace-v4-arm-key + NUL + UTF-8 hex key)",
+    "mappingFormula": "HMAC-SHA256(hex key, UTF-8 vertex-palace-v4-global-arm-map); arm-a is Adaptive Palace when byte 0 is even",
+    "labelMapping": {
+      "arm-a": "control",
+      "arm-b": "adaptive-palace"
+    }
+  },
+  "verification": {
+    "resultsComplete": true,
+    "plannedTrials": 16,
+    "completedTrials": 16,
+    "plannedArmRuns": 32,
+    "completedArmRuns": 32,
+    "infrastructureFailures": 1,
+    "evidenceHashesVerified": 32,
+    "keyMatchesFrozenCommitment": true,
+    "lockedManifestMatchesCurrentResults": true,
+    "allAssignmentsReproduced": true,
+    "oracleDetailsPublished": false
+  },
+  "assignments": [
+    {
+      "armId": "zod-transform-refine-4926-v4-01-arm-a",
+      "trialId": "zod-transform-refine-4926-v4-01",
+      "fixtureId": "zod-transform-refine-4926",
+      "sequence": 1,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-01-arm-b",
+      "trialId": "zod-transform-refine-4926-v4-01",
+      "fixtureId": "zod-transform-refine-4926",
+      "sequence": 2,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-02-arm-b",
+      "trialId": "zod-transform-refine-4926-v4-02",
+      "fixtureId": "zod-transform-refine-4926",
+      "sequence": 1,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-02-arm-a",
+      "trialId": "zod-transform-refine-4926-v4-02",
+      "fixtureId": "zod-transform-refine-4926",
+      "sequence": 2,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-03-arm-a",
+      "trialId": "zod-transform-refine-4926-v4-03",
+      "fixtureId": "zod-transform-refine-4926",
+      "sequence": 1,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-03-arm-b",
+      "trialId": "zod-transform-refine-4926-v4-03",
+      "fixtureId": "zod-transform-refine-4926",
+      "sequence": 2,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-04-arm-b",
+      "trialId": "zod-transform-refine-4926-v4-04",
+      "fixtureId": "zod-transform-refine-4926",
+      "sequence": 1,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-04-arm-a",
+      "trialId": "zod-transform-refine-4926-v4-04",
+      "fixtureId": "zod-transform-refine-4926",
+      "sequence": 2,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-01-arm-b",
+      "trialId": "open-webui-analytics-25919-v4-01",
+      "fixtureId": "open-webui-analytics-25919",
+      "sequence": 1,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-01-arm-a",
+      "trialId": "open-webui-analytics-25919-v4-01",
+      "fixtureId": "open-webui-analytics-25919",
+      "sequence": 2,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-02-arm-a",
+      "trialId": "open-webui-analytics-25919-v4-02",
+      "fixtureId": "open-webui-analytics-25919",
+      "sequence": 1,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-02-arm-b",
+      "trialId": "open-webui-analytics-25919-v4-02",
+      "fixtureId": "open-webui-analytics-25919",
+      "sequence": 2,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-03-arm-b",
+      "trialId": "open-webui-analytics-25919-v4-03",
+      "fixtureId": "open-webui-analytics-25919",
+      "sequence": 1,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-03-arm-a",
+      "trialId": "open-webui-analytics-25919-v4-03",
+      "fixtureId": "open-webui-analytics-25919",
+      "sequence": 2,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-04-arm-a",
+      "trialId": "open-webui-analytics-25919-v4-04",
+      "fixtureId": "open-webui-analytics-25919",
+      "sequence": 1,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-04-arm-b",
+      "trialId": "open-webui-analytics-25919-v4-04",
+      "fixtureId": "open-webui-analytics-25919",
+      "sequence": 2,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-01-arm-a",
+      "trialId": "zod-report-input-decision-5509-v4-01",
+      "fixtureId": "zod-report-input-decision-5509",
+      "sequence": 1,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-01-arm-b",
+      "trialId": "zod-report-input-decision-5509-v4-01",
+      "fixtureId": "zod-report-input-decision-5509",
+      "sequence": 2,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-02-arm-b",
+      "trialId": "zod-report-input-decision-5509-v4-02",
+      "fixtureId": "zod-report-input-decision-5509",
+      "sequence": 1,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-02-arm-a",
+      "trialId": "zod-report-input-decision-5509-v4-02",
+      "fixtureId": "zod-report-input-decision-5509",
+      "sequence": 2,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-03-arm-a",
+      "trialId": "zod-report-input-decision-5509-v4-03",
+      "fixtureId": "zod-report-input-decision-5509",
+      "sequence": 1,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-03-arm-b",
+      "trialId": "zod-report-input-decision-5509-v4-03",
+      "fixtureId": "zod-report-input-decision-5509",
+      "sequence": 2,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-04-arm-b",
+      "trialId": "zod-report-input-decision-5509-v4-04",
+      "fixtureId": "zod-report-input-decision-5509",
+      "sequence": 1,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "zod-report-input-decision-5509-v4-04-arm-a",
+      "trialId": "zod-report-input-decision-5509-v4-04",
+      "fixtureId": "zod-report-input-decision-5509",
+      "sequence": 2,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-01-arm-b",
+      "trialId": "requests-stream-regression-7432-v4-01",
+      "fixtureId": "requests-stream-regression-7432",
+      "sequence": 1,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-01-arm-a",
+      "trialId": "requests-stream-regression-7432-v4-01",
+      "fixtureId": "requests-stream-regression-7432",
+      "sequence": 2,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-02-arm-a",
+      "trialId": "requests-stream-regression-7432-v4-02",
+      "fixtureId": "requests-stream-regression-7432",
+      "sequence": 1,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-02-arm-b",
+      "trialId": "requests-stream-regression-7432-v4-02",
+      "fixtureId": "requests-stream-regression-7432",
+      "sequence": 2,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-03-arm-b",
+      "trialId": "requests-stream-regression-7432-v4-03",
+      "fixtureId": "requests-stream-regression-7432",
+      "sequence": 1,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-03-arm-a",
+      "trialId": "requests-stream-regression-7432-v4-03",
+      "fixtureId": "requests-stream-regression-7432",
+      "sequence": 2,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-04-arm-a",
+      "trialId": "requests-stream-regression-7432-v4-04",
+      "fixtureId": "requests-stream-regression-7432",
+      "sequence": 1,
+      "blindedLabel": "arm-a",
+      "treatment": "control"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-04-arm-b",
+      "trialId": "requests-stream-regression-7432-v4-04",
+      "fixtureId": "requests-stream-regression-7432",
+      "sequence": 2,
+      "blindedLabel": "arm-b",
+      "treatment": "adaptive-palace"
+    }
+  ]
+}

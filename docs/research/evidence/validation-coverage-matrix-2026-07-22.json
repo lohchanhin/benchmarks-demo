@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "claimBoundary": "Coverage inventory only. Product gates, engineering preflights, historical exploratory evidence, completed formal negative evidence, and untested claims remain distinct.",
+  "statusVocabulary": {
+    "validated-product-gate": "Deterministic product or packaging contract; not an Agent comparison.",
+    "validated-release-gate": "Public distribution contract; not an Agent comparison.",
+    "frozen-protocol": "Protocol and provenance are locked, but no formal Agent outcome exists yet.",
+    "formal-exploratory": "Completed preregistered Agent evidence with exploratory sample size and explicit claim limits.",
+    "engineering-preflight": "Non-formal Agent or fixture evidence outside the frozen result manifest.",
+    "historical-exploratory": "Valid retained evidence from an earlier frozen protocol and product version.",
+    "blocked": "Required external or protocol gate is not complete.",
+    "not-tested": "No qualifying evidence exists."
+  },
+  "palaceSelfEvaluation": {
+    "id": "evaluation_be2df8ef810f07ba",
+    "routeConfidence": 0.35,
+    "changedFiles": 7,
+    "matchedFiles": 0,
+    "coverage": 0,
+    "focus": 0,
+    "calibration": "overconfident",
+    "assessment": "needs-review",
+    "finding": "The route stayed inside fixture implementation files and missed both matrices, the machine artifact, all three navigation surfaces, and the direct documentation test.",
+    "agentSavingsClaimed": false
+  },
+  "evolutionRouteSelfEvaluation": {
+    "id": "evaluation_0bd15fb47efd560d",
+    "routeConfidence": 0.76,
+    "changedFiles": 3,
+    "matchedFiles": 0,
+    "coverage": 0,
+    "focus": 0,
+    "calibration": "overconfident",
+    "assessment": "needs-review",
+    "finding": "The route selected only the v2.2 and v3 plans. It omitted the v1 plan, both result analyses, and the bilingual evolution record needed to answer the task.",
+    "agentSavingsClaimed": false
+  },
+  "studyEvolution": [
+    {
+      "id": "fixed-treatments-v1",
+      "protocolVersion": "1.0.0",
+      "design": { "scenarios": 4, "trialsPerScenario": 5, "trials": 20, "armsPerTrial": 3, "arms": ["control", "route-only", "full-palace"] },
+      "integrity": { "validArms": 60, "successfulArms": 60, "publicAndHiddenChecksPassed": true },
+      "fullPalaceMinusControl": {
+        "reportedTokens": { "estimate": 67223.5, "confidenceInterval": [25362.5, 112437.5] },
+        "uncachedInputTokens": { "estimate": 6127.5, "confidenceInterval": [2390, 10636.5] },
+        "toolCalls": { "estimate": 8.5, "confidenceInterval": [6, 16] },
+        "durationMs": { "estimate": 29832.5, "confidenceInterval": [16374.5, 49196.5] }
+      },
+      "conclusion": "No correctness loss was observed, but Full Palace added supported Token, tool-call, and wall-time overhead; useful-memory correctness benefit was not observed."
+    },
+    {
+      "id": "adaptive-v2-2",
+      "protocolVersion": "2.2.0",
+      "design": { "scenarios": 4, "trialsPerScenario": 4, "trials": 16, "armsPerTrial": 4, "arms": ["control", "route-only", "full-palace", "adaptive-palace"], "order": "balanced Williams", "indexStatePerScenario": { "warm": 2, "cold": 2 } },
+      "integrity": { "validArms": 64, "successfulArms": 64, "publicAndHiddenChecksPassed": true },
+      "adaptiveMinusFull": {
+        "palaceOutputBytes": { "estimate": -898.5, "confidenceInterval": [-1972, -550.5] },
+        "reportedTokens": { "estimate": -16522.5, "confidenceInterval": [-38931, 24588] },
+        "toolCalls": { "estimate": -2.5, "confidenceInterval": [-6, 2] },
+        "durationMs": { "estimate": -6552.5, "confidenceInterval": [-13525, 336] }
+      },
+      "adaptiveMinusControl": {
+        "reportedTokens": { "estimate": 30147, "confidenceInterval": [-1518.5, 39219] },
+        "toolCalls": { "estimate": 4.5, "confidenceInterval": [2.5, 6.5] },
+        "durationMs": { "estimate": 10918.5, "confidenceInterval": [-1433, 31043] }
+      },
+      "failedPredecessors": [
+        { "protocolVersion": "2.0.0", "reason": "PowerShell interpolated $0.00 in three Palace prompts; comparison invalid." },
+        { "protocolVersion": "2.1.0", "reason": "Windows split writable roots caused patch-verification infrastructure failures; study stopped." }
+      ],
+      "conclusion": "Adaptive reduced Palace-owned payload but did not establish lower end-to-end Token use or wall time than Control; useful-memory fidelity failed in 0.2.1."
+    },
+    {
+      "id": "control-first-v3",
+      "protocolVersion": "3.0.0",
+      "design": { "primaryComparison": "adaptive-vs-control", "plannedTrials": 16, "plannedArms": 64, "hiddenTenantOwnership": true, "exactPackageProvenance": true },
+      "status": { "frozen": true, "attemptedTrials": 16, "attemptedArms": 64, "validArms": 64, "successfulArms": 58, "keyRevealedAfterResultLock": true },
+      "conclusion": "Adaptive completed all 16 tasks and prevented three hidden scope failures seen in Control, but the small synthetic pilot did not establish a general Token or speed advantage."
+    },
+    {
+      "id": "real-repository-v4",
+      "protocolVersion": "4.0.0-candidate.1",
+      "design": { "primaryComparison": "adaptive-palace-vs-control", "realIssues": 4, "pairedTrials": 16, "arms": 32, "hiddenOracleCommitment": true, "blindedUntilOutcomeLock": true },
+      "status": { "outcomesLockedAtCommit": "cc493b198bdff95138805b18b2b4dff2dec940ee", "completedTrials": 16, "completedArms": 32, "infrastructureFailures": 1, "evidenceHashesVerified": 32, "keyRevealedAfterResultLock": true },
+      "strictSuccess": { "adaptivePalace": 3, "control": 11, "adaptiveMinusControl": -0.5, "confidenceInterval": [-0.625, -0.375], "exactMcNemarPValue": 0.0078125 },
+      "conclusion": "Adaptive read less on descriptive Token measures but succeeded substantially less often; the tested 0.3.0 treatment did not improve correctness or cost per successful real-repository solution."
+    }
+  ],
+  "coverage": [
+    {
+      "id": "clean-package-cli-mcp",
+      "status": "validated-product-gate",
+      "evidence": ["docs/research/evidence/control-first-v3-release-provenance-2026-07-20.json"],
+      "observed": { "packageVersion": "0.3.0", "tarballFiles": 7, "mcpTools": 10, "crossPlatformCi": true },
+      "allowedClaim": "The local release candidate passes packaging, CLI, MCP, and cross-platform gates.",
+      "forbiddenClaim": "The package is already publicly installable."
+    },
+    {
+      "id": "typescript-monorepo-routing",
+      "status": "validated-product-gate",
+      "evidence": ["docs/research/evidence/control-first-v3-release-provenance-2026-07-20.json"],
+      "observed": { "repository": "zod", "repetitions": 2, "targetRecall": 1, "strictTargetPrecision": 1 },
+      "allowedClaim": "The pinned Zod issue-style task retrieved its known implementation and test twice.",
+      "forbiddenClaim": "TypeScript monorepos are generally solved faster or with fewer Tokens."
+    },
+    {
+      "id": "python-repository-routing",
+      "status": "validated-product-gate",
+      "evidence": ["docs/research/evidence/control-first-v3-release-provenance-2026-07-20.json"],
+      "observed": { "repository": "requests", "indexedFiles": 123, "repetitions": 2, "targetRecall": 1, "strictTargetPrecision": 1 },
+      "allowedClaim": "The pinned Requests issue-style task retrieved its known implementation and test twice.",
+      "forbiddenClaim": "Python repositories are generally solved faster or with fewer Tokens."
+    },
+    {
+      "id": "independent-small-oss-stratum",
+      "status": "not-tested",
+      "evidence": [],
+      "observed": { "predeclaredSizeThreshold": false },
+      "allowedClaim": "A separate small-OSS stratum remains future work.",
+      "forbiddenClaim": "Requests retroactively proves a preregistered small-OSS stratum."
+    },
+    {
+      "id": "real-repository-issue-routing",
+      "status": "formal-exploratory",
+      "evidence": ["results/real-repository-v4/analysis.json", "docs/research/REAL_REPOSITORY_V4_FINAL.md"],
+      "observed": { "repositories": 3, "issues": 4, "pairedTrials": 16, "agentArms": 32, "adaptiveSuccesses": 3, "controlSuccesses": 11 },
+      "allowedClaim": "The tested real-repository treatment had lower strict success than Control in this sample.",
+      "forbiddenClaim": "Four issues establish performance across real repositories generally."
+    },
+    {
+      "id": "real-repository-history-dependent-agent",
+      "status": "formal-exploratory",
+      "evidence": ["results/real-repository-v4/analysis.json", "results/real-repository-v4/mechanism-audit.post-hoc.json"],
+      "observed": { "pairedTrials": 8, "decisionMemoryAdaptiveSuccesses": 2, "decisionMemoryControlSuccesses": 3, "staleMemoryAdaptiveSuccesses": 0, "staleMemoryControlSuccesses": 0, "decisionMemorySelectedItems": [0, 0, 0, 0] },
+      "allowedClaim": "Current memory selection did not improve the two tested real history profiles.",
+      "forbiddenClaim": "Memory is proven generally harmful or helpful on real projects."
+    },
+    {
+      "id": "real-repository-cross-stack-agent",
+      "status": "formal-exploratory",
+      "evidence": ["results/real-repository-v4/analysis.json", "docs/research/REAL_REPOSITORY_V4_FINAL.md"],
+      "observed": { "issue": "open-webui-analytics-25919", "pairedTrials": 4, "adaptiveSuccesses": 0, "controlSuccesses": 4 },
+      "allowedClaim": "Adaptive failed all four tested cross-stack arms while Control succeeded in all four.",
+      "forbiddenClaim": "One issue proves Palace fails every cross-stack task."
+    },
+    {
+      "id": "real-repository-architecture-refactor",
+      "status": "not-tested",
+      "evidence": [],
+      "observed": { "agentTrials": 0 },
+      "allowedClaim": "This is an explicit evidence gap.",
+      "forbiddenClaim": "Cross-module architecture routing is validated on real repositories."
+    },
+    {
+      "id": "true-adaptive-bypass",
+      "status": "validated-product-gate",
+      "evidence": ["docs/research/evidence/control-first-v3-agent-preflight-2026-07-20.json"],
+      "observed": { "contractRepetitions": 4, "fields": 3, "bytes": 200, "agentPreflightTrials": 1, "agentTokenSavingProven": false },
+      "allowedClaim": "The package can return a compact bypass contract.",
+      "forbiddenClaim": "A compact bypass guarantees the Agent stops exploring."
+    },
+    {
+      "id": "memory-dependent-tenant-fixture",
+      "status": "engineering-preflight",
+      "evidence": ["docs/research/evidence/control-first-v3-agent-preflight-2026-07-20.json"],
+      "observed": { "trials": 1, "routeOnlyPassed": false, "adaptivePassed": true, "fullPassed": true, "controlPassed": true },
+      "allowedClaim": "Memory beat structure-only routing in one non-formal fixture run.",
+      "forbiddenClaim": "Memory improved correctness over Control."
+    },
+    {
+      "id": "stale-memory-resistance-v2-2",
+      "status": "historical-exploratory",
+      "evidence": ["results/adaptive-pilot-v2.2/analysis.json", "docs/research/STALE_MEMORY_V2_2_BLOCK.md"],
+      "observed": { "palaceVersion": "0.2.1", "trials": 4, "arms": 16, "allValid": true, "allSuccessful": true, "wrongMemoryAdoptionRate": 0 },
+      "allowedClaim": "All arms rejected stale advice in this synthetic v2.2 block.",
+      "forbiddenClaim": "0.3.0 stale-memory behavior is formally validated."
+    },
+    {
+      "id": "adaptive-versus-control-v2-2",
+      "status": "historical-exploratory",
+      "evidence": ["results/adaptive-pilot-v2.2/analysis.json", "docs/research/ADAPTIVE_V2_2_FINAL.md"],
+      "observed": {
+        "palaceVersion": "0.2.1",
+        "validPairs": 16,
+        "mutualSuccessPairs": 16,
+        "adaptiveMinusControl": {
+          "reportedTokens": { "estimate": 30147, "confidenceInterval": [-1518.5, 39219] },
+          "durationMs": { "estimate": 10918.5, "confidenceInterval": [-1433, 31043] },
+          "toolCalls": { "estimate": 4.5, "confidenceInterval": [2.5, 6.5] }
+        }
+      },
+      "allowedClaim": "v2.2 did not show an end-to-end efficiency advantage over Control; tool-call overhead was supported.",
+      "forbiddenClaim": "0.3.0 has the same effect or is already proven faster."
+    },
+    {
+      "id": "control-first-v3-formal",
+      "status": "formal-exploratory",
+      "evidence": [
+        "results/control-first-v3/plan.json",
+        "results/control-first-v3/manifest.json",
+        "results/control-first-v3/analysis.json",
+        "results/control-first-v3/blinding-reveal.json",
+        "docs/research/CONTROL_FIRST_V3_FINAL.md",
+        "docs/research/evidence/control-first-v3-public-binding-2026-07-21.json",
+        "docs/research/evidence/control-first-v3-freeze-2026-07-21.json"
+      ],
+      "observed": {
+        "frozen": true,
+        "plannedTrials": 16,
+        "attemptedTrials": 16,
+        "plannedArms": 64,
+        "attemptedArms": 64,
+        "validArms": 64,
+        "successfulArms": 58,
+        "controlSuccessRate": 0.8125,
+        "adaptiveSuccessRate": 1,
+        "adaptiveMinusControlReportedTokens": { "estimate": -806, "confidenceInterval": [-14743, 22498], "mutualSuccessPairs": 13 },
+        "adaptiveMinusControlDurationMs": { "estimate": 2963, "confidenceInterval": [-6069, 11865], "mutualSuccessPairs": 13 },
+        "adaptiveMinusControlToolCalls": { "estimate": 0, "confidenceInterval": [-1, 3], "mutualSuccessPairs": 13 },
+        "decisionMemoryControlSuccessRate": 0.25,
+        "decisionMemoryAdaptiveSuccessRate": 1,
+        "decisionMemoryExactPValue": 0.25,
+        "decisionMemoryHolmPValue": 1,
+        "staleMemoryWrongAdoptionRate": 0,
+        "keyRevealedAfterResultLock": true
+      },
+      "blocker": null,
+      "allowedClaim": "In this synthetic pilot, Adaptive prevented three hidden tenant-scope failures and never adopted stale memory; pooled efficiency differences remained inconclusive.",
+      "forbiddenClaim": "Vertex Palace is proven generally faster, cheaper, or more correct on real repositories."
+    },
+    {
+      "id": "real-repository-v4-formal",
+      "status": "formal-exploratory",
+      "evidence": [
+        "protocol/v4/plan.frozen.json",
+        "protocol/v4/execution.binding.frozen.json",
+        "results/real-repository-v4/manifest.json",
+        "results/real-repository-v4/blinding-reveal.json",
+        "results/real-repository-v4/analysis.json",
+        "results/real-repository-v4/infrastructure-attempt-costs.json",
+        "results/real-repository-v4/mechanism-audit.post-hoc.json",
+        "docs/research/REAL_REPOSITORY_V4_FINAL.md"
+      ],
+      "observed": {
+        "outcomesLockedAtCommit": "cc493b198bdff95138805b18b2b4dff2dec940ee",
+        "plannedTrials": 16,
+        "completedTrials": 16,
+        "plannedArms": 32,
+        "completedArms": 32,
+        "infrastructureFailures": 1,
+        "adaptiveSuccessRate": 0.1875,
+        "controlSuccessRate": 0.6875,
+        "adaptiveMinusControlSuccessRate": { "estimate": -0.5, "confidenceInterval": [-0.625, -0.375], "exactMcNemarPValue": 0.0078125 },
+        "adaptiveCorrectnessRate": 0.3125,
+        "controlCorrectnessRate": 0.75,
+        "adaptiveExactScopeRate": 0.625,
+        "controlExactScopeRate": 0.9375,
+        "adaptiveOnlySuccesses": 0,
+        "controlOnlySuccesses": 8,
+        "evidenceHashesVerified": 32,
+        "keyRevealedAfterResultLock": true,
+        "retryTokenUsageComplete": false
+      },
+      "blocker": null,
+      "allowedClaim": "In this real-issue sample, Adaptive read less on descriptive Token measures but was less correct and had higher cost per successful solution than Control.",
+      "forbiddenClaim": "The result proves Palace can never help any repository task, or that lower failed-run Tokens are an efficiency win."
+    },
+    {
+      "id": "npm-publication-0-3-0",
+      "status": "validated-release-gate",
+      "evidence": [
+        "docs/research/evidence/control-first-v3-release-provenance-2026-07-20.json",
+        "docs/research/evidence/vertex-palace-0.3.0-public-release-2026-07-20.json"
+      ],
+      "observed": {
+        "registryLatest": "0.3.0",
+        "version0_3_0Exists": true,
+        "shasum": "9a04440d7e95c4d34e68e1b7e2cd3f6ecd62e83e",
+        "cleanInstallPassed": true,
+        "githubReleasePublished": true,
+        "codexPluginInstallPassed": true
+      },
+      "blocker": null,
+      "allowedClaim": "npm users can install public 0.3.0 and Codex users can install the version-aligned v0.3.0 plugin from the Git marketplace.",
+      "forbiddenClaim": "Successful distribution proves an Agent efficiency or correctness advantage."
+    }
+  ],
+  "nextEvidence": [
+    "preregister a separate small-OSS size threshold and repository",
+    "add real-repository history-dependent and architecture/refactor tasks with hidden objective oracles"
+  ]
+}

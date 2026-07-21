@@ -4,13 +4,13 @@
 `benchmarks-ab-demo`。它们是导航与解释层，不是新的研究协议，也不会改变已
 冻结的任务、版本、随机 seed、分析方法或结果。
 
-[项目中文首页](../../README.zh-CN.md) | [第四代执行冻结](./REAL_REPOSITORY_V4_EXECUTION_FREEZE.md) | [第四代 Agent 预检](./REAL_REPOSITORY_V4_AGENT_PREFLIGHT.md) | [第四代真实仓库候选协议](./PROTOCOL_V4_CANDIDATE.md) | [v3 正式最终报告](./CONTROL_FIRST_V3_FINAL.md) | [验证覆盖矩阵](./VALIDATION_COVERAGE_MATRIX.md) | [修订版 Bypass 工程确认](./REVISED_BYPASS_CONFIRMATION.md) | [0.3.0 候选最终结果](./CONTROL_FIRST_V3_CANDIDATE_FINAL.md) | [快速验证指南](./QUICKSTART.md) | [v2.2 结果阅读指南](./RESULTS_GUIDE.md) | [Control-first v3 协议](./PROTOCOL_V3.md) | [v2.2 英文最终报告](../research/ADAPTIVE_V2_2_FINAL.md)
+[项目中文首页](../../README.zh-CN.md) | [第四代真实仓库最终报告](./REAL_REPOSITORY_V4_FINAL.md) | [第四代执行冻结](./REAL_REPOSITORY_V4_EXECUTION_FREEZE.md) | [第四代 Agent 预检](./REAL_REPOSITORY_V4_AGENT_PREFLIGHT.md) | [v3 正式最终报告](./CONTROL_FIRST_V3_FINAL.md) | [验证覆盖矩阵](./VALIDATION_COVERAGE_MATRIX.md) | [快速验证指南](./QUICKSTART.md)
 
 ## 按目的阅读
 
 | 目的 | 从这里开始 | 是否启动 Codex Agent |
 | --- | --- | --- |
-| 快速判断研究结论 | [结果阅读指南](./RESULTS_GUIDE.md) | 否 |
+| 快速判断最新真实仓库结论 | [V4 最终报告](./REAL_REPOSITORY_V4_FINAL.md) | 否 |
 | 查看 0.3.0 正式 Control 对照结果 | [v3 正式最终报告](./CONTROL_FIRST_V3_FINAL.md) | 否 |
 | 查看 0.3.0 候选是否适合发布 | [候选验证最终报告](./CONTROL_FIRST_V3_CANDIDATE_FINAL.md) | 否 |
 | 查看修订版是否减少重复检查 | [修订版 Bypass 工程确认](./REVISED_BYPASS_CONFIRMATION.md) | 否 |
@@ -21,11 +21,17 @@
 | 审核预注册内容 | [v2.2 冻结协议](../research/PROTOCOL_V2_2.md) | 否 |
 | 审核第三代冻结设计 | [Control-first v3 中文协议](./PROTOCOL_V3.md) | 否 |
 | 审核第四代真实仓库 runner、环境适配与冻结闸门 | [第四代执行冻结](./REAL_REPOSITORY_V4_EXECUTION_FREEZE.md) | 否，冻结时正式执行为 0/32 |
+| 审核第四代执行结果、揭盲与成本 | [V4 最终报告](./REAL_REPOSITORY_V4_FINAL.md) | 否 |
 | 复现一个真实 Agent trial | [完整复现说明](./QUICKSTART.md#完整-agent-复现高成本) | 是，成本较高 |
 | 准备比赛展示 | [三分钟影片辅助流程](./QUICKSTART.md#三分钟影片辅助流程) | 建议播放已录制证据 |
 
 ## 30 秒结论
 
+- V4 完成四个真实 Issue、16/16 配对 trial、32/32 Agent arm；结果先锁定再揭盲。
+- Adaptive Palace 严格成功 3/16，Control 成功 11/16；配对差 -50 个百分点，精确 `p=0.0078125`。
+- Oracle 正确性为 5/16 对 12/16，精确修改范围为 10/16 对 15/16；没有 Palace 单独成功的配对。
+- Adaptive 未缓存输入中位差为 -24,687 Tokens，但计入失败与重试后，每个成功至少 7.30M reported Tokens、40.59 分钟；Control 为 2.73M、10.31 分钟。
+- 因此 V4 不支持“0.3.0 在真实仓库中普遍比 Codex 更快、更省或更正确”。以下 v3 与 v2.2 保留为上一代合成研究证据。
 - v3 完成 16/16 trial、64/64 有效 Arm；Adaptive 成功 16/16，Control 成功 13/16。
 - 三次差异都来自隐藏历史决策任务；Adaptive 修改范围正确，Control 三次违反租户范围。
 - 这个正确性信号的原始精确配对 p=0.25，Holm 校正后 p=1.00，样本仍不足以建立普遍效果。
@@ -42,6 +48,9 @@
 
 | 内容 | 权威来源 |
 | --- | --- |
+| V4 真实仓库结论、限制与研发决定 | [`REAL_REPOSITORY_V4_FINAL.md`](./REAL_REPOSITORY_V4_FINAL.md) |
+| V4 机器分析、揭盲与脱敏重试成本 | [`results/real-repository-v4/`](../../results/real-repository-v4/) |
+| V4 每个 Agent arm 的公开证据 | [`results/real-repository-v4/*/evidence.json`](../../results/real-repository-v4/) |
 | v3 最终结论与限制 | [`CONTROL_FIRST_V3_FINAL.md`](./CONTROL_FIRST_V3_FINAL.md) |
 | v3 机器分析与揭盲 | [`analysis.json`](../../results/control-first-v3/analysis.json) 与 [`blinding-reveal.json`](../../results/control-first-v3/blinding-reveal.json) |
 | v3 每项公开证据 | [`results/control-first-v3/`](../../results/control-first-v3/) |
@@ -80,6 +89,7 @@ Control-first v3 正是这样的独立新协议。正式计划写入公开 commi
 
 ## 引用边界
 
-引用本仓库时，请同时说明：这是单一 Windows 环境、单一 Codex/model build、四个
-确定性合成仓库、每场景四组配对的探索性研究。不要只引用 payload 缩小而省略
-Control，也不要把 transcript 出现的路径字符串称为“实际读取文件数”。
+引用 V4 时，请同时说明：这是单一 Windows 环境、单一 Codex/model build、四个
+固定真实 Issue、每个 Issue 四组配对的探索性研究。不要只引用 Token 减少而省略
+成功率，也不要把双方都失败时的“较便宜失败”称为效率胜利。v1-v3 使用合成 fixture，
+其结论不能与 V4 混成同一数据集。

@@ -40,8 +40,17 @@
     "prepare:real-repository:v4:profile": "node ./scripts/prepare-real-repository-v4-profile.mjs",
     "self-test:real-repository:v4:evaluator": "node ./scripts/self-test-v4-private-evaluator.mjs",
     "freeze:real-repository:v4:execution": "node ./scripts/prepare-real-repository-v4-execution.mjs",
+    "publish:retry-cost:real-repository:v4": "node ./scripts/publish-real-repository-v4-retry-cost.mjs --write",
+    "verify:retry-cost:real-repository:v4": "node ./scripts/publish-real-repository-v4-retry-cost.mjs --verify",
+    "reveal:real-repository:v4": "node ./scripts/reveal-real-repository-v4.mjs --write",
+    "verify:reveal:real-repository:v4": "node ./scripts/reveal-real-repository-v4.mjs --verify",
+    "analysis:real-repository:v4": "node ./analysis/real-repository-v4-analysis.mjs",
+    "verify:analysis:real-repository:v4": "node ./analysis/real-repository-v4-analysis.mjs --verify",
+    "publish:mechanism-audit:real-repository:v4": "node ./scripts/publish-real-repository-v4-mechanism-audit.mjs --write",
+    "verify:mechanism-audit:real-repository:v4": "node ./scripts/publish-real-repository-v4-mechanism-audit.mjs --verify",
+    "check:real-repository:v4": "npm run verify:retry-cost:real-repository:v4 && npm run verify:reveal:real-repository:v4 && npm run verify:analysis:real-repository:v4 && npm run verify:mechanism-audit:real-repository:v4",
     "publish:run": "node ./scripts/publish-run.mjs",
-    "check": "npm run test && npm run test:fixture && npm run audit:results && npm run audit:adaptive:v2 && npm run audit:adaptive:v2.1 && npm run audit:adaptive:v2.2 && npm run audit:control-first:v3 && npm run audit:control-first:v3:candidate && npm run verify:analysis:adaptive && npm run check:v4-prep"
+    "check": "npm run test && npm run test:fixture && npm run audit:results && npm run audit:adaptive:v2 && npm run audit:adaptive:v2.1 && npm run audit:adaptive:v2.2 && npm run audit:control-first:v3 && npm run audit:control-first:v3:candidate && npm run verify:analysis:adaptive && npm run check:v4-prep && npm run check:real-repository:v4"
   },
   "engines": {
     "node": ">=20"

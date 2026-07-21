@@ -4,3 +4,5 @@ results/adaptive-pilot-v2.1/** text eol=lf
 results/adaptive-pilot-v2.2/** text eol=lf
 results/control-first-v3/** text eol=lf
 results/control-first-v3-candidate/** text eol=lf
+results/real-repository-v4/** text eol=lf
+protocol/v4/** text eol=lf

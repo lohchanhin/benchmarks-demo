@@ -7,40 +7,31 @@ A public, preregistered, reproducible experiment comparing Codex repository
 work with no Palace, structural routing only, always-on Full Palace, and
 Adaptive Palace.
 
-[Simplified Chinese](README.zh-CN.md) | [v4 execution freeze](docs/research/REAL_REPOSITORY_V4_EXECUTION_FREEZE.md) | [v4 Agent preflight](docs/research/REAL_REPOSITORY_V4_AGENT_PREFLIGHT.md) | [v4 real-repository candidate](docs/research/PROTOCOL_V4_CANDIDATE.md) | [Control-first v3 final](docs/research/CONTROL_FIRST_V3_FINAL.md) | [Post-v3 adherence telemetry](docs/research/POST_V3_AGENT_ADHERENCE_TELEMETRY.md) | [Validation coverage](docs/research/VALIDATION_COVERAGE_MATRIX.md) | [Revised bypass confirmation](docs/research/REVISED_BYPASS_CONFIRMATION.md) | [0.3.0 candidate result](docs/research/CONTROL_FIRST_V3_CANDIDATE_FINAL.md) | [Chinese documentation](docs/zh-CN/README.md) | [Chinese quick verification](docs/zh-CN/QUICKSTART.md) | [Chinese v2.2 results guide](docs/zh-CN/RESULTS_GUIDE.md) | [v3 protocol](docs/research/PROTOCOL_V3.md) | [v2.2 final report](docs/research/ADAPTIVE_V2_2_FINAL.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
+[Simplified Chinese](README.zh-CN.md) | [v4 real-repository final](docs/research/REAL_REPOSITORY_V4_FINAL.md) | [v4 execution freeze](docs/research/REAL_REPOSITORY_V4_EXECUTION_FREEZE.md) | [v4 Agent preflight](docs/research/REAL_REPOSITORY_V4_AGENT_PREFLIGHT.md) | [Control-first v3 final](docs/research/CONTROL_FIRST_V3_FINAL.md) | [Validation coverage](docs/research/VALIDATION_COVERAGE_MATRIX.md) | [Chinese documentation](docs/zh-CN/README.md) | [Chinese quick verification](docs/zh-CN/QUICKSTART.md) | [Chinese v2.2 results guide](docs/zh-CN/RESULTS_GUIDE.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
 
-## V4 Real-Repository Preparation
+## V4 Real-Repository Result
 
-The fourth-generation study plan and its separate execution amendment are now
-owner-approved and frozen. The execution gate passed 10/10 checks while formal
-execution remained at 0/32. The result-only execution sequence starts with an
-empty blinded ledger and a no-Agent dependency dry run before the first arm.
-The first scheduled invocation then failed closed before Agent session creation
-because of a CLI argument-position incompatibility: three infrastructure
-attempts, zero Agent events, zero completed arms, and no observed outcome. A
-single-order correction was committed and the superseding binding passed the
-same 10/10 gate. A second pre-session invocation then exposed Windows TOML
-quote encoding; it also produced three infrastructure attempts, zero Agent
-events, zero completed arms, and no outcome. The equivalent raw-value encoding
-passed strict-config through the exact shim, and a third binding passed 10/10
-before formal execution resumed.
-It preregisters four real issues across TypeScript and Python, 16 paired trials,
-an external hidden oracle, blinded arm assignments, exact-scope scoring, and a
-statistics freeze gate. The runner uses isolated real checkouts, exact runtime
-and dependency hashes, network-off Agent sessions, baseline-aware verification,
-immutable resume records, and blinded public evidence. The preparation machine
-passed all 11 study-freeze checks and all four private evaluator reference
-self-tests; the public receipt states that owner approval was not an independent
-third-party review.
+The preregistered fourth-generation study is complete: 16/16 paired trials and
+32/32 isolated Agent arms across four real issues. Outcomes were committed at
+`cc493b198bdff95138805b18b2b4dff2dec940ee` before the blinded assignment key
+was revealed. All 32 public evidence hashes verify.
 
-See the [candidate protocol](docs/research/PROTOCOL_V4_CANDIDATE.md), the
-[Agent preflight](docs/research/REAL_REPOSITORY_V4_AGENT_PREFLIGHT.md), the
-[execution freeze](docs/research/REAL_REPOSITORY_V4_EXECUTION_FREEZE.md), the
-[public pre-session incident](results/real-repository-v4/incidents/001-codex-cli-argument-order.json), the
-[second pre-session incident](results/real-repository-v4/incidents/002-codex-config-quoting.json), the
-[public fixture manifest](protocol/v4/fixtures.candidates.json), and the
-[outcome-free frozen plan](protocol/v4/plan.frozen.json). This is research
-preparation, not new evidence that Vertex Palace is faster or cheaper.
+The result is negative for the tested product and sample. Adaptive Palace had
+**3/16 strict successes** versus Control's **11/16**, a paired difference of
+-50 percentage points (95% stratified bootstrap interval -62.5 to -37.5;
+two-sided exact McNemar `p=0.0078125`). Adaptive used fewer descriptive
+reported and uncached Tokens, but its retry-adjusted cost per successful
+solution was much higher because it failed more often. No Adaptive-only success
+was observed.
+
+Read the [English final report](docs/research/REAL_REPOSITORY_V4_FINAL.md) or
+[Simplified Chinese final report](docs/zh-CN/REAL_REPOSITORY_V4_FINAL.md) before
+quoting any isolated metric. The [machine analysis](results/real-repository-v4/analysis.json),
+[post-lock reveal](results/real-repository-v4/blinding-reveal.json), [sanitized
+retry cost](results/real-repository-v4/infrastructure-attempt-costs.json), and
+[post-hoc mechanism audit](results/real-repository-v4/mechanism-audit.post-hoc.json)
+are public. This result does not support marketing 0.3.0 as generally faster,
+cheaper, or more correct than ordinary Codex.
 
 ## Falsifiable Claims
 
