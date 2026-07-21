@@ -19,6 +19,8 @@
 
 新生成的 comparison report 会为每个 arm 列出这些字段；当两边都成功且有效时，数值字段也会进入主要比较差值。
 
+解析器同时支持旧版路线中的 `full_file` / `full_symbol` 信号，以及 0.4-alpha drawer 的 `Do not reopen: true` 标记。这样在已载入路径从 Primary / Support 摘要去重后，重新打开次数仍能被正确测量。
+
 ## 解读边界
 
 这些字段是确定性的 transcript 启发式，不是语义意图判断，也不是操作系统级文件访问审计。它们用于定位可能的执行开销，不能单独证明 Palace 节省 Token 或时间。

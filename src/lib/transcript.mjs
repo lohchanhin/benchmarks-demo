@@ -277,16 +277,34 @@ function parseAdaptiveRouteContract(output) {
   const routedContext = markdownSection(output, "Routed Context");
   const deliveredPaths = [...routedContext.matchAll(/^### (?:primary|support|deferred): ([^\r\n]+)$/gm)]
     .map((match) => stripSourceLocation(match[1]));
+  const noReopenPaths = parseNoReopenPaths(routedContext);
   const deferredPaths = [...markdownSection(output, "Deferred").matchAll(/^- ([^\r\n]+?) \((?:primary|support|deferred), [^)]+\):/gm)]
     .map((match) => stripSourceLocation(match[1]));
   const excludedPaths = [...markdownSection(output, "Excluded").matchAll(/^- ([^:\r\n]+):/gm)]
     .map((match) => stripSourceLocation(match[1]))
     .filter((value) => value.toLowerCase() !== "none");
   return {
-    deliveredFullPaths: unique(deliveredPaths.filter((value) => fullReferences.has(value))),
+    deliveredFullPaths: unique([
+      ...noReopenPaths,
+      ...deliveredPaths.filter((value) => fullReferences.has(value))
+    ]),
     deferredPaths: unique(deferredPaths),
     excludedPaths: unique(excludedPaths)
   };
+}
+
+function parseNoReopenPaths(routedContext) {
+  const paths = [];
+  let currentPath = null;
+  for (const line of routedContext.split(/\r?\n/)) {
+    const heading = /^### (?:primary|support|deferred): (.+)$/.exec(line);
+    if (heading) {
+      currentPath = stripSourceLocation(heading[1]);
+      continue;
+    }
+    if (currentPath && /^Do not reopen: true\s*$/.test(line)) paths.push(currentPath);
+  }
+  return unique(paths);
 }
 
 function markdownSection(output, heading) {

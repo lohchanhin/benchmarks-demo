@@ -19,6 +19,8 @@ Each newly verified arm can record:
 
 The generated comparison report includes these values for every arm and numeric primary-comparison deltas where both arms are mutually successful.
 
+The parser supports both the legacy route-reference signal (`full_file` / `full_symbol`) and the 0.4-alpha drawer marker `Do not reopen: true`. This keeps reopen measurement valid after loaded route paths are deduplicated from the Primary and Support summaries.
+
 ## Interpretation boundary
 
 These fields are deterministic transcript heuristics, not semantic intent classification and not an operating-system file-access audit. They diagnose likely execution overhead. They do not, by themselves, prove that Palace saves tokens or time.
