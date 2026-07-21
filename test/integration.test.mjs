@@ -101,6 +101,9 @@ test("prepares identical arms, verifies repairs, and writes comparison reports",
   assert.match(markdown, /Vertex Palace Four-Arm Adaptive Benchmark/);
   assert.match(markdown, /Full Palace minus Adaptive/);
   assert.match(markdown, /Instrumentation Excluded From Scope/);
+  assert.match(markdown, /Delivered full paths reopened/);
+  assert.match(markdown, /Calls after stop condition/);
+  assert.match(markdown, /Batched verification used/);
   assert.match(markdown, /\| Elapsed time \| 12\.0s \| 9\.0s \| 8\.0s \| 8\.0s \| 0\.0s \|/);
   assert.equal(report.comparison.delta.durationMsSaved, 0);
   assert.equal(report.comparison.pairwise.controlVsAdaptivePalace.delta.durationMsSaved, 4000);

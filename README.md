@@ -7,7 +7,7 @@ A public, preregistered, reproducible experiment comparing Codex repository
 work with no Palace, structural routing only, always-on Full Palace, and
 Adaptive Palace.
 
-[Simplified Chinese](README.zh-CN.md) | [Control-first v3 final](docs/research/CONTROL_FIRST_V3_FINAL.md) | [Validation coverage](docs/research/VALIDATION_COVERAGE_MATRIX.md) | [Revised bypass confirmation](docs/research/REVISED_BYPASS_CONFIRMATION.md) | [0.3.0 candidate result](docs/research/CONTROL_FIRST_V3_CANDIDATE_FINAL.md) | [Chinese documentation](docs/zh-CN/README.md) | [Chinese quick verification](docs/zh-CN/QUICKSTART.md) | [Chinese v2.2 results guide](docs/zh-CN/RESULTS_GUIDE.md) | [v3 protocol](docs/research/PROTOCOL_V3.md) | [v2.2 final report](docs/research/ADAPTIVE_V2_2_FINAL.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
+[Simplified Chinese](README.zh-CN.md) | [Control-first v3 final](docs/research/CONTROL_FIRST_V3_FINAL.md) | [Post-v3 adherence telemetry](docs/research/POST_V3_AGENT_ADHERENCE_TELEMETRY.md) | [Validation coverage](docs/research/VALIDATION_COVERAGE_MATRIX.md) | [Revised bypass confirmation](docs/research/REVISED_BYPASS_CONFIRMATION.md) | [0.3.0 candidate result](docs/research/CONTROL_FIRST_V3_CANDIDATE_FINAL.md) | [Chinese documentation](docs/zh-CN/README.md) | [Chinese quick verification](docs/zh-CN/QUICKSTART.md) | [Chinese v2.2 results guide](docs/zh-CN/RESULTS_GUIDE.md) | [v3 protocol](docs/research/PROTOCOL_V3.md) | [v2.2 final report](docs/research/ADAPTIVE_V2_2_FINAL.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
 
 ## Falsifiable Claims
 

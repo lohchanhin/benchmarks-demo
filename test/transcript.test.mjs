@@ -53,7 +53,9 @@ test("parses Adaptive Palace mode and measured payload from command output", () 
     "",
     "Calls: 1 | Bytes: 0 | Estimated tokens: 726",
     "Route: 8 (2 primary, 5 support, 1 deferred)",
-    "Memory: 0 items / ~0 tokens | Guardrails: 0"
+    "Memory: 0 items / ~0 tokens | Guardrails: 0",
+    "Section metrics (bytes/tokens): task=19/5 | modeExplanation=40/10 | primary=80/20 | support=60/15 | deferred=20/5 | excluded=10/3 | memory=0/0 | guardrails=0/0 | requiredEvidence=30/8 | doNot=20/5 | stopCondition=25/7 | conflictSummary=15/4",
+    "Serialization overhead bytes: 100"
   ].join("\n"));
   const source = JSON.stringify({
     type: "item.completed",
@@ -85,7 +87,22 @@ test("parses Adaptive Palace mode and measured payload from command output", () 
     memoryCandidateCount: 0,
     memoryExcludedCount: 0,
     memoryEstimatedTokens: 0,
-    guardrailCount: 0
+    guardrailCount: 0,
+    sectionMetrics: {
+      task: { bytes: 19, estimatedTokens: 5 },
+      modeExplanation: { bytes: 40, estimatedTokens: 10 },
+      primary: { bytes: 80, estimatedTokens: 20 },
+      support: { bytes: 60, estimatedTokens: 15 },
+      deferred: { bytes: 20, estimatedTokens: 5 },
+      excluded: { bytes: 10, estimatedTokens: 3 },
+      memory: { bytes: 0, estimatedTokens: 0 },
+      guardrails: { bytes: 0, estimatedTokens: 0 },
+      requiredEvidence: { bytes: 30, estimatedTokens: 8 },
+      doNot: { bytes: 20, estimatedTokens: 5 },
+      stopCondition: { bytes: 25, estimatedTokens: 7 },
+      conflictSummary: { bytes: 15, estimatedTokens: 4 },
+      serializationOverheadBytes: 100
+    }
   });
 });
 
@@ -232,6 +249,95 @@ test("counts failed commands and keeps only the completed output", () => {
   assert.equal(result.commandCalls, 1);
   assert.equal(result.failedCalls, 1);
   assert.equal(result.commandOutputChars, 12);
+});
+
+test("measures Agent adherence to delivered drawers, route boundaries, verification, and stop rules", () => {
+  const task = "Fix checkout total rounding without changing shared tax behavior.";
+  const palaceOutput = measuredAdaptiveOutput([
+    "# Vertex Palace Adaptive Context",
+    "",
+    "Mode: full-palace",
+    "",
+    "## Task",
+    "",
+    task,
+    "",
+    "## Payload",
+    "",
+    "Calls: 1 | Bytes: 0 | Estimated tokens: 500",
+    "Route: 4 (1 primary, 1 support, 2 deferred)",
+    "Memory: 0 included / 0 candidates / 0 excluded / ~0 tokens | Guardrails: 1",
+    "",
+    "## Primary",
+    "",
+    "- src/checkout/total.ts (primary, full_symbol): exact implementation anchor",
+    "",
+    "## Routed Context",
+    "",
+    "### primary: src/checkout/total.ts:1-40",
+    "",
+    "Reason: exact implementation anchor",
+    "",
+    "```ts",
+    "export function total() {}",
+    "```",
+    "",
+    "## Deferred",
+    "",
+    "- src/tax/shared.ts (deferred, summary): inspect only after conflict",
+    "- src/contracts/order.ts (deferred, summary): inspect only after conflict",
+    "",
+    "## Excluded",
+    "",
+    "- docs: unrelated documentation"
+  ].join("\n"));
+  const command = (id, value, options = {}) => JSON.stringify({
+    type: "item.completed",
+    item: {
+      id,
+      type: "command_execution",
+      status: options.status ?? "completed",
+      exit_code: options.exitCode ?? 0,
+      command: value,
+      aggregated_output: options.output ?? ""
+    }
+  });
+  const source = [
+    command("palace", `palace context '${task}' --auto`, { output: palaceOutput }),
+    command("reopen-primary", "Get-Content src/checkout/total.ts"),
+    command("open-deferred-early", "Get-Content src/tax/shared.ts"),
+    command("failing-test", "pnpm test", { status: "failed", exitCode: 1, output: "1 test failed" }),
+    command("open-deferred-after-conflict", "Get-Content src/contracts/order.ts"),
+    command("open-excluded", "Get-Content docs/README.md"),
+    JSON.stringify({
+      type: "item.completed",
+      item: { id: "message-1", type: "agent_message", text: `I will ${task}` }
+    }),
+    JSON.stringify({
+      type: "item.completed",
+      item: { id: "message-2", type: "agent_message", text: `The task remains: ${task}` }
+    }),
+    command("edit", "apply_patch *** Begin Patch"),
+    command("verification", "pnpm test && pnpm lint", { output: "all tests passed" }),
+    command("final-check", "git diff --check && git status --short"),
+    command("after-stop", "rg checkout src")
+  ].join("\n");
+
+  const result = parseCodexTranscript(source, [
+    "src/checkout/total.ts",
+    "src/tax/shared.ts",
+    "src/contracts/order.ts",
+    "docs/README.md"
+  ], task);
+
+  assert.equal(result.deliveredFullPathReopenedCount, 1);
+  assert.equal(result.deferredOpenedWithoutConflictCount, 1);
+  assert.equal(result.excludedPathOpenedCount, 1);
+  assert.equal(result.toolCallsBeforeFirstEdit, 6);
+  assert.equal(result.toolCallsAfterTestsPassed, 2);
+  assert.equal(result.callsAfterStopConditionSatisfied, 1);
+  assert.equal(result.batchedVerificationUsed, true);
+  assert.equal(result.repeatedTaskRestatementCount, 1);
 });
 
 test("does not mistake a .palace exclusion path for a Palace call", () => {

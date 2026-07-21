@@ -109,6 +109,16 @@ test("uses Control minus Adaptive as the v3 top-level comparison", () => {
   assert.equal(report.pairwise.controlVsAdaptivePalace.delta.reportedTokensSaved, 1000);
   assert.equal(report.pairwise.fullPalaceVsAdaptivePalace.delta.reportedTokensSaved, -1000);
   assert.deepEqual(report.adaptive.instrumentationFiles, []);
+  assert.equal(report.adaptive.deliveredFullPathReopenedCount, 0);
+  assert.equal(report.adaptive.deferredOpenedWithoutConflictCount, 0);
+  assert.equal(report.adaptive.excludedPathOpenedCount, 0);
+  assert.equal(report.adaptive.toolCallsBeforeFirstEdit, 2);
+  assert.equal(report.adaptive.toolCallsAfterTestsPassed, 1);
+  assert.equal(report.adaptive.callsAfterStopConditionSatisfied, 0);
+  assert.equal(report.adaptive.batchedVerificationUsed, true);
+  assert.equal(report.adaptive.repeatedTaskRestatementCount, 0);
+  assert.equal(report.delta.deliveredFullPathReopenedCountSaved, 0);
+  assert.equal(report.delta.toolCallsBeforeFirstEditSaved, 0);
 });
 
 function armEvidence({ arm, durationMs, toolCalls, palaceCalls, tokens }) {
@@ -131,6 +141,14 @@ function armEvidence({ arm, durationMs, toolCalls, palaceCalls, tokens }) {
       successfulPalaceCalls: palaceCalls,
       inspectedFiles: ["a.mjs"],
       referencedFiles: ["a.mjs"],
+      deliveredFullPathReopenedCount: 0,
+      deferredOpenedWithoutConflictCount: 0,
+      excludedPathOpenedCount: 0,
+      toolCallsBeforeFirstEdit: 2,
+      toolCallsAfterTestsPassed: 1,
+      callsAfterStopConditionSatisfied: 0,
+      batchedVerificationUsed: true,
+      repeatedTaskRestatementCount: 0,
       usage: {
         inputTokens: tokens - 500,
         cachedInputTokens: 0,
