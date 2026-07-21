@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "4.0.0-candidate.1",
+  "status": "formal-ready",
+  "formal": true,
+  "createdAt": "2026-07-21T10:37:13.971Z",
+  "executionBindingCommit": "e151adda08109998fa080a8b3716f92ae9114e06",
+  "executionBindingSha256": "6e0323895ce7940e765a43378f6108602fe632ed757c706c7e952e08ac077914",
+  "frozenPlanSha256": "e811e734d3f7152c80c16044530fef27870de5663b7ad6f64ac6b088137493fb",
+  "plannedTrials": 16,
+  "plannedArmRuns": 32,
+  "completedTrials": 0,
+  "completedArmRuns": 0,
+  "infrastructureFailures": 0,
+  "mappingRevealed": false,
+  "trials": [
+    {
+      "trialId": "zod-transform-refine-4926-v4-01",
+      "fixtureId": "zod-transform-refine-4926",
+      "taskType": "simple-local",
+      "replicate": 1,
+      "cacheState": "cold",
+      "blindedOrder": [
+        "arm-a",
+        "arm-b"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "zod-transform-refine-4926-v4-02",
+      "fixtureId": "zod-transform-refine-4926",
+      "taskType": "simple-local",
+      "replicate": 2,
+      "cacheState": "cold",
+      "blindedOrder": [
+        "arm-b",
+        "arm-a"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "zod-transform-refine-4926-v4-03",
+      "fixtureId": "zod-transform-refine-4926",
+      "taskType": "simple-local",
+      "replicate": 3,
+      "cacheState": "warm",
+      "blindedOrder": [
+        "arm-a",
+        "arm-b"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "zod-transform-refine-4926-v4-04",
+      "fixtureId": "zod-transform-refine-4926",
+      "taskType": "simple-local",
+      "replicate": 4,
+      "cacheState": "warm",
+      "blindedOrder": [
+        "arm-b",
+        "arm-a"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "open-webui-analytics-25919-v4-01",
+      "fixtureId": "open-webui-analytics-25919",
+      "taskType": "cross-stack",
+      "replicate": 1,
+      "cacheState": "cold",
+      "blindedOrder": [
+        "arm-b",
+        "arm-a"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "open-webui-analytics-25919-v4-02",
+      "fixtureId": "open-webui-analytics-25919",
+      "taskType": "cross-stack",
+      "replicate": 2,
+      "cacheState": "cold",
+      "blindedOrder": [
+        "arm-a",
+        "arm-b"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "open-webui-analytics-25919-v4-03",
+      "fixtureId": "open-webui-analytics-25919",
+      "taskType": "cross-stack",
+      "replicate": 3,
+      "cacheState": "warm",
+      "blindedOrder": [
+        "arm-b",
+        "arm-a"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "open-webui-analytics-25919-v4-04",
+      "fixtureId": "open-webui-analytics-25919",
+      "taskType": "cross-stack",
+      "replicate": 4,
+      "cacheState": "warm",
+      "blindedOrder": [
+        "arm-a",
+        "arm-b"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "zod-report-input-decision-5509-v4-01",
+      "fixtureId": "zod-report-input-decision-5509",
+      "taskType": "decision-memory-dependent",
+      "replicate": 1,
+      "cacheState": "cold",
+      "blindedOrder": [
+        "arm-a",
+        "arm-b"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "zod-report-input-decision-5509-v4-02",
+      "fixtureId": "zod-report-input-decision-5509",
+      "taskType": "decision-memory-dependent",
+      "replicate": 2,
+      "cacheState": "cold",
+      "blindedOrder": [
+        "arm-b",
+        "arm-a"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "zod-report-input-decision-5509-v4-03",
+      "fixtureId": "zod-report-input-decision-5509",
+      "taskType": "decision-memory-dependent",
+      "replicate": 3,
+      "cacheState": "warm",
+      "blindedOrder": [
+        "arm-a",
+        "arm-b"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "zod-report-input-decision-5509-v4-04",
+      "fixtureId": "zod-report-input-decision-5509",
+      "taskType": "decision-memory-dependent",
+      "replicate": 4,
+      "cacheState": "warm",
+      "blindedOrder": [
+        "arm-b",
+        "arm-a"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "requests-stream-regression-7432-v4-01",
+      "fixtureId": "requests-stream-regression-7432",
+      "taskType": "stale-memory",
+      "replicate": 1,
+      "cacheState": "cold",
+      "blindedOrder": [
+        "arm-b",
+        "arm-a"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "requests-stream-regression-7432-v4-02",
+      "fixtureId": "requests-stream-regression-7432",
+      "taskType": "stale-memory",
+      "replicate": 2,
+      "cacheState": "cold",
+      "blindedOrder": [
+        "arm-a",
+        "arm-b"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "requests-stream-regression-7432-v4-03",
+      "fixtureId": "requests-stream-regression-7432",
+      "taskType": "stale-memory",
+      "replicate": 3,
+      "cacheState": "warm",
+      "blindedOrder": [
+        "arm-b",
+        "arm-a"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    },
+    {
+      "trialId": "requests-stream-regression-7432-v4-04",
+      "fixtureId": "requests-stream-regression-7432",
+      "taskType": "stale-memory",
+      "replicate": 4,
+      "cacheState": "warm",
+      "blindedOrder": [
+        "arm-a",
+        "arm-b"
+      ],
+      "status": "planned",
+      "completedArmRuns": 0
+    }
+  ],
+  "attempts": [],
+  "arms": []
+}
