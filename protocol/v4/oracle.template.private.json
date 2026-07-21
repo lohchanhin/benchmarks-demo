@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "4.0.0-candidate.1",
+  "fixtures": [
+    {
+      "fixtureId": "replace-with-fixture-id",
+      "referenceResolution": {
+        "url": "https://github.com/owner/repository/commit/replace-with-resolution-commit",
+        "commit": "replace-with-40-character-resolution-commit"
+      },
+      "correctnessCriteria": [
+        "Replace with evaluator-only behavioral criteria."
+      ],
+      "exactChangedFiles": [
+        "replace/with/evaluator-only/path"
+      ],
+      "forbiddenFiles": [
+        "replace/with/evaluator-only/forbidden/path"
+      ],
+      "expectedChangePolicy": "exact-files"
+    }
+  ]
+}

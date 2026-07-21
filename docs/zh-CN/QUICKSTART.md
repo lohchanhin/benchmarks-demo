@@ -5,6 +5,21 @@
 
 [中文文档索引](./README.md) | [结果阅读指南](./RESULTS_GUIDE.md) | [项目中文首页](../../README.zh-CN.md)
 
+## 第四代准备状态（不执行 Agent）
+
+第四代目前只允许生成候选计划与检查冻结闸门：
+
+```powershell
+npm run v4:plan
+npm run v4:gate
+npm run check:v4-prep
+```
+
+审核前 draft 保持 `frozen: false`；所有者授权后的 frozen plan 为
+`frozen: true`、`executionAllowed: true`，但正式 trial 仍为 0。代码中没有
+`v4-run`，因此本阶段不能启动第四代正式 Agent 测试。完整设计见
+[第四代真实仓库候选协议](./PROTOCOL_V4_CANDIDATE.md)。
+
 ## 环境要求
 
 - Node.js 20 或 22

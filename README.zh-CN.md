@@ -7,7 +7,15 @@
 - **Full Palace**：路线、Context Pack、Pitfall Board 与历史记忆全部启用。
 - **Adaptive Palace（v2）**：协议设计为与 Full 使用相同记忆，但只调用一次 `palace context --auto`，由工具选择最小安全模式；v0.2.1 的实际记忆一致性也被本研究检验。
 
-[English](README.md) | [Control-first v3 最终报告](docs/zh-CN/CONTROL_FIRST_V3_FINAL.md) | [第三代之后的 Agent 遵循指标](docs/zh-CN/POST_V3_AGENT_ADHERENCE_TELEMETRY.md) | [验证覆盖矩阵](docs/zh-CN/VALIDATION_COVERAGE_MATRIX.md) | [修订版 Bypass 工程确认](docs/zh-CN/REVISED_BYPASS_CONFIRMATION.md) | [0.3.0 候选最终结果](docs/zh-CN/CONTROL_FIRST_V3_CANDIDATE_FINAL.md) | [中文辅助文档](docs/zh-CN/README.md) | [快速验证指南](docs/zh-CN/QUICKSTART.md) | [v3 中文协议](docs/zh-CN/PROTOCOL_V3.md) | [v2.2 最终报告](docs/research/ADAPTIVE_V2_2_FINAL.md) | [测试方法](METHODOLOGY.md) | [影片指南](DEMO.md)
+[English](README.md) | [第四代真实仓库候选协议](docs/zh-CN/PROTOCOL_V4_CANDIDATE.md) | [Control-first v3 最终报告](docs/zh-CN/CONTROL_FIRST_V3_FINAL.md) | [第三代之后的 Agent 遵循指标](docs/zh-CN/POST_V3_AGENT_ADHERENCE_TELEMETRY.md) | [验证覆盖矩阵](docs/zh-CN/VALIDATION_COVERAGE_MATRIX.md) | [修订版 Bypass 工程确认](docs/zh-CN/REVISED_BYPASS_CONFIRMATION.md) | [0.3.0 候选最终结果](docs/zh-CN/CONTROL_FIRST_V3_CANDIDATE_FINAL.md) | [中文辅助文档](docs/zh-CN/README.md) | [快速验证指南](docs/zh-CN/QUICKSTART.md) | [v3 中文协议](docs/zh-CN/PROTOCOL_V3.md) | [v2.2 最终报告](docs/research/ADAPTIVE_V2_2_FINAL.md) | [测试方法](METHODOLOGY.md) | [影片指南](DEMO.md)
+
+## 第四代真实仓库研究准备
+
+第四代候选协议已经实现、获得所有者批准并完成冻结，但刻意没有启动正式 Agent 测试。它预注册了横跨 TypeScript 与 Python 的四个真实 Issue、16 个配对 trial、外部隐藏 Oracle、盲测 arm、精确修改范围评分与执行前统计冻结闸门。
+
+当前 frozen plan 为 `frozen: true`、正式 trial 为 0，而且代码里没有 `v4-run` 命令。在准备这台电脑上，冻结闸门 11/11 通过；公开 receipt 如实说明这是所有者授权，不是独立第三方审核。
+
+请查看[第四代候选协议](docs/zh-CN/PROTOCOL_V4_CANDIDATE.md)、[公开 fixture](protocol/v4/fixtures.candidates.json)与[无结果的冻结计划](protocol/v4/plan.frozen.json)。这些是研究准备，不是新的“更快”或“更省 Token”证据。
 
 ## 第一次来这里
 

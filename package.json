@@ -29,11 +29,14 @@
     "gate:control-first:v3": "node ./scripts/verify-control-first-v3-release.mjs",
     "check:release-ready": "npm run check && npm run gate:control-first:v3",
     "freeze:control-first:v3": "node ./scripts/prepare-control-first-v3-freeze.mjs",
+    "v4:plan": "node ./bin/benchmark.mjs v4-plan --write",
+    "v4:gate": "node ./bin/benchmark.mjs v4-gate",
+    "check:v4-prep": "node ./scripts/verify-v4-preparation.mjs",
     "reveal:control-first:v3": "node ./scripts/reveal-control-first-v3.mjs --write",
     "verify:reveal:control-first:v3": "node ./scripts/reveal-control-first-v3.mjs --verify",
     "run:control-first:v3:candidate": "node ./scripts/run-control-first-v3-candidate.mjs",
     "publish:run": "node ./scripts/publish-run.mjs",
-    "check": "npm run test && npm run test:fixture && npm run audit:results && npm run audit:adaptive:v2 && npm run audit:adaptive:v2.1 && npm run audit:adaptive:v2.2 && npm run audit:control-first:v3 && npm run audit:control-first:v3:candidate && npm run verify:analysis:adaptive"
+    "check": "npm run test && npm run test:fixture && npm run audit:results && npm run audit:adaptive:v2 && npm run audit:adaptive:v2.1 && npm run audit:adaptive:v2.2 && npm run audit:control-first:v3 && npm run audit:control-first:v3:candidate && npm run verify:analysis:adaptive && npm run check:v4-prep"
   },
   "engines": {
     "node": ">=20"

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "4.0.0-candidate.1",
+  "approved": false,
+  "reviewer": null,
+  "reviewedAt": null,
+  "declaration": "I reviewed the fixtures, hidden oracle commitment, blinding commitment, and frozen statistical analysis plan before any formal Agent trial.",
+  "planSha256": null,
+  "fixtureManifestSha256": null,
+  "privateOracleCommitment": null,
+  "blindingKeyCommitment": null
+}

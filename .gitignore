@@ -1,4 +1,5 @@
 .benchmark-runs/
+.benchmark-private/
 .palace/
 node_modules/
 coverage/

@@ -4,7 +4,7 @@
 `benchmarks-ab-demo`。它们是导航与解释层，不是新的研究协议，也不会改变已
 冻结的任务、版本、随机 seed、分析方法或结果。
 
-[项目中文首页](../../README.zh-CN.md) | [v3 正式最终报告](./CONTROL_FIRST_V3_FINAL.md) | [验证覆盖矩阵](./VALIDATION_COVERAGE_MATRIX.md) | [修订版 Bypass 工程确认](./REVISED_BYPASS_CONFIRMATION.md) | [0.3.0 候选最终结果](./CONTROL_FIRST_V3_CANDIDATE_FINAL.md) | [快速验证指南](./QUICKSTART.md) | [v2.2 结果阅读指南](./RESULTS_GUIDE.md) | [Control-first v3 协议](./PROTOCOL_V3.md) | [v2.2 英文最终报告](../research/ADAPTIVE_V2_2_FINAL.md)
+[项目中文首页](../../README.zh-CN.md) | [第四代真实仓库候选协议](./PROTOCOL_V4_CANDIDATE.md) | [v3 正式最终报告](./CONTROL_FIRST_V3_FINAL.md) | [验证覆盖矩阵](./VALIDATION_COVERAGE_MATRIX.md) | [修订版 Bypass 工程确认](./REVISED_BYPASS_CONFIRMATION.md) | [0.3.0 候选最终结果](./CONTROL_FIRST_V3_CANDIDATE_FINAL.md) | [快速验证指南](./QUICKSTART.md) | [v2.2 结果阅读指南](./RESULTS_GUIDE.md) | [Control-first v3 协议](./PROTOCOL_V3.md) | [v2.2 英文最终报告](../research/ADAPTIVE_V2_2_FINAL.md)
 
 ## 按目的阅读
 
@@ -20,6 +20,7 @@
 | 查看实验方法 | [英文方法说明](../../METHODOLOGY.md) | 否 |
 | 审核预注册内容 | [v2.2 冻结协议](../research/PROTOCOL_V2_2.md) | 否 |
 | 审核第三代冻结设计 | [Control-first v3 中文协议](./PROTOCOL_V3.md) | 否 |
+| 审核第四代真实仓库候选与冻结闸门 | [第四代候选协议](./PROTOCOL_V4_CANDIDATE.md) | 否，尚未允许正式执行 |
 | 复现一个真实 Agent trial | [完整复现说明](./QUICKSTART.md#完整-agent-复现高成本) | 是，成本较高 |
 | 准备比赛展示 | [三分钟影片辅助流程](./QUICKSTART.md#三分钟影片辅助流程) | 建议播放已录制证据 |
 

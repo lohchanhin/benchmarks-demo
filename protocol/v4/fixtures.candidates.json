@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "4.0.0-candidate.1",
+  "status": "candidate-awaiting-human-review",
+  "retrievedAt": "2026-07-21T00:00:00.000Z",
+  "agentNetworkPolicy": "disabled",
+  "fixtures": [
+    {
+      "id": "zod-transform-refine-4926",
+      "taskType": "simple-local",
+      "languages": [
+        "TypeScript"
+      ],
+      "repository": {
+        "url": "https://github.com/colinhacks/zod",
+        "frozenCommit": "7dd7484802b1351c8b81d3d523aadd876fcdf73e"
+      },
+      "issue": {
+        "url": "https://github.com/colinhacks/zod/issues/4926",
+        "title": "Zod v4: transform() runs even when .refine() fails, causing unexpected runtime errors"
+      },
+      "prompt": "At the frozen commit, fix the reported Zod v4 pipeline regression so a transform does not execute after refinement has already added an issue. Add focused regression coverage and keep the change local.",
+      "verification": {
+        "commands": [
+          "pnpm vitest packages/zod/src/v4/classic/tests/transform.test.ts"
+        ]
+      },
+      "historySources": [],
+      "palaceSetup": {
+        "memoryProfile": "none",
+        "routingProfile": "small-local"
+      }
+    },
+    {
+      "id": "open-webui-analytics-25919",
+      "taskType": "cross-stack",
+      "languages": [
+        "Python",
+        "TypeScript"
+      ],
+      "repository": {
+        "url": "https://github.com/open-webui/open-webui",
+        "frozenCommit": "e473ab1231abedcb188c259b42ae7f2390739223"
+      },
+      "issue": {
+        "url": "https://github.com/open-webui/open-webui/issues/25919",
+        "title": "feat: additional analytics capabilities"
+      },
+      "prompt": "At the frozen commit, extend analytics across the Python API and TypeScript/Svelte dashboard with per-model unique user and chat counts plus a persisted custom inclusive date range. Preserve the existing analytics contract and update both layers together.",
+      "verification": {
+        "commands": [
+          "npm run check",
+          "python -m pytest -q backend/tests"
+        ]
+      },
+      "historySources": [
+        {
+          "kind": "issue-discussion",
+          "url": "https://github.com/open-webui/open-webui/issues/25919"
+        }
+      ],
+      "palaceSetup": {
+        "memoryProfile": "none",
+        "routingProfile": "cross-stack"
+      }
+    },
+    {
+      "id": "zod-report-input-decision-5509",
+      "taskType": "decision-memory-dependent",
+      "languages": [
+        "TypeScript"
+      ],
+      "repository": {
+        "url": "https://github.com/colinhacks/zod",
+        "frozenCommit": "6e968a3b49cbcb3bffc30c68634e80168e8f2a2e"
+      },
+      "issue": {
+        "url": "https://github.com/colinhacks/zod/issues/5509",
+        "title": "Support opt-in unsafe logging of properties in specific parse calls"
+      },
+      "prompt": "At the frozen commit, respond to the request for opt-in inclusion of failing input values in parse issues. Respect the project's privacy-by-default decision, verify current code and documentation before changing scope, and make only changes that are actually necessary.",
+      "verification": {
+        "commands": [
+          "pnpm vitest packages/zod/src/v4/classic/tests/error.test.ts"
+        ]
+      },
+      "historySources": [
+        {
+          "kind": "owner-decision",
+          "url": "https://github.com/colinhacks/zod/issues/4688#issuecomment-2967793697"
+        },
+        {
+          "kind": "project-documentation",
+          "url": "https://github.com/colinhacks/zod/blob/6e968a3b49cbcb3bffc30c68634e80168e8f2a2e/packages/docs/content/error-customization.mdx"
+        }
+      ],
+      "palaceSetup": {
+        "memoryProfile": "current-owner-decision",
+        "routingProfile": "decision-memory"
+      }
+    },
+    {
+      "id": "requests-stream-regression-7432",
+      "taskType": "stale-memory",
+      "languages": [
+        "Python"
+      ],
+      "repository": {
+        "url": "https://github.com/psf/requests",
+        "frozenCommit": "0b401c76b6e80a4eecf3c690085b2553f6e261ca"
+      },
+      "issue": {
+        "url": "https://github.com/psf/requests/issues/7432",
+        "title": "prepare_body stream detection regression"
+      },
+      "prompt": "At the frozen commit, fix the stream-detection regression for delegated iterable wrappers while preserving redirect rewind behavior. Current code and tests outrank the supplied historical migration memory.",
+      "verification": {
+        "commands": [
+          "python -m pytest -q tests/test_requests.py"
+        ]
+      },
+      "historySources": [
+        {
+          "kind": "migration-commit",
+          "url": "https://github.com/psf/requests/commit/561e4b6889f53584c39a67f8794c53a414f68481"
+        }
+      ],
+      "palaceSetup": {
+        "memoryProfile": "stale-migration-advice",
+        "routingProfile": "stale-memory-adversarial"
+      }
+    }
+  ]
+}

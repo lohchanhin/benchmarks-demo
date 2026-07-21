@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "4.0.0-candidate.1",
+  "approved": true,
+  "reviewer": "HIN (repository owner)",
+  "reviewedAt": "2026-07-21T08:30:02.311Z",
+  "declaration": "I reviewed the fixtures, hidden oracle commitment, blinding commitment, and frozen statistical analysis plan before any formal Agent trial.",
+  "planSha256": "795b224dc1c1d0c093cecc7644d51bd42b5dec7de4d0955fe16265807fee32ac",
+  "fixtureManifestSha256": "3d1a8d7c03d80f3e52b5dda66e88971a10848e0c447eac04b193ec6ba3d8e02b",
+  "privateOracleCommitment": "d8d87fd0b7952bd96049a48e07d5b4af574c942925688bcef096ba4a80c831af",
+  "blindingKeyCommitment": "59ad9ff53dbda6e4b583e88462e9182f0d1e8b97f507eff2b327c53b63198c16",
+  "authorization": {
+    "source": "Explicit user approval in Codex session",
+    "sessionId": "019f4280-40ee-7172-b94d-f5aa7aa46814",
+    "scope": "PR5 v4 protocol preparation and human freeze review",
+    "technicalAuditPerformedBy": "Codex",
+    "independentThirdPartyReview": false
+  }
+}

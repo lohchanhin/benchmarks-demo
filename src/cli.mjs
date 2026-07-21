@@ -4,6 +4,7 @@ import { prepareCommand } from "./commands/prepare.mjs";
 import { reportCommand } from "./commands/report.mjs";
 import { runCommand } from "./commands/run.mjs";
 import { studyCommand } from "./commands/study.mjs";
+import { v4GateCommand, v4PlanCommand } from "./commands/v4-protocol.mjs";
 import { verifyCommand } from "./commands/verify.mjs";
 
 const help = `Vertex Palace A/B Benchmark
@@ -18,6 +19,8 @@ Commands:
   verify   Run tests, inspect Git changes, and score correctness/scope
   report   Produce Markdown and JSON comparison reports
   study    Validate or execute the frozen multi-scenario pilot plan
+  v4-plan  Generate the blinded real-repository v4 candidate plan
+  v4-gate  Audit or freeze v4 after an independent human review
 
 Common options:
   --run-dir <path>      Use a prepared run (defaults to the newest run)
@@ -39,6 +42,8 @@ Control-first v3 environment:
 Examples:
   npm run benchmark -- doctor
   npm run benchmark -- study --plan results/pilot/plan.json
+  npm run benchmark -- v4-plan --write
+  npm run benchmark -- v4-gate
   npm run benchmark -- study --plan results/pilot/plan.json --execute
   npm run benchmark -- prepare --scenario cross-stack-regression --run-id demo --seed demo-01
   npm run benchmark -- run --run-dir .benchmark-runs/demo --arm all --order seeded
@@ -64,6 +69,10 @@ export async function main(argv) {
       return reportCommand(parsed.flags);
     case "study":
       return studyCommand(parsed.flags);
+    case "v4-plan":
+      return v4PlanCommand(parsed.flags);
+    case "v4-gate":
+      return v4GateCommand(parsed.flags);
     case "help":
     case "--help":
     case "-h":
