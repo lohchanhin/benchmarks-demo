@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "protocolVersion": "4.0.0-candidate.1",
-  "status": "formal-ready",
+  "status": "formal-in-progress",
   "formal": true,
   "createdAt": "2026-07-21T10:58:44.701Z",
   "executionBindingCommit": "26dfa485f21369d2181be00d80b58fe7180f2d66",
@@ -9,8 +9,8 @@
   "frozenPlanSha256": "e811e734d3f7152c80c16044530fef27870de5663b7ad6f64ac6b088137493fb",
   "plannedTrials": 16,
   "plannedArmRuns": 32,
-  "completedTrials": 0,
-  "completedArmRuns": 0,
+  "completedTrials": 1,
+  "completedArmRuns": 2,
   "infrastructureFailures": 0,
   "mappingRevealed": false,
   "trials": [
@@ -24,8 +24,8 @@
         "arm-a",
         "arm-b"
       ],
-      "status": "planned",
-      "completedArmRuns": 0
+      "status": "completed",
+      "completedArmRuns": 2
     },
     {
       "trialId": "zod-transform-refine-4926-v4-02",
@@ -224,5 +224,30 @@
     }
   ],
   "attempts": [],
-  "arms": []
+  "arms": [
+    {
+      "armId": "zod-transform-refine-4926-v4-01-arm-a",
+      "trialId": "zod-transform-refine-4926-v4-01",
+      "fixtureId": "zod-transform-refine-4926",
+      "blindedLabel": "arm-a",
+      "sequence": 1,
+      "status": "completed",
+      "success": true,
+      "evidencePath": "results/real-repository-v4/zod-transform-refine-4926-v4-01-arm-a/evidence.json",
+      "evidenceSha256": "597861e3a6afd4e0d43f5bc6c4582cdfa48d89eb8beba97a62347ad51d9e4d5b",
+      "completedAt": "2026-07-21T11:05:19.428Z"
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-01-arm-b",
+      "trialId": "zod-transform-refine-4926-v4-01",
+      "fixtureId": "zod-transform-refine-4926",
+      "blindedLabel": "arm-b",
+      "sequence": 2,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/zod-transform-refine-4926-v4-01-arm-b/evidence.json",
+      "evidenceSha256": "7eda18ced415e09501ae8e4e2b28af6e8faee077d1017223d0d20470cec216ed",
+      "completedAt": "2026-07-21T11:10:50.940Z"
+    }
+  ]
 }

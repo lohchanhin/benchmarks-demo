@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "4.0.0-candidate.1",
+  "armId": "zod-transform-refine-4926-v4-01-arm-b",
+  "trialId": "zod-transform-refine-4926-v4-01",
+  "blindedLabel": "arm-b",
+  "metrics": {
+    "success": false,
+    "correctnessPassed": false,
+    "exactScopePassed": false,
+    "forbiddenViolation": false,
+    "diffCheckPassed": true,
+    "executionPassed": true,
+    "reportedTokens": 1411288,
+    "inputTokens": 1400101,
+    "outputTokens": 11187,
+    "cachedInputTokens": 1320448,
+    "toolCalls": 28,
+    "failedCalls": 13,
+    "wallTimeMs": 300022
+  },
+  "changedFiles": [
+    "packages/zod/src/v4/classic/schemas.ts",
+    "packages/zod/src/v4/classic/tests/transform.test.ts",
+    "packages/zod/src/v4/core/schemas.ts"
+  ],
+  "verification": [
+    {
+      "command": "pnpm vitest packages/zod/src/v4/classic/tests/transform.test.ts",
+      "policy": "exit-zero",
+      "valid": true,
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 6900
+    }
+  ],
+  "git": {
+    "diffCheckPassed": true,
+    "numstat": [
+      {
+        "file": "packages/zod/src/v4/classic/schemas.ts",
+        "added": 3,
+        "deleted": 0
+      },
+      {
+        "file": "packages/zod/src/v4/classic/tests/transform.test.ts",
+        "added": 11,
+        "deleted": 0
+      },
+      {
+        "file": "packages/zod/src/v4/core/schemas.ts",
+        "added": 3,
+        "deleted": 0
+      }
+    ]
+  },
+  "execution": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 300022,
+    "infrastructureFailure": false
+  }
+}
