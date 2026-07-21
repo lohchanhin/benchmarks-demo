@@ -11,7 +11,7 @@
   "plannedArmRuns": 32,
   "completedTrials": 0,
   "completedArmRuns": 0,
-  "infrastructureFailures": 0,
+  "infrastructureFailures": 3,
   "mappingRevealed": false,
   "trials": [
     {
@@ -223,6 +223,34 @@
       "completedArmRuns": 0
     }
   ],
-  "attempts": [],
+  "attempts": [
+    {
+      "armId": "zod-transform-refine-4926-v4-01-arm-a",
+      "trialId": "zod-transform-refine-4926-v4-01",
+      "blindedLabel": "arm-a",
+      "attempt": 1,
+      "status": "infrastructure-failure",
+      "reason": "codex-no-json-events",
+      "attemptedAt": "2026-07-21T10:44:25.108Z"
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-01-arm-a",
+      "trialId": "zod-transform-refine-4926-v4-01",
+      "blindedLabel": "arm-a",
+      "attempt": 2,
+      "status": "infrastructure-failure",
+      "reason": "codex-no-json-events",
+      "attemptedAt": "2026-07-21T10:44:26.489Z"
+    },
+    {
+      "armId": "zod-transform-refine-4926-v4-01-arm-a",
+      "trialId": "zod-transform-refine-4926-v4-01",
+      "blindedLabel": "arm-a",
+      "attempt": 3,
+      "status": "infrastructure-failure",
+      "reason": "codex-no-json-events",
+      "attemptedAt": "2026-07-21T10:44:27.879Z"
+    }
+  ],
   "arms": []
 }
