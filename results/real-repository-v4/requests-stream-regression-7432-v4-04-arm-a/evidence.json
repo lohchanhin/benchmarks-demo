@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "4.0.0-candidate.1",
+  "armId": "requests-stream-regression-7432-v4-04-arm-a",
+  "trialId": "requests-stream-regression-7432-v4-04",
+  "blindedLabel": "arm-a",
+  "metrics": {
+    "success": false,
+    "correctnessPassed": false,
+    "exactScopePassed": true,
+    "forbiddenViolation": false,
+    "diffCheckPassed": true,
+    "executionPassed": true,
+    "reportedTokens": 1913076,
+    "inputTokens": 1905345,
+    "outputTokens": 7731,
+    "cachedInputTokens": 1764352,
+    "toolCalls": 19,
+    "failedCalls": 5,
+    "wallTimeMs": 485534
+  },
+  "changedFiles": [
+    "src/requests/models.py",
+    "tests/test_requests.py"
+  ],
+  "verification": [
+    {
+      "command": "python -m pytest -q tests/test_requests.py",
+      "policy": "exit-zero",
+      "valid": true,
+      "passed": false,
+      "exitCode": 1,
+      "durationMs": 900174
+    }
+  ],
+  "git": {
+    "diffCheckPassed": true,
+    "numstat": [
+      {
+        "file": "src/requests/models.py",
+        "added": 3,
+        "deleted": 3
+      },
+      {
+        "file": "tests/test_requests.py",
+        "added": 15,
+        "deleted": 0
+      }
+    ]
+  },
+  "execution": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 485534,
+    "infrastructureFailure": false
+  }
+}

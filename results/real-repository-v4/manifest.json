@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "protocolVersion": "4.0.0-candidate.1",
-  "status": "formal-in-progress",
+  "status": "formal-complete-awaiting-reveal",
   "formal": true,
   "createdAt": "2026-07-21T10:58:44.701Z",
   "executionBindingCommit": "26dfa485f21369d2181be00d80b58fe7180f2d66",
@@ -9,9 +9,9 @@
   "frozenPlanSha256": "e811e734d3f7152c80c16044530fef27870de5663b7ad6f64ac6b088137493fb",
   "plannedTrials": 16,
   "plannedArmRuns": 32,
-  "completedTrials": 12,
-  "completedArmRuns": 24,
-  "infrastructureFailures": 0,
+  "completedTrials": 16,
+  "completedArmRuns": 32,
+  "infrastructureFailures": 1,
   "mappingRevealed": false,
   "trials": [
     {
@@ -180,8 +180,8 @@
         "arm-b",
         "arm-a"
       ],
-      "status": "planned",
-      "completedArmRuns": 0
+      "status": "completed",
+      "completedArmRuns": 2
     },
     {
       "trialId": "requests-stream-regression-7432-v4-02",
@@ -193,8 +193,8 @@
         "arm-a",
         "arm-b"
       ],
-      "status": "planned",
-      "completedArmRuns": 0
+      "status": "completed",
+      "completedArmRuns": 2
     },
     {
       "trialId": "requests-stream-regression-7432-v4-03",
@@ -206,8 +206,8 @@
         "arm-b",
         "arm-a"
       ],
-      "status": "planned",
-      "completedArmRuns": 0
+      "status": "completed",
+      "completedArmRuns": 2
     },
     {
       "trialId": "requests-stream-regression-7432-v4-04",
@@ -219,11 +219,21 @@
         "arm-a",
         "arm-b"
       ],
-      "status": "planned",
-      "completedArmRuns": 0
+      "status": "completed",
+      "completedArmRuns": 2
     }
   ],
-  "attempts": [],
+  "attempts": [
+    {
+      "armId": "requests-stream-regression-7432-v4-01-arm-b",
+      "trialId": "requests-stream-regression-7432-v4-01",
+      "blindedLabel": "arm-b",
+      "attempt": 1,
+      "status": "infrastructure-failure",
+      "reason": "codex-timeout",
+      "attemptedAt": "2026-07-21T14:33:06.004Z"
+    }
+  ],
   "arms": [
     {
       "armId": "zod-transform-refine-4926-v4-01-arm-a",
@@ -512,6 +522,102 @@
       "evidencePath": "results/real-repository-v4/zod-report-input-decision-5509-v4-04-arm-a/evidence.json",
       "evidenceSha256": "095e4f52dc409f7c909da3e900136d3b1b13e737ace3177d7b319a5bda05279e",
       "completedAt": "2026-07-21T14:16:53.394Z"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-01-arm-b",
+      "trialId": "requests-stream-regression-7432-v4-01",
+      "fixtureId": "requests-stream-regression-7432",
+      "blindedLabel": "arm-b",
+      "sequence": 1,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/requests-stream-regression-7432-v4-01-arm-b/evidence.json",
+      "evidenceSha256": "a46411f08547e2241a18d8281f2847663ad259334bc65c8e85d702905c7695d4",
+      "completedAt": "2026-07-21T14:39:01.532Z"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-01-arm-a",
+      "trialId": "requests-stream-regression-7432-v4-01",
+      "fixtureId": "requests-stream-regression-7432",
+      "blindedLabel": "arm-a",
+      "sequence": 2,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/requests-stream-regression-7432-v4-01-arm-a/evidence.json",
+      "evidenceSha256": "77194268ef9443bba607cfabff7512a008a8c88ad1e84d6844a7c78c0bd9d3b5",
+      "completedAt": "2026-07-21T14:45:27.215Z"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-02-arm-a",
+      "trialId": "requests-stream-regression-7432-v4-02",
+      "fixtureId": "requests-stream-regression-7432",
+      "blindedLabel": "arm-a",
+      "sequence": 1,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/requests-stream-regression-7432-v4-02-arm-a/evidence.json",
+      "evidenceSha256": "64d3c6dcfefa350f6286baddde435d38751ebc8447b4aab34de2c2701a66a0c0",
+      "completedAt": "2026-07-21T15:09:45.948Z"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-02-arm-b",
+      "trialId": "requests-stream-regression-7432-v4-02",
+      "fixtureId": "requests-stream-regression-7432",
+      "blindedLabel": "arm-b",
+      "sequence": 2,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/requests-stream-regression-7432-v4-02-arm-b/evidence.json",
+      "evidenceSha256": "7fc8d4a2c3a1d556921bad0f907ef1d1eee59460f94c664ca09440e477050f7a",
+      "completedAt": "2026-07-21T15:15:48.234Z"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-03-arm-b",
+      "trialId": "requests-stream-regression-7432-v4-03",
+      "fixtureId": "requests-stream-regression-7432",
+      "blindedLabel": "arm-b",
+      "sequence": 1,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/requests-stream-regression-7432-v4-03-arm-b/evidence.json",
+      "evidenceSha256": "bd987183a983b8b0f69cd8b7ab8dbcf066f4c795ad3fce9d39d80e989770f64b",
+      "completedAt": "2026-07-21T15:22:05.830Z"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-03-arm-a",
+      "trialId": "requests-stream-regression-7432-v4-03",
+      "fixtureId": "requests-stream-regression-7432",
+      "blindedLabel": "arm-a",
+      "sequence": 2,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/requests-stream-regression-7432-v4-03-arm-a/evidence.json",
+      "evidenceSha256": "fdb41f821848b1b088fb59ffd55f3ea8add0344e38a4e90e18576db7557d5eb6",
+      "completedAt": "2026-07-21T15:27:12.283Z"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-04-arm-a",
+      "trialId": "requests-stream-regression-7432-v4-04",
+      "fixtureId": "requests-stream-regression-7432",
+      "blindedLabel": "arm-a",
+      "sequence": 1,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/requests-stream-regression-7432-v4-04-arm-a/evidence.json",
+      "evidenceSha256": "e4b623854c630a9724ad22f507f8b83dd85e36e04d645309b9a840356abc66c7",
+      "completedAt": "2026-07-21T15:50:33.714Z"
+    },
+    {
+      "armId": "requests-stream-regression-7432-v4-04-arm-b",
+      "trialId": "requests-stream-regression-7432-v4-04",
+      "fixtureId": "requests-stream-regression-7432",
+      "blindedLabel": "arm-b",
+      "sequence": 2,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/requests-stream-regression-7432-v4-04-arm-b/evidence.json",
+      "evidenceSha256": "f406f002bbab0038d7e51ca3b3b06ecb616d48a3519bb52ea759508f7f1c556f",
+      "completedAt": "2026-07-21T15:57:07.277Z"
     }
   ]
 }
