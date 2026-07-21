@@ -5,9 +5,9 @@
 
 [中文文档索引](./README.md) | [结果阅读指南](./RESULTS_GUIDE.md) | [项目中文首页](../../README.zh-CN.md)
 
-## 第四代准备状态（不执行 Agent）
+## 第四代 runner 预检（不执行 Agent）
 
-第四代目前只允许生成候选计划与检查冻结闸门：
+第四代计划已经冻结，runner 与固定执行 profile 已实现。公开克隆可检查协议和测试：
 
 ```powershell
 npm run v4:plan
@@ -15,10 +15,17 @@ npm run v4:gate
 npm run check:v4-prep
 ```
 
-审核前 draft 保持 `frozen: false`；所有者授权后的 frozen plan 为
-`frozen: true`、`executionAllowed: true`，但正式 trial 仍为 0。代码中没有
-`v4-run`，因此本阶段不能启动第四代正式 Agent 测试。完整设计见
-[第四代真实仓库候选协议](./PROTOCOL_V4_CANDIDATE.md)。
+拥有私有 oracle 的研究维护者还可以执行 profile 与 evaluator 的无 Agent 自测：
+
+```powershell
+npm run prepare:real-repository:v4:profile
+npm run self-test:real-repository:v4:evaluator
+```
+
+正式 runner 入口是 `npm run run:real-repository:v4`，但只有独立 execution
+amendment 冻结并建立空白结果 manifest 后才会放行。当前正式 Agent arm 仍为
+0/32。完整环境事实见[第四代 Agent 预检](./REAL_REPOSITORY_V4_AGENT_PREFLIGHT.md)，
+研究设计见[第四代真实仓库候选协议](./PROTOCOL_V4_CANDIDATE.md)。
 
 ## 环境要求
 

@@ -35,6 +35,10 @@
     "reveal:control-first:v3": "node ./scripts/reveal-control-first-v3.mjs --write",
     "verify:reveal:control-first:v3": "node ./scripts/reveal-control-first-v3.mjs --verify",
     "run:control-first:v3:candidate": "node ./scripts/run-control-first-v3-candidate.mjs",
+    "run:real-repository:v4": "node ./scripts/run-real-repository-v4.mjs",
+    "dry-run:real-repository:v4": "node ./scripts/run-real-repository-v4.mjs --prepare-only",
+    "prepare:real-repository:v4:profile": "node ./scripts/prepare-real-repository-v4-profile.mjs",
+    "self-test:real-repository:v4:evaluator": "node ./scripts/self-test-v4-private-evaluator.mjs",
     "publish:run": "node ./scripts/publish-run.mjs",
     "check": "npm run test && npm run test:fixture && npm run audit:results && npm run audit:adaptive:v2 && npm run audit:adaptive:v2.1 && npm run audit:adaptive:v2.2 && npm run audit:control-first:v3 && npm run audit:control-first:v3:candidate && npm run verify:analysis:adaptive && npm run check:v4-prep"
   },

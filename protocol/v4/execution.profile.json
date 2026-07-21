@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "workspace": {
+    "platform": "win32-x64",
+    "rootPolicy": "absolute-ascii-only",
+    "lineEndings": "git-core-autocrlf-false",
+    "dependencyIsolation": "reviewed-shared-bundle-per-fixture"
+  },
+  "runtimes": {
+    "node": {
+      "version": "22.23.1",
+      "distribution": "node-v22.23.1-win-x64.zip",
+      "sha256": "7df0bc9375723f4a86b3aa1b7cc73342423d9677a8df4538aca31a049e309c29"
+    },
+    "npm": {
+      "version": "10.9.8"
+    },
+    "pnpm": {
+      "version": "10.12.1",
+      "provisioner": "corepack"
+    },
+    "python": {
+      "version": "3.11.9",
+      "implementation": "CPython",
+      "architecture": "64bit",
+      "executableSha256": "5f7b89a612c9b8af1d6456cdfcd1dbe5ca630849e79aebced9bee9a6694952ec"
+    },
+    "uv": {
+      "version": "0.11.30",
+      "executableSha256": "2773193ff0f378c8b0c7e1417fb35f63a50dbd9fa9a09174aef7cce313e7789e"
+    },
+    "codex": {
+      "package": "@openai/codex",
+      "version": "0.145.0-alpha.28",
+      "registrySha1": "fe894d1ab8a248ef1f226a1d81efc333b748167d",
+      "registryIntegrity": "sha512-DNNiIMllsHaY9jRNzE3pYdgPDi2EfQV2itvyxEpteQfFqR7CvIyogWgTGMJ5+WWZsQe9/ni5HoCE9O/DDbxmnw==",
+      "packageLockSha256": "8b248b5b12685b6e40fe44baa46d4dfebbd27ffca7d6593fbdb703888779dac0"
+    }
+  },
+  "fixtures": {
+    "zod-transform-refine-4926": {
+      "setup": [
+        "pnpm install --frozen-lockfile --ignore-scripts"
+      ],
+      "environment": {
+        "CI": "1"
+      },
+      "verification": [
+        {
+          "command": "pnpm vitest packages/zod/src/v4/classic/tests/transform.test.ts",
+          "policy": {
+            "kind": "exit-zero"
+          }
+        }
+      ],
+      "preflight": {
+        "status": "passed",
+        "routingProfile": "small-local"
+      }
+    },
+    "zod-report-input-decision-5509": {
+      "setup": [
+        "pnpm install --frozen-lockfile --ignore-scripts"
+      ],
+      "environment": {
+        "CI": "1"
+      },
+      "verification": [
+        {
+          "command": "pnpm vitest packages/zod/src/v4/classic/tests/error.test.ts",
+          "policy": {
+            "kind": "exit-zero"
+          }
+        }
+      ],
+      "preflight": {
+        "status": "passed",
+        "routingProfile": "decision-memory"
+      }
+    },
+    "requests-stream-regression-7432": {
+      "setup": [
+        "uv venv --python 3.11.9 .venv",
+        "uv pip sync protocol/v4/dependencies/requests-win-py311.txt --require-hashes --link-mode=copy",
+        "uv pip install --no-deps -e ."
+      ],
+      "dependencyLock": {
+        "path": "protocol/v4/dependencies/requests-win-py311.txt",
+        "sha256": "f41f5c6763a776ce0f96a5ad24a2df70c587012895f3fc79b9b61b07b66de7bc"
+      },
+      "environment": {
+        "PYTEST_ADDOPTS": "-k \"not test_different_connection_pool_for_tls_settings_verify_bundle_unexpired_cert\""
+      },
+      "verification": [
+        {
+          "command": "python -m pytest -q tests/test_requests.py",
+          "policy": {
+            "kind": "exit-zero"
+          }
+        }
+      ],
+      "preflight": {
+        "status": "passed-with-platform-exclusion",
+        "baseline": "335 passed, 1 skipped, 1 deselected, 1 xfailed",
+        "exclusionReason": "The frozen repository stores tests/certs/valid/ca as a symlink; this Windows account cannot create it. The deselected TLS bundle test is unrelated to the stream regression."
+      }
+    },
+    "open-webui-analytics-25919": {
+      "setup": [
+        "uv sync --frozen --group dev --no-install-project --link-mode=copy",
+        "npm ci --ignore-scripts --no-audit --no-fund"
+      ],
+      "environment": {
+        "CI": "1",
+        "PYTHONPATH": "backend"
+      },
+      "verification": [
+        {
+          "command": "npm run check",
+          "policy": {
+            "kind": "baseline-delta",
+            "baseline": {
+              "errors": 9702,
+              "warnings": 274,
+              "files": 386
+            },
+            "baselineOutputSha256": "479577ad17624f8f8b0dfb53a819cab6c29149e8f9cf4b74df26024bfe937998"
+          }
+        },
+        {
+          "command": "python -m pytest -q backend/tests",
+          "policy": {
+            "kind": "preflight-invalid",
+            "reason": "backend/tests does not exist at the frozen commit"
+          }
+        }
+      ],
+      "preflight": {
+        "status": "baseline-fails",
+        "publicCommandPreserved": true,
+        "hiddenCorrectnessRequired": true
+      }
+    }
+  },
+  "externalEvaluator": {
+    "visibility": "private-until-reveal",
+    "algorithm": "sha256-exact-file-bytes",
+    "sha256": "667daedc0b47b94f121085d6ced431d03aeee6b07c5af6297eb4b3b155532788"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "4.0.0-candidate.1",
+  "status": "passed",
+  "generatedAt": "2026-07-21T10:17:18.600Z",
+  "formalAgentArmsRun": 0,
+  "evaluatorSha256": "667daedc0b47b94f121085d6ced431d03aeee6b07c5af6297eb4b3b155532788",
+  "fixtures": [
+    {
+      "fixtureId": "zod-transform-refine-4926",
+      "referenceAccepted": true
+    },
+    {
+      "fixtureId": "open-webui-analytics-25919",
+      "referenceAccepted": true
+    },
+    {
+      "fixtureId": "zod-report-input-decision-5509",
+      "referenceAccepted": true
+    },
+    {
+      "fixtureId": "requests-stream-regression-7432",
+      "referenceAccepted": true
+    }
+  ],
+  "agentInvoked": false
+}

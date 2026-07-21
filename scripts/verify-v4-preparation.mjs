@@ -48,5 +48,5 @@ assert.equal(cliSource.includes('case "v4-run"'), false);
 console.log(
   `PASS v4 preparation: human review and frozen plan are public; `
     + `${report.summary.blocked} evaluator-secret checks remain unverifiable in a public clone; `
-    + "0 formal trials; no v4 runner"
+    + "0 formal trials; the study plan remains pre-runner and execution is governed by a separate amendment"
 );

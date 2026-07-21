@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "4.0.0-candidate.1",
+  "status": "passed-with-preregistered-platform-adaptations",
+  "generatedAt": "2026-07-21T10:17:26.921Z",
+  "formalAgentArmsRun": 0,
+  "runtimeVersions": {
+    "node": "v22.23.1",
+    "npm": "10.9.8",
+    "pnpm": "10.12.1",
+    "python": "Python 3.11.9",
+    "uv": "uv 0.11.30 (4cb3d0366 2026-07-20 x86_64-pc-windows-msvc)",
+    "codex": "codex-cli 0.145.0-alpha.28"
+  },
+  "sourceChecks": [
+    {
+      "fixtureId": "zod-transform-refine-4926",
+      "frozenCommit": "7dd7484802b1351c8b81d3d523aadd876fcdf73e",
+      "objectType": "commit",
+      "available": true
+    },
+    {
+      "fixtureId": "open-webui-analytics-25919",
+      "frozenCommit": "e473ab1231abedcb188c259b42ae7f2390739223",
+      "objectType": "commit",
+      "available": true
+    },
+    {
+      "fixtureId": "zod-report-input-decision-5509",
+      "frozenCommit": "6e968a3b49cbcb3bffc30c68634e80168e8f2a2e",
+      "objectType": "commit",
+      "available": true
+    },
+    {
+      "fixtureId": "requests-stream-regression-7432",
+      "frozenCommit": "0b401c76b6e80a4eecf3c690085b2553f6e261ca",
+      "objectType": "commit",
+      "available": true
+    }
+  ],
+  "baselines": {
+    "zodTransform": {
+      "testsPassed": 34,
+      "errors": 0
+    },
+    "zodDecision": {
+      "testsPassed": 54,
+      "errors": 0
+    },
+    "requestsWindows": {
+      "testsPassed": 335,
+      "skipped": 1,
+      "deselected": 1,
+      "xfailed": 1,
+      "adaptation": "one unrelated TLS symlink test deselected before execution"
+    },
+    "openWebui": {
+      "command": "npm run check",
+      "exitCode": 1,
+      "errors": 9702,
+      "warnings": 274,
+      "files": 386,
+      "outputSha256": "479577ad17624f8f8b0dfb53a819cab6c29149e8f9cf4b74df26024bfe937998",
+      "adaptation": "score no-new-diagnostics relative to the frozen baseline"
+    },
+    "openWebuiBackendTests": {
+      "command": "python -m pytest -q backend/tests",
+      "valid": false,
+      "reason": "backend/tests does not exist at the frozen commit",
+      "adaptation": "preserve the invalid command publicly and use the committed hidden-evaluator hash"
+    }
+  },
+  "commitments": {
+    "requestsDependencyLockSha256": "f41f5c6763a776ce0f96a5ad24a2df70c587012895f3fc79b9b61b07b66de7bc",
+    "openWebuiBaselineOutputSha256": "479577ad17624f8f8b0dfb53a819cab6c29149e8f9cf4b74df26024bfe937998",
+    "privateEvaluatorSha256": "667daedc0b47b94f121085d6ced431d03aeee6b07c5af6297eb4b3b155532788",
+    "pythonExecutableSha256": "5f7b89a612c9b8af1d6456cdfcd1dbe5ca630849e79aebced9bee9a6694952ec",
+    "uvExecutableSha256": "2773193ff0f378c8b0c7e1417fb35f63a50dbd9fa9a09174aef7cce313e7789e",
+    "codexPackageLockSha256": "8b248b5b12685b6e40fe44baa46d4dfebbd27ffca7d6593fbdb703888779dac0"
+  },
+  "executionProfilePath": "protocol/v4/execution.profile.json",
+  "agentInvoked": false
+}
