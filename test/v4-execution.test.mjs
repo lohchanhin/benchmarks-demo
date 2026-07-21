@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -14,6 +14,9 @@ import {
   materializeV4Workspace,
   resolveV4BlindedOrder,
   scoreV4Arm,
+  sha1File,
+  sha256V4RunnerSources,
+  sha512IntegrityFile,
   sha256File
 } from "../src/lib/v4-execution.mjs";
 import { runProcess } from "../src/lib/process.mjs";
@@ -205,6 +208,36 @@ test("sha256File hashes the exact artifact bytes", async () => {
   const source = path.join(root, "artifact.tgz");
   await runProcess(process.execPath, ["-e", "require('fs').writeFileSync(process.argv[1], 'artifact')", source], { check: true });
   assert.equal(await sha256File(source), "c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c");
+  assert.equal(await sha1File(source), "1e5dcbb59b753cb1d46e234d8f6180285b8b86ad");
+  assert.match(await sha512IntegrityFile(source), /^sha512-[A-Za-z0-9+/]+={0,2}$/);
+});
+
+test("runner source hash is path-aware and changes with any bound file", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "v4-runner-hash-"));
+  const sourceFiles = [
+    "scripts/run-real-repository-v4.mjs",
+    "src/lib/files.mjs",
+    "src/lib/git.mjs",
+    "src/lib/palace.mjs",
+    "src/lib/process.mjs",
+    "src/lib/root.mjs",
+    "src/lib/system-awake.mjs",
+    "src/lib/transcript.mjs",
+    "src/lib/v4-execution.mjs",
+    "src/lib/v4-protocol.mjs",
+    "src/lib/v4-runner.mjs",
+    "src/lib/v4-verification.mjs"
+  ];
+  for (const file of sourceFiles) {
+    const target = path.join(root, file);
+    await mkdir(path.dirname(target), { recursive: true });
+    await runProcess(process.execPath, ["-e", "require('fs').writeFileSync(process.argv[1], process.argv[2])", target, file], { check: true });
+  }
+  const first = await sha256V4RunnerSources(root);
+  await runProcess(process.execPath, ["-e", "require('fs').appendFileSync(process.argv[1], '!')", path.join(root, sourceFiles[0])], { check: true });
+  const second = await sha256V4RunnerSources(root);
+  assert.match(first, /^[a-f0-9]{64}$/);
+  assert.notEqual(first, second);
 });
 
 function bindingContext() {

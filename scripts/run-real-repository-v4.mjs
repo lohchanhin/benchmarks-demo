@@ -12,9 +12,14 @@ import { parseCodexTranscript } from "../src/lib/transcript.mjs";
 import {
   assertV4FormalExecutionAllowed,
   codexV4Arguments,
+  evaluateV4ExecutionFreezeGate,
+  freezeV4ExecutionBinding,
   materializeV4Workspace,
   resolveV4BlindedOrder,
   scoreV4Arm,
+  sha1File,
+  sha256V4RunnerSources,
+  sha512IntegrityFile,
   sha256File
 } from "../src/lib/v4-execution.mjs";
 import {
@@ -45,10 +50,10 @@ const defaultFormalRoot = path.join(
 
 export async function runV4(options) {
   const context = await loadContext(options);
-  if (options.prepareOnly) return prepareOnly(context, options);
   assertV4FormalExecutionAllowed(context.binding, context.gate);
   validateV4ResumeManifest(context.manifest, { binding: context.binding, plan: context.plan });
   await assertFormalRepositoryState(context.manifest.executionBindingCommit);
+  if (options.prepareOnly) return prepareOnly(context, options);
 
   const selectedTrials = selectTrials(context.plan.trials, options);
   const awake = await startSystemAwake();
@@ -71,16 +76,36 @@ async function loadContext(options) {
     plan: path.join(protocolRoot, "plan.frozen.json"),
     fixtures: path.join(protocolRoot, "fixtures.candidates.json"),
     binding: path.join(protocolRoot, "execution.binding.frozen.json"),
+    candidate: path.join(protocolRoot, "execution.binding.candidate.json"),
+    executionReview: path.join(protocolRoot, "execution.review.receipt.json"),
+    studyReview: path.join(protocolRoot, "review.receipt.json"),
+    emptyResults: path.join(protocolRoot, "execution.results.empty.json"),
     gate: path.join(protocolRoot, "execution.gate.json"),
     oracle: options.oraclePath || path.join(privateRoot, "oracle.json"),
     key: options.keyPath || path.join(privateRoot, "blinding-key.txt"),
     evaluator: options.evaluatorPath || path.join(privateRoot, "evaluator.mjs")
   };
-  const [plan, fixtureManifest, binding, gate, oracle, manifest, blindingKey] = await Promise.all([
+  const [
+    plan,
+    fixtureManifest,
+    binding,
+    candidate,
+    gate,
+    executionReview,
+    studyReview,
+    emptyResults,
+    oracle,
+    manifest,
+    blindingKey
+  ] = await Promise.all([
     readJson(paths.plan),
     readJson(paths.fixtures),
     readJson(paths.binding),
+    readJson(paths.candidate),
     readJson(paths.gate),
+    readJson(paths.executionReview),
+    readJson(paths.studyReview),
+    readJson(paths.emptyResults),
     readJson(paths.oracle),
     readJson(manifestPath),
     readFile(paths.key, "utf8").then((value) => value.trim())
@@ -92,6 +117,31 @@ async function loadContext(options) {
   assert.equal(sha256Canonical(binding), manifest.executionBindingSha256, "Results manifest binding mismatch");
   const runtime = resolveRuntime(options);
   validateAsciiWorkspaceRoot(runtime.formalRoot);
+  const actual = await measureActualExecution({ binding, candidate, runtime, evaluatorSha256 });
+  const recomputedGate = evaluateV4ExecutionFreezeGate({
+    binding: candidate,
+    frozenPlan: plan,
+    studyReviewReceipt: studyReview,
+    privateOracle: oracle,
+    blindingKey,
+    reviewReceipt: executionReview,
+    resultsManifest: emptyResults,
+    actual
+  });
+  assert.equal(recomputedGate.passed, true, "Recomputed V4 execution gate failed");
+  assert.equal(sha256Canonical(recomputedGate), sha256Canonical(gate), "Stored V4 execution gate changed");
+  const recomputedBinding = freezeV4ExecutionBinding({
+    binding: candidate,
+    frozenPlan: plan,
+    studyReviewReceipt: studyReview,
+    privateOracle: oracle,
+    blindingKey,
+    reviewReceipt: executionReview,
+    resultsManifest: emptyResults,
+    actual,
+    frozenAt: binding.frozenAt
+  });
+  assert.equal(sha256Canonical(recomputedBinding), sha256Canonical(binding), "Frozen V4 execution binding changed");
   return {
     plan,
     binding,
@@ -101,7 +151,8 @@ async function loadContext(options) {
     oracleFixtures,
     blindingKey,
     evaluatorPath: paths.evaluator,
-    runtime
+    runtime,
+    actual
   };
 }
 
@@ -134,8 +185,78 @@ function resolveRuntime(options) {
     palaceCli: path.join(palaceInstall, "node_modules", "vertex-palace", "dist", "palace.cjs"),
     cacheRoot: path.join(privateRoot, "cache"),
     rawRoot: path.join(privateRoot, "raw"),
+    nodeArchive: path.join(runtimeRoot, "node-v22.23.1-win-x64.zip"),
+    codexPackageLock: path.join(privateRoot, "codex-cli", "package-lock.json"),
+    palaceInstallReceipt: path.join(palaceInstall, "installation.json"),
     dependencyRoot: path.resolve(options.formalRoot || defaultFormalRoot, "dependencies"),
     runsRoot: path.resolve(options.formalRoot || defaultFormalRoot, "runs")
+  };
+}
+
+async function measureActualExecution({ binding, candidate, runtime, evaluatorSha256 }) {
+  const profile = binding.executionProfile;
+  const installation = await readJson(runtime.palaceInstallReceipt);
+  const tarball = path.resolve(installation.tarballPath);
+  const [
+    runnerSourceSha256,
+    productTarballSha1,
+    productTarballSha256,
+    productTarballIntegrity,
+    nodeArchiveSha256,
+    pythonExecutableSha256,
+    uvExecutableSha256,
+    codexPackageLockSha256,
+    codexVersionResult,
+    palaceVersionResult,
+    nodeVersionResult,
+    npmVersionResult,
+    pnpmVersionResult,
+    pythonVersionResult,
+    uvVersionResult
+  ] = await Promise.all([
+    sha256V4RunnerSources(repositoryRoot),
+    sha1File(tarball),
+    sha256File(tarball),
+    sha512IntegrityFile(tarball),
+    sha256File(runtime.nodeArchive),
+    sha256File(runtime.systemPython),
+    sha256File(runtime.uv),
+    sha256File(runtime.codexPackageLock),
+    runProcess(runtime.codexBin, ["--version"], { check: true, windowsShim: true }),
+    runProcess(runtime.node, [runtime.palaceCli, "--version"], { check: true }),
+    runProcess(runtime.node, ["--version"], { check: true }),
+    runProcess(runtime.npm, ["--version"], { check: true, windowsShim: true }),
+    runProcess(runtime.pnpm, ["--version"], {
+      check: true,
+      windowsShim: true,
+      env: { COREPACK_HOME: runtime.corepackHome }
+    }),
+    runProcess(runtime.systemPython, ["--version"], { check: true }),
+    runProcess(runtime.uv, ["--version"], { check: true })
+  ]);
+  assert.equal(runnerSourceSha256, candidate.runner.sourceSha256, "Runner source hash mismatch at execution");
+  assert.equal(nodeArchiveSha256, profile.runtimes.node.sha256, "Node archive hash mismatch at execution");
+  assert.equal(pythonExecutableSha256, profile.runtimes.python.executableSha256, "Python hash mismatch at execution");
+  assert.equal(uvExecutableSha256, profile.runtimes.uv.executableSha256, "uv hash mismatch at execution");
+  assert.equal(codexPackageLockSha256, profile.runtimes.codex.packageLockSha256, "Codex lock hash mismatch at execution");
+  assertVersion(nodeVersionResult, `v${profile.runtimes.node.version}`, "Node");
+  assertVersion(npmVersionResult, profile.runtimes.npm.version, "npm");
+  assertVersion(pnpmVersionResult, profile.runtimes.pnpm.version, "pnpm");
+  assertVersion(pythonVersionResult, `Python ${profile.runtimes.python.version}`, "Python");
+  assert.match(`${uvVersionResult.stdout}${uvVersionResult.stderr}`.trim(), new RegExp(`^uv ${escapeRegExp(profile.runtimes.uv.version)}\\b`));
+  assert.equal(installation.sourceCommit, binding.product.sourceCommit, "Palace installation source commit mismatch");
+  assert.equal(installation.tarballSha256, productTarballSha256, "Palace installation receipt hash mismatch");
+  return {
+    codexVersion: `${codexVersionResult.stdout}${codexVersionResult.stderr}`.trim(),
+    palaceVersion: `${palaceVersionResult.stdout}${palaceVersionResult.stderr}`.trim(),
+    runnerSourceCommit: candidate.runner.sourceCommit,
+    runnerSourceSha256,
+    productSourceCommit: installation.sourceCommit,
+    productTarballSha1,
+    productTarballSha256,
+    productTarballIntegrity,
+    executionProfileSha256: sha256Canonical(profile),
+    evaluatorSha256
   };
 }
 
@@ -672,6 +793,15 @@ function splitCommand(command) {
 
 function lines(value) {
   return value.split(/\r?\n/).map((entry) => entry.trim()).filter(Boolean).map((entry) => entry.replaceAll("\\", "/"));
+}
+
+function assertVersion(result, expected, label) {
+  const actual = `${result.stdout}${result.stderr}`.trim();
+  assert.equal(actual, expected, `${label} version mismatch at execution`);
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 async function readOptionalText(file) {

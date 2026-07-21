@@ -10,6 +10,20 @@ import {
 } from "./v4-protocol.mjs";
 
 export const V4_EXECUTION_BINDING_VERSION = 2;
+export const V4_RUNNER_SOURCE_FILES = Object.freeze([
+  "scripts/run-real-repository-v4.mjs",
+  "src/lib/files.mjs",
+  "src/lib/git.mjs",
+  "src/lib/palace.mjs",
+  "src/lib/process.mjs",
+  "src/lib/root.mjs",
+  "src/lib/system-awake.mjs",
+  "src/lib/transcript.mjs",
+  "src/lib/v4-execution.mjs",
+  "src/lib/v4-protocol.mjs",
+  "src/lib/v4-runner.mjs",
+  "src/lib/v4-verification.mjs"
+]);
 export const V4_EXECUTION_REVIEW_DECLARATION =
   "I reviewed the exact v4 execution binding, product artifact, runner commit, network isolation, and empty result state before any formal Agent arm.";
 
@@ -262,6 +276,8 @@ export function freezeV4ExecutionBinding({ frozenAt, ...context }) {
     runnerSourceSha256: frozen.runner.sourceSha256,
     productTarballSha256: frozen.product.tarball.sha256,
     productTarballIntegrity: frozen.product.tarball.sha512Integrity,
+    executionProfileSha256: sha256Canonical(frozen.executionProfile),
+    evaluatorSha256: frozen.evaluator.sourceSha256,
     executionReviewReceiptSha256: frozen.executionReviewReceiptSha256
   };
   return frozen;
@@ -423,6 +439,28 @@ export function scoreV4Arm({
 export async function sha256File(filePath) {
   const bytes = await readFile(filePath);
   return createHash("sha256").update(bytes).digest("hex");
+}
+
+export async function sha1File(filePath) {
+  const bytes = await readFile(filePath);
+  return createHash("sha1").update(bytes).digest("hex");
+}
+
+export async function sha512IntegrityFile(filePath) {
+  const bytes = await readFile(filePath);
+  return `sha512-${createHash("sha512").update(bytes).digest("base64")}`;
+}
+
+export async function sha256V4RunnerSources(root) {
+  requireString(root, "V4 runner repository root");
+  const hash = createHash("sha256");
+  for (const file of V4_RUNNER_SOURCE_FILES) {
+    const bytes = await readFile(path.join(root, file));
+    hash.update(Buffer.from(`${file}\0${bytes.length}\0`, "utf8"));
+    hash.update(bytes);
+    hash.update(Buffer.from("\0", "utf8"));
+  }
+  return hash.digest("hex");
 }
 
 function validateCandidateBinding(binding) {
