@@ -135,12 +135,31 @@ test("Codex v4 arguments fail closed with strict network-off sandbox settings", 
     reasoningEffort: "xhigh",
     lastMessagePath: "C:/fixture/.benchmark-last-message.md"
   });
-  assert.deepEqual(args.slice(0, 4), ["--strict-config", "-c", "sandbox_workspace_write.network_access=false", "exec"]);
-  assert.equal(args.includes("--ignore-user-config"), true);
-  assert.equal(args.includes("--ignore-rules"), true);
-  assert.equal(args.includes("--ephemeral"), true);
-  assert.equal(args.includes("--json"), true);
-  assert.equal(args.includes("workspace-write"), true);
+  assert.deepEqual(args, [
+    "--strict-config",
+    "-c",
+    "sandbox_workspace_write.network_access=false",
+    "-a",
+    "never",
+    "-s",
+    "workspace-write",
+    "-C",
+    "C:/fixture",
+    "-m",
+    "gpt-5.6-sol",
+    "-c",
+    'windows.sandbox="elevated"',
+    "-c",
+    'model_reasoning_effort="xhigh"',
+    "exec",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--json",
+    "--ephemeral",
+    "--output-last-message",
+    "C:/fixture/.benchmark-last-message.md",
+    "-"
+  ]);
 });
 
 test("materializes independent clean workspaces at the exact frozen commit", async () => {
