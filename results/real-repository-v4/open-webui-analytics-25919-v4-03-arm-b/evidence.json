@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "4.0.0-candidate.1",
+  "armId": "open-webui-analytics-25919-v4-03-arm-b",
+  "trialId": "open-webui-analytics-25919-v4-03",
+  "blindedLabel": "arm-b",
+  "metrics": {
+    "success": false,
+    "correctnessPassed": false,
+    "exactScopePassed": true,
+    "forbiddenViolation": false,
+    "diffCheckPassed": true,
+    "executionPassed": true,
+    "reportedTokens": 2848768,
+    "inputTokens": 2824172,
+    "outputTokens": 24596,
+    "cachedInputTokens": 2707456,
+    "toolCalls": 30,
+    "failedCalls": 3,
+    "wallTimeMs": 740152
+  },
+  "changedFiles": [
+    "backend/open_webui/models/chat_messages.py",
+    "backend/open_webui/routers/analytics.py",
+    "src/lib/components/admin/Analytics/Dashboard.svelte"
+  ],
+  "verification": [
+    {
+      "command": "npm run check",
+      "policy": "baseline-delta",
+      "valid": true,
+      "passed": true,
+      "exitCode": 1,
+      "durationMs": 30121,
+      "baselineCompared": true,
+      "delta": {
+        "errors": -39,
+        "warnings": 0,
+        "files": -1
+      },
+      "observed": {
+        "errors": 9663,
+        "warnings": 274,
+        "files": 385
+      }
+    },
+    {
+      "command": "python -m pytest -q backend/tests",
+      "policy": "preflight-invalid",
+      "valid": false,
+      "passed": null,
+      "exitCode": 4,
+      "durationMs": 0,
+      "reason": "backend/tests does not exist at the frozen commit"
+    }
+  ],
+  "git": {
+    "diffCheckPassed": true,
+    "numstat": [
+      {
+        "file": "backend/open_webui/models/chat_messages.py",
+        "added": 40,
+        "deleted": 0
+      },
+      {
+        "file": "backend/open_webui/routers/analytics.py",
+        "added": 6,
+        "deleted": 4
+      },
+      {
+        "file": "src/lib/components/admin/Analytics/Dashboard.svelte",
+        "added": 142,
+        "deleted": 16
+      }
+    ]
+  },
+  "execution": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 740152,
+    "infrastructureFailure": false
+  }
+}

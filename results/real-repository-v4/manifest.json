@@ -9,8 +9,8 @@
   "frozenPlanSha256": "e811e734d3f7152c80c16044530fef27870de5663b7ad6f64ac6b088137493fb",
   "plannedTrials": 16,
   "plannedArmRuns": 32,
-  "completedTrials": 4,
-  "completedArmRuns": 8,
+  "completedTrials": 8,
+  "completedArmRuns": 16,
   "infrastructureFailures": 0,
   "mappingRevealed": false,
   "trials": [
@@ -76,8 +76,8 @@
         "arm-b",
         "arm-a"
       ],
-      "status": "planned",
-      "completedArmRuns": 0
+      "status": "completed",
+      "completedArmRuns": 2
     },
     {
       "trialId": "open-webui-analytics-25919-v4-02",
@@ -89,8 +89,8 @@
         "arm-a",
         "arm-b"
       ],
-      "status": "planned",
-      "completedArmRuns": 0
+      "status": "completed",
+      "completedArmRuns": 2
     },
     {
       "trialId": "open-webui-analytics-25919-v4-03",
@@ -102,8 +102,8 @@
         "arm-b",
         "arm-a"
       ],
-      "status": "planned",
-      "completedArmRuns": 0
+      "status": "completed",
+      "completedArmRuns": 2
     },
     {
       "trialId": "open-webui-analytics-25919-v4-04",
@@ -115,8 +115,8 @@
         "arm-a",
         "arm-b"
       ],
-      "status": "planned",
-      "completedArmRuns": 0
+      "status": "completed",
+      "completedArmRuns": 2
     },
     {
       "trialId": "zod-report-input-decision-5509-v4-01",
@@ -320,6 +320,102 @@
       "evidencePath": "results/real-repository-v4/zod-transform-refine-4926-v4-04-arm-a/evidence.json",
       "evidenceSha256": "445207bee2efcd0fcda19365806e1a93a57f29ad2bc2607e4a92c0a993939467",
       "completedAt": "2026-07-21T11:52:16.513Z"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-01-arm-b",
+      "trialId": "open-webui-analytics-25919-v4-01",
+      "fixtureId": "open-webui-analytics-25919",
+      "blindedLabel": "arm-b",
+      "sequence": 1,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/open-webui-analytics-25919-v4-01-arm-b/evidence.json",
+      "evidenceSha256": "1c49e3cbc0c2abab371e1395919c61fb07ba2274e835937f6a78a4d73b9ee19c",
+      "completedAt": "2026-07-21T12:05:06.727Z"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-01-arm-a",
+      "trialId": "open-webui-analytics-25919-v4-01",
+      "fixtureId": "open-webui-analytics-25919",
+      "blindedLabel": "arm-a",
+      "sequence": 2,
+      "status": "completed",
+      "success": true,
+      "evidencePath": "results/real-repository-v4/open-webui-analytics-25919-v4-01-arm-a/evidence.json",
+      "evidenceSha256": "180f568c62c96769c27ba17fe5c2c613d1a41130cd1811c9a687cf198bad52d8",
+      "completedAt": "2026-07-21T12:20:19.438Z"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-02-arm-a",
+      "trialId": "open-webui-analytics-25919-v4-02",
+      "fixtureId": "open-webui-analytics-25919",
+      "blindedLabel": "arm-a",
+      "sequence": 1,
+      "status": "completed",
+      "success": true,
+      "evidencePath": "results/real-repository-v4/open-webui-analytics-25919-v4-02-arm-a/evidence.json",
+      "evidenceSha256": "7835d93be3d0ee611bff6fee5f73c39ac450b61d1437b8faee39290a5ddbde94",
+      "completedAt": "2026-07-21T12:33:57.557Z"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-02-arm-b",
+      "trialId": "open-webui-analytics-25919-v4-02",
+      "fixtureId": "open-webui-analytics-25919",
+      "blindedLabel": "arm-b",
+      "sequence": 2,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/open-webui-analytics-25919-v4-02-arm-b/evidence.json",
+      "evidenceSha256": "625e7deecc96e8ff8cbcd6c13aeb0cbd30c454cc0347709d39ce69750398169c",
+      "completedAt": "2026-07-21T12:47:40.250Z"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-03-arm-b",
+      "trialId": "open-webui-analytics-25919-v4-03",
+      "fixtureId": "open-webui-analytics-25919",
+      "blindedLabel": "arm-b",
+      "sequence": 1,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/open-webui-analytics-25919-v4-03-arm-b/evidence.json",
+      "evidenceSha256": "9428ec2c38f19cecb754a0b78b63b51710dc017e5bf7b93640ecd4a9760f2abb",
+      "completedAt": "2026-07-21T13:01:49.792Z"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-03-arm-a",
+      "trialId": "open-webui-analytics-25919-v4-03",
+      "fixtureId": "open-webui-analytics-25919",
+      "blindedLabel": "arm-a",
+      "sequence": 2,
+      "status": "completed",
+      "success": true,
+      "evidencePath": "results/real-repository-v4/open-webui-analytics-25919-v4-03-arm-a/evidence.json",
+      "evidenceSha256": "78d2a37ac608e123c05a22b801c83475ba524d9fddeac83305bc5ac65d659231",
+      "completedAt": "2026-07-21T13:15:36.288Z"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-04-arm-a",
+      "trialId": "open-webui-analytics-25919-v4-04",
+      "fixtureId": "open-webui-analytics-25919",
+      "blindedLabel": "arm-a",
+      "sequence": 1,
+      "status": "completed",
+      "success": true,
+      "evidencePath": "results/real-repository-v4/open-webui-analytics-25919-v4-04-arm-a/evidence.json",
+      "evidenceSha256": "88cb77e7d8897f463841f8c8dc3c792e503e65d5da01279b293dd254e8519360",
+      "completedAt": "2026-07-21T13:24:20.900Z"
+    },
+    {
+      "armId": "open-webui-analytics-25919-v4-04-arm-b",
+      "trialId": "open-webui-analytics-25919-v4-04",
+      "fixtureId": "open-webui-analytics-25919",
+      "blindedLabel": "arm-b",
+      "sequence": 2,
+      "status": "completed",
+      "success": false,
+      "evidencePath": "results/real-repository-v4/open-webui-analytics-25919-v4-04-arm-b/evidence.json",
+      "evidenceSha256": "462031d866f2b54df8bfe29119f9f7146eeb107e8a1b07775779f93300fc1345",
+      "completedAt": "2026-07-21T13:37:04.926Z"
     }
   ]
 }
