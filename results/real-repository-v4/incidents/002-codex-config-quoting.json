@@ -3,7 +3,7 @@
   "protocolVersion": "4.0.0-candidate.1",
   "incidentId": "v4-infra-002",
   "detectedAt": "2026-07-21T10:53:15.946Z",
-  "status": "technical-amendment-required",
+  "status": "corrected-and-refrozen-awaiting-binding-commit",
   "trialId": "zod-transform-refine-4926-v4-01",
   "blindedLabel": "arm-a",
   "attempts": 3,
@@ -18,6 +18,13 @@
   "correctiveBoundary": "Pass the same elevated and xhigh values as unquoted raw TOML fallback strings, add exact regression assertions, validate strict-config through the exact Windows shim against an intentionally missing workspace, publish a new runner commit, and freeze a superseding execution binding before retrying.",
   "preCorrectionConfigSmokePassed": true,
   "preCorrectionConfigSmokeAgentInvoked": false,
+  "correctiveRunnerCommit": "5c4e39355962b60c627c663083da0d2e2022abf9",
+  "correctiveRunnerSha256": "756eecd5514651b82864c99e67325ca99cd9263643ba6587e4f1a38e432709fd",
+  "supersedingExecutionGate": {
+    "checks": 10,
+    "passed": 10,
+    "failed": 0
+  },
   "studyDesignChanged": false,
   "fixtureChanged": false,
   "oracleChanged": false,

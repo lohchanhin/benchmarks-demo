@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "protocolVersion": "4.0.0-candidate.1",
   "status": "frozen-human-reviewed",
-  "generatedAt": "2026-07-21T10:48:54.328Z",
+  "generatedAt": "2026-07-21T10:57:01.923Z",
   "frozen": true,
   "humanReviewApproved": true,
   "executionAllowed": true,
@@ -18,8 +18,8 @@
   },
   "runner": {
     "repository": "https://github.com/lohchanhin/benchmarks-demo",
-    "sourceCommit": "c1ec47fb9bd14c498d2eb17dc324a33e66f0b820",
-    "sourceSha256": "2b1d9c329d54339af6321bbe4f912e87e461ffa3e50fc179616f177a61adcd86"
+    "sourceCommit": "5c4e39355962b60c627c663083da0d2e2022abf9",
+    "sourceSha256": "756eecd5514651b82864c99e67325ca99cd9263643ba6587e4f1a38e432709fd"
   },
   "product": {
     "repository": "https://github.com/lohchanhin/vertex-palace",
@@ -217,18 +217,18 @@
     "manifestPath": "results/real-repository-v4/manifest.json",
     "formalAgentArmsRun": 0
   },
-  "frozenAt": "2026-07-21T10:48:54.331Z",
-  "executionReviewReceiptSha256": "2bd892a6ef8f3cc23fde25b2029fc773ac583967df60f4b989768139e88dcfe3",
+  "frozenAt": "2026-07-21T10:57:01.926Z",
+  "executionReviewReceiptSha256": "657fc3f833412b708faac110d604337ae1ea95d5e748da160c98766642e084fa",
   "freezeAudit": {
     "passed": true,
     "checks": 10,
     "studyPlanSha256": "e811e734d3f7152c80c16044530fef27870de5663b7ad6f64ac6b088137493fb",
-    "runnerSourceCommit": "c1ec47fb9bd14c498d2eb17dc324a33e66f0b820",
-    "runnerSourceSha256": "2b1d9c329d54339af6321bbe4f912e87e461ffa3e50fc179616f177a61adcd86",
+    "runnerSourceCommit": "5c4e39355962b60c627c663083da0d2e2022abf9",
+    "runnerSourceSha256": "756eecd5514651b82864c99e67325ca99cd9263643ba6587e4f1a38e432709fd",
     "productTarballSha256": "1b042d3816f66108825bfecd44e5f4ac05cea0dec777ea424c866b8196187b09",
     "productTarballIntegrity": "sha512-t2Yfp/CG021K4xYL/MZ5dSOdDULmeRU+appMtEG2E0qk4YkRFQ+ehxKAKmDs8q5vsKQet4sKKca8Q8r09Uok9Q==",
     "executionProfileSha256": "98a5417aae286f7fdc04951783dfb6b4ed0b789b6bcc90be8a879715bed24af6",
     "evaluatorSha256": "667daedc0b47b94f121085d6ced431d03aeee6b07c5af6297eb4b3b155532788",
-    "executionReviewReceiptSha256": "2bd892a6ef8f3cc23fde25b2029fc773ac583967df60f4b989768139e88dcfe3"
+    "executionReviewReceiptSha256": "657fc3f833412b708faac110d604337ae1ea95d5e748da160c98766642e084fa"
   }
 }

@@ -68,6 +68,8 @@ test("publishes discoverable Simplified Chinese judge guidance", async () => {
   assert.match(executionFreeze, /不代表 Vertex Palace 已经改善/);
   assert.match(executionFreeze, /Agent JSON event 为 0/);
   assert.match(executionFreeze, /任务、fixture、产品、模型/);
+  assert.match(executionFreeze, /strict-config/);
+  assert.match(executionFreeze, /两次修正都没有改变 treatment/);
   assert.match(coverageMatrix, /独立 small-OSS 分层/);
   assert.match(coverageMatrix, /尚未单独测试/);
   assert.match(coverageMatrix, /Vertex Palace 普遍节省 Agent Token、时间或工具调用/);

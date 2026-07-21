@@ -19,7 +19,11 @@ The first scheduled invocation then failed closed before Agent session creation
 because of a CLI argument-position incompatibility: three infrastructure
 attempts, zero Agent events, zero completed arms, and no observed outcome. A
 single-order correction was committed and the superseding binding passed the
-same 10/10 gate before formal execution resumed.
+same 10/10 gate. A second pre-session invocation then exposed Windows TOML
+quote encoding; it also produced three infrastructure attempts, zero Agent
+events, zero completed arms, and no outcome. The equivalent raw-value encoding
+passed strict-config through the exact shim, and a third binding passed 10/10
+before formal execution resumed.
 It preregisters four real issues across TypeScript and Python, 16 paired trials,
 an external hidden oracle, blinded arm assignments, exact-scope scoring, and a
 statistics freeze gate. The runner uses isolated real checkouts, exact runtime
@@ -33,6 +37,7 @@ See the [candidate protocol](docs/research/PROTOCOL_V4_CANDIDATE.md), the
 [Agent preflight](docs/research/REAL_REPOSITORY_V4_AGENT_PREFLIGHT.md), the
 [execution freeze](docs/research/REAL_REPOSITORY_V4_EXECUTION_FREEZE.md), the
 [public pre-session incident](results/real-repository-v4/incidents/001-codex-cli-argument-order.json), the
+[second pre-session incident](results/real-repository-v4/incidents/002-codex-config-quoting.json), the
 [public fixture manifest](protocol/v4/fixtures.candidates.json), and the
 [outcome-free frozen plan](protocol/v4/plan.frozen.json). This is research
 preparation, not new evidence that Vertex Palace is faster or cheaper.

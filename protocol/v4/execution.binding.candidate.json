@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "protocolVersion": "4.0.0-candidate.1",
   "status": "candidate-awaiting-execution-review",
-  "generatedAt": "2026-07-21T10:48:54.328Z",
+  "generatedAt": "2026-07-21T10:57:01.923Z",
   "frozen": false,
   "humanReviewApproved": false,
   "executionAllowed": false,
@@ -18,8 +18,8 @@
   },
   "runner": {
     "repository": "https://github.com/lohchanhin/benchmarks-demo",
-    "sourceCommit": "c1ec47fb9bd14c498d2eb17dc324a33e66f0b820",
-    "sourceSha256": "2b1d9c329d54339af6321bbe4f912e87e461ffa3e50fc179616f177a61adcd86"
+    "sourceCommit": "5c4e39355962b60c627c663083da0d2e2022abf9",
+    "sourceSha256": "756eecd5514651b82864c99e67325ca99cd9263643ba6587e4f1a38e432709fd"
   },
   "product": {
     "repository": "https://github.com/lohchanhin/vertex-palace",

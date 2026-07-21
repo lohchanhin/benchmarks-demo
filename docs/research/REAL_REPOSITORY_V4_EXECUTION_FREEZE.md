@@ -10,8 +10,8 @@ revalidated before every formal arm.
 
 ## Bound execution identity
 
-- Runner source commit: `c1ec47fb9bd14c498d2eb17dc324a33e66f0b820`.
-- Runner source SHA-256: `2b1d9c329d54339af6321bbe4f912e87e461ffa3e50fc179616f177a61adcd86`.
+- Runner source commit: `5c4e39355962b60c627c663083da0d2e2022abf9`.
+- Runner source SHA-256: `756eecd5514651b82864c99e67325ca99cd9263643ba6587e4f1a38e432709fd`.
 - Vertex Palace source commit: `322b15ec6cbbbc9c86f0a03e54e7a13ebf050c5e`.
 - Packed product SHA-256: `1b042d3816f66108825bfecd44e5f4ac05cea0dec777ea424c866b8196187b09`.
 - Execution profile SHA-256: `98a5417aae286f7fdc04951783dfb6b4ed0b789b6bcc90be8a879715bed24af6`.
@@ -35,7 +35,7 @@ mapping, private reference resolutions, raw transcripts, or local paths.
 The receipt is an owner authorization after a Codex technical audit. It is
 explicitly **not** represented as independent third-party review.
 
-## Superseding technical amendment
+## Superseding technical amendments
 
 The first bound invocation exposed a Codex CLI argument-position incompatibility.
 Three fail-closed attempts exited before session creation with zero Agent JSON
@@ -48,7 +48,19 @@ subcommand and adds an exact argument-order regression test. It does not change
 the task, fixture, product, model, reasoning effort, sandbox, oracle, blinding,
 verification, or statistics. The corrected command passed the reviewed CLI's
 real parser without starting an Agent, after which this binding passed all ten
-freeze checks again. The original binding remains visible in Git history.
+freeze checks again.
+
+The next invocation exposed a second pre-session Windows shim issue: embedded
+TOML quotes were escaped into an invalid strict-config field. It again produced
+three infrastructure attempts, zero Agent JSON events, zero completed arms,
+and no outcome. The second [incident record](../../results/real-repository-v4/incidents/002-codex-config-quoting.json)
+was committed before replacing the quoted values with Codex's equivalent raw
+TOML fallback strings. The exact amended command then loaded strict-config
+through the reviewed Windows shim and stopped on an intentionally absent
+workspace, proving it passed configuration without starting an Agent.
+
+Both original bindings remain visible in Git history. Neither correction
+changed a treatment, outcome definition, or analysis decision.
 
 ## Reproduce the public audit
 
