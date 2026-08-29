@@ -52,6 +52,10 @@ export async function prepareV5Execution(options = {}) {
     windowsShim: true,
     timeoutMs: 600_000
   });
+  const generatedDiff = await runProcess("git", ["diff", "--binary"], {
+    cwd: candidateSource,
+    check: true
+  });
   const trackedStatus = await runProcess("git", ["status", "--porcelain", "--untracked-files=no"], {
     cwd: candidateSource,
     check: true
@@ -61,23 +65,27 @@ export async function prepareV5Execution(options = {}) {
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => line.slice(2).trim().replaceAll("\\", "/"));
-  assert.deepEqual(
-    generatedTrackedFiles,
-    ["plugins/vertex-palace/mcp/server.cjs"],
+  const allowedGeneratedFiles = new Set(["plugins/vertex-palace/mcp/server.cjs"]);
+  assert.equal(
+    generatedTrackedFiles.every((file) => allowedGeneratedFiles.has(file)),
+    true,
     "Candidate build changed an unexpected tracked source file"
   );
-  const generatedDiff = await runProcess("git", ["diff", "--binary", "--", ...generatedTrackedFiles], {
-    cwd: candidateSource,
-    check: true
-  });
+  assert.equal(
+    generatedTrackedFiles.length === 0,
+    generatedDiff.stdout.length === 0,
+    "Candidate build status and byte diff disagree"
+  );
 
   const candidate = await packAndInstall({
     label: "candidate",
     source: candidateSource,
     packSpec: "."
   });
-  candidate.generatedTrackedFiles = generatedTrackedFiles;
-  candidate.generatedTrackedDiffSha256 = sha256(generatedDiff.stdout);
+  if (generatedTrackedFiles.length > 0) {
+    candidate.generatedTrackedFiles = generatedTrackedFiles;
+    candidate.generatedTrackedDiffSha256 = sha256(generatedDiff.stdout);
+  }
   const baseline = await packAndInstall({
     label: "baseline-0.4.0",
     source: repositoryRoot,
