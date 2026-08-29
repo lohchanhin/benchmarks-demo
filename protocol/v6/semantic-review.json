@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "6.0.0-smoke.1",
+  "reviewedBeforeTargetRouting": true,
+  "replacementAfterReview": false,
+  "targetId": "djust-org-djust-2424",
+  "verdict": "coherent",
+  "reason": "The linked issue requires RenderSlotTagHandler to preserve already-rendered slot markup while continuing to escape untrusted bare context strings. The complete upstream diff changes exactly that implementation exit, adds a dedicated regression suite covering both directions, and records the release-blocking fix in the changelog.",
+  "baseCommitMatchesFreeze": true,
+  "mergeCommitMatchesFreeze": true,
+  "changedFiles": 3,
+  "changedLines": 484,
+  "diffSha256": "7af893a62c6da6725696c99e783acd14d50f9886474b84ce06270c2e5774801d",
+  "palaceCallsBeforeReview": 0,
+  "decision": "proceed"
+}
