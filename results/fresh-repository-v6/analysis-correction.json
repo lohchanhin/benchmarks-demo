@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "artifact": "fresh-repository-v6-analysis-correction",
+  "correctedAt": "2026-08-30T04:26:09.1870095+08:00",
+  "formalObservationsRerun": false,
+  "reason": "The first summary treated a failed context command as a zero-valued route and payload, and therefore emitted invalid candidate-minus-baseline deltas. A failed command produced no comparable route, coverage, or payload measurement.",
+  "correction": {
+    "baselineRouteMetrics": "null",
+    "baselineDeterministic": false,
+    "candidateMinusBaselineDeltas": "null",
+    "baselineFailureDurationRetained": true
+  },
+  "rawObservationIntegrity": "unchanged",
+  "claimImpact": "No qualitative conclusion changed. The candidate still fails the routing gates, while the public 0.4.0 baseline still fails before producing context."
+}

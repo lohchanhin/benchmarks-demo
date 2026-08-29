@@ -7,7 +7,11 @@ A public, preregistered, reproducible experiment comparing Codex repository
 work with no Palace, structural routing only, always-on Full Palace, and
 Adaptive Palace.
 
-[Simplified Chinese](README.zh-CN.md) | [v4 real-repository final](docs/research/REAL_REPOSITORY_V4_FINAL.md) | [v4 execution freeze](docs/research/REAL_REPOSITORY_V4_EXECUTION_FREEZE.md) | [v4 Agent preflight](docs/research/REAL_REPOSITORY_V4_AGENT_PREFLIGHT.md) | [Control-first v3 final](docs/research/CONTROL_FIRST_V3_FINAL.md) | [Validation coverage](docs/research/VALIDATION_COVERAGE_MATRIX.md) | [Chinese documentation](docs/zh-CN/README.md) | [Chinese quick verification](docs/zh-CN/QUICKSTART.md) | [Chinese v2.2 results guide](docs/zh-CN/RESULTS_GUIDE.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
+[Simplified Chinese](README.zh-CN.md) | [v6 fresh-repository result](docs/research/FRESH_REPOSITORY_V6_RESULT.md) | [v5 static routing result (Chinese)](docs/zh-CN/REAL_REPOSITORY_V5_RESULT.md) | [v4 real-repository final](docs/research/REAL_REPOSITORY_V4_FINAL.md) | [Control-first v3 final](docs/research/CONTROL_FIRST_V3_FINAL.md) | [Validation coverage](docs/research/VALIDATION_COVERAGE_MATRIX.md) | [Chinese documentation](docs/zh-CN/README.md) | [Chinese quick verification](docs/zh-CN/QUICKSTART.md) | [Chinese results guide](docs/zh-CN/RESULTS_GUIDE.md) | [Methodology](METHODOLOGY.md) | [Demo guide](DEMO.md)
+
+## V6 Fresh-Repository Smoke
+
+The first mechanically selected fresh-repository smoke is complete. The current candidate returned a bounded 1,365-Token context in both repetitions where npm `0.4.0` failed its 2,400-Token ceiling contract, but it missed both the implementation and focused test (`0/2` core coverage, `0.000` route focus). This is a negative routing result, not a performance win. Read the [English report](docs/research/FRESH_REPOSITORY_V6_RESULT.md), [Simplified Chinese report](docs/zh-CN/FRESH_REPOSITORY_V6_RESULT.md), and [machine result](results/fresh-repository-v6/static-result.json).
 
 ## V4 Real-Repository Result
 

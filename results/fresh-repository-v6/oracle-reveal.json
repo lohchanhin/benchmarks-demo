@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "6.0.0-smoke.1",
+  "revealedAt": "2026-08-29T20:20:38.820Z",
+  "targetId": "djust-org-djust-2424",
+  "repository": "djust-org/djust",
+  "exactChangedFiles": [
+    "CHANGELOG.md",
+    "python/djust/components/function_component.py",
+    "python/tests/test_render_slot_markup_2421.py"
+  ],
+  "implementationFiles": [
+    "python/djust/components/function_component.py"
+  ],
+  "testFiles": [
+    "python/tests/test_render_slot_markup_2421.py"
+  ],
+  "auxiliaryFiles": [
+    "CHANGELOG.md"
+  ],
+  "diffSha256": "7af893a62c6da6725696c99e783acd14d50f9886474b84ce06270c2e5774801d",
+  "commitment": "058159c07c631c43af19da858cbd324469ee73ad08e01f77f6f61ecfc2d3cda9",
+  "commitmentVerified": true
+}

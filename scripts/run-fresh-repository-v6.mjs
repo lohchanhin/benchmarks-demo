@@ -40,7 +40,7 @@ export async function runFreshRepositoryV6(options = {}) {
     const stopped = await awake.stop();
     if (stopped.exitCode !== 0) throw new Error("V6 system-awake guard did not stop cleanly.");
   }
-  const analysis = analyze(context, observations);
+  const analysis = analyzeFreshRepositoryV6(observations);
   const result = {
     schemaVersion: 1,
     artifact: "fresh-repository-v6-static-result",
@@ -48,7 +48,7 @@ export async function runFreshRepositoryV6(options = {}) {
     generatedAt: new Date().toISOString(),
     claimBoundary: context.freeze.claimBoundary,
     target: context.target,
-    candidate: context.freeze.product,
+    candidate: publicProductMetadata(context.freeze.product),
     baseline: context.freeze.baseline,
     observations,
     analysis,
@@ -230,11 +230,13 @@ async function runObservation(context, run) {
   };
 }
 
-function analyze(context, observations) {
+export function analyzeFreshRepositoryV6(observations) {
   const candidate = observations.filter((item) => item.condition === "candidate");
   const baseline = observations.filter((item) => item.condition === "baseline-0.4.0");
-  const candidateSummary = summarize(candidate);
-  const baselineSummary = summarize(baseline);
+  const candidateSummary = summarizeV6Runs(candidate);
+  const baselineSummary = summarizeV6Runs(baseline);
+  const comparable = candidateSummary.successfulRuns === 2
+    && baselineSummary.successfulRuns === 2;
   const gates = {
     twoCandidateRunsCompleted: candidate.length === 2,
     allCandidateContextCommandsSucceeded: candidate.length === 2 && candidate.every((item) => item.executionPassed),
@@ -252,34 +254,65 @@ function analyze(context, observations) {
     candidate: candidateSummary,
     baseline: baselineSummary,
     descriptiveDeltaCandidateMinusBaseline: {
-      coreCoverage: round(candidateSummary.coreCoverage - baselineSummary.coreCoverage),
-      routeFocus: round(candidateSummary.routeFocus - baselineSummary.routeFocus),
-      contextTokens: round(candidateSummary.contextTokens - baselineSummary.contextTokens),
-      contextMs: round(candidateSummary.contextMs - baselineSummary.contextMs)
+      comparable,
+      reason: comparable
+        ? null
+        : "A condition without successful context output has no comparable route, coverage, or payload metrics.",
+      coreCoverage: comparable ? round(candidateSummary.coreCoverage - baselineSummary.coreCoverage) : null,
+      routeFocus: comparable ? round(candidateSummary.routeFocus - baselineSummary.routeFocus) : null,
+      contextTokens: comparable ? round(candidateSummary.contextTokens - baselineSummary.contextTokens) : null,
+      contextMs: comparable ? round(candidateSummary.contextMs - baselineSummary.contextMs) : null
     },
     interpretationBoundary: "One target and two repeated static calls per condition; no general routing, Token, speed, or Agent claim is permitted."
   };
 }
 
-function summarize(runs) {
+export function summarizeV6Runs(runs) {
+  const successful = runs.filter((item) => item.executionPassed);
+  if (successful.length === 0) {
+    return {
+      runs: runs.length,
+      successfulRuns: 0,
+      mode: null,
+      degradation: null,
+      decision: null,
+      coreCoverage: null,
+      implementationCoverage: null,
+      testCoverage: null,
+      auxiliaryCoverage: null,
+      roleClosure: null,
+      routeFocus: null,
+      routeFileCount: null,
+      contextTokens: null,
+      contextMs: mean(runs.map((item) => item.durationsMs.context)),
+      deterministic: false,
+      routeFiles: []
+    };
+  }
+
   return {
     runs: runs.length,
-    successfulRuns: runs.filter((item) => item.executionPassed).length,
-    mode: runs[0]?.mode || null,
-    degradation: runs[0]?.degradation || null,
-    decision: runs[0]?.decision || null,
-    coreCoverage: mean(runs.map((item) => item.core.coverage)),
-    implementationCoverage: mean(runs.map((item) => item.implementation.coverage)),
-    testCoverage: mean(runs.map((item) => item.tests.coverage)),
-    auxiliaryCoverage: mean(runs.map((item) => item.auxiliary.coverage)),
-    roleClosure: runs.length > 0 && runs.every((item) => item.roleClosure),
-    routeFocus: mean(runs.map((item) => item.routeFocus)),
-    routeFileCount: mean(runs.map((item) => item.routeFileCount)),
-    contextTokens: mean(runs.map((item) => item.contextTokens)),
+    successfulRuns: successful.length,
+    mode: successful[0]?.mode || null,
+    degradation: successful[0]?.degradation || null,
+    decision: successful[0]?.decision || null,
+    coreCoverage: mean(successful.map((item) => item.core.coverage)),
+    implementationCoverage: mean(successful.map((item) => item.implementation.coverage)),
+    testCoverage: mean(successful.map((item) => item.tests.coverage)),
+    auxiliaryCoverage: mean(successful.map((item) => item.auxiliary.coverage)),
+    roleClosure: successful.every((item) => item.roleClosure),
+    routeFocus: mean(successful.map((item) => item.routeFocus)),
+    routeFileCount: mean(successful.map((item) => item.routeFileCount)),
+    contextTokens: mean(successful.map((item) => item.contextTokens)),
     contextMs: mean(runs.map((item) => item.durationsMs.context)),
     deterministic: deterministic(runs),
-    routeFiles: runs[0]?.routeFiles || []
+    routeFiles: successful[0]?.routeFiles || []
   };
+}
+
+export function publicProductMetadata(product) {
+  const { cliPath: _localArtifactPath, ...publicMetadata } = product;
+  return publicMetadata;
 }
 
 export function balancedOrder(repetition) {
@@ -288,7 +321,7 @@ export function balancedOrder(repetition) {
 }
 
 function deterministic(runs) {
-  if (runs.length !== 2) return false;
+  if (runs.length !== 2 || runs.some((item) => !item.executionPassed)) return false;
   return runs[0].decision === runs[1].decision
     && runs[0].mode === runs[1].mode
     && canonicalJson(runs[0].routeFiles) === canonicalJson(runs[1].routeFiles);

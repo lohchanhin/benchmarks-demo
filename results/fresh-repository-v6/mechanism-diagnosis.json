@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "artifact": "fresh-repository-v6-mechanism-diagnosis",
+  "targetId": "djust-org-djust-2424",
+  "status": "post-reveal-diagnostic-not-a-preregistered-outcome",
+  "observedTaskType": "release",
+  "observedConfidence": 0.21,
+  "taskIdentifiersPresent": [
+    "render_slot",
+    "RenderSlotTagHandler._render_value",
+    "test_named_slots.py",
+    "_render_value",
+    "SlotTagHandler"
+  ],
+  "directScoreProbe": [
+    {
+      "symbol": "RenderSlotTagHandler",
+      "file": "python/djust/components/function_component.py",
+      "score": 791.65
+    },
+    {
+      "symbol": "RenderSlotTagHandler._render_value",
+      "file": "python/djust/components/function_component.py",
+      "score": 749.745,
+      "exactRoomInventoryObjectMatch": true
+    }
+  ],
+  "finalRouteContainsImplementation": false,
+  "diagnosis": [
+    "The issue text's incidental phrase 'release blocker' caused a regression and security repair task to be classified as release work.",
+    "Exact method and file evidence existed before final selection but was not preserved as a mandatory route anchor.",
+    "Long issue prose supplied enough render and escape vocabulary for unrelated filters and security tests to displace the exact implementation and focused test."
+  ],
+  "scopeBoundary": "This diagnosis explains the observed route and defines generic invariants to test. It is not evidence that a proposed fix will generalize."
+}

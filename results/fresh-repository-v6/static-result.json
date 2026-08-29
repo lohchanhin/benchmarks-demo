@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 1,
+  "artifact": "fresh-repository-v6-static-result",
+  "protocolVersion": "6.0.0-smoke.1",
+  "generatedAt": "2026-08-29T20:20:38.820Z",
+  "claimBoundary": "One fresh-repository historical-task static smoke. It cannot establish general routing quality, Token savings, speed, or Agent repair accuracy.",
+  "target": {
+    "schemaVersion": 1,
+    "protocolVersion": "6.0.0-smoke.1",
+    "status": "frozen-before-palace-observation",
+    "generatedAt": "2026-08-29T19:25:15.664Z",
+    "id": "djust-org-djust-2424",
+    "repository": "https://github.com/djust-org/djust",
+    "cloneUrl": "https://github.com/djust-org/djust.git",
+    "language": "python",
+    "baseCommit": "00a13339c2c2121d1d39bedf5dd3fec60516b530",
+    "mergeCommit": "077b02c8a7ae01fc9bf6ea6cf01b118b288efcd3",
+    "issue": {
+      "number": 2421,
+      "title": "render_slot double-escapes already-escaped parent content since #2379, and is the framework-reachable half of the custom-tag XSS",
+      "url": "https://github.com/djust-org/djust/issues/2421"
+    },
+    "pullRequest": {
+      "number": 2424,
+      "title": "fix(components): render_slot emits the parent's rendered slot LIVE, and a bare context string ESCAPED (#2421)",
+      "url": "https://github.com/djust-org/djust/pull/2424"
+    },
+    "task": "render_slot double-escapes already-escaped parent content since #2379, and is the framework-reachable half of the custom-tag XSS\n\nTwo findings on the same handler, from the post-drain security classification. One is a **release blocker on `main`**; the other raises the severity of a shipped vulnerability. They are opposite directions on the same code path, which is why they belong together.\n\n## 1. REGRESSION on `main` (blocker for the 1.2 RC)\n\n`{% render_slot %}` now escapes legitimate, already-escaped slot markup:\n\n```\n{% render_slot p %}   p = {\"content\": \"<strong>rendered</strong>\"}\n\n  v1.1.0  <strong>rendered</strong>\n  main    &lt;strong&gt;rendered&lt;/strong&gt;\n```\n\nReproduced on a release build (`make build`) after `rust_handlers.register_with_rust_engine()`.\n\n`RenderSlotTagHandler._render_value` returns `str(value.get(\"content\", \"\"))` — a plain `str`. #2379 made a plain-`str` return from a tag handler get escaped, which is correct in general and wrong here: this handler's own docstring says the content is *\"returned verbatim (already-escaped HTML from the parent)\"*. #2379 enumerated 221 handlers and marked six as returning markup; `render_slot` was not among them.\n\n**Every function component and named slot renders its markup as visible text.** `test_named_slots.py` and `test_function_components.py` are green on both builds (32 passed each), so the suites do not cover it.\n\n## 2. The same handler is why #2379 is framework-reachable on shipped releases\n\n`render_slot` is the **one** handler of all 221 that echoes a *context* value unescaped, so on 1.0.0 / 1.0.8 / 1.1.0:\n\n```\n{% render_slot p %}   p = \"<img src=x onerror=alert(1)>\"      -> LIVE\n```\n\nwith **no `|safe`, no `mark_safe`, and no app-written handler** — using component slots is enough. The custom-tag XSS is therefore not \"if you register a handler\", it is \"if you use slots\". This is now the joint-highest-severity item in the advisory.\n\n## The fix must distinguish the two paths — a blanket `mark_safe` reintroduces the XSS\n\nThey are genuinely different inputs and only one is trusted:\n\n- `value.get(\"content\")` — the parent's rendered nodelist. Already escaped. Must emit raw.\n- a bare `str` straight from context (`p = \"<img …>\"`). Untrusted. Must stay escaped.\n\n`_render_value`'s trailing `return str(value)` covers the second. Marking the whole return safe would restore the shipped vulnerability; escaping both is today's regression. Mark at the one exit that is genuinely already-escaped, per #1104 (mark at one exit, not N returns).\n\n## What a fix needs\n\n- a test that a component slot's markup renders **live**, which nothing currently asserts — this is why the regression shipped\n- a test that a bare hostile string through `render_slot` stays **escaped**, gated off so it reddens if the mark is widened\n- check `SlotTagHandler` and `CallTagHandler` for the same shape; they were in the same #2379 sweep and share the content-passing contract",
+    "referencePolicy": "off",
+    "stratum": "fresh-historical"
+  },
+  "candidate": {
+    "sourceCommit": "3f05c0f41ee98b24d4c0ebd8ca478795545df259",
+    "cliSha256": "a716801a1756444e2c02f6922967783bdb3be4a84da6ab84dbaaf903dc02d5f6",
+    "reportedVersion": "0.4.0"
+  },
+  "baseline": {
+    "package": "vertex-palace",
+    "version": "0.4.0",
+    "npmShasum": "8b50ca082cce86618a774ae81668c1fd965d722c"
+  },
+  "observations": [
+    {
+      "observationId": "djust-org-djust-2424-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequence": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "productVersion": "0.4.0",
+      "productCliSha256": "a716801a1756444e2c02f6922967783bdb3be4a84da6ab84dbaaf903dc02d5f6",
+      "durationsMs": {
+        "init": 369,
+        "index": 737351,
+        "context": 74155
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "djust-org-djust-2424",
+      "repository": "https://github.com/djust-org/djust",
+      "language": "python",
+      "stratum": "fresh-historical",
+      "decision": "route",
+      "grounding": {
+        "status": "local",
+        "resolutionStatus": "not-needed"
+      },
+      "mode": "route-lite",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.21,
+      "routeFiles": [
+        "README.md",
+        "crates/djust_live/Cargo.toml",
+        "crates/djust_templates/src/filter_registry.rs",
+        "crates/djust_templates/src/filters.rs",
+        "examples/demo_project/djust_shared/components/README.md",
+        "python/djust/tests/test_ws_send_version_1788.py",
+        "python/djust/theming/contracts.py",
+        "python/tests/test_context_item_safety_2287.py"
+      ],
+      "routeFileCount": 8,
+      "implementation": {
+        "files": [
+          "python/djust/components/function_component.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/djust/components/function_component.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "python/djust/components/function_component.py",
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/djust/components/function_component.py",
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 1365,
+      "contextBytes": 5464,
+      "reportedContextBytes": 5464,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "djust-org-djust-2424-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequence": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "productVersion": "0.4.0",
+      "productCliSha256": "a5cff40d6289f299d5bde63416c02f1f886f370e06872619063ccb32ed404671",
+      "durationsMs": {
+        "init": 428,
+        "index": 581988,
+        "context": 83322
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "message": "JSON adaptive context requires 4537 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "djust-org-djust-2424",
+      "repository": "https://github.com/djust-org/djust",
+      "language": "python",
+      "stratum": "fresh-historical",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "python/djust/components/function_component.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/djust/components/function_component.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "python/djust/components/function_component.py",
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/djust/components/function_component.py",
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "djust-org-djust-2424-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequence": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "productVersion": "0.4.0",
+      "productCliSha256": "a5cff40d6289f299d5bde63416c02f1f886f370e06872619063ccb32ed404671",
+      "durationsMs": {
+        "init": 360,
+        "index": 665864,
+        "context": 97584
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "message": "JSON adaptive context requires 4537 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "djust-org-djust-2424",
+      "repository": "https://github.com/djust-org/djust",
+      "language": "python",
+      "stratum": "fresh-historical",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "python/djust/components/function_component.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/djust/components/function_component.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "python/djust/components/function_component.py",
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/djust/components/function_component.py",
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "djust-org-djust-2424-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequence": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "productVersion": "0.4.0",
+      "productCliSha256": "a716801a1756444e2c02f6922967783bdb3be4a84da6ab84dbaaf903dc02d5f6",
+      "durationsMs": {
+        "init": 377,
+        "index": 755011,
+        "context": 112525
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "djust-org-djust-2424",
+      "repository": "https://github.com/djust-org/djust",
+      "language": "python",
+      "stratum": "fresh-historical",
+      "decision": "route",
+      "grounding": {
+        "status": "local",
+        "resolutionStatus": "not-needed"
+      },
+      "mode": "route-lite",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.21,
+      "routeFiles": [
+        "README.md",
+        "crates/djust_live/Cargo.toml",
+        "crates/djust_templates/src/filter_registry.rs",
+        "crates/djust_templates/src/filters.rs",
+        "examples/demo_project/djust_shared/components/README.md",
+        "python/djust/tests/test_ws_send_version_1788.py",
+        "python/djust/theming/contracts.py",
+        "python/tests/test_context_item_safety_2287.py"
+      ],
+      "routeFileCount": 8,
+      "implementation": {
+        "files": [
+          "python/djust/components/function_component.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/djust/components/function_component.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "python/djust/components/function_component.py",
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "python/djust/components/function_component.py",
+          "python/tests/test_render_slot_markup_2421.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 1365,
+      "contextBytes": 5464,
+      "reportedContextBytes": 5464,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    }
+  ],
+  "analysis": {
+    "pass": false,
+    "gates": {
+      "twoCandidateRunsCompleted": true,
+      "allCandidateContextCommandsSucceeded": true,
+      "deterministicCandidateRoute": true,
+      "implementationAndTestRoleClosure": false,
+      "coreCoverageMinimum50": false,
+      "routeFocusMinimum40": false,
+      "contextCeiling6000": true,
+      "zeroTrackedFilePollution": true,
+      "zeroPayloadMetricDisagreement": true
+    },
+    "candidate": {
+      "runs": 2,
+      "successfulRuns": 2,
+      "mode": "route-lite",
+      "degradation": null,
+      "decision": "route",
+      "coreCoverage": 0,
+      "implementationCoverage": 0,
+      "testCoverage": 0,
+      "auxiliaryCoverage": 0,
+      "roleClosure": false,
+      "routeFocus": 0,
+      "routeFileCount": 8,
+      "contextTokens": 1365,
+      "contextMs": 93340,
+      "deterministic": true,
+      "routeFiles": [
+        "README.md",
+        "crates/djust_live/Cargo.toml",
+        "crates/djust_templates/src/filter_registry.rs",
+        "crates/djust_templates/src/filters.rs",
+        "examples/demo_project/djust_shared/components/README.md",
+        "python/djust/tests/test_ws_send_version_1788.py",
+        "python/djust/theming/contracts.py",
+        "python/tests/test_context_item_safety_2287.py"
+      ]
+    },
+    "baseline": {
+      "runs": 2,
+      "successfulRuns": 0,
+      "mode": null,
+      "degradation": null,
+      "decision": null,
+      "coreCoverage": null,
+      "implementationCoverage": null,
+      "testCoverage": null,
+      "auxiliaryCoverage": null,
+      "roleClosure": null,
+      "routeFocus": null,
+      "routeFileCount": null,
+      "contextTokens": null,
+      "contextMs": 90453,
+      "deterministic": false,
+      "routeFiles": []
+    },
+    "descriptiveDeltaCandidateMinusBaseline": {
+      "comparable": false,
+      "reason": "A condition without successful context output has no comparable route, coverage, or payload metrics.",
+      "coreCoverage": null,
+      "routeFocus": null,
+      "contextTokens": null,
+      "contextMs": null
+    },
+    "interpretationBoundary": "One target and two repeated static calls per condition; no general routing, Token, speed, or Agent claim is permitted."
+  },
+  "privateOracleCommitment": "058159c07c631c43af19da858cbd324469ee73ad08e01f77f6f61ecfc2d3cda9"
+}
