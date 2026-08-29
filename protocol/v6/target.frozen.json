@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "6.0.0-smoke.1",
+  "status": "frozen-before-palace-observation",
+  "generatedAt": "2026-08-29T19:25:15.664Z",
+  "id": "djust-org-djust-2424",
+  "repository": "https://github.com/djust-org/djust",
+  "cloneUrl": "https://github.com/djust-org/djust.git",
+  "language": "python",
+  "baseCommit": "00a13339c2c2121d1d39bedf5dd3fec60516b530",
+  "mergeCommit": "077b02c8a7ae01fc9bf6ea6cf01b118b288efcd3",
+  "issue": {
+    "number": 2421,
+    "title": "render_slot double-escapes already-escaped parent content since #2379, and is the framework-reachable half of the custom-tag XSS",
+    "url": "https://github.com/djust-org/djust/issues/2421"
+  },
+  "pullRequest": {
+    "number": 2424,
+    "title": "fix(components): render_slot emits the parent's rendered slot LIVE, and a bare context string ESCAPED (#2421)",
+    "url": "https://github.com/djust-org/djust/pull/2424"
+  },
+  "task": "render_slot double-escapes already-escaped parent content since #2379, and is the framework-reachable half of the custom-tag XSS\n\nTwo findings on the same handler, from the post-drain security classification. One is a **release blocker on `main`**; the other raises the severity of a shipped vulnerability. They are opposite directions on the same code path, which is why they belong together.\n\n## 1. REGRESSION on `main` (blocker for the 1.2 RC)\n\n`{% render_slot %}` now escapes legitimate, already-escaped slot markup:\n\n```\n{% render_slot p %}   p = {\"content\": \"<strong>rendered</strong>\"}\n\n  v1.1.0  <strong>rendered</strong>\n  main    &lt;strong&gt;rendered&lt;/strong&gt;\n```\n\nReproduced on a release build (`make build`) after `rust_handlers.register_with_rust_engine()`.\n\n`RenderSlotTagHandler._render_value` returns `str(value.get(\"content\", \"\"))` — a plain `str`. #2379 made a plain-`str` return from a tag handler get escaped, which is correct in general and wrong here: this handler's own docstring says the content is *\"returned verbatim (already-escaped HTML from the parent)\"*. #2379 enumerated 221 handlers and marked six as returning markup; `render_slot` was not among them.\n\n**Every function component and named slot renders its markup as visible text.** `test_named_slots.py` and `test_function_components.py` are green on both builds (32 passed each), so the suites do not cover it.\n\n## 2. The same handler is why #2379 is framework-reachable on shipped releases\n\n`render_slot` is the **one** handler of all 221 that echoes a *context* value unescaped, so on 1.0.0 / 1.0.8 / 1.1.0:\n\n```\n{% render_slot p %}   p = \"<img src=x onerror=alert(1)>\"      -> LIVE\n```\n\nwith **no `|safe`, no `mark_safe`, and no app-written handler** — using component slots is enough. The custom-tag XSS is therefore not \"if you register a handler\", it is \"if you use slots\". This is now the joint-highest-severity item in the advisory.\n\n## The fix must distinguish the two paths — a blanket `mark_safe` reintroduces the XSS\n\nThey are genuinely different inputs and only one is trusted:\n\n- `value.get(\"content\")` — the parent's rendered nodelist. Already escaped. Must emit raw.\n- a bare `str` straight from context (`p = \"<img …>\"`). Untrusted. Must stay escaped.\n\n`_render_value`'s trailing `return str(value)` covers the second. Marking the whole return safe would restore the shipped vulnerability; escaping both is today's regression. Mark at the one exit that is genuinely already-escaped, per #1104 (mark at one exit, not N returns).\n\n## What a fix needs\n\n- a test that a component slot's markup renders **live**, which nothing currently asserts — this is why the regression shipped\n- a test that a bare hostile string through `render_slot` stays **escaped**, gated off so it reddens if the mark is widened\n- check `SlotTagHandler` and `CallTagHandler` for the same shape; they were in the same #2379 sweep and share the content-passing contract",
+  "referencePolicy": "off"
+}

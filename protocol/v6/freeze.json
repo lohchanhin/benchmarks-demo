@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "6.0.0-smoke.1",
+  "status": "frozen-before-palace-observation",
+  "frozenAt": "2026-08-29T19:25:15.665Z",
+  "claimBoundary": "One fresh-repository historical-task static smoke. It cannot establish general routing quality, Token savings, speed, or Agent repair accuracy.",
+  "outcomeDependentReplacementForbidden": true,
+  "selectedTargetCount": 1,
+  "product": {
+    "sourceCommit": "3f05c0f41ee98b24d4c0ebd8ca478795545df259",
+    "cliPath": "D:\\工作资料\\codex palace\\dist\\palace.cjs",
+    "cliSha256": "a716801a1756444e2c02f6922967783bdb3be4a84da6ab84dbaaf903dc02d5f6",
+    "reportedVersion": "0.4.0"
+  },
+  "baseline": {
+    "package": "vertex-palace",
+    "version": "0.4.0",
+    "npmShasum": "8b50ca082cce86618a774ae81668c1fd965d722c"
+  },
+  "artifacts": {
+    "protocolSha256": "53392c362509e6d88f08ce52fa396583f9c675d3eca9f460d6de1583cbcdf70d",
+    "poolSha256": "4f16ea50a1e1d26197f0271bc3e9d2a226ee5bda316a2f6e4db211e0a27b9734",
+    "targetSha256": "2f0271b4ef92d3f2c381a7a5f3e11a6f0a77dac1bc01aca57b19b2bac090dac3",
+    "privateOracleCommitment": "058159c07c631c43af19da858cbd324469ee73ad08e01f77f6f61ecfc2d3cda9"
+  }
+}

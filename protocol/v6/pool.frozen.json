@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "6.0.0-smoke.1",
+  "generatedAt": "2026-08-29T19:25:15.664Z",
+  "searchQuery": "is:pr is:merged linked:issue merged:>=2025-01-01 sort:updated-desc",
+  "returnedNodes": 100,
+  "observedRepositoryCount": 353,
+  "observedRepositoriesSha256": "1bd279586d0667148e9562018f468ed82eb1583ef3b351d1abc3ef7415d63ce2",
+  "selectionMethod": "Choose the lexicographically smallest SHA-256(seed + newline + pull-request URL).",
+  "seed": "8a5194dbd4e28ea1119197742f7b827d98d1e20386045ee7a5124c364569db5b",
+  "eligibility": {
+    "publicRepository": true,
+    "fork": false,
+    "archived": false,
+    "disabled": false,
+    "primaryLanguages": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "Go",
+      "Rust"
+    ],
+    "stars": {
+      "minimum": 50,
+      "maximum": 50000
+    },
+    "diskUsageKiB": {
+      "minimum": 100,
+      "maximum": 100000
+    },
+    "changedFiles": {
+      "minimum": 2,
+      "maximum": 8
+    },
+    "changedLinesMaximum": 500,
+    "linkedClosingIssueRequired": true,
+    "implementationAndFocusedTestRequired": true
+  },
+  "eligibleCount": 2,
+  "candidates": [
+    {
+      "id": "djust-org-djust-2424",
+      "repository": "djust-org/djust",
+      "pullRequest": {
+        "number": 2424,
+        "title": "fix(components): render_slot emits the parent's rendered slot LIVE, and a bare context string ESCAPED (#2421)",
+        "url": "https://github.com/djust-org/djust/pull/2424"
+      },
+      "issue": {
+        "number": 2421,
+        "title": "render_slot double-escapes already-escaped parent content since #2379, and is the framework-reachable half of the custom-tag XSS",
+        "url": "https://github.com/djust-org/djust/issues/2421"
+      },
+      "language": "python",
+      "changedFileCount": 3,
+      "changedLines": 484,
+      "rankHash": "0f58043e21db389892ff1473f2d1ae9cb5188f4b98238f96bb6f447288f9e6f2"
+    },
+    {
+      "id": "open-gsd-gsd-core-4054",
+      "repository": "open-gsd/gsd-core",
+      "pullRequest": {
+        "number": 4054,
+        "title": "fix(#3865): init.* phase queries accept --phase <N> as the positional alias",
+        "url": "https://github.com/open-gsd/gsd-core/pull/4054"
+      },
+      "issue": {
+        "number": 3865,
+        "title": "bug: `init.execute-phase --phase` oversees existing plans",
+        "url": "https://github.com/open-gsd/gsd-core/issues/3865"
+      },
+      "language": "typescript",
+      "changedFileCount": 4,
+      "changedLines": 173,
+      "rankHash": "18bfcd7c47feafd33802fb9fb05e52f8c5d1ccc75cd57f9b6e5415b8e55875a7"
+    }
+  ]
+}
