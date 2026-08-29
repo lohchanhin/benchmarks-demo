@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "protocolVersion": "5.0.0-candidate.1",
   "status": "prepared-before-static-observation",
-  "preparedAt": "2026-08-29T16:59:26.541Z",
+  "preparedAt": "2026-08-29T17:01:41.866Z",
   "observationsAtPreparation": 0,
   "targetFreeze": {
     "productSourceCommit": "8f76d7a36f3430aa7b576c2462f8351936c31ae5",
@@ -11,7 +11,7 @@
     "semanticReviewSha256": "763e1f0c8b65659f38da5c1e0309857035813c63bf3b5d7e24c29ed262bf79f9"
   },
   "runner": {
-    "sourceCommit": "04aae68abb8f1ea4a45c5ffa350a689d7ab895d9",
+    "sourceCommit": "f7f743a5ed0756914217f9210b9c2fc8e124c408",
     "sourceFiles": [
       "scripts/run-real-repository-v5-static.mjs",
       "src/lib/files.mjs",
@@ -21,7 +21,7 @@
       "src/lib/v4-execution.mjs",
       "src/lib/v5-static.mjs"
     ],
-    "sourceSha256": "f701c5016e01c01299891f09ffb1ae898ccbde8aa0bb4c4621aa57b93a67cc1b"
+    "sourceSha256": "e40870816ef6a3ae129c965b9742a7e93842f4e6431bb46558b3c2fa7f50abc5"
   },
   "conditions": {
     "candidate": {
