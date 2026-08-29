@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "5.0.0-candidate.1",
+  "status": "frozen-after-interrupted-attempt",
+  "frozenAt": "2026-08-29T17:04:43.1808068Z",
+  "baseBindingSha256": "40db5380710063810bdeb93dae8671b7d8573b946076f3c3d1c7754241c03404",
+  "observedBeforeAmendment": {
+    "selectedTargetCallsStarted": 1,
+    "completedObservations": 0,
+    "attemptArtifact": "results/real-repository-v5/attempt-1-harness-failure.json",
+    "attemptArtifactSha256": "9d9e02165033cc7ad147abe5884a2bb6ec19e72cb6adc6c1017ace94a0159d2f"
+  },
+  "runner": {
+    "sourceCommit": "aa44b178176ea1e098afac878ee0e48e0925a373",
+    "sourceFiles": [
+      "scripts/run-real-repository-v5-static.mjs",
+      "src/lib/files.mjs",
+      "src/lib/process.mjs",
+      "src/lib/root.mjs",
+      "src/lib/system-awake.mjs",
+      "src/lib/v4-execution.mjs",
+      "src/lib/v5-static.mjs"
+    ],
+    "sourceSha256": "8c4b8392a6162986410ff43667c031a154526023536fea273dad894d0ac1f9da"
+  },
+  "repair": {
+    "scope": "harness-only",
+    "description": "Record a non-zero Palace context command as a structured failed observation and continue the frozen sequence instead of terminating the process.",
+    "productChanged": false,
+    "packagesChanged": false,
+    "targetsChanged": false,
+    "oracleChanged": false,
+    "thresholdsChanged": false,
+    "successfulObservationPathChanged": false
+  },
+  "qualificationBoundary": "Because one selected task was observed before this amendment, V5 is a frozen diagnostic and regression round, not an untouched blind stable-qualification round."
+}
