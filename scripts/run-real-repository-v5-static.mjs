@@ -107,7 +107,7 @@ async function loadContext(options) {
     readJson(paths.receipt),
     readJson(paths.oracle)
   ]);
-  verifyFrozenInputs({ freeze, targetManifest, review, binding, receipt, oracle });
+  await verifyFrozenInputs({ freeze, targetManifest, review, binding, receipt, oracle });
   const runtimeRoot = path.resolve(options.runtimeRoot || defaultRuntimeRoot);
   assertAsciiPath(runtimeRoot);
   const runtime = {
@@ -226,7 +226,7 @@ async function writeReferenceCache(root, target, oracle, freeze) {
   await writeJson(cachePath, cache);
 }
 
-function verifyFrozenInputs({ freeze, targetManifest, review, binding, receipt, oracle }) {
+async function verifyFrozenInputs({ freeze, targetManifest, review, binding, receipt, oracle }) {
   assert.equal(freeze.status, "frozen-before-palace-observation");
   assert.equal(targetManifest.targets.length, 12);
   assert.equal(review.roundDecision, "proceed");
@@ -235,6 +235,21 @@ function verifyFrozenInputs({ freeze, targetManifest, review, binding, receipt, 
   assert.equal(binding.observationsAtPreparation, 0);
   assert.equal(canonicalJson(binding), canonicalJson(stripLocalReceipt(receipt)));
   assert.equal(sha256(canonicalJson(oracle)), freeze.artifacts.privateOracleCommitment);
+  assert.equal(
+    await sha256File(path.join(protocolRoot, "targets.frozen.json")),
+    freeze.artifacts.targetsSha256,
+    "Frozen target bytes changed after selection"
+  );
+  assert.equal(
+    await sha256File(path.join(protocolRoot, "semantic-review.json")),
+    binding.targetFreeze.semanticReviewSha256,
+    "Semantic review changed after execution binding"
+  );
+  assert.equal(
+    await hashSources(binding.runner.sourceFiles),
+    binding.runner.sourceSha256,
+    "V5 static runner sources changed after execution binding"
+  );
   assert.deepEqual(
     targetManifest.targets.map((target) => target.id).sort(),
     oracle.targets.map((target) => target.id).sort()
@@ -242,6 +257,23 @@ function verifyFrozenInputs({ freeze, targetManifest, review, binding, receipt, 
   for (const condition of Object.keys(binding.conditions)) {
     const local = receipt.local[condition];
     assert.ok(local?.cliPath, `Missing installed CLI for ${condition}`);
+    assert.equal(await pathExists(local.tarballPath), true, `Missing tarball for ${condition}`);
+    assert.equal(await pathExists(local.cliPath), true, `Missing CLI for ${condition}`);
+    assert.equal(
+      await sha256File(local.tarballPath),
+      binding.conditions[condition].tarballSha256,
+      `Tarball hash changed for ${condition}`
+    );
+    assert.equal(
+      await sha512Integrity(local.tarballPath),
+      binding.conditions[condition].tarballIntegrity,
+      `Tarball integrity changed for ${condition}`
+    );
+    assert.equal(
+      await sha256File(local.cliPath),
+      binding.conditions[condition].cliSha256,
+      `CLI hash changed for ${condition}`
+    );
   }
 }
 
@@ -249,6 +281,25 @@ function stripLocalReceipt(receipt) {
   const clone = structuredClone(receipt);
   delete clone.local;
   return clone;
+}
+
+async function hashSources(files) {
+  const hash = createHash("sha256");
+  for (const file of files) {
+    const bytes = await readFile(path.join(repositoryRoot, file));
+    hash.update(Buffer.from(`${file}\0${bytes.length}\0`, "utf8"));
+    hash.update(bytes);
+    hash.update(Buffer.from("\0", "utf8"));
+  }
+  return hash.digest("hex");
+}
+
+async function sha256File(file) {
+  return createHash("sha256").update(await readFile(file)).digest("hex");
+}
+
+async function sha512Integrity(file) {
+  return `sha512-${createHash("sha512").update(await readFile(file)).digest("base64")}`;
 }
 
 function buildPlan(context) {
