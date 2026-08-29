@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "5.0.0-candidate.1",
+  "status": "frozen-before-palace-observation",
+  "frozenAt": "2026-08-29T16:39:31.046Z",
+  "seed": "92e2b27ff984c430401761f917ebe841cbbdf522e8ca44254aa083371281b157",
+  "selectedTargetCount": 12,
+  "productSourceCommit": "8f76d7a36f3430aa7b576c2462f8351936c31ae5",
+  "artifacts": {
+    "selectorSha256": "8aeacdbd55e4a916d168fff071dc5f01dba54812bf372e0c24a8f9a85ea307e1",
+    "targetPoolSha256": "5b6f9e545bc9f2c1c437795a85dbfefa9924a986c50e59b194fa16a1457c351c",
+    "targetsSha256": "b6ddbc38d5a2a8d0e9ccc94cdfaa5a97d0db71e9a9904292941fd62e2376d55d",
+    "privateOracleCommitment": "c5f470e7c81c127ebf80035a23d9224c6fedcc682810735c91387d2098fc9814"
+  },
+  "declaration": "No selected task has been sent to Vertex Palace and no Agent arm has run before this freeze. Selected targets cannot be replaced after observing outcomes."
+}

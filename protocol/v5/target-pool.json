@@ -1,0 +1,1923 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "5.0.0-candidate.1",
+  "generatedAt": "2026-08-29T16:39:31.039Z",
+  "seed": "92e2b27ff984c430401761f917ebe841cbbdf522e8ca44254aa083371281b157",
+  "mergedSince": "2024-01-01T00:00:00Z",
+  "mechanicalCriteria": {
+    "mergedPullRequest": true,
+    "linkedClosingIssue": true,
+    "changedFileCount": {
+      "minimum": 2,
+      "maximum": 8
+    },
+    "changedLineMaximum": 500,
+    "implementationAndFocusedTestRequired": true,
+    "dependencyBotsExcluded": true,
+    "releaseAndDocumentationOnlyChangesExcluded": true
+  },
+  "repositoryAudits": [
+    {
+      "repository": "pallets/click",
+      "fetchedPullRequests": 250,
+      "eligiblePullRequests": 31
+    },
+    {
+      "repository": "spf13/cobra",
+      "fetchedPullRequests": 250,
+      "eligiblePullRequests": 5
+    },
+    {
+      "repository": "sharkdp/fd",
+      "fetchedPullRequests": 250,
+      "eligiblePullRequests": 7
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "fetchedPullRequests": 250,
+      "eligiblePullRequests": 51
+    }
+  ],
+  "eligible": [
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3739,
+        "title": "Changed `tempfile.NamedTemporaryFile` mode to `w`",
+        "url": "https://github.com/pallets/click/pull/3739"
+      },
+      "issue": {
+        "number": 3731,
+        "url": "https://github.com/pallets/click/issues/3731",
+        "title": "echo_via_pager on Windows fails with WinError 32, masking a TypeError from writing str to a binary temp file (8.4.0 regression)"
+      },
+      "mergedAt": "2026-08-14T18:51:52Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 78,
+      "rankHash": "66c83af6623ce3353c94d5ce55e3f0e9596508dc368791a501e81d6b95a34544"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2630,
+        "title": "Specialize `progressbar(length=...)` as `ProgressBar[int]`",
+        "url": "https://github.com/pallets/click/pull/2630"
+      },
+      "issue": {
+        "number": 2626,
+        "url": "https://github.com/pallets/click/issues/2626",
+        "title": "Make ProgressBar type available in public interface"
+      },
+      "mergedAt": "2024-11-08T23:57:43Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 67,
+      "rankHash": "dc5cfc74d5a00604b903c46e1ac6fe85c6cb482075375a0acdfe4291ca07cca2"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3781,
+        "title": "Add support of `pathlib.Path` to `edit`",
+        "url": "https://github.com/pallets/click/pull/3781"
+      },
+      "issue": {
+        "number": 2869,
+        "url": "https://github.com/pallets/click/issues/2869",
+        "title": "Support pathlib.Path in edit filename"
+      },
+      "mergedAt": "2026-08-20T02:50:20Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 2,
+      "testFileCount": 2,
+      "changedLines": 58,
+      "rankHash": "ab5d1a06b7a4b9a4619e0a6efb8dfd15c86bc4a6369e12b5a6aeb1ff6feb8b97"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3777,
+        "title": "Forward all user's parameters set in `PAGER` and improve flag detection",
+        "url": "https://github.com/pallets/click/pull/3777"
+      },
+      "issue": {
+        "number": 3416,
+        "url": "https://github.com/pallets/click/issues/3416",
+        "title": "_pipepager mis-detects raw-mode flag, enabling color from any 'r'/'R' substring in $LESS or filename args"
+      },
+      "mergedAt": "2026-08-19T15:20:27Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 239,
+      "rankHash": "98e521edfc9251d1ee315347c5e1e100f2e5c8849646cf98f38b3de0aae2e756"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3764,
+        "title": "Fix error reporting on Windows when an error is raised in the pager ",
+        "url": "https://github.com/pallets/click/pull/3764"
+      },
+      "issue": {
+        "number": 3731,
+        "url": "https://github.com/pallets/click/issues/3731",
+        "title": "echo_via_pager on Windows fails with WinError 32, masking a TypeError from writing str to a binary temp file (8.4.0 regression)"
+      },
+      "mergedAt": "2026-08-16T23:40:03Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 72,
+      "rankHash": "025b59e954c158c2537d6fd093f4fc777a36ce71330dbff2bbc18a1b10415760"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3769,
+        "title": "Settles progress bar on its final position",
+        "url": "https://github.com/pallets/click/pull/3769"
+      },
+      "issue": {
+        "number": 3571,
+        "url": "https://github.com/pallets/click/issues/3571",
+        "title": "`click.progressbar` doesn't show full completion when using `show_pos=True` combined with `update_min_steps`"
+      },
+      "mergedAt": "2026-08-15T17:56:58Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 43,
+      "rankHash": "7c92b771758f2fe0b6f661e3b5d52447f72282781e64056c2b3d670aabdc7ee8"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3534,
+        "title": "Support incremental output in the pager",
+        "url": "https://github.com/pallets/click/pull/3534"
+      },
+      "issue": {
+        "number": 2542,
+        "url": "https://github.com/pallets/click/issues/2542",
+        "title": "`echo_via_pager` not working as expected with generators"
+      },
+      "mergedAt": "2026-05-30T20:23:11Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 45,
+      "rankHash": "73418fd533de7e0b3e2341895e81fd5db342f493ea982dd1429df7a5010c1b80"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3493,
+        "title": "Handle empty bytes in echo",
+        "url": "https://github.com/pallets/click/pull/3493"
+      },
+      "issue": {
+        "number": 3487,
+        "url": "https://github.com/pallets/click/issues/3487",
+        "title": "Echoing empty bytes or bytearray raises TypeError"
+      },
+      "mergedAt": "2026-05-21T22:46:00Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 23,
+      "rankHash": "8eebea3eaa8f2a55ddaf9b579273e61492940044698d96f4aa60f1936a06d2c7"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3363,
+        "title": "Auto-detect `type=UNPROCESSED` when `flag_value` has non-basic types",
+        "url": "https://github.com/pallets/click/pull/3363"
+      },
+      "issue": {
+        "number": 2012,
+        "url": "https://github.com/pallets/click/issues/2012",
+        "title": "`flag_value` is passed through `ParamType.convert`"
+      },
+      "mergedAt": "2026-04-29T06:47:36Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 132,
+      "rankHash": "6614f0be1699b9951cd77c76b083475525fe94971580f669fadf58f294371b02"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3152,
+        "title": "Fix handling of options which set both is_flag=False and flag_value=...",
+        "url": "https://github.com/pallets/click/pull/3152"
+      },
+      "issue": {
+        "number": 3084,
+        "url": "https://github.com/pallets/click/issues/3084",
+        "title": "Bug: Optional value not optional anymore"
+      },
+      "mergedAt": "2025-11-20T03:49:38Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 58,
+      "rankHash": "af001ddf2b83a68ed9dbec06d4cc00b26e9a304f54c4d4c26e33c27201b38d62"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3079,
+        "title": "Fix default handling to defer `UNSET` normalization",
+        "url": "https://github.com/pallets/click/pull/3079"
+      },
+      "issue": {
+        "number": 3071,
+        "url": "https://github.com/pallets/click/issues/3071",
+        "title": "`default=True` on feature flags is order-sensitive"
+      },
+      "mergedAt": "2025-09-24T17:07:42Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 48,
+      "rankHash": "4038048a56eb725cea5fe5f826ddda31c5ff2b0be4c38602cf461563c7a2525e"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3058,
+        "title": "Forward exception information to resources registered in a context",
+        "url": "https://github.com/pallets/click/pull/3058"
+      },
+      "issue": {
+        "number": 2447,
+        "url": "https://github.com/pallets/click/issues/2447",
+        "title": "Exception information isn't passed through to context.with_resource managed resources"
+      },
+      "mergedAt": "2025-09-12T17:16:56Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 154,
+      "rankHash": "dd6f868ae90d02c49e589452602368c06a2bca7521a71c86ffbee1b42d6cfe55"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 3013,
+        "title": "Fix completions for quoted/escaped parameters in Fish",
+        "url": "https://github.com/pallets/click/pull/3013"
+      },
+      "issue": {
+        "number": 2995,
+        "url": "https://github.com/pallets/click/issues/2995",
+        "title": "Incorrect handling of quoted & escaped parameters for Fish completions"
+      },
+      "mergedAt": "2025-08-09T13:43:46Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 3,
+      "rankHash": "c7b6752fce0b7c9f91c8b1ddb075004907ffa3f0bc0f0b798093b39fd40a2afc"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2940,
+        "title": "testing/CliRunner: Fix regression related to EOF introduced in 262bdf0",
+        "url": "https://github.com/pallets/click/pull/2940"
+      },
+      "issue": {
+        "number": 2939,
+        "url": "https://github.com/pallets/click/issues/2939",
+        "title": "Click 8.2.1 CliRunner raises SystemExit(1) when using click.File's stdin support"
+      },
+      "mergedAt": "2025-09-13T04:36:16Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 22,
+      "rankHash": "5e0dc4401db40e3deabebc45873c40953f18b294f0c98ee1599cdcccea657420"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2840,
+        "title": "Move `--help` option defaults from its class to its decorator",
+        "url": "https://github.com/pallets/click/pull/2840"
+      },
+      "issue": {
+        "number": 2832,
+        "url": "https://github.com/pallets/click/issues/2832",
+        "title": "Regression: Help option subclassing no longer works with verion 8.1.8 "
+      },
+      "mergedAt": "2025-03-18T17:59:13Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 3,
+      "testFileCount": 1,
+      "changedLines": 108,
+      "rankHash": "ce40823dd78304fa4c9382958daa25f12fd321e928d886f958feb7b55a8f3303"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2818,
+        "title": "Add CliRunner default `catch_exceptions` parameter",
+        "url": "https://github.com/pallets/click/pull/2818"
+      },
+      "issue": {
+        "number": 2817,
+        "url": "https://github.com/pallets/click/issues/2817",
+        "title": "Set the `catch_exceptions` value for the whole runner"
+      },
+      "mergedAt": "2024-12-19T16:54:32Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 40,
+      "rankHash": "9beafa35f46c3b3cd50acd7010ca7c58624315d638cc7ec4a67c696901ddc988"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2816,
+        "title": "show correct auto complete value for nargs option in combination with flag option",
+        "url": "https://github.com/pallets/click/pull/2816"
+      },
+      "issue": {
+        "number": 2813,
+        "url": "https://github.com/pallets/click/issues/2813",
+        "title": "_is_incomplete_option incorrectly processes last_option in loop"
+      },
+      "mergedAt": "2025-08-07T05:57:15Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 21,
+      "rankHash": "a593d369b0e41102a20f0048969b87bfa2a140115b819b2a21ba502a1667fb5e"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2800,
+        "title": "Close contexts created during shell completion #2644.",
+        "url": "https://github.com/pallets/click/pull/2800"
+      },
+      "issue": {
+        "number": 2644,
+        "url": "https://github.com/pallets/click/issues/2644",
+        "title": "Click doesn't close file options during shell completion"
+      },
+      "mergedAt": "2024-11-03T20:38:31Z",
+      "changedFileCount": 4,
+      "implementationFileCount": 2,
+      "testFileCount": 1,
+      "changedLines": 99,
+      "rankHash": "cceb963264d43c5b5ae99753a51fa1d9803d14f282d21ec127374a5e1a449b54"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2788,
+        "title": "Added functionality to set flag_value correctly when using envvar",
+        "url": "https://github.com/pallets/click/pull/2788"
+      },
+      "issue": {
+        "number": 2746,
+        "url": "https://github.com/pallets/click/issues/2746",
+        "title": "`flag_value` is not taken into account with `envvar`"
+      },
+      "mergedAt": "2024-11-03T14:40:46Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 28,
+      "rankHash": "8c25da5419149f0f992eeaf6c1544ef2873b2336af3474502ecbf6e8aaa3c8c8"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2775,
+        "title": "Improve echo_via_pager behaviour in face of errors",
+        "url": "https://github.com/pallets/click/pull/2775"
+      },
+      "issue": {
+        "number": 2674,
+        "url": "https://github.com/pallets/click/issues/2674",
+        "title": "echo_via_pager with generators leaves terminal in broken state"
+      },
+      "mergedAt": "2024-11-09T00:22:59Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 231,
+      "rankHash": "6517210f02dd62e3a548b1d39e03304fdfccc45f85abd22b59258f50f31b80e7"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2730,
+        "title": "fix bug in show defaults when using a flag option and a default map",
+        "url": "https://github.com/pallets/click/pull/2730"
+      },
+      "issue": {
+        "number": 2632,
+        "url": "https://github.com/pallets/click/issues/2632",
+        "title": "Flag option with secondary opts: show_default=True does not show value from default_map in \"help\" output"
+      },
+      "mergedAt": "2024-05-22T21:13:00Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 29,
+      "rankHash": "58917465c0f6fc851dd56614001c97d271945f4ead7a90c847a529412ab796bd"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2729,
+        "title": "fix color handling in test runner",
+        "url": "https://github.com/pallets/click/pull/2729"
+      },
+      "issue": {
+        "number": 2705,
+        "url": "https://github.com/pallets/click/issues/2705",
+        "title": "Setting color=True in runner.invoke on windows strips ansi codes"
+      },
+      "mergedAt": "2024-05-21T23:18:10Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 6,
+      "rankHash": "2fddc584bb990bcd77c4dc45d491e3ed5d6fb15ba78bf1504ee2a77c71ac804c"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2727,
+        "title": "Add functionality to hide the progress bar Issue #2609",
+        "url": "https://github.com/pallets/click/pull/2727"
+      },
+      "issue": {
+        "number": 2609,
+        "url": "https://github.com/pallets/click/issues/2609",
+        "title": "`progressbar(hide=True)` option for hiding the progress bar"
+      },
+      "mergedAt": "2024-11-03T13:12:06Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 2,
+      "testFileCount": 1,
+      "changedLines": 48,
+      "rankHash": "fc323523b02db9a8dd6309bbd4f615fdcf53e232e901c4c396ed381a9f6b3dfa"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2724,
+        "title": "Fix printing of default option value to handle empty strings",
+        "url": "https://github.com/pallets/click/pull/2724"
+      },
+      "issue": {
+        "number": 2500,
+        "url": "https://github.com/pallets/click/issues/2500",
+        "title": "Empty string default values are not displayed"
+      },
+      "mergedAt": "2024-05-21T22:24:08Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 12,
+      "rankHash": "99a93cc20cd35db53e07a95e9956892af43f2fe601648edc0b5427598413fb95"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2696,
+        "title": "show env var in error hint",
+        "url": "https://github.com/pallets/click/pull/2696"
+      },
+      "issue": {
+        "number": 2695,
+        "url": "https://github.com/pallets/click/issues/2695",
+        "title": "show envvar in error hint"
+      },
+      "mergedAt": "2024-11-03T12:21:04Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 28,
+      "rankHash": "1f75b9fd9ec31028d1ff5632cd70cdc4491c902172f738fe05ace2f9dece4b68"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2622,
+        "title": "feat: new method for choice fail",
+        "url": "https://github.com/pallets/click/pull/2622"
+      },
+      "issue": {
+        "number": 2621,
+        "url": "https://github.com/pallets/click/issues/2621",
+        "title": "Allow customizing fail message for invalid choice in `click.types.Choice`"
+      },
+      "mergedAt": "2024-11-03T14:54:03Z",
+      "changedFileCount": 4,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 32,
+      "rankHash": "4b373072484fada988a794a52e2ab61048a7582270291649033f426821d1e512"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2523,
+        "title": "Keep track of `<stderr>` and `<stdout>` mix in `CliRunner` results",
+        "url": "https://github.com/pallets/click/pull/2523"
+      },
+      "issue": {
+        "number": 2522,
+        "url": "https://github.com/pallets/click/issues/2522",
+        "title": "`CliRunner`: restrict `mix_stderr` influence to `<output>`; keep `<stderr>` and `<stdout>` stable"
+      },
+      "mergedAt": "2024-11-03T01:52:09Z",
+      "changedFileCount": 4,
+      "implementationFileCount": 1,
+      "testFileCount": 2,
+      "changedLines": 196,
+      "rankHash": "9b5d6fc390e862a5cdc2eb60d1ac8b9f32738bfe05d5c3f55fb7af00b5f3825b"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2517,
+        "title": "Split generation of help extra items and rendering",
+        "url": "https://github.com/pallets/click/pull/2517"
+      },
+      "issue": {
+        "number": 2516,
+        "url": "https://github.com/pallets/click/issues/2516",
+        "title": "Split extra help item computing with help record rendering"
+      },
+      "mergedAt": "2024-11-02T23:35:57Z",
+      "changedFileCount": 4,
+      "implementationFileCount": 2,
+      "testFileCount": 1,
+      "changedLines": 90,
+      "rankHash": "635394d9ff3dfc8358495b0f0cd30a7ef0ef50eef9d553176045a577617194b4"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2397,
+        "title": "Give a UserWarning when Parameter is overriden by name",
+        "url": "https://github.com/pallets/click/pull/2397"
+      },
+      "issue": {
+        "number": 2396,
+        "url": "https://github.com/pallets/click/issues/2396",
+        "title": "Issue UserWarning when overriding Parameter name"
+      },
+      "mergedAt": "2024-11-03T14:11:59Z",
+      "changedFileCount": 4,
+      "implementationFileCount": 1,
+      "testFileCount": 2,
+      "changedLines": 77,
+      "rankHash": "ff0840dca2c74e43fe67dbeb87f9d156f2ba893aa49c96d1fcb6b36c2153ed42"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2365,
+        "title": "Fix metavar for Choice options when show_choices=False",
+        "url": "https://github.com/pallets/click/pull/2365"
+      },
+      "issue": {
+        "number": 2356,
+        "url": "https://github.com/pallets/click/issues/2356",
+        "title": "`show_choices=False` seems to have no effect"
+      },
+      "mergedAt": "2024-11-02T22:45:04Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 47,
+      "rankHash": "ab62a044651e6632c45f88a11b09a60210888a283fd4753d98f8bb6bf5fd0683"
+    },
+    {
+      "repository": "pallets/click",
+      "language": "python",
+      "pullRequest": {
+        "number": 2273,
+        "title": "Pass 'color' explicitly in error echoing",
+        "url": "https://github.com/pallets/click/pull/2273"
+      },
+      "issue": {
+        "number": 2193,
+        "url": "https://github.com/pallets/click/issues/2193",
+        "title": "`ctx.color` is ignored in `ClickException.show()`"
+      },
+      "mergedAt": "2024-10-26T15:12:23Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 31,
+      "rankHash": "18f656b38d7dc4902d2ed7c4cee8196aa7679e059192350d08a70d058fd5e841"
+    },
+    {
+      "repository": "spf13/cobra",
+      "language": "go",
+      "pullRequest": {
+        "number": 2356,
+        "title": "fix: prevent completions from mutating os.Args via append side effect",
+        "url": "https://github.com/spf13/cobra/pull/2356"
+      },
+      "issue": {
+        "number": 2257,
+        "url": "https://github.com/spf13/cobra/issues/2257",
+        "title": "Completions modify os.Args"
+      },
+      "mergedAt": "2026-04-24T20:41:58Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 60,
+      "rankHash": "8a57d79e453f70595816884385c9ca789e27af4ee8a86ef26f2f07806756f234"
+    },
+    {
+      "repository": "spf13/cobra",
+      "language": "go",
+      "pullRequest": {
+        "number": 2238,
+        "title": "The default ShellCompDirective can be customized for a command and its subcommands",
+        "url": "https://github.com/spf13/cobra/pull/2238"
+      },
+      "issue": {
+        "number": 2209,
+        "url": "https://github.com/spf13/cobra/issues/2209",
+        "title": "Feature request: Set a default completion function"
+      },
+      "mergedAt": "2025-05-31T12:36:04Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 102,
+      "rankHash": "b733eb785d24e37b41ee115d9d1639314a2e9a2985eeb9fbee2d2cac065c8dcd"
+    },
+    {
+      "repository": "spf13/cobra",
+      "language": "go",
+      "pullRequest": {
+        "number": 2241,
+        "title": "Flow context to command in SetHelpFunc",
+        "url": "https://github.com/spf13/cobra/pull/2241"
+      },
+      "issue": {
+        "number": 2240,
+        "url": "https://github.com/spf13/cobra/issues/2240",
+        "title": "Command passed to SetHelpFunc doesn't have a context"
+      },
+      "mergedAt": "2025-02-21T12:46:15Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 36,
+      "rankHash": "01ffaaa83e0369e10bc4b321f41a878867685d34ec1acba59e5df775059df4ed"
+    },
+    {
+      "repository": "spf13/cobra",
+      "language": "go",
+      "pullRequest": {
+        "number": 1956,
+        "title": "Allow linker to perform deadcode elimination for program using Cobra",
+        "url": "https://github.com/spf13/cobra/pull/1956"
+      },
+      "issue": {
+        "number": 2015,
+        "url": "https://github.com/spf13/cobra/issues/2015",
+        "title": "The use of text/template disables dead code elimination in all users of cobra"
+      },
+      "mergedAt": "2025-01-27T14:43:44Z",
+      "changedFileCount": 6,
+      "implementationFileCount": 3,
+      "testFileCount": 2,
+      "changedLines": 426,
+      "rankHash": "cebd7ed0e771aa4eb226ec60daedff1a0c98c5a7587c46f989235720a850b4f4"
+    },
+    {
+      "repository": "spf13/cobra",
+      "language": "go",
+      "pullRequest": {
+        "number": 2231,
+        "title": "feat: add CompletionWithDesc helper",
+        "url": "https://github.com/spf13/cobra/pull/2231"
+      },
+      "issue": {
+        "number": 2222,
+        "url": "https://github.com/spf13/cobra/issues/2222",
+        "title": "Completion helper"
+      },
+      "mergedAt": "2025-02-09T16:06:07Z",
+      "changedFileCount": 6,
+      "implementationFileCount": 3,
+      "testFileCount": 1,
+      "changedLines": 164,
+      "rankHash": "e9bbfaf693b0a6d2564097bc847b6843d413c6ec0ae35ef09364782ff90709b4"
+    },
+    {
+      "repository": "sharkdp/fd",
+      "language": "rust",
+      "pullRequest": {
+        "number": 1983,
+        "title": "feat: Add --exact argument to match exact filename",
+        "url": "https://github.com/sharkdp/fd/pull/1983"
+      },
+      "issue": {
+        "number": 1963,
+        "url": "https://github.com/sharkdp/fd/issues/1963",
+        "title": "Add --exact option"
+      },
+      "mergedAt": "2026-05-20T07:26:25Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 2,
+      "testFileCount": 1,
+      "changedLines": 83,
+      "rankHash": "0743971254ff36c16c7e6e1c901833e0f8260e5c02bc7e097f2ac3b54dc74d6e"
+    },
+    {
+      "repository": "sharkdp/fd",
+      "language": "rust",
+      "pullRequest": {
+        "number": 1852,
+        "title": "`--ignore-contain`: ignore directories containing a named entry.",
+        "url": "https://github.com/sharkdp/fd/pull/1852"
+      },
+      "issue": {
+        "number": 1727,
+        "url": "https://github.com/sharkdp/fd/issues/1727",
+        "title": "feature request: add `--prune-parent` flag"
+      },
+      "mergedAt": "2026-01-20T07:48:43Z",
+      "changedFileCount": 7,
+      "implementationFileCount": 4,
+      "testFileCount": 1,
+      "changedLines": 80,
+      "rankHash": "2beeaddb90e69c86438717d67b1a5407e2410f092e6eb52cc293e28ef3b4aebe"
+    },
+    {
+      "repository": "sharkdp/fd",
+      "language": "rust",
+      "pullRequest": {
+        "number": 1872,
+        "title": "Fix Windows hyperlinks for paths with spaces",
+        "url": "https://github.com/sharkdp/fd/pull/1872"
+      },
+      "issue": {
+        "number": 1843,
+        "url": "https://github.com/sharkdp/fd/issues/1843",
+        "title": "[BUG] Hyperlinks fail on Windows when file path contains spaces"
+      },
+      "mergedAt": "2026-01-16T16:04:56Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 6,
+      "rankHash": "0d808ede8aa7dd0830a1032fab0a790d93ec797e3049327a3f51a6b5f3df1aa6"
+    },
+    {
+      "repository": "sharkdp/fd",
+      "language": "rust",
+      "pullRequest": {
+        "number": 1805,
+        "title": "fix: --print0 now works with --exec",
+        "url": "https://github.com/sharkdp/fd/pull/1805"
+      },
+      "issue": {
+        "number": 1797,
+        "url": "https://github.com/sharkdp/fd/issues/1797",
+        "title": "[BUG] --print0 and --exec does not include null byte"
+      },
+      "mergedAt": "2025-10-26T05:49:24Z",
+      "changedFileCount": 7,
+      "implementationFileCount": 4,
+      "testFileCount": 1,
+      "changedLines": 73,
+      "rankHash": "c616be920aad8870366a6ba8a4c862158dcc02f0296416bed82c1c3b65f1c2a1"
+    },
+    {
+      "repository": "sharkdp/fd",
+      "language": "rust",
+      "pullRequest": {
+        "number": 1617,
+        "title": "Add a hidden `--mindepth` alias for `--min-depth`",
+        "url": "https://github.com/sharkdp/fd/pull/1617"
+      },
+      "issue": {
+        "number": 1616,
+        "url": "https://github.com/sharkdp/fd/issues/1616",
+        "title": "Consider adding a `--mindepth` alias for `--min-depth`"
+      },
+      "mergedAt": "2024-10-02T16:30:26Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 18,
+      "rankHash": "3f3e3376c44d78e150a2e8761543e5b5929b109031633074d33b62048e49069d"
+    },
+    {
+      "repository": "sharkdp/fd",
+      "language": "rust",
+      "pullRequest": {
+        "number": 1540,
+        "title": "Stop ignore .git folders by default",
+        "url": "https://github.com/sharkdp/fd/pull/1540"
+      },
+      "issue": {
+        "number": 1457,
+        "url": "https://github.com/sharkdp/fd/issues/1457",
+        "title": "New .git Handling has no opt out"
+      },
+      "mergedAt": "2024-04-29T02:33:04Z",
+      "changedFileCount": 6,
+      "implementationFileCount": 2,
+      "testFileCount": 1,
+      "changedLines": 53,
+      "rankHash": "f8eb1f4b437c2c758feefb53c8c8d5f183b8c84b3ae8b10367fd9ee682377cc0"
+    },
+    {
+      "repository": "sharkdp/fd",
+      "language": "rust",
+      "pullRequest": {
+        "number": 1521,
+        "title": "Gitignore workaround",
+        "url": "https://github.com/sharkdp/fd/pull/1521"
+      },
+      "issue": {
+        "number": 1461,
+        "url": "https://github.com/sharkdp/fd/issues/1461",
+        "title": "[BUG] Including hidden files also includes (git)ignored files if the .gitignore is in the parent directory"
+      },
+      "mergedAt": "2024-04-30T13:56:12Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 20,
+      "rankHash": "688fa23e136cf4292fc532907f455f39af768067b9fc949ad6d783c39178a46f"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 11095,
+        "title": "fix: don't duplicte `oxc.target` if user provides a custom array",
+        "url": "https://github.com/vitest-dev/vitest/pull/11095"
+      },
+      "issue": {
+        "number": 11035,
+        "url": "https://github.com/vitest-dev/vitest/issues/11035",
+        "title": "Vitest + Vite 8 causes OXC error when setting `oxc.target`"
+      },
+      "mergedAt": "2026-08-29T16:06:46Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 2,
+      "changedLines": 51,
+      "rankHash": "254206a84bf4ebbcab94fd9c214990173c6ff01d2c049e8a39e37c29fee006c4"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10933,
+        "title": "types: disallow filter-only options in getBy* locators (fix #10295)",
+        "url": "https://github.com/vitest-dev/vitest/pull/10933"
+      },
+      "issue": {
+        "number": 10295,
+        "url": "https://github.com/vitest-dev/vitest/issues/10295",
+        "title": "`hasText` option is available in `getByRole(..., { hasText })` but no-op"
+      },
+      "mergedAt": "2026-08-14T12:11:37Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 1,
+      "testFileCount": 2,
+      "changedLines": 27,
+      "rankHash": "e907b7d43aacbef23d78e7c67203278a5f0ae7b4f852db19dcac884361b1a0e9"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 11084,
+        "title": "fix: accept awaited value in vi.when thenResolve",
+        "url": "https://github.com/vitest-dev/vitest/pull/11084"
+      },
+      "issue": {
+        "number": 11017,
+        "url": "https://github.com/vitest-dev/vitest/issues/11017",
+        "title": "Still required to Promise.resolve in vi.when().thenResolve"
+      },
+      "mergedAt": "2026-08-28T12:33:59Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 25,
+      "rankHash": "d0bab0510bdafebe3ae408cbf97d54e064633ea354f484fab51b645da7cdf135"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 11085,
+        "title": "fix: ignore computed member calls in static collection",
+        "url": "https://github.com/vitest-dev/vitest/pull/11085"
+      },
+      "issue": {
+        "number": 804,
+        "url": "https://github.com/vitest-dev/vscode/issues/804",
+        "title": "Phantom `it[2]` tests appear in Test Explorer when a test has `using` and suite uses \"test\" rather than \"it\" as test function name and esbuild target is not explicitly set to `esnext`"
+      },
+      "mergedAt": "2026-08-28T14:54:04Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 41,
+      "rankHash": "525cc19474cc9d58ca411256f98c110b420347ea4b09dc9e0d2c62b4ae1febed"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 11081,
+        "title": "fix: invalidate resolved setup files (fix #11073)",
+        "url": "https://github.com/vitest-dev/vitest/pull/11081"
+      },
+      "issue": {
+        "number": 11073,
+        "url": "https://github.com/vitest-dev/vitest/issues/11073",
+        "title": "`beforeEach`/`beforeAll` in setup file gets executed only for one test suite"
+      },
+      "mergedAt": "2026-08-28T11:44:33Z",
+      "changedFileCount": 4,
+      "implementationFileCount": 3,
+      "testFileCount": 1,
+      "changedLines": 75,
+      "rankHash": "0c5fc48acbbc28c64a285dbb680102d491ba5f641d69b83f1cb380af673c7453"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10994,
+        "title": "fix(browser): don't hang when `ui: true` in projects",
+        "url": "https://github.com/vitest-dev/vitest/pull/10994"
+      },
+      "issue": {
+        "number": 10993,
+        "url": "https://github.com/vitest-dev/vitest/issues/10993",
+        "title": "Browser projects don't start test run when headful (v5 rc)"
+      },
+      "mergedAt": "2026-08-19T06:43:59Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 2,
+      "testFileCount": 1,
+      "changedLines": 65,
+      "rankHash": "f5781ad1a20f62a4f6bbcb4286258544446cecf81763c464e259280b627106d9"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10932,
+        "title": "fix(pool): worker init to handle queued synchronous messages",
+        "url": "https://github.com/vitest-dev/vitest/pull/10932"
+      },
+      "issue": {
+        "number": 10931,
+        "url": "https://github.com/vitest-dev/vitest/issues/10931",
+        "title": "ReferenceError: Cannot access 'poolId' before initialization in worker init() when a custom pool delivers messages synchronously"
+      },
+      "mergedAt": "2026-08-13T12:06:58Z",
+      "changedFileCount": 6,
+      "implementationFileCount": 1,
+      "testFileCount": 5,
+      "changedLines": 137,
+      "rankHash": "b3f396b7d656c7eb36ed4f221b5cf1302618e96ee5eb03ccdae84128ddad8b10"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10567,
+        "title": "fix(vitest): render non-Error causes from env setup so the actual diagnostic is not dropped",
+        "url": "https://github.com/vitest-dev/vitest/pull/10567"
+      },
+      "issue": {
+        "number": 10557,
+        "url": "https://github.com/vitest-dev/vitest/issues/10557",
+        "title": "A non-`Error` value thrown from a test environment's `setup()` is dropped from the \"Failed to start worker\" report (regression from 3.x)"
+      },
+      "mergedAt": "2026-08-12T10:17:18Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 2,
+      "changedLines": 108,
+      "rankHash": "c6c529188311937dda2dba6cb86c904f2c022b34d47de45e2ef365d072255a1f"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10910,
+        "title": "fix(spy): preserve class mock prototype methods on instances",
+        "url": "https://github.com/vitest-dev/vitest/pull/10910"
+      },
+      "issue": {
+        "number": 10553,
+        "url": "https://github.com/vitest-dev/vitest/issues/10553",
+        "title": "vi.spyOn(...).mockImplementation(class {...}) produces instances with no prototype methods"
+      },
+      "mergedAt": "2026-08-11T07:43:49Z",
+      "changedFileCount": 8,
+      "implementationFileCount": 1,
+      "testFileCount": 3,
+      "changedLines": 437,
+      "rankHash": "3ad2387f41965322da146748edaf0e68068fc2e768c7057fdcb5bb0aa7a19c69"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10811,
+        "title": "fix(expect): handle nullish toHaveProperty values (fix #10735)",
+        "url": "https://github.com/vitest-dev/vitest/pull/10811"
+      },
+      "issue": {
+        "number": 10735,
+        "url": "https://github.com/vitest-dev/vitest/issues/10735",
+        "title": "expect(null | undefined).toHaveProperty() throws an internal TypeError instead of a clean matcher error"
+      },
+      "mergedAt": "2026-08-11T11:35:27Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 20,
+      "rankHash": "28746fb189a0196d80ef03ea1cec416d4efc9b187afaa1330a21c36bcda0cf21"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10768,
+        "title": "fix(reporters): print parent describe suites when the passed-test list is hidden (fix #10606)",
+        "url": "https://github.com/vitest-dev/vitest/pull/10768"
+      },
+      "issue": {
+        "number": 10606,
+        "url": "https://github.com/vitest-dev/vitest/issues/10606",
+        "title": "5.0.0-beta.5 bench: `describe` labels and nesting not displayed correctly when running in CI"
+      },
+      "mergedAt": "2026-08-11T11:54:22Z",
+      "changedFileCount": 4,
+      "implementationFileCount": 1,
+      "testFileCount": 3,
+      "changedLines": 126,
+      "rankHash": "ebb851bde56ce22e323e899ebfa6965a701f7eb3086648870165ca01abe97ca4"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10917,
+        "title": "feat(browser)!: save failure screenshots in `attachmentsDir`",
+        "url": "https://github.com/vitest-dev/vitest/pull/10917"
+      },
+      "issue": {
+        "number": 10859,
+        "url": "https://github.com/vitest-dev/vitest/issues/10859",
+        "title": "Failure screenshots are mingled with visual regression screenshots"
+      },
+      "mergedAt": "2026-08-11T12:11:54Z",
+      "changedFileCount": 7,
+      "implementationFileCount": 3,
+      "testFileCount": 4,
+      "changedLines": 29,
+      "rankHash": "99f8ea839e07a40190c70e874b8586d6e8055a775d597476bc92558873ccb797"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 11033,
+        "title": "perf(vm): don't prewarm modules the worker never requests",
+        "url": "https://github.com/vitest-dev/vitest/pull/11033"
+      },
+      "issue": {
+        "number": 11032,
+        "url": "https://github.com/vitest-dev/vitest/issues/11032",
+        "title": "vm pools: `prewarmModuleGraph` transforms subtrees that `vi.mock(..., factory)` replaces"
+      },
+      "mergedAt": "2026-08-24T13:38:48Z",
+      "changedFileCount": 7,
+      "implementationFileCount": 6,
+      "testFileCount": 1,
+      "changedLines": 303,
+      "rankHash": "2b12d4b7adae374bf4d41d38db7eed94b1e4fb0a6f0c217e87e8cf05b11cf431"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10880,
+        "title": "fix(browser): resolve `connectTimeout` from the project config (fix #10879)",
+        "url": "https://github.com/vitest-dev/vitest/pull/10880"
+      },
+      "issue": {
+        "number": 10879,
+        "url": "https://github.com/vitest-dev/vitest/issues/10879",
+        "title": "`browser.connectTimeout` is ignored when set on a project — only the root config is read"
+      },
+      "mergedAt": "2026-08-07T11:52:23Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 2,
+      "testFileCount": 1,
+      "changedLines": 34,
+      "rankHash": "28f1b5cc0cb9684d013a4c841434fe4a089de03cf77affb1cb1a445b7d3cf603"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 11021,
+        "title": "fix(browser): preserve trace popover state (fix #10906)",
+        "url": "https://github.com/vitest-dev/vitest/pull/11021"
+      },
+      "issue": {
+        "number": 10906,
+        "url": "https://github.com/vitest-dev/vitest/issues/10906",
+        "title": "Preserve popups in browser mode trace"
+      },
+      "mergedAt": "2026-08-21T07:55:11Z",
+      "changedFileCount": 4,
+      "implementationFileCount": 1,
+      "testFileCount": 2,
+      "changedLines": 52,
+      "rankHash": "83977533bc2fbeb221ec4bf690664082d1b3a8f34e2778177a64bfd0084bf5e6"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 11023,
+        "title": "fix(coverage): v8 to ignore Vite SSR's generated import bindings",
+        "url": "https://github.com/vitest-dev/vitest/pull/11023"
+      },
+      "issue": {
+        "number": 11012,
+        "url": "https://github.com/vitest-dev/vitest/issues/11012",
+        "title": "Coverage: a file’s statement map depends on which project reports it, so merged reports show an uncoverable statement"
+      },
+      "mergedAt": "2026-08-20T13:59:14Z",
+      "changedFileCount": 4,
+      "implementationFileCount": 1,
+      "testFileCount": 3,
+      "changedLines": 64,
+      "rankHash": "87f5f5b314daea8fff8d99db74762eae1f91413ba25368aadeb207d042bc81fb"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 11020,
+        "title": "fix(worker): bind stdio's early in case overriden",
+        "url": "https://github.com/vitest-dev/vitest/pull/11020"
+      },
+      "issue": {
+        "number": 11018,
+        "url": "https://github.com/vitest-dev/vitest/issues/11018",
+        "title": "version 5.0.0-RC1-2 hangs indefinitely"
+      },
+      "mergedAt": "2026-08-20T09:46:23Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 15,
+      "rankHash": "066c4ae81af4ef1549bcbd3e9a3d04d23029ddb162c729064cf17fd59acd1b34"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 6181,
+        "title": "fix(spy): fix `mockImplementation` for function overload and unions",
+        "url": "https://github.com/vitest-dev/vitest/pull/6181"
+      },
+      "issue": {
+        "number": 6155,
+        "url": "https://github.com/vitest-dev/vitest/issues/6155",
+        "title": "Type error on mockImplementation with call signature in object type"
+      },
+      "mergedAt": "2024-07-22T08:58:34Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 26,
+      "rankHash": "d303ef6236046a63482cbac22f01e9247a1ba00d3c0db19249f9c0d1776b5e27"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10541,
+        "title": "fix: stale mock metadata breaks automocking with isolate:false (fix #10145)",
+        "url": "https://github.com/vitest-dev/vitest/pull/10541"
+      },
+      "issue": {
+        "number": 10145,
+        "url": "https://github.com/vitest-dev/vitest/issues/10145",
+        "title": "Automocking silently breaks with isolate: false + mixed mock types and resolve aliases"
+      },
+      "mergedAt": "2026-08-05T16:56:27Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 88,
+      "rankHash": "96227aab3d274a6320cce555ef3d5dd0f88616d6c3fa3dd3289d7b054e978ea5"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10988,
+        "title": "fix: combine multiple --project filters correctly",
+        "url": "https://github.com/vitest-dev/vitest/pull/10988"
+      },
+      "issue": {
+        "number": 10491,
+        "url": "https://github.com/vitest-dev/vitest/issues/10491",
+        "title": "Multiple negated --project filters don't combine: a second !name re-includes everything the first excluded"
+      },
+      "mergedAt": "2026-08-18T09:56:42Z",
+      "changedFileCount": 8,
+      "implementationFileCount": 4,
+      "testFileCount": 2,
+      "changedLines": 124,
+      "rankHash": "0e11b957058f703dc546259383d7714ec3220fbdf1bbb513f91bc13ba38f671a"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10978,
+        "title": "fix(snapshot): reject when `toMatchFileSnapshot` uses same snapshot file as `toMatchSnapshot`",
+        "url": "https://github.com/vitest-dev/vitest/pull/10978"
+      },
+      "issue": {
+        "number": 8655,
+        "url": "https://github.com/vitest-dev/vitest/issues/8655",
+        "title": "Vitest removes toMatchFileSnapshot snapshots if the filename matches one from toMatchSnapshot"
+      },
+      "mergedAt": "2026-08-18T06:59:57Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 58,
+      "rankHash": "6ad96feb9f82b33ee15622fd1175337e1add203c98144885f05f180a21c3c8a6"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10975,
+        "title": "fix(browser): don't redirect vitest in client environment",
+        "url": "https://github.com/vitest-dev/vitest/pull/10975"
+      },
+      "issue": {
+        "number": 10944,
+        "url": "https://github.com/vitest-dev/vitest/issues/10944",
+        "title": "\"Vitest failed to find the runner\" in Browser Mode since v5.0.0-beta.7, including rc.1"
+      },
+      "mergedAt": "2026-08-17T13:10:44Z",
+      "changedFileCount": 8,
+      "implementationFileCount": 2,
+      "testFileCount": 6,
+      "changedLines": 105,
+      "rankHash": "10a6fe363d05066cd1e8751764093027138d9e9ebe4ae5339f1f65946d6711c3"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10887,
+        "title": "feat(reporters): display `test.name` in GitHub Actions reporter summary header",
+        "url": "https://github.com/vitest-dev/vitest/pull/10887"
+      },
+      "issue": {
+        "number": 9992,
+        "url": "https://github.com/vitest-dev/vitest/issues/9992",
+        "title": "Improve GitHub actions reporter with test name if set in config"
+      },
+      "mergedAt": "2026-08-17T13:13:42Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 165,
+      "rankHash": "c8a0186a311b7ea4decee5d336be67aa8bff392f9677dbdf3ac241d8e6298922"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10956,
+        "title": "fix(browser): fail instead of hanging when the browser stops responding",
+        "url": "https://github.com/vitest-dev/vitest/pull/10956"
+      },
+      "issue": {
+        "number": 10151,
+        "url": "https://github.com/vitest-dev/vitest/issues/10151",
+        "title": "Browser mode: orchestrator websocket has no heartbeat and can be dropped by intermediaries"
+      },
+      "mergedAt": "2026-08-17T09:08:35Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 3,
+      "testFileCount": 2,
+      "changedLines": 218,
+      "rankHash": "a8904b55c94f88a709fc8ef12f732715d8aa09d1ed9029cf6efa72058a26c9e3"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10928,
+        "title": "fix: revive global concurrency limit for test lifecycle",
+        "url": "https://github.com/vitest-dev/vitest/pull/10928"
+      },
+      "issue": {
+        "number": 10530,
+        "url": "https://github.com/vitest-dev/vitest/issues/10530",
+        "title": "maxConcurrency is not enforced across sibling describe blocks: concurrent tests pile up between beforeEach and afterEach"
+      },
+      "mergedAt": "2026-08-14T12:12:34Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 116,
+      "rankHash": "503160fcfb4947d3d344202a0cfc6b085997d77b34eb58499940a4bb31e005a9"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10707,
+        "title": "fix(spy): point ESM namespace spy error to module mocking docs",
+        "url": "https://github.com/vitest-dev/vitest/pull/10707"
+      },
+      "issue": {
+        "number": 9467,
+        "url": "https://github.com/vitest-dev/vitest/issues/9467",
+        "title": "Misleading error messages relating to spyOn modules. - \"Cannot spy on export  \"[X]\". Module namespace is not configurable in ESM\""
+      },
+      "mergedAt": "2026-07-29T06:25:10Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 2,
+      "changedLines": 37,
+      "rankHash": "4ae7e8b6dd6e6436847ceb0603de3a12cb283d6a318e6ab33fd8de0624c85a94"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10705,
+        "title": "Fixes: 10697",
+        "url": "https://github.com/vitest-dev/vitest/pull/10705"
+      },
+      "issue": {
+        "number": 10697,
+        "url": "https://github.com/vitest-dev/vitest/issues/10697",
+        "title": "--typecheck reports \"no type errors\" (exit 0) when the tsc child process runs out of memory"
+      },
+      "mergedAt": "2026-07-29T06:26:49Z",
+      "changedFileCount": 6,
+      "implementationFileCount": 2,
+      "testFileCount": 4,
+      "changedLines": 107,
+      "rankHash": "2fc737f8f990ee0c96bd02664704f17d77acf1acafa611622989ca252bcbe757"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10589,
+        "title": "fix: collect in-source tests when the module is cached (fix #10577)",
+        "url": "https://github.com/vitest-dev/vitest/pull/10589"
+      },
+      "issue": {
+        "number": 10577,
+        "url": "https://github.com/vitest-dev/vitest/issues/10577",
+        "title": "Some in-source tests are not detected when `isolate: false` and `maxWorkers: 1` are set"
+      },
+      "mergedAt": "2026-07-29T07:34:18Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 120,
+      "rankHash": "40cd0e121ae7b865ffd33ba9cf5a18e1d801b40325ff310011bd352ae3782789"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10757,
+        "title": "feat!: enable mocking Temporal without fake timers",
+        "url": "https://github.com/vitest-dev/vitest/pull/10757"
+      },
+      "issue": {
+        "number": 10345,
+        "url": "https://github.com/vitest-dev/vitest/issues/10345",
+        "title": "`Temporal.Now` is not mocked when timer mocks are enabled"
+      },
+      "mergedAt": "2026-07-29T07:32:29Z",
+      "changedFileCount": 7,
+      "implementationFileCount": 3,
+      "testFileCount": 1,
+      "changedLines": 170,
+      "rankHash": "e54932b7d8a63d947d2bb7e498299e8f9296549cf277dd99e624ad0b5ac92ece"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 10839,
+        "title": "fix(runner): don't fail collection when accessing `error.stack` throws",
+        "url": "https://github.com/vitest-dev/vitest/pull/10839"
+      },
+      "issue": {
+        "number": 798,
+        "url": "https://github.com/vitest-dev/vscode/issues/798",
+        "title": "Object.freeze(Object.prototype) crashing vitest process"
+      },
+      "mergedAt": "2026-07-29T14:43:52Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 3,
+      "testFileCount": 2,
+      "changedLines": 60,
+      "rankHash": "6f5d5b711084fce413c61958fe66126918b5f003a78bb54c6c28b1426f295d1f"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9381,
+        "title": "fix(browser): ignore channel events in a tester opened as a top-level window (fix #9379)",
+        "url": "https://github.com/vitest-dev/vitest/pull/9381"
+      },
+      "issue": {
+        "number": 9379,
+        "url": "https://github.com/vitest-dev/vitest/issues/9379",
+        "title": "Browser mode: Infinite 'Unknown event: response:response:...' loop when running multiple click tests"
+      },
+      "mergedAt": "2026-07-29T07:35:16Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 78,
+      "rankHash": "e113b2af31a3bf2292fa47ce1245479ae40a2d740e5ec87d089429a79a8953f8"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9584,
+        "title": "fix: fix ssr environment runner in project",
+        "url": "https://github.com/vitest-dev/vitest/pull/9584"
+      },
+      "issue": {
+        "number": 9324,
+        "url": "https://github.com/vitest-dev/vitest/issues/9324",
+        "title": "Forced noExternal causes Vitest to fail with Astro components"
+      },
+      "mergedAt": "2026-02-04T13:13:42Z",
+      "changedFileCount": 6,
+      "implementationFileCount": 1,
+      "testFileCount": 5,
+      "changedLines": 45,
+      "rankHash": "585da612353f4f1ff714a041812faf8fcebf63f994f60de6fc14c3d77c1d68d1"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9596,
+        "title": "fix: remove the `.name` from statically collected test",
+        "url": "https://github.com/vitest-dev/vitest/pull/9596"
+      },
+      "issue": {
+        "number": 660,
+        "url": "https://github.com/vitest-dev/vscode/issues/660",
+        "title": "Always have to run tests twice when the main describe is not a string"
+      },
+      "mergedAt": "2026-02-06T10:06:36Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 26,
+      "rankHash": "4b84a34fc28d46b66bfbf20bc9c1f4857542f2a70eb3ecf11d99de51a09ecdaa"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9152,
+        "title": "fix: apply source maps for external module stack trace",
+        "url": "https://github.com/vitest-dev/vitest/pull/9152"
+      },
+      "issue": {
+        "number": 9003,
+        "url": "https://github.com/vitest-dev/vitest/issues/9003",
+        "title": "stack trace without source maps of external modules"
+      },
+      "mergedAt": "2026-02-06T10:06:06Z",
+      "changedFileCount": 6,
+      "implementationFileCount": 2,
+      "testFileCount": 1,
+      "changedLines": 99,
+      "rankHash": "cef958a78e23cbd56370d5a9e430e7be005d33b284e7ecc06193a5dd20f33a4d"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9661,
+        "title": "fix: align `VitestRunnerConfig` optional fields with `SerializedConfig`",
+        "url": "https://github.com/vitest-dev/vitest/pull/9661"
+      },
+      "issue": {
+        "number": 9126,
+        "url": "https://github.com/vitest-dev/vitest/issues/9126",
+        "title": "Various errors under `exactOptionalPropertyTypes`"
+      },
+      "mergedAt": "2026-02-15T11:00:39Z",
+      "changedFileCount": 6,
+      "implementationFileCount": 1,
+      "testFileCount": 4,
+      "changedLines": 63,
+      "rankHash": "4f79ab961d869d48e52ea4ee59bbb8c4658887e89582fed5fe532d399a5e7c32"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9658,
+        "title": "fix: handle Symbol values in format utility",
+        "url": "https://github.com/vitest-dev/vitest/pull/9658"
+      },
+      "issue": {
+        "number": 9377,
+        "url": "https://github.com/vitest-dev/vitest/issues/9377",
+        "title": "[Bug] Browser mode: Cannot convert a Symbol value to a string in console.error"
+      },
+      "mergedAt": "2026-02-15T11:01:34Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 13,
+      "rankHash": "961457d11f805137918fae22c9c7fd5464a46614f6f692ee7d6681eccb296227"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9670,
+        "title": "fix: don't continue when `aroundEach/All` setup timed out",
+        "url": "https://github.com/vitest-dev/vitest/pull/9670"
+      },
+      "issue": {
+        "number": 9659,
+        "url": "https://github.com/vitest-dev/vitest/issues/9659",
+        "title": "Race condition with `aroundEach/All` setup timeout errors can cause inner `runTest/Suite` to be called"
+      },
+      "mergedAt": "2026-02-15T10:51:43Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 156,
+      "rankHash": "a69edd89af80d14c75f5a01275cdf6b8a70a447e54ee107ef913d3260c571ca3"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9576,
+        "title": "fix: log seed when only `sequence.shuffle.tests` is enabled",
+        "url": "https://github.com/vitest-dev/vitest/pull/9576"
+      },
+      "issue": {
+        "number": 9557,
+        "url": "https://github.com/vitest-dev/vitest/issues/9557",
+        "title": "Seed is not logged when only `sequence.shuffle.tests` is enabled"
+      },
+      "mergedAt": "2026-02-08T11:36:11Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 2,
+      "testFileCount": 1,
+      "changedLines": 53,
+      "rankHash": "ad74bdc24952578e2e926132911d953f93b2b49857467c2ddf315cbd8e7ec85f"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9679,
+        "title": "fix: preserve stack trace of `resolves/rejects` chained assertion error",
+        "url": "https://github.com/vitest-dev/vitest/pull/9679"
+      },
+      "issue": {
+        "number": 9678,
+        "url": "https://github.com/vitest-dev/vitest/issues/9678",
+        "title": "`github-actions` reporter fails to print async assertion failures"
+      },
+      "mergedAt": "2026-02-17T09:24:31Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 154,
+      "rankHash": "53010aa400e2a1a279a615f7c9cb0e38b38a3b78d562bf98140684b246c7a6ba"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9651,
+        "title": "fix: handle module-sync condition in vmThreads/vmForks require (fix #9650)",
+        "url": "https://github.com/vitest-dev/vitest/pull/9651"
+      },
+      "issue": {
+        "number": 9650,
+        "url": "https://github.com/vitest-dev/vitest/issues/9650",
+        "title": "vmThreads pool: custom `require()` matches `module-sync` condition but cannot load ESM"
+      },
+      "mergedAt": "2026-02-17T13:16:59Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 2,
+      "changedLines": 190,
+      "rankHash": "f343c46c7ec69edab6234bc37765c7d860a2f93945378bfa0ef26e789c1b3ec0"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9687,
+        "title": "fix: recursively autospy module object",
+        "url": "https://github.com/vitest-dev/vitest/pull/9687"
+      },
+      "issue": {
+        "number": 9558,
+        "url": "https://github.com/vitest-dev/vitest/issues/9558",
+        "title": "vi.mock with spy: true stops working in Vitest 4"
+      },
+      "mergedAt": "2026-02-19T10:00:23Z",
+      "changedFileCount": 4,
+      "implementationFileCount": 1,
+      "testFileCount": 3,
+      "changedLines": 31,
+      "rankHash": "dc4e0332b769bd3947c6d2f95a93b482b96f436229d7fa8613d9a64b924f7b4a"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9702,
+        "title": "feat: support playwright `launchOptions` with `connectOptions`",
+        "url": "https://github.com/vitest-dev/vitest/pull/9702"
+      },
+      "issue": {
+        "number": 9660,
+        "url": "https://github.com/vitest-dev/vitest/issues/9660",
+        "title": "support `launchOptions` with `connectOptions` on browser mode playwright"
+      },
+      "mergedAt": "2026-02-20T11:26:35Z",
+      "changedFileCount": 8,
+      "implementationFileCount": 1,
+      "testFileCount": 4,
+      "changedLines": 141,
+      "rankHash": "25a5a1b9a13d211af231ea5b40385fdd8f48c1e411f1dff0db4953fdf0d7ec85"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9707,
+        "title": "fix(runner): mark repeated tests as finished on last run",
+        "url": "https://github.com/vitest-dev/vitest/pull/9707"
+      },
+      "issue": {
+        "number": 9689,
+        "url": "https://github.com/vitest-dev/vitest/issues/9689",
+        "title": "Finished tests reported as pending when using `retry` and `repeats`"
+      },
+      "mergedAt": "2026-02-21T19:07:20Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 2,
+      "changedLines": 19,
+      "rankHash": "0f3cfc309eb05afd0b287003948d3dc54601e4cae3c291cca56e61eb9cc9b21b"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9748,
+        "title": "fix: fix re-mocking virtual module",
+        "url": "https://github.com/vitest-dev/vitest/pull/9748"
+      },
+      "issue": {
+        "number": 9742,
+        "url": "https://github.com/vitest-dev/vitest/issues/9742",
+        "title": "Virtual module mocking issue in Vitest 4"
+      },
+      "mergedAt": "2026-02-26T08:54:11Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 1,
+      "testFileCount": 4,
+      "changedLines": 97,
+      "rankHash": "ed234c74113b6fc047f570c67bea8f6e26fac1a3ef67c68afc2bb9d6e64faac2"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9767,
+        "title": "fix: fix `URL.name` on jsdom",
+        "url": "https://github.com/vitest-dev/vitest/pull/9767"
+      },
+      "issue": {
+        "number": 9761,
+        "url": "https://github.com/vitest-dev/vitest/issues/9761",
+        "title": "`URL` class name when using `jsdom` is `URL$1` starting with v4.07"
+      },
+      "mergedAt": "2026-03-02T12:37:34Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 13,
+      "rankHash": "9fa6fba81d97c2ae2beb9d0d94e70c6d81a1e0a907c93c2ebfb392d00b567bea"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9727,
+        "title": " fix: don't silence reporter errors from test runtime events handler in normal run and --merge-reports",
+        "url": "https://github.com/vitest-dev/vitest/pull/9727"
+      },
+      "issue": {
+        "number": 9642,
+        "url": "https://github.com/vitest-dev/vitest/issues/9642",
+        "title": "Reporter error is silenced when `--merge-reports`"
+      },
+      "mergedAt": "2026-03-03T08:46:14Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 2,
+      "testFileCount": 3,
+      "changedLines": 419,
+      "rankHash": "d50b1a34a29c801c44604d7482fb92b2fc27b4bac5aefce30efd907a74528ecc"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9772,
+        "title": "fix: fix `vi.importActual()` for virtual modules",
+        "url": "https://github.com/vitest-dev/vitest/pull/9772"
+      },
+      "issue": {
+        "number": 9771,
+        "url": "https://github.com/vitest-dev/vitest/issues/9771",
+        "title": "`vi.importActual()` issue with virtual modules in Vitest 4"
+      },
+      "mergedAt": "2026-03-04T16:04:47Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 4,
+      "testFileCount": 1,
+      "changedLines": 213,
+      "rankHash": "c069304b14052be674bb481f73ed1ef4e0dc74eb63ff67faccd32815c4185272"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9760,
+        "title": "fix: allow hyphens in project config file name pattern",
+        "url": "https://github.com/vitest-dev/vitest/pull/9760"
+      },
+      "issue": {
+        "number": 9739,
+        "url": "https://github.com/vitest-dev/vitest/issues/9739",
+        "title": "fix: support hyphens in config file name pattern"
+      },
+      "mergedAt": "2026-03-05T08:58:49Z",
+      "changedFileCount": 3,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 39,
+      "rankHash": "c0f0b1a6bf6b21aba35ce3e62ac37f1838210a4e871de8d6478e56969e33a778"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9774,
+        "title": "fix: manual and redirect mock shouldn't `load` or `transform` original module",
+        "url": "https://github.com/vitest-dev/vitest/pull/9774"
+      },
+      "issue": {
+        "number": 9622,
+        "url": "https://github.com/vitest-dev/vitest/issues/9622",
+        "title": "mocking module with factory function transforms the original module"
+      },
+      "mergedAt": "2026-03-05T09:03:42Z",
+      "changedFileCount": 5,
+      "implementationFileCount": 3,
+      "testFileCount": 1,
+      "changedLines": 210,
+      "rankHash": "f8e630193f9a487df29c0a7b20d3bb3ddbffe8727136d8868ed60a3e68b6bf4f"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9781,
+        "title": "fix: `hideSkippedTests` should not hide `test.todo` (fix #9562)",
+        "url": "https://github.com/vitest-dev/vitest/pull/9781"
+      },
+      "issue": {
+        "number": 9562,
+        "url": "https://github.com/vitest-dev/vitest/issues/9562",
+        "title": "`hideSkippedTests` removes `it.todo` tests from reports; does not affect test summary"
+      },
+      "mergedAt": "2026-03-05T09:08:41Z",
+      "changedFileCount": 8,
+      "implementationFileCount": 5,
+      "testFileCount": 3,
+      "changedLines": 54,
+      "rankHash": "05da8f907956f3022eb4d4fdbc96b64536a20cbf0fd31da5ed9490a8e75d984b"
+    },
+    {
+      "repository": "vitest-dev/vitest",
+      "language": "typescript",
+      "pullRequest": {
+        "number": 9803,
+        "title": "fix(browser): skip esbuild.legalComments when using rolldown-vite",
+        "url": "https://github.com/vitest-dev/vitest/pull/9803"
+      },
+      "issue": {
+        "number": 9800,
+        "url": "https://github.com/vitest-dev/vitest/issues/9800",
+        "title": "\"Both esbuild and oxc options were set\" on Vite 8.0.0-beta.16 + Vitest 4.1.0-beta.6"
+      },
+      "mergedAt": "2026-03-06T08:42:01Z",
+      "changedFileCount": 2,
+      "implementationFileCount": 1,
+      "testFileCount": 1,
+      "changedLines": 48,
+      "rankHash": "7e60a78821d412b6ab59c19a9dfcaf40420bcdccdfc15d191c22da15a4aa7f89"
+    }
+  ]
+}

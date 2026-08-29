@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "5.0.0-candidate.1",
+  "status": "frozen-before-palace-observation",
+  "generatedAt": "2026-08-29T16:39:31.038Z",
+  "seed": "92e2b27ff984c430401761f917ebe841cbbdf522e8ca44254aa083371281b157",
+  "candidate": {
+    "repository": "https://github.com/lohchanhin/vertex-palace",
+    "sourceCommit": "8f76d7a36f3430aa7b576c2462f8351936c31ae5",
+    "packageVersion": "0.4.0-development"
+  },
+  "publicBaseline": {
+    "package": "vertex-palace",
+    "version": "0.4.0"
+  },
+  "comparison": {
+    "static": [
+      "candidate",
+      "public-0.4.0"
+    ],
+    "agentGate": [
+      "candidate",
+      "control"
+    ],
+    "executionOrder": "sequential-balanced",
+    "parallelExecution": false
+  },
+  "gates": {
+    "macroCoreCoverageMinimum": 0.9,
+    "macroRouteFocusMinimum": 0.7,
+    "perTargetCoverageMinimum": 0.5,
+    "perTargetFocusMinimum": 0.4,
+    "contextTokenMaximum": 6000,
+    "deterministicRepetitions": 2,
+    "agentExecutionRequiresStaticPass": true
+  },
+  "targets": [
+    {
+      "id": "click-2273-local-complete",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "local-complete",
+      "baseCommit": "afc86c748c214939e2293ec00879d85293bcd9fa",
+      "mergeCommit": "8c842a43e884c5e69032223563649f4389e37dd8",
+      "issue": {
+        "number": 2193,
+        "title": "`ctx.color` is ignored in `ClickException.show()`",
+        "url": "https://github.com/pallets/click/issues/2193"
+      },
+      "pullRequest": {
+        "number": 2273,
+        "title": "Pass 'color' explicitly in error echoing",
+        "url": "https://github.com/pallets/click/pull/2273"
+      },
+      "task": "`ctx.color` is ignored in `ClickException.show()`\n\nI have tried to set `ctx.color = True` as suggested in #1090 in order to enable colour output in Gitlab CI. This worked out great for normal `click.secho` but unfortunately it does not work for output generated via raising `ClickException` subclass. Essentially the `echo` inside `ClickException.show()` ignores `ctx.color`.\n\nAfter some digging, I am almost sure this is because the `get_current_context` returns `None`, there is no context when exceptions are handled:\nhttps://github.com/pallets/click/blob/49164faca678dd476f1b11a2584fd0e1c6be70b2/src/click/globals.py#L63\n\n## Test code\n```python\nimport click\nfrom click import ClickException\n\nclass CLIError(ClickException):\n    def format_message(self) -> str:\n        return click.style(self.message, fg='red')\n\n@click.command()\n@click.option('--ansi', is_flag=True)\n@click.pass_context\ndef cli(ctx, ansi):\n    if ansi:\n        ctx.color = True\n\n    click.secho('some output', fg='green')\n\n    raise CLIError('some error')\n\nif __name__ == '__main__':\n    cli()\n```\n\n## Test cases\n1. `python test.py`\n2. `python test.py --ansi`\n3. `python test.py &> test.log; cat test.log`\n4. `python test.py --ansi &> test.log; cat test.log`\n\n## Expected behaviour\nIn all cases except 3) there is a green `some output` and red `some error` in output.\n\nIn 3) there is no colouring.\n\n## Actual behaviour\nEverything is as expected except 4) where `some error` is not coloured.\n\n## Environment\n- Python version: 3.7.9\n- Click version: 8.0.3",
+      "verification": [
+        "python -m pytest -q tests/test_testing.py"
+      ],
+      "selectionHash": "10f96f4ce592a38fdf5ae90d1a3014dfee2d94dd3f27ebfb11fdbccf68bb4479"
+    },
+    {
+      "id": "click-3764-reference-grounded",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "reference-grounded",
+      "baseCommit": "150d1071d69c5cdad7de78590013ffe56cf9e3bb",
+      "mergeCommit": "fc5c7f45da0a4443f60ba2d322fe4bf829977739",
+      "issue": {
+        "number": 3731,
+        "title": "echo_via_pager on Windows fails with WinError 32, masking a TypeError from writing str to a binary temp file (8.4.0 regression)",
+        "url": "https://github.com/pallets/click/issues/3731"
+      },
+      "pullRequest": {
+        "number": 3764,
+        "title": "Fix error reporting on Windows when an error is raised in the pager ",
+        "url": "https://github.com/pallets/click/pull/3764"
+      },
+      "task": "Fix https://github.com/pallets/click/issues/3731. Add focused regression coverage and preserve existing behavior.",
+      "verification": [
+        "python -m pytest -q tests/test_termui.py"
+      ],
+      "selectionHash": "7fc42b1553ef0893faf067d3f2c242dbeecf07952231a727b836ad0afe6cad8a"
+    },
+    {
+      "id": "click-2622-high-connectivity",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "high-connectivity",
+      "baseCommit": "1787497713fa389435ed732c9b26274c3cdc458d",
+      "mergeCommit": "4271fe283dc9365563aebb369ada8d20eee015a8",
+      "issue": {
+        "number": 2621,
+        "title": "Allow customizing fail message for invalid choice in `click.types.Choice`",
+        "url": "https://github.com/pallets/click/issues/2621"
+      },
+      "pullRequest": {
+        "number": 2622,
+        "title": "feat: new method for choice fail",
+        "url": "https://github.com/pallets/click/pull/2622"
+      },
+      "task": "Allow customizing fail message for invalid choice in `click.types.Choice`\n\nMove the fail art of `convert()` in the `Choice` class to a new method `get_invalid_choice_fail_message(self)` so in my subclass of `click.Choice` I can customize the way it shows the failing value for the choice\n\nSome CLI option choices are multi-part meaning they are separated by some value, like a comma separated list for example. Maybe each section of this value represents a different part of a schema and it is nice to show a custom message about the specific part.\n\nContrived version:\nLet says my choices are `[\"maine::goat\", \"maine::themepark\"]` and I give it \"maine::toast\"`, it'd be nice to say the `maine` part was correct and the `toast` part was not.",
+      "verification": [
+        "python -m pytest -q tests/test_types.py"
+      ],
+      "selectionHash": "b4bd65c6ff2fc6d04781394475464e65ed6a60792925e9dfb9ea8c429fa00c20"
+    },
+    {
+      "id": "cobra-2356-local-complete",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "local-complete",
+      "baseCommit": "61968e893eee2f27696c2fbc8e34fa5c4afaf7c4",
+      "mergeCommit": "746ef07158728502482cea9f880a6f4b21ef29a9",
+      "issue": {
+        "number": 2257,
+        "title": "Completions modify os.Args",
+        "url": "https://github.com/spf13/cobra/issues/2257"
+      },
+      "pullRequest": {
+        "number": 2356,
+        "title": "fix: prevent completions from mutating os.Args via append side effect",
+        "url": "https://github.com/spf13/cobra/pull/2356"
+      },
+      "task": "Completions modify os.Args\n\nI'm trying to workaround https://github.com/spf13/cobra/issues/1877 by inspecting `os.Args` by hand. In some cases cobra accidentally inserts `--` into `os.Args`.\n\nMinimal example:\n```go\npackage main\n\nimport (\n\t\"os\"\n\t\"strings\"\n\n\t\"github.com/spf13/cobra\"\n)\n\nfunc main() {\n\tcmd := &cobra.Command{\n\t\tTraverseChildren: true,\n\t\tValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]cobra.Completion, cobra.ShellCompDirective) {\n\t\t\tcobra.CompErrorln(strings.Join(os.Args[1:], \", \"))\n\t\t\treturn nil, cobra.ShellCompDirectiveDefault\n\t\t},\n\t}\n\tif err := cmd.Execute(); err != nil {\n\t\tpanic(err)\n\t}\n}\n\n```\n\nExpected behaviour:\n```console\n$ go run . __complete x\n[Debug] [Error] __complete, x\n:0\nCompletion ended with directive: ShellCompDirectiveDefault\n```\n\nActual behaviour:\n```console\n$ go run . __complete x\n[Debug] [Error] __complete, --\n:0\nCompletion ended with directive: ShellCompDirectiveDefault\n```",
+      "verification": [
+        "go test ./..."
+      ],
+      "selectionHash": "37af184f41425b9066a6ab7f2620a90e1d51b811913459c2b38381696f635107"
+    },
+    {
+      "id": "cobra-2241-reference-grounded",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "reference-grounded",
+      "baseCommit": "f98cf4216d3cb5235e6e0cd00ee00959deb1dc65",
+      "mergeCommit": "1995054b003053cc1e404bccfbf6d168e8731509",
+      "issue": {
+        "number": 2240,
+        "title": "Command passed to SetHelpFunc doesn't have a context",
+        "url": "https://github.com/spf13/cobra/issues/2240"
+      },
+      "pullRequest": {
+        "number": 2241,
+        "title": "Flow context to command in SetHelpFunc",
+        "url": "https://github.com/spf13/cobra/pull/2241"
+      },
+      "task": "Fix https://github.com/spf13/cobra/issues/2240. Add focused regression coverage and preserve existing behavior.",
+      "verification": [
+        "go test ./..."
+      ],
+      "selectionHash": "a52777af7eb7e7ad0746d09f9f185b095aef7ed78dd3ae6681f7d10b6bc302d5"
+    },
+    {
+      "id": "cobra-1956-high-connectivity",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "high-connectivity",
+      "baseCommit": "09d5664f34e3f7571560e48ccb74c8904b671e87",
+      "mergeCommit": "611e16c322e3b0413a9ba4e489fcd98ef904e406",
+      "issue": {
+        "number": 2015,
+        "title": "The use of text/template disables dead code elimination in all users of cobra",
+        "url": "https://github.com/spf13/cobra/issues/2015"
+      },
+      "pullRequest": {
+        "number": 1956,
+        "title": "Allow linker to perform deadcode elimination for program using Cobra",
+        "url": "https://github.com/spf13/cobra/pull/1956"
+      },
+      "task": "The use of text/template disables dead code elimination in all users of cobra\n\nAny use of `reflect.Value.MethodByName()` or `reflect.Type.MethodByName()` disables the DCE. The compiler assumes that these functions will look any method up, and cannot remove methods even if they are never called.\n\n`text/template` is a very notable offender in this respect. It calls `MethodByName()` with random strings extracted from template texts.\n\n`Command::UsageFunc()` and `Command::HelpFunc()` use `text/template`, hence they disable the DCE for all users of cobra. Since cobra is the go-to module to implement CLIs, this essentially disables DCE in all command line tools written in go.\n\nA low-level library that is used by almost everyone should not pessimise the code generation by disabling the DCE. I'd avoid `text/template` altogether.",
+      "verification": [
+        "go test ./..."
+      ],
+      "selectionHash": "bc4eea169c39811d9a44ea7145372296a43eed5c591f5b5e0506b74055e4f5d2"
+    },
+    {
+      "id": "fd-1852-local-complete",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "local-complete",
+      "baseCommit": "e3a6f8b7e735e24c96219053f8978813dbdc85f1",
+      "mergeCommit": "bf81fb98fae7731a11ad7ae4927d7083de02310c",
+      "issue": {
+        "number": 1727,
+        "title": "feature request: add `--prune-parent` flag",
+        "url": "https://github.com/sharkdp/fd/issues/1727"
+      },
+      "pullRequest": {
+        "number": 1852,
+        "title": "`--ignore-contain`: ignore directories containing a named entry.",
+        "url": "https://github.com/sharkdp/fd/pull/1852"
+      },
+      "task": "feature request: add `--prune-parent` flag\n\nI am building a tool to list git repos.  Currently, its implementation is\n\n```sh\nfd '^\\.(git|sl)$' \"$@\" \\\n\t--max-depth=10 --unrestricted --hidden --type=d --follow --prune \\\n\t--exec dirname {} \\; \\\n\t| sort\n\n```\n\nOn my machine this still is pretty slow (~1m).  Most of the time is being spent looking for repos in repos.  I don't care if my tool finds submodules, so I'd like to exclude them.  `--prune` will prevent `fd` from looking inside `.git/` but I want `fd` to not look at the whole repo. \n\nWould you accept a patch that adds `--prune-parent`, which would do the behavior I described?",
+      "verification": [
+        "cargo test"
+      ],
+      "selectionHash": "4fcb6a6f3237767f55593d47819d2291f7c5512bf6e6457f418c79621c24cd7b"
+    },
+    {
+      "id": "fd-1872-reference-grounded",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "reference-grounded",
+      "baseCommit": "5f95a781212e3efbc6d91ae50e0ca0ce0693da50",
+      "mergeCommit": "1a37650b2cca61c8f46fa6ec6c4b72f1356ef192",
+      "issue": {
+        "number": 1843,
+        "title": "[BUG] Hyperlinks fail on Windows when file path contains spaces",
+        "url": "https://github.com/sharkdp/fd/issues/1843"
+      },
+      "pullRequest": {
+        "number": 1872,
+        "title": "Fix Windows hyperlinks for paths with spaces",
+        "url": "https://github.com/sharkdp/fd/pull/1872"
+      },
+      "task": "Fix https://github.com/sharkdp/fd/issues/1843. Add focused regression coverage and preserve existing behavior.",
+      "verification": [
+        "cargo test"
+      ],
+      "selectionHash": "46ac6359f92e632d7e891402d754f90c1622b5b98f8522154411109300bb617b"
+    },
+    {
+      "id": "fd-1983-high-connectivity",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "high-connectivity",
+      "baseCommit": "0e74d5b75dfd65e756dcb934ff505682a6f18e83",
+      "mergeCommit": "42b2ab8a84ddedf80eeed9079128c60161f64658",
+      "issue": {
+        "number": 1963,
+        "title": "Add --exact option",
+        "url": "https://github.com/sharkdp/fd/issues/1963"
+      },
+      "pullRequest": {
+        "number": 1983,
+        "title": "feat: Add --exact argument to match exact filename",
+        "url": "https://github.com/sharkdp/fd/pull/1983"
+      },
+      "task": "Add --exact option\n\nThis was already requested by @KuroSensei in #627 back in 2020, specifically because `--fixed-strings` performs substring matching even when undesirable, and there's no way to turn that off. @sharkdp suggested that `--glob` can be used instead and closed the issue, but I say that this is not a good solution because globbing syntax can interfere and cause undesirable behavior.\n\n`--exact` would perform `--fixed-strings` without substring matching.",
+      "verification": [
+        "cargo test"
+      ],
+      "selectionHash": "d5d88b71fde6ce8d2ae21806487e5e2a24e0df72706ea5bf0072c18dd67bbd8e"
+    },
+    {
+      "id": "vitest-11081-local-complete",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "local-complete",
+      "baseCommit": "3cd019a0a952f43b79d85b2750d189ce0a17066d",
+      "mergeCommit": "488c04680e4fbb9e9bff796871ed665eef517e68",
+      "issue": {
+        "number": 11073,
+        "title": "`beforeEach`/`beforeAll` in setup file gets executed only for one test suite",
+        "url": "https://github.com/vitest-dev/vitest/issues/11073"
+      },
+      "pullRequest": {
+        "number": 11081,
+        "title": "fix: invalidate resolved setup files (fix #11073)",
+        "url": "https://github.com/vitest-dev/vitest/pull/11081"
+      },
+      "task": "`beforeEach`/`beforeAll` in setup file gets executed only for one test suite\n\n### Describe the bug\n\nWhen:\n* `beforeEach`/`beforeAll` is present in a setup file\n* the setup file is referenced in `setupFiles` without extension\n* the configuration contains `isolate: false` and `maxWorkers: 1` (which I'm using to [speed up the tests](https://github.com/vitest-dev/vitest/issues/7603#issuecomment-2707104785))\n\nthen the callback runs only for one test file (apparently one that happens to be executed first) instead of for all files.\n\nIn the repro, observe the console output: `beforeEach` is printed only once instead of 2 times.\n\n### Reproduction\n\nhttps://stackblitz.com/edit/vitest-dev-vitest-bw2va5tg?file=vite.config.js\n\n### System Info\n\n```shell\nSystem:\n    OS: Linux 5.0 undefined\n    CPU: (8) x64 Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz\n    Memory: 0 Bytes / 0 Bytes\n    Shell: 1.0 - /bin/jsh\n  Binaries:\n    Node: 22.22.3 - /usr/local/bin/node\n    Yarn: 1.22.19 - /usr/local/bin/yarn\n    npm: 10.8.2 - /usr/local/bin/npm\n    pnpm: 8.15.6 - /usr/local/bin/pnpm\n  npmPackages:\n    vitest: 4.1.11 => 4.1.11\n```\n\n### Used Package Manager\n\nnpm\n\n### Validations\n\n- [x] Follow our [Code of Conduct](https://github.com/vitest-dev/vitest/blob/main/CODE_OF_CONDUCT.md)\n- [x] Read the [Contributing Guidelines](https://github.com/vitest-dev/vitest/blob/main/CONTRIBUTING.md).\n- [x] Read the [docs](https://vitest.dev/guide/).\n- [x] Check that there isn't [already an issue](https://github.com/vitest-dev/vitest/issues) that reports the same bug to avoid creating a duplicate.\n- [x] Check that this is a concrete bug. For Q&A open a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions) or join our [Discord Chat Server](https://chat.vitest.dev).\n- [x] The provided reproduction is a [minimal reproducible example](https://stackoverflow.com/help/minimal-reproducible-example) of the bug.",
+      "verification": [
+        "pnpm vitest run test/e2e/test/setup-files.test.ts"
+      ],
+      "selectionHash": "622e4308de95c1a835780c4b1ba7f56a7cdc1bc277b9b2fffdeab486129f6185"
+    },
+    {
+      "id": "vitest-11020-reference-grounded",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "reference-grounded",
+      "baseCommit": "9e116fb52a9f6d438d7ba8e7adea4fb2d27e3a71",
+      "mergeCommit": "67ef7a19bd039aa91ce49741b7966f4d508ce361",
+      "issue": {
+        "number": 11018,
+        "title": "version 5.0.0-RC1-2 hangs indefinitely",
+        "url": "https://github.com/vitest-dev/vitest/issues/11018"
+      },
+      "pullRequest": {
+        "number": 11020,
+        "title": "fix(worker): bind stdio's early in case overriden",
+        "url": "https://github.com/vitest-dev/vitest/pull/11020"
+      },
+      "task": "Fix https://github.com/vitest-dev/vitest/issues/11018. Add focused regression coverage and preserve existing behavior.",
+      "verification": [
+        "pnpm vitest run test/unit/test/stubbed-process.test.ts"
+      ],
+      "selectionHash": "c34ce3d024a356ce6b8b119904ae83c07715bef01e45fd7572e8664cd41fb080"
+    },
+    {
+      "id": "vitest-9781-high-connectivity",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "high-connectivity",
+      "baseCommit": "4e6a23de14e4b95e22ed6ebd53b21f09b32b8a20",
+      "mergeCommit": "8181e06e765f4d043818b244c76795022fa78ff6",
+      "issue": {
+        "number": 9562,
+        "title": "`hideSkippedTests` removes `it.todo` tests from reports; does not affect test summary",
+        "url": "https://github.com/vitest-dev/vitest/issues/9562"
+      },
+      "pullRequest": {
+        "number": 9781,
+        "title": "fix: `hideSkippedTests` should not hide `test.todo` (fix #9562)",
+        "url": "https://github.com/vitest-dev/vitest/pull/9781"
+      },
+      "task": "`hideSkippedTests` removes `it.todo` tests from reports; does not affect test summary\n\n### Describe the bug\n\nCurrently, our codebase uses both `it.todo` (to signify unimplemented behaviors still needing tests) as well as `it.skipIf`/`it.runIf` to skip certain test cases inside certain entries of `describe.each` table-driven tests. \nThis results in numerous extra test cases that will literally never run under any circumstances and clog up summaries.\n\nI was looking into using `hideSkippedTests` to remove all skipped entries from test reports, but realized that it would also remove mention of `it.todo`s as well. (Given the test summary distinguishes between `todo` and `skip`, I'd assume the two would be treated differently here, or at least have the option to do so.)\nMoreover, the skipped test count inside the test summary remained the same with the option enabled and disabled, meaning it doesn't _truly_ hide all skipped tests as it claims to be the case.\n\n<img width=\"704\" height=\"324\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7f44ceb-df4e-4967-886b-158c969c7fe2\" />\n\n#### Notes\n\nThis can be circumvented by wrapping test cases inside `if` blocks to avoid them being collected altogether, though significantly less ergonomic.\nThis occurs with every single reporter I checked that has a summary, so it's probably not a reporter issue.\n\n### Reproduction\n\nhttps://stackblitz.com/edit/vitest-dev-vitest-hhsxu2z2?file=vite.config.ts\n\n`hideSkippedTests` on:\n<img width=\"515\" height=\"195\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/17c17de0-7c9d-4def-b372-4c63e246c09e\" />\n\n`hideSkippedTests` off:\n<img width=\"489\" height=\"289\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f97a4056-b91d-44b4-a002-05f7295d4b82\" />\n\n### System Info\nFrom Stackblitz:\n```shell\nSystem:\n    OS: Linux 5.0 undefined\n    CPU: (8) x64 Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz\n    Memory: 0 Bytes / 0 Bytes\n    Shell: 1.0 - /bin/jsh\n  Binaries:\n    Node: 20.19.1 - /usr/local/bin/node\n    Yarn: 1.22.19 - /usr/local/bin/yarn\n    npm: 10.8.2 - /usr/local/bin/npm\n    pnpm: 8.15.6 - /usr/local/bin/pnpm\n  npmPackages:\n    @vitest/ui: latest => 4.0.18 \n    vite: latest => 7.3.1 \n    vitest: latest => 4.0.18\n```\n\n### Used Package Manager\n\n`pnpm` (also happens with `npm` on stackblitz)\n\n### Validations\n\n- [x] Follow our [Code of Conduct](https://github.com/vitest-dev/vitest/blob/main/CODE_OF_CONDUCT.md)\n- [x] Read the [Contributing Guidelines](https://github.com/vitest-dev/vitest/blob/main/CONTRIBUTING.md).\n- [x] Read the [docs](https://vitest.dev/guide/).\n- [x] Check that there isn't [already an issue](https://github.com/vitest-dev/vitest/issues) that reports the same bug to avoid creating a duplicate.\n- [x] Check that this is a concrete bug. For Q&A open a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions) or join our [Discord Chat Server](https://chat.vitest.dev).\n- [x] The provided reproduction is a [minimal reproducible example](https://stackoverflow.com/help/minimal-reproducible-example) of the bug.",
+      "verification": [
+        "pnpm vitest run test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts test/cli/test/reporters/default.test.ts test/cli/test/reporters/verbose.test.ts"
+      ],
+      "selectionHash": "eb4aa39328b0c5ceb4a0b09fc13b938bbfd2684162109bb25e9f76149cbf15e5"
+    }
+  ]
+}

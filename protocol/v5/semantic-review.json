@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0.0",
+  "protocolVersion": "5.0.0-candidate.1",
+  "reviewedBeforeTargetRouting": true,
+  "replacementAfterReview": false,
+  "reviewMethod": "Whole-target review of the frozen issue text, complete historical pull-request diff, implementation truth, focused-test truth, and explicit auxiliary truth.",
+  "roundDecision": "proceed",
+  "summary": {
+    "reviewed": 12,
+    "coherent": 12,
+    "unrelated": 0,
+    "uncertain": 0
+  },
+  "targets": [
+    {"id":"click-2273-local-complete","verdict":"coherent","reason":"The exception color-state fix and focused CliRunner assertions directly reproduce the issue.","diffSha256":"ff1dd83f828db1b759c12704f743f941a6a1b1cd40c37b4fc1422342479c3b98"},
+    {"id":"click-3764-reference-grounded","verdict":"coherent","reason":"The tempfile close-before-unlink change, regression test, and changelog all address the Windows cleanup error that masked the original exception.","diffSha256":"7940a1a9df4b097b613a31bf1cc596e2d4afff206ac2646022b3c50774d80afe"},
+    {"id":"click-2622-high-connectivity","verdict":"coherent","reason":"The new Choice message hook, API documentation, changelog, and test form one feature-complete change.","diffSha256":"2463fcdf559082c309a6d986b73d68c3573bf7ce87176da5ee986a9e8908fa82"},
+    {"id":"cobra-2356-local-complete","verdict":"coherent","reason":"Copying the completion argument slice prevents os.Args mutation, and the test reproduces the shared-backing-array failure.","diffSha256":"2b9e9bd2eb886a2d65e4ff089191450069420c02d33c1df604c4ad72bebcbcd7"},
+    {"id":"cobra-2241-reference-grounded","verdict":"coherent","reason":"The help command now receives the execution context and the focused test asserts identity of that context.","diffSha256":"ce29e387bb4a387fd552aa4e70ba3e01c2f3cdb8c3b0891073610fe03b2d16fe"},
+    {"id":"cobra-1956-high-connectivity","verdict":"coherent","reason":"Default rendering is moved off text/template while preserving opt-in custom templates; dead-code elimination and inheritance tests cover the central behavior.","diffSha256":"1f1231826b160d1e3e0ef23b50250a67b4f7c88698db89878cc70457ce6a3c4f"},
+    {"id":"fd-1852-local-complete","verdict":"coherent","reason":"The accepted design names the option --ignore-contain instead of the issue's proposed --prune-parent, but CLI, config, traversal, docs, and tests all implement the same parent-tree pruning need.","diffSha256":"78d3f8b2ec10c35db3f4f1fa558b671992397ec2e1116e1cafb728b6daf40708"},
+    {"id":"fd-1872-reference-grounded","verdict":"coherent","reason":"The Windows file-URL authority slash fix, platform-aware assertion, and changelog directly address paths containing escaped characters.","diffSha256":"c18405e3432d05efb7f3d1a9f9327be3bd289993c3770d44fc223035eb357800"},
+    {"id":"fd-1983-high-connectivity","verdict":"coherent","reason":"The exact-match CLI option, anchored literal regex, documentation, conflict rules, and regression tests implement the requested non-substring behavior.","diffSha256":"adb4920c5aae286e01d68a7066b157d6e2ec2ec646d60ef4a55ea4a7d5b5b0f8"},
+    {"id":"vitest-11081-local-complete","verdict":"coherent","reason":"Setup-module invalidation is moved to the resolved module URL and the two-suite isolation-disabled reproduction verifies repeated hooks.","diffSha256":"7d9e509db61e8a2e3f783c802667fc4fa959f6eb0dc937ce0c81a925f7c328d9"},
+    {"id":"vitest-11020-reference-grounded","verdict":"coherent","reason":"Captured stdio writers prevent later process stubbing from breaking the flush path, with a focused regression test for the hang.","diffSha256":"7f1ba9fb54fcbdf5ecd97ff4a4b29ee760ab6d7dc937ad07192b85c5c9763120"},
+    {"id":"vitest-9781-high-connectivity","verdict":"coherent","reason":"Todo accounting, symbols, visibility rules, and reporter snapshots jointly preserve todo output while hiding skipped tests.","diffSha256":"6196c1cfc7851308d3d0ee66e4d6f9b4c00dee95fabc71513a21a5a21288bd11"}
+  ]
+}
