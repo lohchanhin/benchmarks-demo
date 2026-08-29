@@ -302,7 +302,8 @@ async function gitOutput(root, args) {
 }
 
 async function npmOutput(args) {
-  return (await runProcess("npm", args, { cwd: repositoryRoot, check: true, timeoutMs: 120_000 })).stdout;
+  const command = process.platform === "win32" ? "npm.cmd" : "npm";
+  return (await runProcess(command, args, { cwd: repositoryRoot, check: true, timeoutMs: 120_000 })).stdout;
 }
 
 async function nodeOutput(args) {

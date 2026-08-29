@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "6.0.0-smoke.1",
+  "status": "selection-environment-failure-before-freeze",
+  "observedAt": "2026-08-30T03:23:46.8107152+08:00",
+  "phase": "public-baseline-metadata",
+  "error": "Node child_process could not resolve the npm executable on Windows (spawn npm ENOENT).",
+  "targetFreezeWritten": false,
+  "privateOracleWritten": false,
+  "targetSentToPalace": false,
+  "candidateOutcomeObserved": false,
+  "repair": "Resolve npm as npm.cmd on Windows and npm elsewhere.",
+  "selectionRulesChanged": false,
+  "eligibilityThresholdsChanged": false,
+  "replacementAfterOutcome": false
+}
