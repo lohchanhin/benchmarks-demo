@@ -17,6 +17,10 @@ V5 evaluates the frozen Vertex Palace development candidate on twelve fresh hist
 
 Run the development candidate and public npm `0.4.0` twice per target in balanced sequential order. The merge diff is hidden from Palace and supplies implementation, focused-test, and auxiliary truth.
 
+Reference-grounded tasks use `referencePolicy=auto` with an immutable cache built from the frozen issue body. Local-complete and high-connectivity tasks use `referencePolicy=off`; this prevents incidental links inside an otherwise complete issue description from adding network-dependent evidence. Both conditions receive the same policy and cache.
+
+Core coverage measures all frozen implementation and focused-test files. Role closure requires at least one implementation and one focused test. Route focus counts matched core plus explicitly declared auxiliary files in the numerator, so required documentation is relevant rather than overhead. Confidence at or above 0.80 with missing role closure or core coverage below 0.50 is preregistered as overconfidence.
+
 The development candidate passes only when macro core coverage is at least 0.90, macro route focus is at least 0.70, every target has coverage at least 0.50 and focus at least 0.40, every repeated route is deterministic, no context exceeds 6,000 estimated tokens, and no tracked target file is polluted.
 
 ## Agent gate
