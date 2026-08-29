@@ -56,13 +56,28 @@ export async function prepareV5Execution(options = {}) {
     cwd: candidateSource,
     check: true
   });
-  assert.equal(trackedStatus.stdout.trim(), "", "Candidate build changed tracked source files");
+  const generatedTrackedFiles = trackedStatus.stdout
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => line.slice(2).trim().replaceAll("\\", "/"));
+  assert.deepEqual(
+    generatedTrackedFiles,
+    ["plugins/vertex-palace/mcp/server.cjs"],
+    "Candidate build changed an unexpected tracked source file"
+  );
+  const generatedDiff = await runProcess("git", ["diff", "--binary", "--", ...generatedTrackedFiles], {
+    cwd: candidateSource,
+    check: true
+  });
 
   const candidate = await packAndInstall({
     label: "candidate",
     source: candidateSource,
     packSpec: "."
   });
+  candidate.generatedTrackedFiles = generatedTrackedFiles;
+  candidate.generatedTrackedDiffSha256 = sha256(generatedDiff.stdout);
   const baseline = await packAndInstall({
     label: "baseline-0.4.0",
     source: repositoryRoot,
@@ -167,7 +182,7 @@ async function packAndInstall({ label, source, packSpec }) {
 }
 
 function publicProduct(product, source) {
-  return {
+  const result = {
     source,
     packageName: product.packageName,
     packageVersion: product.version,
@@ -175,6 +190,11 @@ function publicProduct(product, source) {
     tarballIntegrity: product.tarballIntegrity,
     cliSha256: product.cliSha256
   };
+  if (product.generatedTrackedFiles) {
+    result.buildGeneratedTrackedFiles = product.generatedTrackedFiles;
+    result.buildGeneratedTrackedDiffSha256 = product.generatedTrackedDiffSha256;
+  }
+  return result;
 }
 
 async function hashSources(files) {
