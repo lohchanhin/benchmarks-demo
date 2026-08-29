@@ -271,10 +271,16 @@ async function verifyFrozenInputs({ freeze, targetManifest, review, binding, ame
     "Semantic review changed after execution binding"
   );
   assert.equal(
-    await hashSources(amendment.runner.sourceFiles),
+    await hashCommittedSources(amendment.runner.sourceCommit, amendment.runner.sourceFiles),
     amendment.runner.sourceSha256,
     "V5 static runner sources changed after execution amendment"
   );
+  const runnerDiff = await runProcess(
+    "git",
+    ["diff", "--quiet", amendment.runner.sourceCommit, "--", ...amendment.runner.sourceFiles],
+    { cwd: repositoryRoot }
+  );
+  assert.equal(runnerDiff.exitCode, 0, "Working runner sources differ from the execution amendment commit");
   assert.equal(
     await sha256File(path.join(resultsRoot, "attempt-1-harness-failure.json")),
     amendment.observedBeforeAmendment.attemptArtifactSha256,
@@ -313,10 +319,14 @@ function stripLocalReceipt(receipt) {
   return clone;
 }
 
-async function hashSources(files) {
+async function hashCommittedSources(commit, files) {
   const hash = createHash("sha256");
   for (const file of files) {
-    const bytes = await readFile(path.join(repositoryRoot, file));
+    const blob = await runProcess("git", ["show", `${commit}:${file}`], {
+      cwd: repositoryRoot,
+      check: true
+    });
+    const bytes = Buffer.from(blob.stdout, "utf8");
     hash.update(Buffer.from(`${file}\0${bytes.length}\0`, "utf8"));
     hash.update(bytes);
     hash.update(Buffer.from("\0", "utf8"));
