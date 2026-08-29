@@ -1,0 +1,5097 @@
+{
+  "schemaVersion": 1,
+  "artifact": "real-repository-v5-static-results",
+  "protocolVersion": "5.0.0-candidate.1",
+  "generatedAt": "2026-08-29T17:37:45.328Z",
+  "preregistered": true,
+  "targetCount": 12,
+  "conditions": [
+    "candidate",
+    "baseline-0.4.0"
+  ],
+  "repetitions": 2,
+  "bindingSha256": "40db5380710063810bdeb93dae8671b7d8573b946076f3c3d1c7754241c03404",
+  "executionAmendmentSha256": "bd305194a05f1e8c70b225288c6a3fbb02d9b01479a53c8ec84df5b8be5694cb",
+  "candidateSourceCommit": "8f76d7a36f3430aa7b576c2462f8351936c31ae5",
+  "observations": [
+    {
+      "observationId": "click-2273-local-complete-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "afc86c748c214939e2293ec00879d85293bcd9fa",
+      "durationsMs": {
+        "init": 600,
+        "index": 2820,
+        "context": 3730
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 3627 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "click-2273-local-complete",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/click/exceptions.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/exceptions.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/test_testing.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/test_testing.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/click/exceptions.py",
+          "tests/test_testing.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/exceptions.py",
+          "tests/test_testing.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-2273-local-complete-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "afc86c748c214939e2293ec00879d85293bcd9fa",
+      "durationsMs": {
+        "init": 556,
+        "index": 2871,
+        "context": 3801
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 3695 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "click-2273-local-complete",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/click/exceptions.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/exceptions.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/test_testing.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/test_testing.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/click/exceptions.py",
+          "tests/test_testing.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/exceptions.py",
+          "tests/test_testing.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-2273-local-complete-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "afc86c748c214939e2293ec00879d85293bcd9fa",
+      "durationsMs": {
+        "init": 570,
+        "index": 2794,
+        "context": 3854
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 3695 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "click-2273-local-complete",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/click/exceptions.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/exceptions.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/test_testing.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/test_testing.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/click/exceptions.py",
+          "tests/test_testing.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/exceptions.py",
+          "tests/test_testing.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-2273-local-complete-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "afc86c748c214939e2293ec00879d85293bcd9fa",
+      "durationsMs": {
+        "init": 548,
+        "index": 2886,
+        "context": 3475
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 3627 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "click-2273-local-complete",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/click/exceptions.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/exceptions.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/test_testing.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/test_testing.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/click/exceptions.py",
+          "tests/test_testing.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/exceptions.py",
+          "tests/test_testing.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-3764-reference-grounded-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "150d1071d69c5cdad7de78590013ffe56cf9e3bb",
+      "durationsMs": {
+        "init": 575,
+        "index": 3952,
+        "context": 3556
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "click-3764-reference-grounded",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "src/click/core.py",
+        "src/click/decorators.py",
+        "src/click/termui.py",
+        "tests/test_termui.py"
+      ],
+      "routeFileCount": 4,
+      "implementation": {
+        "files": [
+          "src/click/_termui_impl.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/_termui_impl.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/test_termui.py"
+        ],
+        "matchedFiles": [
+          "tests/test_termui.py"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/click/_termui_impl.py",
+          "tests/test_termui.py"
+        ],
+        "matchedFiles": [
+          "tests/test_termui.py"
+        ],
+        "missedFiles": [
+          "src/click/_termui_impl.py"
+        ],
+        "coverage": 0.5
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGES.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGES.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0.25,
+      "contextTokens": 5710,
+      "contextBytes": 22838,
+      "reportedContextBytes": 22838,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-3764-reference-grounded-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "150d1071d69c5cdad7de78590013ffe56cf9e3bb",
+      "durationsMs": {
+        "init": 565,
+        "index": 3913,
+        "context": 24352
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "click-3764-reference-grounded",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "Resolved 1 GitHub task reference(s) before routing.",
+          "Only normalized issue or pull-request metadata was used; repository source was not sent remotely."
+        ],
+        "references": [
+          {
+            "contentHash": "254a6fc2a3bfe21dfb5f6941d5cd2ff58eaf43952d60a2b4aa79d2e2c4bca9dc",
+            "kind": "issue",
+            "number": 3731,
+            "provider": "github",
+            "repository": "pallets/click",
+            "resolutionStatus": "cache-hit",
+            "title": "echo_via_pager on Windows fails with WinError 32, masking a TypeError from writing str to a binary temp file (8.4.0 regression)",
+            "url": "https://github.com/pallets/click/issues/3731"
+          }
+        ],
+        "resolutionStatus": "cache-hit",
+        "status": "resolved"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "src/click/_termui_impl.py",
+        "src/click/core.py",
+        "src/click/exceptions.py",
+        "src/click/termui.py",
+        "src/click/testing.py",
+        "tests/test_termui.py",
+        "tests/test_utils/test_echo_via_pager.py"
+      ],
+      "routeFileCount": 7,
+      "implementation": {
+        "files": [
+          "src/click/_termui_impl.py"
+        ],
+        "matchedFiles": [
+          "src/click/_termui_impl.py"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "tests": {
+        "files": [
+          "tests/test_termui.py"
+        ],
+        "matchedFiles": [
+          "tests/test_termui.py"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/click/_termui_impl.py",
+          "tests/test_termui.py"
+        ],
+        "matchedFiles": [
+          "src/click/_termui_impl.py",
+          "tests/test_termui.py"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGES.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGES.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": true,
+      "routeFocus": 0.285714,
+      "contextTokens": 4761,
+      "contextBytes": 19041,
+      "reportedContextBytes": 19041,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-3764-reference-grounded-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "150d1071d69c5cdad7de78590013ffe56cf9e3bb",
+      "durationsMs": {
+        "init": 518,
+        "index": 3838,
+        "context": 23745
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "click-3764-reference-grounded",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "Resolved 1 GitHub task reference(s) before routing.",
+          "Only normalized issue or pull-request metadata was used; repository source was not sent remotely."
+        ],
+        "references": [
+          {
+            "contentHash": "254a6fc2a3bfe21dfb5f6941d5cd2ff58eaf43952d60a2b4aa79d2e2c4bca9dc",
+            "kind": "issue",
+            "number": 3731,
+            "provider": "github",
+            "repository": "pallets/click",
+            "resolutionStatus": "cache-hit",
+            "title": "echo_via_pager on Windows fails with WinError 32, masking a TypeError from writing str to a binary temp file (8.4.0 regression)",
+            "url": "https://github.com/pallets/click/issues/3731"
+          }
+        ],
+        "resolutionStatus": "cache-hit",
+        "status": "resolved"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "src/click/_termui_impl.py",
+        "src/click/core.py",
+        "src/click/exceptions.py",
+        "src/click/termui.py",
+        "src/click/testing.py",
+        "tests/test_termui.py",
+        "tests/test_utils/test_echo_via_pager.py"
+      ],
+      "routeFileCount": 7,
+      "implementation": {
+        "files": [
+          "src/click/_termui_impl.py"
+        ],
+        "matchedFiles": [
+          "src/click/_termui_impl.py"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "tests": {
+        "files": [
+          "tests/test_termui.py"
+        ],
+        "matchedFiles": [
+          "tests/test_termui.py"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/click/_termui_impl.py",
+          "tests/test_termui.py"
+        ],
+        "matchedFiles": [
+          "src/click/_termui_impl.py",
+          "tests/test_termui.py"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGES.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGES.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": true,
+      "routeFocus": 0.285714,
+      "contextTokens": 4761,
+      "contextBytes": 19041,
+      "reportedContextBytes": 19041,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-3764-reference-grounded-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "150d1071d69c5cdad7de78590013ffe56cf9e3bb",
+      "durationsMs": {
+        "init": 558,
+        "index": 3982,
+        "context": 3534
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "click-3764-reference-grounded",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "src/click/core.py",
+        "src/click/decorators.py",
+        "src/click/termui.py",
+        "tests/test_termui.py"
+      ],
+      "routeFileCount": 4,
+      "implementation": {
+        "files": [
+          "src/click/_termui_impl.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/_termui_impl.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/test_termui.py"
+        ],
+        "matchedFiles": [
+          "tests/test_termui.py"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/click/_termui_impl.py",
+          "tests/test_termui.py"
+        ],
+        "matchedFiles": [
+          "tests/test_termui.py"
+        ],
+        "missedFiles": [
+          "src/click/_termui_impl.py"
+        ],
+        "coverage": 0.5
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGES.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGES.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0.25,
+      "contextTokens": 5710,
+      "contextBytes": 22838,
+      "reportedContextBytes": 22838,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-2622-high-connectivity-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "1787497713fa389435ed732c9b26274c3cdc458d",
+      "durationsMs": {
+        "init": 531,
+        "index": 2712,
+        "context": 2530
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 3077 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "click-2622-high-connectivity",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/click/types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/types.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/test_types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/test_types.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/click/types.py",
+          "tests/test_types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/types.py",
+          "tests/test_types.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGES.rst",
+          "docs/api.rst"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGES.rst",
+          "docs/api.rst"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-2622-high-connectivity-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "1787497713fa389435ed732c9b26274c3cdc458d",
+      "durationsMs": {
+        "init": 538,
+        "index": 2813,
+        "context": 2540
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 3077 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "click-2622-high-connectivity",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/click/types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/types.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/test_types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/test_types.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/click/types.py",
+          "tests/test_types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/types.py",
+          "tests/test_types.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGES.rst",
+          "docs/api.rst"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGES.rst",
+          "docs/api.rst"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-2622-high-connectivity-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "1787497713fa389435ed732c9b26274c3cdc458d",
+      "durationsMs": {
+        "init": 546,
+        "index": 2750,
+        "context": 2435
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 3077 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "click-2622-high-connectivity",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/click/types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/types.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/test_types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/test_types.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/click/types.py",
+          "tests/test_types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/types.py",
+          "tests/test_types.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGES.rst",
+          "docs/api.rst"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGES.rst",
+          "docs/api.rst"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "click-2622-high-connectivity-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "1787497713fa389435ed732c9b26274c3cdc458d",
+      "durationsMs": {
+        "init": 565,
+        "index": 2734,
+        "context": 2532
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 3077 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "click-2622-high-connectivity",
+      "repository": "https://github.com/pallets/click",
+      "language": "python",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/click/types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/types.py"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/test_types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/test_types.py"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/click/types.py",
+          "tests/test_types.py"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/click/types.py",
+          "tests/test_types.py"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGES.rst",
+          "docs/api.rst"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGES.rst",
+          "docs/api.rst"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-2356-local-complete-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "61968e893eee2f27696c2fbc8e34fa5c4afaf7c4",
+      "durationsMs": {
+        "init": 545,
+        "index": 1839,
+        "context": 4175
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2814 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "cobra-2356-local-complete",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "completions.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions.go"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "completions_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions_test.go"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "completions.go",
+          "completions_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions.go",
+          "completions_test.go"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-2356-local-complete-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "61968e893eee2f27696c2fbc8e34fa5c4afaf7c4",
+      "durationsMs": {
+        "init": 537,
+        "index": 1826,
+        "context": 4099
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2814 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "cobra-2356-local-complete",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "completions.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions.go"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "completions_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions_test.go"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "completions.go",
+          "completions_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions.go",
+          "completions_test.go"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-2356-local-complete-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "61968e893eee2f27696c2fbc8e34fa5c4afaf7c4",
+      "durationsMs": {
+        "init": 549,
+        "index": 1900,
+        "context": 4086
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2814 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "cobra-2356-local-complete",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "completions.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions.go"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "completions_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions_test.go"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "completions.go",
+          "completions_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions.go",
+          "completions_test.go"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-2356-local-complete-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "61968e893eee2f27696c2fbc8e34fa5c4afaf7c4",
+      "durationsMs": {
+        "init": 537,
+        "index": 1811,
+        "context": 4121
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2814 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "cobra-2356-local-complete",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "completions.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions.go"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "completions_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions_test.go"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "completions.go",
+          "completions_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "completions.go",
+          "completions_test.go"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-2241-reference-grounded-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "f98cf4216d3cb5235e6e0cd00ee00959deb1dc65",
+      "durationsMs": {
+        "init": 556,
+        "index": 1769,
+        "context": 2782
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "cobra-2241-reference-grounded",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "Resolved 1 GitHub task reference(s) before routing.",
+          "Only normalized issue or pull-request metadata was used; repository source was not sent remotely."
+        ],
+        "references": [
+          {
+            "contentHash": "a9b72b2c667d87564d6917b49f3568a9a0f1a8432d6562a7ba47a0e862f71237",
+            "kind": "issue",
+            "number": 2240,
+            "provider": "github",
+            "repository": "spf13/cobra",
+            "resolutionStatus": "cache-hit",
+            "title": "Command passed to SetHelpFunc doesn't have a context",
+            "url": "https://github.com/spf13/cobra/issues/2240"
+          }
+        ],
+        "resolutionStatus": "cache-hit",
+        "status": "resolved"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "command.go",
+        "command_test.go"
+      ],
+      "routeFileCount": 2,
+      "implementation": {
+        "files": [
+          "command.go"
+        ],
+        "matchedFiles": [
+          "command.go"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "tests": {
+        "files": [
+          "command_test.go"
+        ],
+        "matchedFiles": [
+          "command_test.go"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "command.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [
+          "command.go",
+          "command_test.go"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": true,
+      "routeFocus": 1,
+      "contextTokens": 2712,
+      "contextBytes": 10845,
+      "reportedContextBytes": 10845,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-2241-reference-grounded-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "f98cf4216d3cb5235e6e0cd00ee00959deb1dc65",
+      "durationsMs": {
+        "init": 550,
+        "index": 1779,
+        "context": 1643
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "cobra-2241-reference-grounded",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "completions.go",
+        "completions_test.go"
+      ],
+      "routeFileCount": 2,
+      "implementation": {
+        "files": [
+          "command.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "command.go"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "command.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "command.go",
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 2726,
+      "contextBytes": 10903,
+      "reportedContextBytes": 10903,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-2241-reference-grounded-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "f98cf4216d3cb5235e6e0cd00ee00959deb1dc65",
+      "durationsMs": {
+        "init": 530,
+        "index": 1809,
+        "context": 1609
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "cobra-2241-reference-grounded",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "completions.go",
+        "completions_test.go"
+      ],
+      "routeFileCount": 2,
+      "implementation": {
+        "files": [
+          "command.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "command.go"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "command.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "command.go",
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 2726,
+      "contextBytes": 10903,
+      "reportedContextBytes": 10903,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-2241-reference-grounded-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "f98cf4216d3cb5235e6e0cd00ee00959deb1dc65",
+      "durationsMs": {
+        "init": 532,
+        "index": 1795,
+        "context": 2793
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "cobra-2241-reference-grounded",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "Resolved 1 GitHub task reference(s) before routing.",
+          "Only normalized issue or pull-request metadata was used; repository source was not sent remotely."
+        ],
+        "references": [
+          {
+            "contentHash": "a9b72b2c667d87564d6917b49f3568a9a0f1a8432d6562a7ba47a0e862f71237",
+            "kind": "issue",
+            "number": 2240,
+            "provider": "github",
+            "repository": "spf13/cobra",
+            "resolutionStatus": "cache-hit",
+            "title": "Command passed to SetHelpFunc doesn't have a context",
+            "url": "https://github.com/spf13/cobra/issues/2240"
+          }
+        ],
+        "resolutionStatus": "cache-hit",
+        "status": "resolved"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "command.go",
+        "command_test.go"
+      ],
+      "routeFileCount": 2,
+      "implementation": {
+        "files": [
+          "command.go"
+        ],
+        "matchedFiles": [
+          "command.go"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "tests": {
+        "files": [
+          "command_test.go"
+        ],
+        "matchedFiles": [
+          "command_test.go"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "command.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [
+          "command.go",
+          "command_test.go"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": true,
+      "routeFocus": 1,
+      "contextTokens": 2712,
+      "contextBytes": 10845,
+      "reportedContextBytes": 10845,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-1956-high-connectivity-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "09d5664f34e3f7571560e48ccb74c8904b671e87",
+      "durationsMs": {
+        "init": 548,
+        "index": 1708,
+        "context": 1425
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2659 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "cobra-1956-high-connectivity",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "cobra.go",
+          "command.go",
+          "completions.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra.go",
+          "command.go",
+          "completions.go"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "cobra.go",
+          "command.go",
+          "completions.go",
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra.go",
+          "command.go",
+          "completions.go",
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "site/content/user_guide.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "site/content/user_guide.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-1956-high-connectivity-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "09d5664f34e3f7571560e48ccb74c8904b671e87",
+      "durationsMs": {
+        "init": 531,
+        "index": 1714,
+        "context": 1314
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2659 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "cobra-1956-high-connectivity",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "cobra.go",
+          "command.go",
+          "completions.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra.go",
+          "command.go",
+          "completions.go"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "cobra.go",
+          "command.go",
+          "completions.go",
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra.go",
+          "command.go",
+          "completions.go",
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "site/content/user_guide.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "site/content/user_guide.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-1956-high-connectivity-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "09d5664f34e3f7571560e48ccb74c8904b671e87",
+      "durationsMs": {
+        "init": 560,
+        "index": 1836,
+        "context": 1370
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2659 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "cobra-1956-high-connectivity",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "cobra.go",
+          "command.go",
+          "completions.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra.go",
+          "command.go",
+          "completions.go"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "cobra.go",
+          "command.go",
+          "completions.go",
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra.go",
+          "command.go",
+          "completions.go",
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "site/content/user_guide.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "site/content/user_guide.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "cobra-1956-high-connectivity-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "09d5664f34e3f7571560e48ccb74c8904b671e87",
+      "durationsMs": {
+        "init": 543,
+        "index": 1754,
+        "context": 1403
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2659 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "cobra-1956-high-connectivity",
+      "repository": "https://github.com/spf13/cobra",
+      "language": "go",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "cobra.go",
+          "command.go",
+          "completions.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra.go",
+          "command.go",
+          "completions.go"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "cobra.go",
+          "command.go",
+          "completions.go",
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "cobra.go",
+          "command.go",
+          "completions.go",
+          "cobra_test.go",
+          "command_test.go"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "site/content/user_guide.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "site/content/user_guide.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1852-local-complete-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "e3a6f8b7e735e24c96219053f8978813dbdc85f1",
+      "durationsMs": {
+        "init": 502,
+        "index": 1244,
+        "context": 1230
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2538 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "fd-1852-local-complete",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/tests.rs"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs",
+          "tests/tests.rs"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1852-local-complete-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "e3a6f8b7e735e24c96219053f8978813dbdc85f1",
+      "durationsMs": {
+        "init": 542,
+        "index": 1208,
+        "context": 1232
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2538 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "fd-1852-local-complete",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/tests.rs"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs",
+          "tests/tests.rs"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1852-local-complete-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "e3a6f8b7e735e24c96219053f8978813dbdc85f1",
+      "durationsMs": {
+        "init": 549,
+        "index": 1234,
+        "context": 1243
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2538 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "fd-1852-local-complete",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/tests.rs"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs",
+          "tests/tests.rs"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1852-local-complete-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "e3a6f8b7e735e24c96219053f8978813dbdc85f1",
+      "durationsMs": {
+        "init": 576,
+        "index": 1247,
+        "context": 1235
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 2538 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+      },
+      "targetId": "fd-1852-local-complete",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "tests/tests.rs"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/cli.rs",
+          "src/config.rs",
+          "src/main.rs",
+          "src/walk.rs",
+          "tests/tests.rs"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1872-reference-grounded-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "5f95a781212e3efbc6d91ae50e0ca0ce0693da50",
+      "durationsMs": {
+        "init": 541,
+        "index": 1225,
+        "context": 1233
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "fd-1872-reference-grounded",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "Cross.toml",
+        "tests/tests.rs"
+      ],
+      "routeFileCount": 2,
+      "implementation": {
+        "files": [
+          "src/hyperlink.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/hyperlink.rs"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/hyperlink.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "tests/tests.rs"
+        ],
+        "missedFiles": [
+          "src/hyperlink.rs"
+        ],
+        "coverage": 0.5
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0.5,
+      "contextTokens": 2341,
+      "contextBytes": 9364,
+      "reportedContextBytes": 9364,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1872-reference-grounded-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "5f95a781212e3efbc6d91ae50e0ca0ce0693da50",
+      "durationsMs": {
+        "init": 529,
+        "index": 1251,
+        "context": 1437
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "fd-1872-reference-grounded",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "Resolved 1 GitHub task reference(s) before routing.",
+          "Only normalized issue or pull-request metadata was used; repository source was not sent remotely."
+        ],
+        "references": [
+          {
+            "contentHash": "1d29a0da214a2be073e7d5b7f145619ee05ac07838c1c779097e46b61aa4eb15",
+            "kind": "issue",
+            "number": 1843,
+            "provider": "github",
+            "repository": "sharkdp/fd",
+            "resolutionStatus": "cache-hit",
+            "title": "[BUG] Hyperlinks fail on Windows when file path contains spaces",
+            "url": "https://github.com/sharkdp/fd/issues/1843"
+          }
+        ],
+        "resolutionStatus": "cache-hit",
+        "status": "resolved"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "src/cli.rs",
+        "src/hyperlink.rs",
+        "src/main.rs",
+        "tests/tests.rs"
+      ],
+      "routeFileCount": 4,
+      "implementation": {
+        "files": [
+          "src/hyperlink.rs"
+        ],
+        "matchedFiles": [
+          "src/hyperlink.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/hyperlink.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "src/hyperlink.rs",
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": true,
+      "routeFocus": 0.5,
+      "contextTokens": 2871,
+      "contextBytes": 11481,
+      "reportedContextBytes": 11481,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1872-reference-grounded-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "5f95a781212e3efbc6d91ae50e0ca0ce0693da50",
+      "durationsMs": {
+        "init": 552,
+        "index": 1212,
+        "context": 1373
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "fd-1872-reference-grounded",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "Resolved 1 GitHub task reference(s) before routing.",
+          "Only normalized issue or pull-request metadata was used; repository source was not sent remotely."
+        ],
+        "references": [
+          {
+            "contentHash": "1d29a0da214a2be073e7d5b7f145619ee05ac07838c1c779097e46b61aa4eb15",
+            "kind": "issue",
+            "number": 1843,
+            "provider": "github",
+            "repository": "sharkdp/fd",
+            "resolutionStatus": "cache-hit",
+            "title": "[BUG] Hyperlinks fail on Windows when file path contains spaces",
+            "url": "https://github.com/sharkdp/fd/issues/1843"
+          }
+        ],
+        "resolutionStatus": "cache-hit",
+        "status": "resolved"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "src/cli.rs",
+        "src/hyperlink.rs",
+        "src/main.rs",
+        "tests/tests.rs"
+      ],
+      "routeFileCount": 4,
+      "implementation": {
+        "files": [
+          "src/hyperlink.rs"
+        ],
+        "matchedFiles": [
+          "src/hyperlink.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/hyperlink.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "src/hyperlink.rs",
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": true,
+      "routeFocus": 0.5,
+      "contextTokens": 2871,
+      "contextBytes": 11481,
+      "reportedContextBytes": 11481,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1872-reference-grounded-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "5f95a781212e3efbc6d91ae50e0ca0ce0693da50",
+      "durationsMs": {
+        "init": 578,
+        "index": 1282,
+        "context": 1221
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "fd-1872-reference-grounded",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "Cross.toml",
+        "tests/tests.rs"
+      ],
+      "routeFileCount": 2,
+      "implementation": {
+        "files": [
+          "src/hyperlink.rs"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "src/hyperlink.rs"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/hyperlink.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "tests/tests.rs"
+        ],
+        "missedFiles": [
+          "src/hyperlink.rs"
+        ],
+        "coverage": 0.5
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": false,
+      "routeFocus": 0.5,
+      "contextTokens": 2341,
+      "contextBytes": 9364,
+      "reportedContextBytes": 9364,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1983-high-connectivity-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "0e74d5b75dfd65e756dcb934ff505682a6f18e83",
+      "durationsMs": {
+        "init": 570,
+        "index": 1375,
+        "context": 1500
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "fd-1983-high-connectivity",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "route-lite",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "README.md",
+        "src/cli.rs",
+        "src/fmt/mod.rs",
+        "src/main.rs",
+        "src/regex_helper.rs",
+        "src/walk.rs",
+        "tests/tests.rs"
+      ],
+      "routeFileCount": 7,
+      "implementation": {
+        "files": [
+          "src/cli.rs",
+          "src/main.rs"
+        ],
+        "matchedFiles": [
+          "src/cli.rs",
+          "src/main.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/cli.rs",
+          "src/main.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "src/cli.rs",
+          "src/main.rs",
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": true,
+      "routeFocus": 0.428571,
+      "contextTokens": 2396,
+      "contextBytes": 9582,
+      "reportedContextBytes": 9582,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1983-high-connectivity-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "0e74d5b75dfd65e756dcb934ff505682a6f18e83",
+      "durationsMs": {
+        "init": 558,
+        "index": 1246,
+        "context": 1397
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "fd-1983-high-connectivity",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "route-lite",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "README.md",
+        "src/cli.rs",
+        "src/fmt/mod.rs",
+        "src/main.rs",
+        "src/regex_helper.rs",
+        "src/walk.rs",
+        "tests/tests.rs"
+      ],
+      "routeFileCount": 7,
+      "implementation": {
+        "files": [
+          "src/cli.rs",
+          "src/main.rs"
+        ],
+        "matchedFiles": [
+          "src/cli.rs",
+          "src/main.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/cli.rs",
+          "src/main.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "src/cli.rs",
+          "src/main.rs",
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": true,
+      "routeFocus": 0.428571,
+      "contextTokens": 2396,
+      "contextBytes": 9582,
+      "reportedContextBytes": 9582,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1983-high-connectivity-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "0e74d5b75dfd65e756dcb934ff505682a6f18e83",
+      "durationsMs": {
+        "init": 577,
+        "index": 1271,
+        "context": 1444
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "fd-1983-high-connectivity",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "route-lite",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "README.md",
+        "src/cli.rs",
+        "src/fmt/mod.rs",
+        "src/main.rs",
+        "src/regex_helper.rs",
+        "src/walk.rs",
+        "tests/tests.rs"
+      ],
+      "routeFileCount": 7,
+      "implementation": {
+        "files": [
+          "src/cli.rs",
+          "src/main.rs"
+        ],
+        "matchedFiles": [
+          "src/cli.rs",
+          "src/main.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/cli.rs",
+          "src/main.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "src/cli.rs",
+          "src/main.rs",
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": true,
+      "routeFocus": 0.428571,
+      "contextTokens": 2396,
+      "contextBytes": 9582,
+      "reportedContextBytes": 9582,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "fd-1983-high-connectivity-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "0e74d5b75dfd65e756dcb934ff505682a6f18e83",
+      "durationsMs": {
+        "init": 572,
+        "index": 1252,
+        "context": 1448
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "fd-1983-high-connectivity",
+      "repository": "https://github.com/sharkdp/fd",
+      "language": "rust",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "route-lite",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.4,
+      "routeFiles": [
+        "README.md",
+        "src/cli.rs",
+        "src/fmt/mod.rs",
+        "src/main.rs",
+        "src/regex_helper.rs",
+        "src/walk.rs",
+        "tests/tests.rs"
+      ],
+      "routeFileCount": 7,
+      "implementation": {
+        "files": [
+          "src/cli.rs",
+          "src/main.rs"
+        ],
+        "matchedFiles": [
+          "src/cli.rs",
+          "src/main.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "tests": {
+        "files": [
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "src/cli.rs",
+          "src/main.rs",
+          "tests/tests.rs"
+        ],
+        "matchedFiles": [
+          "src/cli.rs",
+          "src/main.rs",
+          "tests/tests.rs"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "auxiliary": {
+        "files": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "CHANGELOG.md",
+          "doc/fd.1"
+        ],
+        "coverage": 0
+      },
+      "roleClosure": true,
+      "routeFocus": 0.428571,
+      "contextTokens": 2396,
+      "contextBytes": 9582,
+      "reportedContextBytes": 9582,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-11081-local-complete-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "3cd019a0a952f43b79d85b2750d189ce0a17066d",
+      "durationsMs": {
+        "init": 607,
+        "index": 81614,
+        "context": 25442
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "vitest-11081-local-complete",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "guarded-memory-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.29,
+      "routeFiles": [
+        "docs/blog/vitest-4-1.md",
+        "packages/coverage-v8/README.md",
+        "packages/coverage-v8/package.json",
+        "packages/vitest/src/node/config/resolveConfig.ts",
+        "packages/vitest/src/node/types/config.ts",
+        "test/workspaces-browser/space_1/vitest.config.ts.timestamp-4345324-324424.mjs"
+      ],
+      "routeFileCount": 6,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts",
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts",
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 4946,
+      "contextBytes": 19782,
+      "reportedContextBytes": 19782,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-11081-local-complete-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "3cd019a0a952f43b79d85b2750d189ce0a17066d",
+      "durationsMs": {
+        "init": 581,
+        "index": 75421,
+        "context": 20827
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "vitest-11081-local-complete",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "guarded-memory-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.38,
+      "routeFiles": [
+        "docs/blog/vitest-4-1.md",
+        "packages/coverage-v8/README.md",
+        "packages/coverage-v8/package.json",
+        "packages/vitest/src/node/pools/workers/typecheckWorker.ts",
+        "packages/vitest/src/runtime/runner/types.ts",
+        "test/e2e/test/setup-files.test.ts"
+      ],
+      "routeFileCount": 6,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "matchedFiles": [
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts",
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "matchedFiles": [
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "missedFiles": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts"
+        ],
+        "coverage": 0.25
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0.166667,
+      "contextTokens": 4570,
+      "contextBytes": 18279,
+      "reportedContextBytes": 18279,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-11081-local-complete-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "3cd019a0a952f43b79d85b2750d189ce0a17066d",
+      "durationsMs": {
+        "init": 573,
+        "index": 76459,
+        "context": 21802
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "vitest-11081-local-complete",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "guarded-memory-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.38,
+      "routeFiles": [
+        "docs/blog/vitest-4-1.md",
+        "packages/coverage-v8/README.md",
+        "packages/coverage-v8/package.json",
+        "packages/vitest/src/node/pools/workers/typecheckWorker.ts",
+        "packages/vitest/src/runtime/runner/types.ts",
+        "test/e2e/test/setup-files.test.ts"
+      ],
+      "routeFileCount": 6,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "matchedFiles": [
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts",
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "matchedFiles": [
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "missedFiles": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts"
+        ],
+        "coverage": 0.25
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0.166667,
+      "contextTokens": 4570,
+      "contextBytes": 18279,
+      "reportedContextBytes": 18279,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-11081-local-complete-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "3cd019a0a952f43b79d85b2750d189ce0a17066d",
+      "durationsMs": {
+        "init": 625,
+        "index": 76081,
+        "context": 19752
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "vitest-11081-local-complete",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "local-complete",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "guarded-memory-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.29,
+      "routeFiles": [
+        "docs/blog/vitest-4-1.md",
+        "packages/coverage-v8/README.md",
+        "packages/coverage-v8/package.json",
+        "packages/vitest/src/node/config/resolveConfig.ts",
+        "packages/vitest/src/node/types/config.ts",
+        "test/workspaces-browser/space_1/vitest.config.ts.timestamp-4345324-324424.mjs"
+      ],
+      "routeFileCount": 6,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts",
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/moduleRunner/moduleRunner.ts",
+          "packages/vitest/src/runtime/moduleRunner/testModuleRunner.ts",
+          "packages/vitest/src/runtime/runners/test.ts",
+          "test/e2e/test/setup-files.test.ts"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 4946,
+      "contextBytes": 19782,
+      "reportedContextBytes": 19782,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-11020-reference-grounded-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "9e116fb52a9f6d438d7ba8e7adea4fb2d27e3a71",
+      "durationsMs": {
+        "init": 350,
+        "index": 65167,
+        "context": 14720
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "vitest-11020-reference-grounded",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "Resolved 1 GitHub task reference(s) before routing.",
+          "Only normalized issue or pull-request metadata was used; repository source was not sent remotely."
+        ],
+        "references": [
+          {
+            "contentHash": "9b1c49ccbb11b950561da2c2e5f49417a5f8c5519139d2318cd7e5a26b06f254",
+            "kind": "issue",
+            "number": 11018,
+            "provider": "github",
+            "repository": "vitest-dev/vitest",
+            "resolutionStatus": "cache-hit",
+            "title": "version 5.0.0-RC1-2 hangs indefinitely",
+            "url": "https://github.com/vitest-dev/vitest/issues/11018"
+          }
+        ],
+        "resolutionStatus": "cache-hit",
+        "status": "resolved"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.57,
+      "routeFiles": [
+        "packages/ui/client/components/artifacts/visual-regression/VisualRegressionSlider.spec.ts",
+        "packages/ui/client/components/artifacts/visual-regression/VisualRegressionSlider.vue"
+      ],
+      "routeFileCount": 2,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/runtime/workers/init.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/workers/init.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/runtime/workers/init.ts",
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/workers/init.ts",
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 3851,
+      "contextBytes": 15403,
+      "reportedContextBytes": 15403,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-11020-reference-grounded-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "9e116fb52a9f6d438d7ba8e7adea4fb2d27e3a71",
+      "durationsMs": {
+        "init": 503,
+        "index": 63306,
+        "context": 11321
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "vitest-11020-reference-grounded",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.56,
+      "routeFiles": [
+        "examples/basic/test/suite.test.ts",
+        "packages/vitest/src/node/logger.ts",
+        "packages/vitest/src/runtime/runner/suite.ts"
+      ],
+      "routeFileCount": 3,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/runtime/workers/init.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/workers/init.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/runtime/workers/init.ts",
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/workers/init.ts",
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 2797,
+      "contextBytes": 11188,
+      "reportedContextBytes": 11188,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-11020-reference-grounded-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "9e116fb52a9f6d438d7ba8e7adea4fb2d27e3a71",
+      "durationsMs": {
+        "init": 595,
+        "index": 70276,
+        "context": 12865
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "vitest-11020-reference-grounded",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.56,
+      "routeFiles": [
+        "examples/basic/test/suite.test.ts",
+        "packages/vitest/src/node/logger.ts",
+        "packages/vitest/src/runtime/runner/suite.ts"
+      ],
+      "routeFileCount": 3,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/runtime/workers/init.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/workers/init.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/runtime/workers/init.ts",
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/workers/init.ts",
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 2797,
+      "contextBytes": 11188,
+      "reportedContextBytes": 11188,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-11020-reference-grounded-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "auto",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "9e116fb52a9f6d438d7ba8e7adea4fb2d27e3a71",
+      "durationsMs": {
+        "init": 549,
+        "index": 66837,
+        "context": 15162
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "vitest-11020-reference-grounded",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "reference-grounded",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "Resolved 1 GitHub task reference(s) before routing.",
+          "Only normalized issue or pull-request metadata was used; repository source was not sent remotely."
+        ],
+        "references": [
+          {
+            "contentHash": "9b1c49ccbb11b950561da2c2e5f49417a5f8c5519139d2318cd7e5a26b06f254",
+            "kind": "issue",
+            "number": 11018,
+            "provider": "github",
+            "repository": "vitest-dev/vitest",
+            "resolutionStatus": "cache-hit",
+            "title": "version 5.0.0-RC1-2 hangs indefinitely",
+            "url": "https://github.com/vitest-dev/vitest/issues/11018"
+          }
+        ],
+        "resolutionStatus": "cache-hit",
+        "status": "resolved"
+      },
+      "mode": "full-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.57,
+      "routeFiles": [
+        "packages/ui/client/components/artifacts/visual-regression/VisualRegressionSlider.spec.ts",
+        "packages/ui/client/components/artifacts/visual-regression/VisualRegressionSlider.vue"
+      ],
+      "routeFileCount": 2,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/runtime/workers/init.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/workers/init.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/runtime/workers/init.ts",
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/runtime/workers/init.ts",
+          "test/unit/test/stubbed-process.test.ts"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 3851,
+      "contextBytes": 15403,
+      "reportedContextBytes": 15403,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-9781-high-connectivity-r1-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "4e6a23de14e4b95e22ed6ebd53b21f09b32b8a20",
+      "durationsMs": {
+        "init": 515,
+        "index": 143074,
+        "context": 36940
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 5263 estimated tokens, which exceeds the 5000-token ceiling even without source drawers."
+      },
+      "targetId": "vitest-9781-high-connectivity",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts",
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts",
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-9781-high-connectivity-r1-candidate",
+      "condition": "candidate",
+      "repetition": 1,
+      "sequencePolicy": [
+        "baseline-0.4.0",
+        "candidate"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "4e6a23de14e4b95e22ed6ebd53b21f09b32b8a20",
+      "durationsMs": {
+        "init": 548,
+        "index": 126076,
+        "context": 19198
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "vitest-9781-high-connectivity",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "guarded-memory-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.15,
+      "routeFiles": [
+        "docs/public/og-vitest-3-2.png",
+        "packages/coverage-v8/README.md",
+        "packages/vitest/index.d.cts",
+        "packages/vitest/src/node/reporters/github-actions.ts",
+        "test/core/test/each.test.ts"
+      ],
+      "routeFileCount": 5,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts",
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts",
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 4787,
+      "contextBytes": 19145,
+      "reportedContextBytes": 19145,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-9781-high-connectivity-r2-candidate",
+      "condition": "candidate",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "baseCommit": "4e6a23de14e4b95e22ed6ebd53b21f09b32b8a20",
+      "durationsMs": {
+        "init": 371,
+        "index": 110804,
+        "context": 20177
+      },
+      "executionPassed": true,
+      "executionError": null,
+      "targetId": "vitest-9781-high-connectivity",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": {
+        "decision": "route",
+        "reasons": [
+          "The task contains local file, symbol, or product-vocabulary evidence."
+        ],
+        "references": [],
+        "resolutionStatus": "not-needed",
+        "status": "local"
+      },
+      "mode": "guarded-memory-palace",
+      "evidenceStatus": "insufficient",
+      "stopEnforced": false,
+      "confidence": 0.15,
+      "routeFiles": [
+        "docs/public/og-vitest-3-2.png",
+        "packages/coverage-v8/README.md",
+        "packages/vitest/index.d.cts",
+        "packages/vitest/src/node/reporters/github-actions.ts",
+        "test/core/test/each.test.ts"
+      ],
+      "routeFileCount": 5,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts",
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts",
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 4787,
+      "contextBytes": 19145,
+      "reportedContextBytes": 19145,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    },
+    {
+      "observationId": "vitest-9781-high-connectivity-r2-baseline-0.4.0",
+      "condition": "baseline-0.4.0",
+      "repetition": 2,
+      "sequencePolicy": [
+        "candidate",
+        "baseline-0.4.0"
+      ],
+      "referencePolicy": "off",
+      "productVersion": "0.4.0",
+      "productTarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "baseCommit": "4e6a23de14e4b95e22ed6ebd53b21f09b32b8a20",
+      "durationsMs": {
+        "init": 379,
+        "index": 101606,
+        "context": 23316
+      },
+      "executionPassed": false,
+      "executionError": {
+        "exitCode": 1,
+        "timedOut": false,
+        "phase": "context",
+        "message": "JSON adaptive context requires 5263 estimated tokens, which exceeds the 5000-token ceiling even without source drawers."
+      },
+      "targetId": "vitest-9781-high-connectivity",
+      "repository": "https://github.com/vitest-dev/vitest",
+      "language": "typescript",
+      "stratum": "high-connectivity",
+      "decision": "route",
+      "grounding": null,
+      "mode": null,
+      "evidenceStatus": null,
+      "stopEnforced": false,
+      "confidence": null,
+      "routeFiles": [],
+      "routeFileCount": 0,
+      "implementation": {
+        "files": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts"
+        ],
+        "coverage": 0
+      },
+      "tests": {
+        "files": [
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "coverage": 0
+      },
+      "core": {
+        "files": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts",
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "matchedFiles": [],
+        "missedFiles": [
+          "packages/vitest/src/node/reporters/base.ts",
+          "packages/vitest/src/node/reporters/renderers/figures.ts",
+          "packages/vitest/src/node/reporters/renderers/utils.ts",
+          "packages/vitest/src/node/reporters/summary.ts",
+          "packages/vitest/src/node/reporters/verbose.ts",
+          "test/cli/fixtures/reporters/pass-and-skip-test-suites.test.ts",
+          "test/cli/test/reporters/default.test.ts",
+          "test/cli/test/reporters/verbose.test.ts"
+        ],
+        "coverage": 0
+      },
+      "auxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": [],
+        "coverage": 1
+      },
+      "roleClosure": false,
+      "routeFocus": 0,
+      "contextTokens": 0,
+      "contextBytes": 0,
+      "reportedContextBytes": null,
+      "payloadMetricAgreement": true,
+      "trackedFilePollution": [],
+      "overconfident": false,
+      "wrongForcedStop": false
+    }
+  ],
+  "analysis": {
+    "schemaVersion": 1,
+    "artifact": "real-repository-v5-static-analysis",
+    "pass": false,
+    "agentStageAllowed": false,
+    "gates": {
+      "observationCountComplete": true,
+      "allContextCommandsSucceeded": false,
+      "accessibleReferenceGrounding100": true,
+      "implementationAndTestRoleClosure100": false,
+      "macroCoreCoverage90": false,
+      "macroRouteFocus70": false,
+      "perTargetCoverage50": false,
+      "perTargetFocus40": false,
+      "explicitAuxiliaryCoverage100": false,
+      "commonCoverageNonInferior": true,
+      "commonFocusNonInferior": true,
+      "zeroOverconfidence": true,
+      "zeroWrongForcedStops": true,
+      "zeroTrackedFilePollution": true,
+      "zeroPayloadMetricDisagreement": true,
+      "deterministicRoutes": true,
+      "contextCeiling6000": true
+    },
+    "metrics": {
+      "expectedRunsPerCondition": 24,
+      "candidateRuns": 24,
+      "baselineRuns": 24,
+      "candidateMacroCoreCoverage": 0.354167,
+      "candidateMacroRouteFocus": 0.198413,
+      "commonRoleClosureTargets": [
+        "fd-1983-high-connectivity"
+      ],
+      "commonCoverageDelta": 0,
+      "commonFocusDelta": 0
+    },
+    "targetSummaries": [
+      {
+        "targetId": "click-2273-local-complete",
+        "repository": "https://github.com/pallets/click",
+        "language": "python",
+        "stratum": "local-complete",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      },
+      {
+        "targetId": "click-3764-reference-grounded",
+        "repository": "https://github.com/pallets/click",
+        "language": "python",
+        "stratum": "reference-grounded",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 1,
+          "routeFocus": 0.285714,
+          "auxiliaryCoverage": 0,
+          "roleClosure": true,
+          "routeFileCount": 7,
+          "contextTokens": 4761,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0.5,
+          "routeFocus": 0.25,
+          "auxiliaryCoverage": 0,
+          "roleClosure": false,
+          "routeFileCount": 4,
+          "contextTokens": 5710,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      },
+      {
+        "targetId": "click-2622-high-connectivity",
+        "repository": "https://github.com/pallets/click",
+        "language": "python",
+        "stratum": "high-connectivity",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 0,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 0,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      },
+      {
+        "targetId": "cobra-2356-local-complete",
+        "repository": "https://github.com/spf13/cobra",
+        "language": "go",
+        "stratum": "local-complete",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      },
+      {
+        "targetId": "cobra-2241-reference-grounded",
+        "repository": "https://github.com/spf13/cobra",
+        "language": "go",
+        "stratum": "reference-grounded",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 1,
+          "routeFocus": 1,
+          "auxiliaryCoverage": 1,
+          "roleClosure": true,
+          "routeFileCount": 2,
+          "contextTokens": 2712,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 2,
+          "contextTokens": 2726,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      },
+      {
+        "targetId": "cobra-1956-high-connectivity",
+        "repository": "https://github.com/spf13/cobra",
+        "language": "go",
+        "stratum": "high-connectivity",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 0,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 0,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      },
+      {
+        "targetId": "fd-1852-local-complete",
+        "repository": "https://github.com/sharkdp/fd",
+        "language": "rust",
+        "stratum": "local-complete",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 0,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 0,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      },
+      {
+        "targetId": "fd-1872-reference-grounded",
+        "repository": "https://github.com/sharkdp/fd",
+        "language": "rust",
+        "stratum": "reference-grounded",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 1,
+          "routeFocus": 0.5,
+          "auxiliaryCoverage": 0,
+          "roleClosure": true,
+          "routeFileCount": 4,
+          "contextTokens": 2871,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0.5,
+          "routeFocus": 0.5,
+          "auxiliaryCoverage": 0,
+          "roleClosure": false,
+          "routeFileCount": 2,
+          "contextTokens": 2341,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      },
+      {
+        "targetId": "fd-1983-high-connectivity",
+        "repository": "https://github.com/sharkdp/fd",
+        "language": "rust",
+        "stratum": "high-connectivity",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 1,
+          "routeFocus": 0.428571,
+          "auxiliaryCoverage": 0,
+          "roleClosure": true,
+          "routeFileCount": 7,
+          "contextTokens": 2396,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 1,
+          "routeFocus": 0.428571,
+          "auxiliaryCoverage": 0,
+          "roleClosure": true,
+          "routeFileCount": 7,
+          "contextTokens": 2396,
+          "deterministic": true
+        },
+        "commonRoleClosure": true
+      },
+      {
+        "targetId": "vitest-11081-local-complete",
+        "repository": "https://github.com/vitest-dev/vitest",
+        "language": "typescript",
+        "stratum": "local-complete",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 0.25,
+          "routeFocus": 0.166667,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 6,
+          "contextTokens": 4570,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 6,
+          "contextTokens": 4946,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      },
+      {
+        "targetId": "vitest-11020-reference-grounded",
+        "repository": "https://github.com/vitest-dev/vitest",
+        "language": "typescript",
+        "stratum": "reference-grounded",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 2,
+          "contextTokens": 3851,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 3,
+          "contextTokens": 2797,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      },
+      {
+        "targetId": "vitest-9781-high-connectivity",
+        "repository": "https://github.com/vitest-dev/vitest",
+        "language": "typescript",
+        "stratum": "high-connectivity",
+        "candidate": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 5,
+          "contextTokens": 4787,
+          "deterministic": true
+        },
+        "baseline": {
+          "runs": 2,
+          "coreCoverage": 0,
+          "routeFocus": 0,
+          "auxiliaryCoverage": 1,
+          "roleClosure": false,
+          "routeFileCount": 0,
+          "contextTokens": 0,
+          "deterministic": true
+        },
+        "commonRoleClosure": false
+      }
+    ]
+  },
+  "agentGate": {
+    "allowed": false,
+    "reason": "At least one preregistered static qualification gate failed; Agent execution is blocked."
+  }
+}

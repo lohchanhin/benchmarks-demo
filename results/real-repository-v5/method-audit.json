@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "artifact": "real-repository-v5-method-audit",
+  "protocolVersion": "5.0.0-candidate.1",
+  "auditTiming": "after-static-outcomes",
+  "findings": [
+    {
+      "id": "attempt-1-runner-termination",
+      "classification": "disclosed-and-amended",
+      "effect": "The first candidate context error terminated the original runner before an observation file was written.",
+      "disposition": "The original error is preserved; amendment 1 only records non-zero context exits and continues. V5 is classified as a frozen diagnostic and regression round, not an untouched blind qualification round."
+    },
+    {
+      "id": "auxiliary-truth-layer-collapsed",
+      "classification": "invalid-hard-gate-as-implemented",
+      "effect": "The selector placed every non-code file from the hidden historical diff into auxiliaryFiles, while the planned hard gate applied only to README, CHANGELOG, configuration, or contract files explicitly requested by the task or GitHub metadata.",
+      "affectedGate": "explicitAuxiliaryCoverage100",
+      "observedCandidateCoverage": "0/6 targets with non-empty auxiliary truth",
+      "focusEffect": "none; no candidate route matched any of those auxiliary files, so including them in the focus numerator did not increase route focus",
+      "verdictEffect": "none; six independent valid qualification gates still failed without this gate",
+      "futureRepair": "Separate explicitAuxiliaryFiles from latentAuxiliaryFiles before freezing a fresh target set. Never reclassify V5 targets after seeing outcomes."
+    }
+  ],
+  "overallStaticVerdictAfterAudit": "fail",
+  "agentStageAllowed": false
+}

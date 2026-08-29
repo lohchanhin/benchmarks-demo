@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "5.0.0-candidate.1",
+  "generatedAt": "2026-08-29T17:37:45.328Z",
+  "bindingSha256": "40db5380710063810bdeb93dae8671b7d8573b946076f3c3d1c7754241c03404",
+  "allowed": false,
+  "reason": "At least one preregistered static qualification gate failed; Agent execution is blocked.",
+  "gates": {
+    "observationCountComplete": true,
+    "allContextCommandsSucceeded": false,
+    "accessibleReferenceGrounding100": true,
+    "implementationAndTestRoleClosure100": false,
+    "macroCoreCoverage90": false,
+    "macroRouteFocus70": false,
+    "perTargetCoverage50": false,
+    "perTargetFocus40": false,
+    "explicitAuxiliaryCoverage100": false,
+    "commonCoverageNonInferior": true,
+    "commonFocusNonInferior": true,
+    "zeroOverconfidence": true,
+    "zeroWrongForcedStops": true,
+    "zeroTrackedFilePollution": true,
+    "zeroPayloadMetricDisagreement": true,
+    "deterministicRoutes": true,
+    "contextCeiling6000": true
+  }
+}
