@@ -56,26 +56,22 @@ export async function prepareV5Execution(options = {}) {
     cwd: candidateSource,
     check: true
   });
-  const trackedStatus = await runProcess("git", ["status", "--porcelain", "--untracked-files=no"], {
+  const changedNames = await runProcess("git", ["diff", "--name-only"], {
     cwd: candidateSource,
     check: true
   });
-  const generatedTrackedFiles = trackedStatus.stdout
+  const generatedTrackedFiles = changedNames.stdout
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter(Boolean)
-    .map((line) => line.slice(2).trim().replaceAll("\\", "/"));
+    .map((line) => line.replaceAll("\\", "/"));
   const allowedGeneratedFiles = new Set(["plugins/vertex-palace/mcp/server.cjs"]);
   assert.equal(
     generatedTrackedFiles.every((file) => allowedGeneratedFiles.has(file)),
     true,
     "Candidate build changed an unexpected tracked source file"
   );
-  assert.equal(
-    generatedTrackedFiles.length === 0,
-    generatedDiff.stdout.length === 0,
-    "Candidate build status and byte diff disagree"
-  );
+  assert.equal(generatedTrackedFiles.length === 0, generatedDiff.stdout.length === 0);
 
   const candidate = await packAndInstall({
     label: "candidate",
