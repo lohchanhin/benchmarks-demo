@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "5.0.0-candidate.1",
+  "status": "prepared-before-static-observation",
+  "preparedAt": "2026-08-29T16:59:26.541Z",
+  "observationsAtPreparation": 0,
+  "targetFreeze": {
+    "productSourceCommit": "8f76d7a36f3430aa7b576c2462f8351936c31ae5",
+    "targetsSha256": "b6ddbc38d5a2a8d0e9ccc94cdfaa5a97d0db71e9a9904292941fd62e2376d55d",
+    "privateOracleCommitment": "c5f470e7c81c127ebf80035a23d9224c6fedcc682810735c91387d2098fc9814",
+    "semanticReviewSha256": "763e1f0c8b65659f38da5c1e0309857035813c63bf3b5d7e24c29ed262bf79f9"
+  },
+  "runner": {
+    "sourceCommit": "04aae68abb8f1ea4a45c5ffa350a689d7ab895d9",
+    "sourceFiles": [
+      "scripts/run-real-repository-v5-static.mjs",
+      "src/lib/files.mjs",
+      "src/lib/process.mjs",
+      "src/lib/root.mjs",
+      "src/lib/system-awake.mjs",
+      "src/lib/v4-execution.mjs",
+      "src/lib/v5-static.mjs"
+    ],
+    "sourceSha256": "f701c5016e01c01299891f09ffb1ae898ccbde8aa0bb4c4621aa57b93a67cc1b"
+  },
+  "conditions": {
+    "candidate": {
+      "source": "8f76d7a36f3430aa7b576c2462f8351936c31ae5",
+      "packageName": "vertex-palace",
+      "packageVersion": "0.4.0",
+      "tarballSha256": "58ed1265e3ee79db936a6248e2e2b32643550555523bd9596645ec62ad1c7b9d",
+      "tarballIntegrity": "sha512-Wt7SHYCefVx3Bjzi/OaN2eHmS2FqiC/uKEwh3aCsfHN47U9PYT+gIdh30hxT+54zEqGlmdsiKq67ddN95FscCw==",
+      "cliSha256": "8ea84fb2c62ee27a953c9977fdcc50e61498419ca87210e209ca9c19ec94e0d9"
+    },
+    "baseline-0.4.0": {
+      "source": "npm:vertex-palace@0.4.0",
+      "packageName": "vertex-palace",
+      "packageVersion": "0.4.0",
+      "tarballSha256": "6fa6b17f62c172ab673d9423063849eb0254ba0e0d4c892f955cbce70986d425",
+      "tarballIntegrity": "sha512-s81a+d17EfMhS/Kqszk54DDxYxjTYQ5PnhMHWicP2OEif2H4gSE0Tu+8lAU9ijeAid0fjACqNk9EEGD2IrhOHQ==",
+      "cliSha256": "a5cff40d6289f299d5bde63416c02f1f886f370e06872619063ccb32ed404671"
+    }
+  },
+  "execution": {
+    "repetitions": 2,
+    "order": "balanced within target and sequential",
+    "contextBudgetTokens": 6000,
+    "routeLimit": 8,
+    "localAndHighConnectivityReferencePolicy": "off",
+    "referenceGroundedPolicy": "auto-with-frozen-cache",
+    "agentStage": "blocked-until-static-gates-pass"
+  },
+  "declaration": "The exact candidate and npm baseline packages, runner sources, target freeze, and zero-observation state were bound before any selected target was sent to Palace."
+}
