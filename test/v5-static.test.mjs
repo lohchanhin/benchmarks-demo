@@ -80,6 +80,7 @@ test("static analysis fails closed when one target lacks focused tests", () => {
     roleClosure: true,
     routeFocus: 1,
     contextTokens: 1000,
+    executionPassed: true,
     overconfident: false,
     wrongForcedStop: false,
     trackedFilePollution: [],

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "artifact": "real-repository-v5-interrupted-attempt",
+  "protocolVersion": "5.0.0-candidate.1",
+  "attempt": 1,
+  "selectedTargetCallsStarted": 1,
+  "completedObservations": 0,
+  "observationId": "click-2273-local-complete-r1-candidate",
+  "condition": "candidate",
+  "phase": "context",
+  "productOutcome": {
+    "exitCode": 1,
+    "message": "JSON adaptive context requires 3627 estimated tokens, which exceeds the 2400-token ceiling even without source drawers."
+  },
+  "harnessOutcome": {
+    "classification": "terminated-on-recordable-product-error",
+    "effect": "The original runner stopped instead of recording the non-zero context result and continuing."
+  },
+  "disposition": {
+    "preserved": true,
+    "targetsReplaced": false,
+    "thresholdsChanged": false,
+    "productChanged": false,
+    "allowedGeneralRepair": "Record context command failures as structured observations and continue the frozen sequence.",
+    "qualificationStatus": "This target set is no longer described as an untouched blind qualification set; it remains a frozen diagnostic and regression round."
+  }
+}

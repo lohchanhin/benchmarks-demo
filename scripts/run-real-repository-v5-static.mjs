@@ -67,6 +67,7 @@ export async function runV5Static(options = {}) {
     conditions: Object.keys(context.binding.conditions),
     repetitions: context.binding.execution.repetitions,
     bindingSha256: sha256(canonicalJson(context.binding)),
+    executionAmendmentSha256: sha256(canonicalJson(context.amendment)),
     candidateSourceCommit: context.binding.targetFreeze.productSourceCommit,
     observations,
     analysis,
@@ -96,18 +97,20 @@ async function loadContext(options) {
     targets: path.join(protocolRoot, "targets.frozen.json"),
     review: path.join(protocolRoot, "semantic-review.json"),
     binding: path.join(protocolRoot, "execution.binding.json"),
+    amendment: path.join(protocolRoot, "execution.amendment-1.json"),
     receipt: options.receiptPath || path.join(privateRoot, "execution.receipt.json"),
     oracle: options.oraclePath || path.join(privateRoot, "oracle.json")
   };
-  const [freeze, targetManifest, review, binding, receipt, oracle] = await Promise.all([
+  const [freeze, targetManifest, review, binding, amendment, receipt, oracle] = await Promise.all([
     readJson(paths.freeze),
     readJson(paths.targets),
     readJson(paths.review),
     readJson(paths.binding),
+    readJson(paths.amendment),
     readJson(paths.receipt),
     readJson(paths.oracle)
   ]);
-  await verifyFrozenInputs({ freeze, targetManifest, review, binding, receipt, oracle });
+  await verifyFrozenInputs({ freeze, targetManifest, review, binding, amendment, receipt, oracle });
   const runtimeRoot = path.resolve(options.runtimeRoot || defaultRuntimeRoot);
   assertAsciiPath(runtimeRoot);
   const runtime = {
@@ -123,7 +126,7 @@ async function loadContext(options) {
   await mkdir(runtime.runsRoot, { recursive: true });
   await mkdir(runtime.rawRoot, { recursive: true });
   const oracleById = new Map(oracle.targets.map((target) => [target.id, target]));
-  return { freeze, targets: targetManifest.targets, review, binding, receipt, oracleById, runtime };
+  return { freeze, targets: targetManifest.targets, review, binding, amendment, receipt, oracleById, runtime };
 }
 
 async function runObservation(context, run) {
@@ -143,10 +146,10 @@ async function runObservation(context, run) {
   });
   const product = context.receipt.local[run.condition];
   const cliPath = product.cliPath;
-  const call = (args, timeoutMs) => runProcess(process.execPath, [cliPath, ...args], {
+  const call = (args, timeoutMs, check = true) => runProcess(process.execPath, [cliPath, ...args], {
     cwd: materialized.workspace,
     timeoutMs,
-    check: true,
+    check,
     env: sanitizedEnvironment()
   });
   const init = await call(["init"], 180_000);
@@ -161,8 +164,16 @@ async function runObservation(context, run) {
     "--route-limit", String(context.binding.execution.routeLimit),
     "--budget", String(context.binding.execution.contextBudgetTokens),
     "--references", referencePolicy
-  ], 300_000);
-  const output = JSON.parse(contextCommand.stdout);
+  ], 300_000, false);
+  let output = {};
+  let parseError = null;
+  if (contextCommand.exitCode === 0) {
+    try {
+      output = JSON.parse(contextCommand.stdout);
+    } catch (error) {
+      parseError = error instanceof Error ? error.message : String(error);
+    }
+  }
   const status = await runProcess("git", ["status", "--short", "--untracked-files=all"], {
     cwd: materialized.workspace,
     check: true
@@ -187,6 +198,13 @@ async function runObservation(context, run) {
       init: init.durationMs,
       index: index.durationMs,
       context: contextCommand.durationMs
+    },
+    executionPassed: contextCommand.exitCode === 0 && parseError === null,
+    executionError: contextCommand.exitCode === 0 && parseError === null ? null : {
+      exitCode: contextCommand.exitCode,
+      timedOut: contextCommand.timedOut,
+      phase: "context",
+      message: sanitizeError(parseError || contextCommand.stderr || contextCommand.stdout)
     },
     ...measurement
   };
@@ -226,7 +244,7 @@ async function writeReferenceCache(root, target, oracle, freeze) {
   await writeJson(cachePath, cache);
 }
 
-async function verifyFrozenInputs({ freeze, targetManifest, review, binding, receipt, oracle }) {
+async function verifyFrozenInputs({ freeze, targetManifest, review, binding, amendment, receipt, oracle }) {
   assert.equal(freeze.status, "frozen-before-palace-observation");
   assert.equal(targetManifest.targets.length, 12);
   assert.equal(review.roundDecision, "proceed");
@@ -234,6 +252,13 @@ async function verifyFrozenInputs({ freeze, targetManifest, review, binding, rec
   assert.equal(binding.status, "prepared-before-static-observation");
   assert.equal(binding.observationsAtPreparation, 0);
   assert.equal(canonicalJson(binding), canonicalJson(stripLocalReceipt(receipt)));
+  assert.equal(amendment.status, "frozen-after-interrupted-attempt");
+  assert.equal(amendment.baseBindingSha256, sha256(canonicalJson(binding)));
+  assert.equal(amendment.observedBeforeAmendment.selectedTargetCallsStarted, 1);
+  assert.equal(amendment.observedBeforeAmendment.completedObservations, 0);
+  assert.equal(amendment.repair.productChanged, false);
+  assert.equal(amendment.repair.targetsChanged, false);
+  assert.equal(amendment.repair.thresholdsChanged, false);
   assert.equal(sha256(canonicalJson(oracle)), freeze.artifacts.privateOracleCommitment);
   assert.equal(
     await sha256File(path.join(protocolRoot, "targets.frozen.json")),
@@ -246,9 +271,14 @@ async function verifyFrozenInputs({ freeze, targetManifest, review, binding, rec
     "Semantic review changed after execution binding"
   );
   assert.equal(
-    await hashSources(binding.runner.sourceFiles),
-    binding.runner.sourceSha256,
-    "V5 static runner sources changed after execution binding"
+    await hashSources(amendment.runner.sourceFiles),
+    amendment.runner.sourceSha256,
+    "V5 static runner sources changed after execution amendment"
+  );
+  assert.equal(
+    await sha256File(path.join(resultsRoot, "attempt-1-harness-failure.json")),
+    amendment.observedBeforeAmendment.attemptArtifactSha256,
+    "Interrupted attempt disclosure changed after amendment"
   );
   assert.deepEqual(
     targetManifest.targets.map((target) => target.id).sort(),
@@ -318,6 +348,13 @@ function sanitizedEnvironment() {
   delete env.GH_TOKEN;
   delete env.GITHUB_TOKEN;
   return env;
+}
+
+function sanitizeError(value) {
+  return String(value || "Unknown context execution failure")
+    .replace(/[A-Za-z]:[\\/][^\r\n]*/g, "[local-path]")
+    .trim()
+    .slice(0, 2000);
 }
 
 function assertAsciiPath(value) {

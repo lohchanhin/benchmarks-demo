@@ -110,6 +110,8 @@ export function analyzeV5Static(targets, observations, options = {}) {
 
   const gates = {
     observationCountComplete: candidateRunsComplete && baselineRunsComplete,
+    allContextCommandsSucceeded: observations.length === expectedRuns * 2
+      && observations.every((item) => item.executionPassed === true),
     accessibleReferenceGrounding100: referenceRuns.length === expectedReferenceRuns && referenceRuns.every((item) => (
       item.decision === "route"
       && item.grounding?.status === "resolved"
