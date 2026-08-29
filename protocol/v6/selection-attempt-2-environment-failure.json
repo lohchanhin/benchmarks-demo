@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "6.0.0-smoke.1",
+  "status": "selection-environment-failure-before-freeze",
+  "observedAt": "2026-08-30T03:24:45.8573783+08:00",
+  "phase": "public-baseline-metadata",
+  "error": "Node child_process on Windows rejected direct execution of npm.cmd (spawn EINVAL).",
+  "targetFreezeWritten": false,
+  "privateOracleWritten": false,
+  "targetSentToPalace": false,
+  "candidateOutcomeObserved": false,
+  "repair": "Read the exact package-version metadata from the official npm registry with Node fetch instead of spawning a shell shim.",
+  "selectionRulesChanged": false,
+  "eligibilityThresholdsChanged": false,
+  "replacementAfterOutcome": false
+}

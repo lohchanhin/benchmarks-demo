@@ -110,7 +110,7 @@ export async function prepareFreshRepositoryV6(options = {}) {
   const candidateCliPath = path.join(productRoot, "dist", "palace.cjs");
   const candidateCli = await readFile(candidateCliPath);
   const productCommit = (await gitOutput(productRoot, ["rev-parse", "HEAD"])).trim();
-  const baselineShasum = (await npmOutput(["view", "vertex-palace@0.4.0", "dist.shasum"])).trim();
+  const baselineShasum = await fetchNpmShasum("vertex-palace", "0.4.0");
   const task = `${selected.issue.title}\n\n${normalizeIssueBody(selected.issue.body)}`;
   const target = {
     schemaVersion: 1,
@@ -301,9 +301,14 @@ async function gitOutput(root, args) {
   return (await runProcess("git", args, { cwd: root, check: true, timeoutMs: 120_000 })).stdout;
 }
 
-async function npmOutput(args) {
-  const command = process.platform === "win32" ? "npm.cmd" : "npm";
-  return (await runProcess(command, args, { cwd: repositoryRoot, check: true, timeoutMs: 120_000 })).stdout;
+async function fetchNpmShasum(packageName, version) {
+  const response = await fetch(`https://registry.npmjs.org/${encodeURIComponent(packageName)}/${encodeURIComponent(version)}`, {
+    signal: AbortSignal.timeout(30_000)
+  });
+  assert.equal(response.ok, true, `npm registry metadata request failed with HTTP ${response.status}.`);
+  const metadata = await response.json();
+  assert.match(metadata?.dist?.shasum || "", /^[a-f0-9]{40}$/, "npm registry metadata did not contain a valid dist.shasum.");
+  return metadata.dist.shasum;
 }
 
 async function nodeOutput(args) {
