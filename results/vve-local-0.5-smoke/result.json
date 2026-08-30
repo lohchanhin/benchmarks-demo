@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "artifact": "vve-local-0.5-historical-task-smoke",
+  "generatedAt": "2026-08-30T11:39:50.3235667Z",
+  "status": "completed-negative-no-candidate-advantage",
+  "claimBoundary": "One unblinded local historical task with one sequential warm-context observation per condition and prompt profile. It cannot establish general routing quality, Token savings, or speed.",
+  "target": {
+    "label": "local-large-multitenant-monorepo",
+    "commitmentAlgorithm": "sha256-utf8-commit-id",
+    "commitment": "c82f28172614ac8949127a45594c111d33caf80c32a36fcb727ee59f7598ba7a",
+    "changedFileCount": 4,
+    "truthRoles": [
+      "backend-model",
+      "backend-service",
+      "focused-test",
+      "admin-ui"
+    ],
+    "closedForTuning": true
+  },
+  "products": {
+    "candidate": {
+      "sourceCommit": "2b87acdec1f415a2c84759e2f01a4c9c9ddd6877",
+      "cliSha256": "c4d48f9dbee80cb9e065c80ea5b6b69ab9e027dc3d7ae9b7786ad24583b9fc62",
+      "reportedVersion": "0.4.0"
+    },
+    "baseline": {
+      "package": "vertex-palace",
+      "version": "0.4.0",
+      "cliSha256": "a5cff40d6289f299d5bde63416c02f1f886f370e06872619063ccb32ed404671"
+    }
+  },
+  "indexPreparation": {
+    "candidateAutoRefreshAndContextMs": 72914,
+    "excludedFromWarmComparison": true
+  },
+  "profiles": {
+    "naturalLanguage": {
+      "description": "The historical repair intent without file, class, method, or function identities.",
+      "baseline": {
+        "contextMs": 70074,
+        "contextTokens": 4699,
+        "routeFileCount": 9,
+        "changedFileCoverage": 0.25,
+        "routeFocus": 0.111,
+        "routeDigest": "6e6c338af3645e1c05f0ad2406fae14b91dd2bb05aac8ea749928de79c6a9293"
+      },
+      "candidate": {
+        "contextMs": 70929,
+        "contextTokens": 4699,
+        "routeFileCount": 9,
+        "changedFileCoverage": 0.25,
+        "routeFocus": 0.111,
+        "routeDigest": "6e6c338af3645e1c05f0ad2406fae14b91dd2bb05aac8ea749928de79c6a9293"
+      },
+      "interpretation": "No routing, payload, or practical timing difference was observed."
+    },
+    "explicitIdentity": {
+      "description": "The same repair with the actual implementation identities and focused-test path supplied explicitly.",
+      "baseline": {
+        "contextMs": 71176,
+        "contextTokens": 4613,
+        "routeFileCount": 10,
+        "changedFileCoverage": 1,
+        "routeFocus": 0.4,
+        "routeDigest": "024ef761b89b887ebf881efb65943eafa5e6124a3b3763df0bee174268143fca"
+      },
+      "candidate": {
+        "contextMs": 101990,
+        "contextTokens": 4717,
+        "routeFileCount": 10,
+        "changedFileCoverage": 1,
+        "routeFocus": 0.4,
+        "routeDigest": "024ef761b89b887ebf881efb65943eafa5e6124a3b3763df0bee174268143fca",
+        "evidenceStatusContradiction": {
+          "selection": "sufficient",
+          "routeClosure": "insufficient",
+          "missingExplicitSymbolCount": 2
+        }
+      },
+      "interpretation": "Both versions achieved complete changed-file coverage with the same route. The candidate used 104 more estimated Tokens and was slower in this single observation."
+    }
+  },
+  "conclusion": {
+    "candidateRoutingAdvantageObserved": false,
+    "candidateTokenAdvantageObserved": false,
+    "candidateTimingAdvantageObserved": false,
+    "generalMechanismFindings": [
+      "Natural-language routing remains weak when the task lacks navigable code identities.",
+      "The public baseline already closes this explicit-identity task, so the candidate adds no route-quality value here.",
+      "Selection evidence status can disagree with final route evidence closure after the explicit-symbol contract is applied.",
+      "Warm context latency around 70 seconds remains unacceptable for an interactive workflow."
+    ],
+    "nextResearch": [
+      "Reproduce evidence-status divergence with a neutral fixture before changing product code.",
+      "Profile context latency by analysis, scoring, expansion, memory, and serialization stages.",
+      "Continue qualification only on a mechanically fresh repository after freezing the generic mechanism."
+    ]
+  }
+}
