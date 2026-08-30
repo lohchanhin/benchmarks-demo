@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "artifact": "fresh-repository-v6-oracle-observability-audit",
+  "auditedAt": "2026-08-30T04:12:06.0016377Z",
+  "targetId": "djust-org-djust-2424",
+  "baseCommit": "00a13339c2c2121d1d39bedf5dd3fec60516b530",
+  "method": "git cat-file -e <baseCommit>:<oraclePath>",
+  "originalResultPreserved": true,
+  "classification": {
+    "baseObservable": {
+      "implementationFiles": [
+        "python/djust/components/function_component.py"
+      ],
+      "testFiles": [],
+      "auxiliaryFiles": [
+        "CHANGELOG.md"
+      ],
+      "coreFiles": [
+        "python/djust/components/function_component.py"
+      ]
+    },
+    "futureOnly": {
+      "implementationFiles": [],
+      "testFiles": [
+        "python/tests/test_render_slot_markup_2421.py"
+      ],
+      "auxiliaryFiles": [],
+      "coreFiles": [
+        "python/tests/test_render_slot_markup_2421.py"
+      ]
+    },
+    "creationSurfaceRequired": {
+      "implementation": false,
+      "tests": true,
+      "auxiliary": false
+    }
+  },
+  "formalObservationInterpretation": {
+    "originalFrozenCoreCoverage": {
+      "matched": 0,
+      "expected": 2,
+      "coverage": 0,
+      "status": "preserved-original-metric"
+    },
+    "baseObservableCoreCoverage": {
+      "matched": 0,
+      "expected": 1,
+      "coverage": 0,
+      "status": "descriptive-observability-correction"
+    },
+    "futureOnlyCore": {
+      "matched": 0,
+      "expected": 1,
+      "coverage": null,
+      "status": "not-scoreable-as-an-exact-pre-change-path"
+    }
+  },
+  "conclusion": "The formal result remains negative because the candidate missed the base-observable implementation file. The new focused-test pathname was introduced by the hidden diff and cannot serve as an exact static-routing hard gate. Future protocols must freeze a base-observable creation surface for new-file work."
+}

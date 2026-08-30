@@ -22,6 +22,15 @@ The hidden diff changed exactly three files:
 
 The frozen oracle commitment verified after the four observations.
 
+### Oracle observability correction
+
+A post-result audit found that `python/tests/test_render_slot_markup_2421.py` did not exist at the frozen base commit; the hidden diff created it. The original `0/2` metric is preserved because it was the preregistered calculation, but it combines two different truths:
+
+- base-observable core: `python/djust/components/function_component.py`, missed (`0/1`)
+- future-only outcome: `python/tests/test_render_slot_markup_2421.py`, not scoreable as an exact pre-change pathname
+
+The result therefore remains negative: the candidate missed the implementation file that it could have routed. However, future static studies must not require a router to guess a hidden future filename. When the task requires a new file, the oracle must freeze an observable creation surface, such as an existing test directory or sibling suite, before Palace runs. The [machine-readable observability audit](../../results/fresh-repository-v6/oracle-observability-audit.json) records this correction without rewriting the formal result.
+
 ## Results
 
 | Measure | Current candidate | npm 0.4.0 baseline |
@@ -64,6 +73,7 @@ This disclosed target is now closed for tuning and remains only a regression cas
 4. Test those invariants with neutral fixtures that contain no repository, issue, or path-specific rule.
 5. Investigate cold indexing separately; 10-12 minutes per fresh clone is not acceptable for an interactive workflow.
 6. Use another undisclosed repository for the next qualifying observation.
+7. Split exact-path truth into base-observable files and preregistered creation surfaces; hidden new files remain outcome evidence, not exact static-route gates.
 
 ## Claim boundary
 
