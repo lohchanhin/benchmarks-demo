@@ -1,0 +1,126 @@
+{
+  "diagnosticOnly": true,
+  "sourceCommit": "2b87acdec1f415a2c84759e2f01a4c9c9ddd6877",
+  "startedAt": "2026-09-08T21:36:03.826Z",
+  "nodeVersion": "v24.13.1",
+  "stages": [
+    {
+      "name": "readIndex",
+      "durationMs": 637.584
+    },
+    {
+      "name": "scanRepoAndHashAllFiles",
+      "durationMs": 24427.928
+    },
+    {
+      "name": "groundTaskOffline",
+      "durationMs": 5.052
+    },
+    {
+      "name": "scoreNodes",
+      "durationMs": 1501.552
+    },
+    {
+      "name": "readIndexAgain",
+      "durationMs": 610.295
+    }
+  ],
+  "index": {
+    "nodes": 22993,
+    "edges": 53486,
+    "facts": 201,
+    "files": 5670
+  },
+  "scan": {
+    "files": 16993,
+    "ignored": 774,
+    "bytes": 1183763744
+  },
+  "stale": true,
+  "taskType": "bugfix",
+  "groundingDecision": "route",
+  "candidateCount": 3824,
+  "finishedAt": "2026-09-08T21:36:31.045Z",
+  "topSelfSamples": [
+    {
+      "function": "(idle)",
+      "sampledMs": 18567
+    },
+    {
+      "function": "(anonymous)",
+      "sampledMs": 1001
+    },
+    {
+      "function": "(program)",
+      "sampledMs": 924
+    },
+    {
+      "function": "update",
+      "sampledMs": 675
+    },
+    {
+      "function": "readJson",
+      "sampledMs": 655
+    },
+    {
+      "function": "(garbage collector)",
+      "sampledMs": 622
+    },
+    {
+      "function": "stat",
+      "sampledMs": 404
+    },
+    {
+      "function": "write",
+      "sampledMs": 310
+    },
+    {
+      "function": "normalizeLexicalToken",
+      "sampledMs": 283
+    },
+    {
+      "function": "_t",
+      "sampledMs": 248
+    },
+    {
+      "function": "readFileHandle",
+      "sampledMs": 225
+    },
+    {
+      "function": "openFileHandle",
+      "sampledMs": 215
+    },
+    {
+      "function": "tokenizeLexical",
+      "sampledMs": 178
+    },
+    {
+      "function": "read",
+      "sampledMs": 122
+    },
+    {
+      "function": "open",
+      "sampledMs": 118
+    },
+    {
+      "function": "fstat",
+      "sampledMs": 105
+    },
+    {
+      "function": "Hash",
+      "sampledMs": 105
+    },
+    {
+      "function": "close",
+      "sampledMs": 100
+    },
+    {
+      "function": "RegExp: [^a-z0-9]+",
+      "sampledMs": 99
+    },
+    {
+      "function": "scanRepo",
+      "sampledMs": 93
+    }
+  ]
+}
