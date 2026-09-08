@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "vertex-palace-net-benefit-v1",
+  "status": "engineering-before-candidate-freeze",
+  "implementationStartedLocalDate": "2026-09-09",
+  "timeZone": "Asia/Kuala_Lumpur",
+  "engineeringDeadlineLocalDate": "2026-09-15",
+  "decisionDeadlineLocalDate": "2026-09-22",
+  "baselineSourceCommit": "2b87acdec1f415a2c84759e2f01a4c9c9ddd6877",
+  "publicBaseline": "vertex-palace@0.4.0",
+  "candidate": null,
+  "targets": [],
+  "engineeringGate": {
+    "requiredChecks": ["lint", "test", "build", "mcp-smoke", "release-candidate", "temporary-install"],
+    "samples": ["synthetic-1000-files", "synthetic-10000-files", "private-vve-performance-snapshot"],
+    "warmQueriesPerSample": 30,
+    "cliP95Ms": 2000,
+    "mcpP95Ms": 1000,
+    "evidenceEscalations": 0,
+    "trackedSourcePollution": 0
+  },
+  "agentStudy": {
+    "targetCount": 12,
+    "repositories": { "javascriptOrTypescript": 2, "python": 2 },
+    "tasksPerRepository": ["simple", "cross-file", "historical-decision"],
+    "conditions": {
+      "A": "ordinary tools plus the complete shared Markdown history corpus",
+      "B": "A plus lightweight Palace memory search",
+      "C": "B plus lightweight Palace lookup and open"
+    },
+    "repetitions": ["cold-index", "warm-index"],
+    "plannedExecutions": 72,
+    "timeoutMs": 900000,
+    "automaticReplacementRuns": 0,
+    "concurrency": 1,
+    "orderSeed": "vertex-palace-net-benefit-v1",
+    "primaryComparison": "C-minus-A",
+    "secondaryComparisons": ["B-minus-A", "C-minus-B"],
+    "success": "behavioral tests plus explicit constraints and prohibited-scope checks",
+    "exactHistoricalDiffRequired": false,
+    "missingUsage": null,
+    "aggregationUnit": "independent task"
+  },
+  "decision": {
+    "candidateSuccessMustNotBeLower": true,
+    "newScopeOrStaleMemoryViolations": 0,
+    "minimumCorrectnessImprovedTasks": 2,
+    "minimumMutuallySuccessfulTasksForEfficiency": 8,
+    "minimumMedianTimeReduction": 0.2,
+    "maximumMedianTokenIncrease": 0.1,
+    "minimumNavigationTimeBenefitOverMemory": 0.1,
+    "incompleteAtDeadline": "archive-without-automatic-extension",
+    "thresholdsAreInvestmentCriteriaNotStatisticalNoninferiority": true
+  },
+  "publication": {
+    "pushStageEvidence": true,
+    "npmLatest": "0.4.0",
+    "npmNextRequiresRetainedModuleAndEngineeringPass": true,
+    "automaticStableRelease": false
+  }
+}
