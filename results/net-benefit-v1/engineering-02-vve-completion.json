@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "protocol": "vertex-palace-net-benefit-v1",
+  "startedAt": "2026-09-08T22:49:53.262Z",
+  "environment": {
+    "node": "v24.13.1",
+    "platform": "win32",
+    "arch": "x64",
+    "cpus": 12
+  },
+  "artifacts": {
+    "cliSha256": "17b3dba200ddd2cb98053f46e06fb00b4d8b4854fb5679fe29012182e5c7f373",
+    "mcpSha256": "b0c473ba57ccb10c5741c5f5bbd72a083f7aa1d14b65c0a1b30aee20ddc00e1a"
+  },
+  "repeatCount": 30,
+  "concurrency": 1,
+  "scope": "vve-completion",
+  "samples": [
+    {
+      "id": "private-vve-performance-snapshot",
+      "private": true,
+      "queries": []
+    }
+  ],
+  "complete": false,
+  "qualifies": false,
+  "error": {
+    "name": "Error",
+    "message": "Engineering command exceeded 10 minutes"
+  },
+  "finishedAt": "2026-09-08T23:00:22.953Z"
+}

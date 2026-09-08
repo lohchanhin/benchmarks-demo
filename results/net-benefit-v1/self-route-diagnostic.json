@@ -1,0 +1,120 @@
+{
+  "id": "evaluation_eadbbab489331154",
+  "task": "Implement advisory lightweight lookup, scoped memory search, monotonic evidence status, parsed file cache and generation snapshots",
+  "taskType": "feature",
+  "decision": "route",
+  "taskGrounding": {
+    "status": "local",
+    "decision": "route",
+    "resolutionStatus": "not-needed",
+    "references": [],
+    "reasons": [
+      "The task contains local file, symbol, or product-vocabulary evidence."
+    ]
+  },
+  "routeId": "route_679a7cdf63d26293",
+  "createdAt": "2026-09-08T23:24:40.418Z",
+  "route": {
+    "confidence": 0.4,
+    "files": [
+      "packages/core/src/router/route-planner.ts",
+      "packages/core/src/navigation/lookup.ts",
+      "packages/core/src/packer/context-packer.ts",
+      "packages/core/src/storage/index-snapshot.ts",
+      "packages/core/src/storage/write-palace.ts",
+      "packages/core/test/lightweight.test.ts"
+    ],
+    "fileCount": 6
+  },
+  "context": {
+    "measurement": "adaptive-delivered-payload",
+    "deliveryMode": "guarded-memory-palace",
+    "payloadBytes": 2500,
+    "tokenCeiling": 1400,
+    "repositoryTextFiles": 896,
+    "skippedBinaryFiles": 13,
+    "skippedGeneratedFiles": 2,
+    "repositoryTokens": 6167287,
+    "packTokens": 625,
+    "savedTokens": 6166662,
+    "tokenReductionPercent": 100,
+    "repositoryToPackRatio": 9867.66
+  },
+  "coverage": {
+    "status": "measured",
+    "changedFiles": [
+      "packages/core/src/router/mode-selector.ts",
+      "packages/core/src/indexer/index-palace.ts",
+      "packages/core/src/navigation/lookup.ts",
+      "packages/core/src/memory/search-memory.ts",
+      "packages/core/src/storage/index-snapshot.ts"
+    ],
+    "matchedFiles": [
+      "packages/core/src/navigation/lookup.ts",
+      "packages/core/src/storage/index-snapshot.ts"
+    ],
+    "missedFiles": [
+      "packages/core/src/router/mode-selector.ts",
+      "packages/core/src/indexer/index-palace.ts",
+      "packages/core/src/memory/search-memory.ts"
+    ],
+    "routeOnlyFiles": [
+      "packages/core/src/router/route-planner.ts",
+      "packages/core/src/packer/context-packer.ts",
+      "packages/core/src/storage/write-palace.ts",
+      "packages/core/test/lightweight.test.ts"
+    ],
+    "changedFileCoverage": 0.4,
+    "routeFocus": 0.333,
+    "layers": {
+      "core": {
+        "files": [
+          "packages/core/src/router/mode-selector.ts",
+          "packages/core/src/indexer/index-palace.ts",
+          "packages/core/src/navigation/lookup.ts",
+          "packages/core/src/memory/search-memory.ts",
+          "packages/core/src/storage/index-snapshot.ts"
+        ],
+        "matchedFiles": [
+          "packages/core/src/navigation/lookup.ts",
+          "packages/core/src/storage/index-snapshot.ts"
+        ],
+        "missedFiles": [
+          "packages/core/src/router/mode-selector.ts",
+          "packages/core/src/indexer/index-palace.ts",
+          "packages/core/src/memory/search-memory.ts"
+        ],
+        "coverage": 0.4,
+        "routeFocus": 0.333
+      },
+      "declaredAuxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": []
+      },
+      "latentAuxiliary": {
+        "files": [],
+        "matchedFiles": [],
+        "missedFiles": []
+      }
+    }
+  },
+  "calibration": {
+    "status": "well-calibrated",
+    "predictedConfidence": 0.4,
+    "observedCoverage": 0.4,
+    "error": 0
+  },
+  "assessment": "needs-review",
+  "warnings": [
+    "Route missed 3 changed file(s).",
+    "Route missed 3 core implementation or verification file(s)."
+  ],
+  "artifacts": {
+    "markdownPath": ".palace/evaluations/evaluation_eadbbab489331154.md",
+    "jsonPath": ".palace/evaluations/evaluation_eadbbab489331154.json",
+    "latestMarkdownPath": ".palace/evaluations/latest-evaluation.md",
+    "latestJsonPath": ".palace/evaluations/latest-evaluation.json"
+  },
+  "markdown": "# Vertex Palace Evaluation\n\nTask: Implement advisory lightweight lookup, scoped memory search, monotonic evidence status, parsed file cache and generation snapshots\nRoute: route_679a7cdf63d26293\nTask type: feature\nRoute decision: route\nTask grounding: local (not-needed)\nAssessment: needs-review\nCreated: 2026-09-08T23:24:40.418Z\n\n## Context Efficiency\n\n- Measurement: adaptive-delivered-payload\n- Delivery mode: guarded-memory-palace\n- Payload bytes: 2500\n- Token ceiling: 1400\n- Indexed repository text: 6167287 estimated tokens across 896 files\n- Context pack: 625 estimated tokens\n- Tokens saved: 6166662\n- Reduction: 100%\n- Repository-to-pack ratio: 9867.66x\n- Skipped binary files: 13\n- Skipped generated artifacts: 2\n\n## Route Quality\n\n- Route confidence: 0.4\n- Changed-file coverage: 40%\n- Route focus: 33%\n- Core coverage: 40%\n- Declared auxiliary coverage: unverified\n- Latent auxiliary coverage: unverified (descriptive only)\n- Confidence calibration: well-calibrated (error 0)\n\n## Changed Files\n\n- packages/core/src/router/mode-selector.ts\n- packages/core/src/indexer/index-palace.ts\n- packages/core/src/navigation/lookup.ts\n- packages/core/src/memory/search-memory.ts\n- packages/core/src/storage/index-snapshot.ts\n\n## Missed Changed Files\n\n- packages/core/src/router/mode-selector.ts\n- packages/core/src/indexer/index-palace.ts\n- packages/core/src/memory/search-memory.ts\n\n## Layered Truth\n\n### Core implementation and focused tests\n\n- Coverage: 40%\n- Route focus: 33%\n- Files: 5\n- Matched: 2\n- Missed: 3\n\n### Declared auxiliary evidence\n\n- Coverage: unverified\n- Route focus: unverified\n- Files: 0\n- Matched: 0\n- Missed: 0\n\n### Latent auxiliary evidence (descriptive only)\n\n- Coverage: unverified\n- Route focus: unverified\n- Files: 0\n- Matched: 0\n- Missed: 0\n\n\n## Route Files\n\n- packages/core/src/router/route-planner.ts\n- packages/core/src/navigation/lookup.ts\n- packages/core/src/packer/context-packer.ts\n- packages/core/src/storage/index-snapshot.ts\n- packages/core/src/storage/write-palace.ts\n- packages/core/test/lightweight.test.ts\n\n## Warnings\n\n- Route missed 3 changed file(s).\n- Route missed 3 core implementation or verification file(s).\n"
+}

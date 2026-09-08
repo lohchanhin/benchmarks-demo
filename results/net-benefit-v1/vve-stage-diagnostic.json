@@ -1,0 +1,309 @@
+{
+  "diagnosticOnly": true,
+  "qualificationEvidence": false,
+  "sourceManifestSha256": "8e1918f63a4a275bc8a8d5a385bc5a298935eace69a3bd564fe9d6e6117d23a2",
+  "cliSha256": "df91e9cdd3aba99b7e9470a3df457146e51695db296c1eb8fb1e67abd16af404",
+  "timeoutMs": 90000,
+  "events": [
+    {
+      "elapsedMs": 43.424199999999985,
+      "observedAt": "2026-09-08T23:09:28.439Z",
+      "phase": "scan",
+      "rssBytes": 97456128
+    },
+    {
+      "completedFiles": 250,
+      "elapsedMs": 4502.6947,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:09:32.899Z",
+      "parsedFileCount": 250,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 177799168
+    },
+    {
+      "completedFiles": 1750,
+      "elapsedMs": 7573.3282,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:09:35.969Z",
+      "parsedFileCount": 1750,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 614928384
+    },
+    {
+      "completedFiles": 2750,
+      "elapsedMs": 8924.9886,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:09:37.321Z",
+      "parsedFileCount": 2750,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 666492928
+    },
+    {
+      "completedFiles": 3250,
+      "elapsedMs": 11272.607,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:09:39.668Z",
+      "parsedFileCount": 3250,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 1186676736
+    },
+    {
+      "completedFiles": 3500,
+      "elapsedMs": 17911.6205,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:09:46.307Z",
+      "parsedFileCount": 3500,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 1436872704
+    },
+    {
+      "completedFiles": 3750,
+      "elapsedMs": 25397.9821,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:09:53.794Z",
+      "parsedFileCount": 3750,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 1661157376
+    },
+    {
+      "completedFiles": 4000,
+      "elapsedMs": 27811.4561,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:09:56.207Z",
+      "parsedFileCount": 4000,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 1740206080
+    },
+    {
+      "completedFiles": 4500,
+      "elapsedMs": 28858.2436,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:09:57.254Z",
+      "parsedFileCount": 4500,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 1740226560
+    },
+    {
+      "completedFiles": 5250,
+      "elapsedMs": 31633.7304,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:00.030Z",
+      "parsedFileCount": 5250,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 1743659008
+    },
+    {
+      "completedFiles": 5750,
+      "elapsedMs": 33619.318699999996,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:02.015Z",
+      "parsedFileCount": 5750,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 1754697728
+    },
+    {
+      "completedFiles": 6750,
+      "elapsedMs": 34997.7895,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:03.394Z",
+      "parsedFileCount": 6750,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 1838387200
+    },
+    {
+      "completedFiles": 7750,
+      "elapsedMs": 37576.1248,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:05.972Z",
+      "parsedFileCount": 7750,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 1985531904
+    },
+    {
+      "completedFiles": 9000,
+      "elapsedMs": 39604.025299999994,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:08.000Z",
+      "parsedFileCount": 9000,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2092056576
+    },
+    {
+      "completedFiles": 10000,
+      "elapsedMs": 41382.750199999995,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:09.779Z",
+      "parsedFileCount": 10000,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2199916544
+    },
+    {
+      "completedFiles": 10250,
+      "elapsedMs": 42202.0438,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:10.598Z",
+      "parsedFileCount": 10250,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2250162176
+    },
+    {
+      "completedFiles": 10750,
+      "elapsedMs": 57916.7731,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:26.313Z",
+      "parsedFileCount": 10750,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2651742208
+    },
+    {
+      "completedFiles": 11500,
+      "elapsedMs": 59269.4151,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:27.665Z",
+      "parsedFileCount": 11500,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2713726976
+    },
+    {
+      "completedFiles": 12250,
+      "elapsedMs": 61711.6077,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:30.108Z",
+      "parsedFileCount": 12250,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2919190528
+    },
+    {
+      "completedFiles": 12500,
+      "elapsedMs": 63595.1665,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:31.992Z",
+      "parsedFileCount": 12500,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2739093504
+    },
+    {
+      "completedFiles": 13250,
+      "elapsedMs": 65559.7362,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:33.957Z",
+      "parsedFileCount": 13250,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2752274432
+    },
+    {
+      "completedFiles": 13500,
+      "elapsedMs": 66187.19630000001,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:34.584Z",
+      "parsedFileCount": 13500,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2756177920
+    },
+    {
+      "completedFiles": 13750,
+      "elapsedMs": 68573.57770000001,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:36.970Z",
+      "parsedFileCount": 13750,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2776186880
+    },
+    {
+      "completedFiles": 14000,
+      "elapsedMs": 70718.3869,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:39.115Z",
+      "parsedFileCount": 14000,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 2789744640
+    },
+    {
+      "completedFiles": 14500,
+      "elapsedMs": 72506.9982,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:40.904Z",
+      "parsedFileCount": 14500,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 3321430016
+    },
+    {
+      "completedFiles": 14750,
+      "elapsedMs": 74577.0592,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:42.974Z",
+      "parsedFileCount": 14750,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 3290001408
+    },
+    {
+      "completedFiles": 15000,
+      "elapsedMs": 77422.7915,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:45.820Z",
+      "parsedFileCount": 15000,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 3303649280
+    },
+    {
+      "completedFiles": 15250,
+      "elapsedMs": 79695.4908,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:48.092Z",
+      "parsedFileCount": 15250,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 3309641728
+    },
+    {
+      "completedFiles": 15500,
+      "elapsedMs": 83191.51370000001,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:51.588Z",
+      "parsedFileCount": 15500,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 3320119296
+    },
+    {
+      "completedFiles": 15750,
+      "elapsedMs": 85119.84730000001,
+      "fileCount": 17023,
+      "observedAt": "2026-09-08T23:10:53.517Z",
+      "parsedFileCount": 15750,
+      "phase": "parse",
+      "reusedFileCount": 0,
+      "rssBytes": 3323461632
+    }
+  ],
+  "completed": false,
+  "stoppedAtDiagnosticLimit": true,
+  "wallMs": 90252.43350000001,
+  "exitCode": null
+}

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "protocol": "vertex-palace-net-benefit-v1",
+  "localDate": "2026-09-09",
+  "timeZone": "Asia/Kuala_Lumpur",
+  "stage": "engineering-incomplete",
+  "sourceCommit": "081cf5800335007023906c1be3e8a0742bfc0672",
+  "artifact": {
+    "cliSha256": "df91e9cdd3aba99b7e9470a3df457146e51695db296c1eb8fb1e67abd16af404",
+    "mcpSha256": "64af2724706a65aed6a3ed01681a93e1f963899d280f682e1aaf30d46f8e911d"
+  },
+  "checks": {
+    "lint": "passed",
+    "test": "passed",
+    "build": "passed",
+    "mcp-smoke": "passed",
+    "release-candidate": "passed",
+    "temporary-install": "passed"
+  },
+  "validationEvidence": "release-candidate-081cf58.json",
+  "benchmarkTests": {
+    "passed": 142,
+    "failed": 0
+  },
+  "measurementSources": [
+    "engineering-01.json",
+    "engineering-02-vve-completion.json"
+  ],
+  "measuredArtifact": {
+    "cliSha256": "17b3dba200ddd2cb98053f46e06fb00b4d8b4854fb5679fe29012182e5c7f373",
+    "mcpSha256": "b0c473ba57ccb10c5741c5f5bbd72a083f7aa1d14b65c0a1b30aee20ddc00e1a"
+  },
+  "warmObservations": 840,
+  "gate": {
+    "passed": false,
+    "reasons": [
+      "missing-index-observation:synthetic-1000-files",
+      "incomplete-query:synthetic-1000-files:path",
+      "incomplete-query:synthetic-1000-files:qualified-symbol",
+      "incomplete-query:synthetic-1000-files:symbol",
+      "incomplete-query:synthetic-1000-files:lexical",
+      "incomplete-query:synthetic-1000-files:neighbors",
+      "incomplete-query:synthetic-1000-files:memory",
+      "incomplete-query:synthetic-1000-files:miss",
+      "missing-index-observation:synthetic-10000-files",
+      "incomplete-query:synthetic-10000-files:path",
+      "incomplete-query:synthetic-10000-files:qualified-symbol",
+      "incomplete-query:synthetic-10000-files:symbol",
+      "incomplete-query:synthetic-10000-files:lexical",
+      "incomplete-query:synthetic-10000-files:neighbors",
+      "incomplete-query:synthetic-10000-files:memory",
+      "incomplete-query:synthetic-10000-files:miss",
+      "missing-index-observation:private-vve-performance-snapshot",
+      "incomplete-query:private-vve-performance-snapshot:path",
+      "incomplete-query:private-vve-performance-snapshot:qualified-symbol",
+      "incomplete-query:private-vve-performance-snapshot:symbol",
+      "incomplete-query:private-vve-performance-snapshot:lexical",
+      "incomplete-query:private-vve-performance-snapshot:neighbors",
+      "incomplete-query:private-vve-performance-snapshot:memory",
+      "incomplete-query:private-vve-performance-snapshot:miss"
+    ],
+    "agentRunsAuthorized": false
+  },
+  "privateSnapshot": {
+    "files": 17023,
+    "bytes": 1184093307,
+    "manifestSha256": "8e1918f63a4a275bc8a8d5a385bc5a298935eace69a3bd564fe9d6e6117d23a2",
+    "purpose": "performance-only",
+    "blindEligibility": false
+  },
+  "failures": [
+    {
+      "id": "snapshot-race",
+      "source": "engineering-01.json",
+      "classification": "environment-snapshot-consistency",
+      "preserved": true
+    },
+    {
+      "id": "cold-index-timeout",
+      "source": "engineering-02-vve-completion.json",
+      "classification": "incomplete-cold-index",
+      "limitMs": 600000,
+      "preserved": true
+    },
+    {
+      "id": "parse-stage-diagnostic",
+      "source": "vve-stage-diagnostic.json",
+      "classification": "diagnostic-only",
+      "limitMs": 90000,
+      "qualificationEvidence": false
+    }
+  ],
+  "candidate": null,
+  "targets": [],
+  "agentExecutions": 0,
+  "plannedAgentExecutions": 72,
+  "retentionDecision": "undecided",
+  "npm": {
+    "latest": "0.4.0",
+    "next": "0.4.0",
+    "publishedThisStage": false
+  },
+  "globalWorkflowChanged": false,
+  "performanceClaims": false,
+  "engineeringDeadlineLocalDate": "2026-09-15",
+  "decisionDeadlineLocalDate": "2026-09-22",
+  "limitations": [
+    "Earlier implementation timings do not qualify the current artifact.",
+    "VVE warm timings are missing, not zero.",
+    "Synthetic qualified-symbol and ordinary-symbol query identities overlap.",
+    "No Agent net benefit or correctness conclusion exists."
+  ]
+}

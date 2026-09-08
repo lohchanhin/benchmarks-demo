@@ -9,6 +9,14 @@
 
 [English](README.md) | [第六代全新仓库结果](docs/zh-CN/FRESH_REPOSITORY_V6_RESULT.md) | [第五代静态路由报告](docs/zh-CN/REAL_REPOSITORY_V5_RESULT.md) | [第四代真实仓库最终报告](docs/zh-CN/REAL_REPOSITORY_V4_FINAL.md) | [Control-first v3 最终报告](docs/zh-CN/CONTROL_FIRST_V3_FINAL.md) | [验证覆盖矩阵](docs/zh-CN/VALIDATION_COVERAGE_MATRIX.md) | [中文辅助文档](docs/zh-CN/README.md) | [快速验证指南](docs/zh-CN/QUICKSTART.md) | [结果阅读指南](docs/zh-CN/RESULTS_GUIDE.md) | [测试方法](METHODOLOGY.md) | [影片指南](DEMO.md)
 
+## 净收益验证：工程闸门尚未通过
+
+本轮已实现独立的轻量导航、记忆检索与索引缓存。合成热查询达到响应目标，
+但 VVE 冷索引建设超时，因此还不能进入 Agent 对照。候选和正式目标尚未冻结，
+执行 0／72 次，npm 未更新。请读[最新简体中文工程报告](docs/zh-CN/NET_BENEFIT_ENGINEERING_RESULTS.md)、
+[英文报告](docs/research/NET_BENEFIT_ENGINEERING_RESULTS.md)与[机器状态](results/net-benefit-v1/stage-status.json)。
+以下历史实验保持原样。
+
 ## 第六代全新仓库冒烟结果
 
 第一轮机械选取的全新仓库冒烟已经完成。当前候选版在 npm `0.4.0` 因 2,400 Token 契约超限而失败的相同任务上，两次都返回了 1,365 Token 的有界 Context；但实现与聚焦测试命中为 `0/2`，route focus 为 `0.000`。这是负面路由结果，不是性能胜利。请读[简体中文报告](docs/zh-CN/FRESH_REPOSITORY_V6_RESULT.md)、[英文报告](docs/research/FRESH_REPOSITORY_V6_RESULT.md)与[机器结果](results/fresh-repository-v6/static-result.json)。

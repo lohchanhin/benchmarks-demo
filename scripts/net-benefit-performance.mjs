@@ -23,12 +23,13 @@ const count = protocol.engineeringGate.warmQueriesPerSample;
 const result = { schemaVersion: 1, protocol: protocol.id, startedAt: new Date().toISOString(),
   environment: { node: process.version, platform: process.platform, arch: process.arch, cpus: os.cpus().length },
   artifacts: { cliSha256: hash(await readFile(cli)), mcpSha256: hash(await readFile(server)) },
-  repeatCount: count, concurrency: 1, samples: [], complete: false, qualifies: false };
+  repeatCount: count, concurrency: 1, scope: options['vve-only'] === 'true' ? 'vve-completion' : 'full-matrix',
+  samples: [], complete: false, qualifies: false };
 await persist();
 
 async function run() {
 try {
-  for (const size of [1000, 10000]) {
+  for (const size of options['vve-only'] === 'true' ? [] : [1000, 10000]) {
     const root = path.join(output, `synthetic-${size}`);
     await mkdir(root);
     for (let i = 0; i < size; i += 1) {
@@ -44,16 +45,26 @@ try {
     const root = path.join(output, 'private-vve-snapshot');
     await mkdir(root);
     const scan = await core.scanRepo({ root: path.resolve(options.vve), includeHidden: true, hashMode: 'full' });
-    for (const file of scan.files) {
-      const destination = path.join(root, file.path);
-      await mkdir(path.dirname(destination), { recursive: true });
-      await copyFile(path.join(options.vve, file.path), destination);
-      if (await core.hashFile(destination) !== file.hash) throw new Error('Private source changed during snapshot; preserve this incomplete attempt.');
-    }
     await writeFile(path.join(output, 'private-manifest.local.json'), JSON.stringify(scan.files, null, 2));
+    for (let offset = 0; offset < scan.files.length; offset += 16) {
+      const batch = await Promise.allSettled(scan.files.slice(offset, offset + 16).map(async file => {
+        const destination = path.join(root, file.path);
+        await mkdir(path.dirname(destination), { recursive: true });
+        await copyFile(path.join(options.vve, file.path), destination);
+        const observed = await core.hashFile(destination);
+        if (observed !== file.hash) {
+          await writeFile(path.join(output, `private-snapshot-failure-${hash(file.path).slice(0, 12)}.local.json`),
+            JSON.stringify({ path: file.path, expected: file.hash, observed }));
+          throw new Error('Private source changed during snapshot; preserve this incomplete attempt.');
+        }
+      }));
+      const failed = batch.find(item => item.status === 'rejected');
+      if (failed) throw failed.reason;
+    }
     await measureSample('private-vve-performance-snapshot', root, true);
   }
   result.complete = result.samples.length === protocol.engineeringGate.samples.length;
+  result.scopeComplete = result.scope === 'vve-completion' ? result.samples.length === 1 : result.complete;
   result.qualifies = result.complete && result.samples.every(sample => sample.queries.every(query => query.pass));
 } catch (error) {
   result.error = { name: error.name, message: String(error.message).replaceAll(output, '[run-directory]').replaceAll(product, '[product]') };

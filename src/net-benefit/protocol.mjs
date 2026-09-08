@@ -4,6 +4,35 @@ const orders = ['ABC', 'ACB', 'BAC', 'BCA', 'CAB', 'CBA'];
 const indexStates = ['cold-index', 'warm-index'];
 const digest = value => createHash('sha256').update(value).digest('hex');
 
+export function evaluateEngineeringGate(attempts, artifact, checks) {
+  const reasons = [];
+  const requiredChecks = ['lint', 'test', 'build', 'mcp-smoke', 'release-candidate', 'temporary-install'];
+  for (const name of requiredChecks) if (checks[name] !== 'passed') reasons.push(`check-not-passed:${name}`);
+  const samples = ['synthetic-1000-files', 'synthetic-10000-files', 'private-vve-performance-snapshot'];
+  const queryKinds = ['path', 'qualified-symbol', 'symbol', 'lexical', 'neighbors', 'memory', 'miss'];
+  const matching = attempts.filter(attempt => !attempt.diagnosticOnly
+    && attempt.artifacts?.cliSha256 === artifact.cliSha256 && attempt.artifacts?.mcpSha256 === artifact.mcpSha256);
+  for (const id of samples) {
+    const sample = matching.flatMap(attempt => attempt.samples ?? []).find(item => item.id === id);
+    const indexObservations = [sample?.coldIndex, sample?.unchangedRebuild, sample?.changedRefresh];
+    if (!indexObservations.every(observation => valid(observation?.wallMs)
+      && ['scan', 'parse', 'graph', 'publish', 'total'].every(phase => valid(observation?.phases?.[phase])))) {
+      reasons.push(`missing-index-observation:${id}`);
+    }
+    for (const kind of queryKinds) {
+      const query = sample?.queries?.find(item => item.id === kind);
+      if (!query || query.cliMs?.length !== 30 || query.mcpMs?.length !== 30
+        || !query.cliMs.every(valid) || !query.mcpMs.every(valid)) {
+        reasons.push(`incomplete-query:${id}:${kind}`); continue;
+      }
+      const p95 = values => [...values].sort((a, b) => a - b)[28];
+      if (p95(query.cliMs) > 2000 || p95(query.mcpMs) > 1000) reasons.push(`latency-limit:${id}:${kind}`);
+      if (!query.deterministic || !query.outputsWithinBudget) reasons.push(`delivery-contract:${id}:${kind}`);
+    }
+  }
+  return { passed: reasons.length === 0, reasons, agentRunsAuthorized: reasons.length === 0 };
+}
+
 export function freezeSchedule({ candidate, targets, excludedRepositories, seed }) {
   if (candidate?.engineeringPassed !== true || !/^[a-f0-9]{64}$/.test(candidate.sha256 ?? '')) throw new Error('Engineering-qualified candidate hash is required');
   if (targets.length !== 12 || new Set(targets.map(target => target.id)).size !== 12) throw new Error('Exactly 12 unique tasks are required');
